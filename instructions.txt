@@ -1,0 +1,6 @@
+Ik wil een portfolio maken op mijn website bartpullen.nl voor het aanbieden om websites te moderniseren / optimaliseren, etc.
+Ik heb onlangs 3 sites aangepakt op deze manier en ik zal 3 sites geven met oude site en dan nieuwe site.
+Oud: https://fluitmanautos.nl Nieuw: https://age.bartpullen.nl
+Oud: https://www.badmintonhardenberg.nl Nieuw: https://badminton.bartpullen.nl
+Oud: Geen website, alleen google reviews. Nieuw: https://landhuis.bartpullen.nl/
+Graag uitvoeren in react + ts zoals de nieuwe websites ook hebben.
