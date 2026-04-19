@@ -8,6 +8,7 @@ interface Project {
   solution: string;
   results: string[];
   oldUrl?: string;
+  sliderBeforeUrl?: string;
   newUrl: string;
   tags: string[];
 }
@@ -20,6 +21,7 @@ const projects: Project[] = [
     solution: "Ik heb de site volledig herbouwd met React en TypeScript, met een focus op razendsnelle laadtijden en een intuïtieve interface voor klanten om diensten te bekijken.",
     results: ["100/100 Lighthouse Performance score", "Volledig responsive design", "Betere SEO vindbaarheid"],
     oldUrl: "/archives/fluitmanautos/index.html",
+    sliderBeforeUrl: "/archives/fluitmanautos/index.html",
     newUrl: "https://age.bartpullen.nl",
     tags: ["Full Rebuild", "React", "Performance"]
   },
@@ -30,6 +32,7 @@ const projects: Project[] = [
     solution: "Door een moderne UX-strategie toe te passen, heb ik de informatiearchitectuur versimpeld en een fris, sportief ontwerp geïmplementeerd dat uitnodigt tot actie.",
     results: ["60% snellere toegang tot informatie", "Modern mobiel menu", "Eigentijdse uitstraling"],
     oldUrl: "/archives/badmintonhardenberg/index.html",
+    sliderBeforeUrl: "/archives/badmintonhardenberg/index.html",
     newUrl: "https://badminton.bartpullen.nl",
     tags: ["UX Design", "Modernisering", "Mobile First"]
   },
@@ -39,7 +42,8 @@ const projects: Project[] = [
     challenge: "Dit installatiebedrijf in Hardenberg werkte zonder website, waardoor zij online onzichtbaar waren voor potentiële klanten die zochten naar warmtepompen en airco-oplossingen.",
     solution: "Ik heb 'Echt Duurzaam' op de digitale kaart gezet met een professionele, conversiegerichte website die hun expertise in warmtepompen, airconditioning en elektrotechniek benadrukt.",
     results: ["Lokaal marktleider in regio Hardenberg, Coevorden & Emmen", "Professionele uitstraling die vertrouwen wekt", "Duidelijke presentatie van duurzame diensten"],
-    oldUrl: "/archives/landhuis-google/index.html",
+    oldUrl: "https://www.google.com/search?q=Landhuis+Installatietechniek",
+    sliderBeforeUrl: "/archives/landhuis-google/index.html",
     newUrl: "https://landhuis.bartpullen.nl/",
     tags: ["Brand Identity", "Duurzaamheid", "SEO"]
   }
@@ -196,7 +200,7 @@ function App() {
                 </div>
                 
                 <div className="case-study-visual">
-                   <LiveSlider before={project.oldUrl} after={project.newUrl} />
+                   <LiveSlider before={project.sliderBeforeUrl} after={project.newUrl} />
                 </div>
               </div>
             </div>
