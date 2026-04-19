@@ -22,10 +22,70 @@ body {
   margin: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
 }
 
 p, li {
   color: var(--text-muted);
+}
+
+/* Typography */
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 7vw, 100px);
+  line-height: 1.05;
+  font-weight: 700;
+  margin: 0 0 32px;
+  max-width: 900px;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 12px;
+  color: var(--text-main);
+  font-family: ui-monospace, monospace;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* Layout */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+.hero-header {
+  padding: clamp(80px, 15vh, 160px) 0 clamp(80px, 12vh, 140px);
+  border-bottom: 1px solid var(--border);
+}
+
+.overline {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.6;
+  margin: 0 0 24px;
+  font-family: ui-monospace, monospace;
+  color: var(--text-main);
 }
 
 .lead {
@@ -185,6 +245,13 @@ p, li {
   border-color: #999;
 }
 
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-large:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .btn-large {
   background: var(--accent);
   color: white;
@@ -220,6 +287,11 @@ p, li {
   box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
 }
 
+.live-slider-container:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .live-slider-container {
     aspect-ratio: 16/12;
@@ -235,11 +307,12 @@ p, li {
 }
 
 .live-frame iframe {
-  width: 1440px; 
+  width: 1440px;
   height: 990px;
   border: none;
   transform-origin: 0 0;
   pointer-events: none;
+  will-change: transform;
 }
 
 .before-frame {
