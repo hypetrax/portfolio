@@ -140,6 +140,10 @@
             </p>
 
             <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-stone-800">Visual Setup Preview <span class="text-stone-400 font-normal ml-2">| TICKER: SPX</span></h3>
+                    <div id="chart-status" class="text-xs font-mono bg-emerald-100 text-emerald-700 px-2 py-1 rounded">STRUCTURE: BULLISH</div>
+                </div>
                 
                 <div class="chart-container">
                     <canvas id="setupChart"></canvas>
@@ -148,6 +152,9 @@
                 <div class="mt-6 flex flex-wrap gap-3 justify-center border-t border-stone-100 pt-6">
                     <button id="btn-price" class="px-4 py-2 bg-stone-800 text-white rounded shadow-sm hover:bg-stone-700 text-sm font-medium transition-colors" onclick="toggleChartElement('price')">Price Action</button>
                     <button id="btn-ema21" class="px-4 py-2 bg-stone-200 text-stone-700 rounded shadow-sm hover:bg-stone-300 text-sm font-medium transition-colors" onclick="toggleChartElement('ema21')">+ 21 EMA (The Line in Sand)</button>
+                    <button id="btn-emastack" class="px-4 py-2 bg-stone-200 text-stone-700 rounded shadow-sm hover:bg-stone-300 text-sm font-medium transition-colors" onclick="toggleChartElement('emastack')">+ Stacked EMAs (Backbone)</button>
+                    <button id="btn-squeeze" class="px-4 py-2 bg-stone-200 text-stone-700 rounded shadow-sm hover:bg-stone-300 text-sm font-medium transition-colors" onclick="toggleChartElement('squeeze')">+ Squeeze Histogram</button>
+                </div>
                     <button id="btn-emastack" class="px-4 py-2 bg-stone-200 text-stone-700 rounded shadow-sm hover:bg-stone-300 text-sm font-medium transition-colors" onclick="toggleChartElement('emastack')">+ Stacked EMAs (Backbone)</button>
                     <button id="btn-squeeze" class="px-4 py-2 bg-stone-200 text-stone-700 rounded shadow-sm hover:bg-stone-300 text-sm font-medium transition-colors" onclick="toggleChartElement('squeeze')">+ Squeeze Histogram</button>
                 </div>
@@ -322,7 +329,14 @@
 
             // Render chart if setup section is clicked
             if (sectionId === 'setup') {
-                initSetupChart();
+                // Ensure chart is initialized or resized when section becomes visible
+                setTimeout(() => {
+                    if (!myChart) {
+                        initSetupChart();
+                    } else {
+                        myChart.resize();
+                    }
+                }, 50);
             }
         }
 
@@ -376,44 +390,44 @@
         let myChart = null;
         const chartStates = {
             price: true,
-            ema21: false,
-            emastack: false,
-            squeeze: false
+            ema21: true,
+            emastack: true,
+            squeeze: true
         };
 
         function initSetupChart() {
-            if (myChart) return; // Only init once
+            if (myChart) return; 
 
-            const ctx = document.getElementById('setupChart').getContext('2d');
+            const canvas = document.getElementById('setupChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
             
-            // Mock Data Generation
+            // Mock Data Generation at SPX Levels (~5800-6100)
             const labels = Array.from({length: 40}, (_, i) => `Day ${i+1}`);
             
-            // Base trajectory: consolidation, then break up
             const basePrice = labels.map((_, i) => {
-                if(i < 15) return 100 + Math.sin(i) * 2; // Chop
-                if(i < 25) return 101 + Math.sin(i) * 1.5; // Tighter chop (Squeeze building)
-                return 101 + (i - 25) * 1.2 + Math.random(); // Breakout
+                let p;
+                if(i < 15) p = 5850 + Math.sin(i) * 20; 
+                else if(i < 25) p = 5880 + Math.sin(i) * 10; 
+                else p = 5880 + (i - 25) * 15 + Math.random() * 10;
+                return p;
             });
 
-            // EMAs (approximated for visual effect based on basePrice trend)
-            const ema21 = basePrice.map((v, i) => i < 20 ? 99.5 : 99.5 + (i-20)*0.5);
-            const ema8 = basePrice.map((v, i) => i < 24 ? 100 : v - 0.5);
-            const ema34 = basePrice.map((v, i) => i < 20 ? 98.5 : 98.5 + (i-20)*0.3);
-            const ema55 = basePrice.map((v, i) => 97);
-            const ema89 = basePrice.map((v, i) => 95);
+            const ema21 = basePrice.map((v, i) => i < 20 ? 5830 : 5830 + (i-20)*8);
+            const ema8 = basePrice.map((v, i) => v - 15);
+            const ema34 = basePrice.map((v, i) => i < 20 ? 5810 : 5810 + (i-20)*6);
+            const ema55 = basePrice.map((v, i) => 5780 + i*2);
+            const ema89 = basePrice.map((v, i) => 5750 + i*1.5);
 
-            // Squeeze Histogram (Mock)
-            // Red -> Yellow (exhaustion) -> Light Blue (release) -> Dark Blue
             const squeezeColors = labels.map((_, i) => {
-                if(i < 10) return 'rgba(239, 68, 68, 0.7)'; // Red
-                if(i < 24) return 'rgba(234, 179, 8, 0.8)'; // Yellow (Exhaustion)
-                if(i < 32) return 'rgba(56, 189, 248, 0.8)'; // Light Blue (Release)
-                return 'rgba(37, 99, 235, 0.7)'; // Dark blue
+                if(i < 10) return 'rgba(239, 68, 68, 0.7)'; 
+                if(i < 24) return 'rgba(234, 179, 8, 0.8)'; 
+                if(i < 32) return 'rgba(56, 189, 248, 0.8)'; 
+                return 'rgba(37, 99, 235, 0.7)'; 
             });
             const squeezeData = labels.map((_, i) => {
                 if(i < 10) return -2 + Math.random();
-                if(i < 24) return -0.5 + Math.random()*0.5; // near zero
+                if(i < 24) return -0.5 + Math.random()*0.5;
                 if(i < 32) return 1 + (i-24)*0.5;
                 return 4 - (i-32)*0.2;
             });
@@ -424,9 +438,9 @@
                     labels: labels,
                     datasets: [
                         {
-                            label: 'Price Action',
+                            label: 'SPX Price',
                             data: basePrice,
-                            borderColor: '#292524', // stone-800
+                            borderColor: '#292524',
                             borderWidth: 3,
                             tension: 0.2,
                             pointRadius: 2,
@@ -434,9 +448,9 @@
                             hidden: !chartStates.price
                         },
                         {
-                            label: '21 EMA (Support)',
+                            label: '21 EMA',
                             data: ema21,
-                            borderColor: '#10b981', // emerald-500
+                            borderColor: '#10b981',
                             borderWidth: 3,
                             borderDash: [5, 5],
                             tension: 0.4,
@@ -447,7 +461,7 @@
                         {
                             label: '8 EMA',
                             data: ema8,
-                            borderColor: '#a7f3d0', // emerald-200
+                            borderColor: '#a7f3d0',
                             borderWidth: 1,
                             tension: 0.4,
                             pointRadius: 0,
@@ -457,7 +471,7 @@
                          {
                             label: '34 EMA',
                             data: ema34,
-                            borderColor: '#34d399', // emerald-400
+                            borderColor: '#34d399',
                             borderWidth: 2,
                             tension: 0.4,
                             pointRadius: 0,
@@ -467,7 +481,7 @@
                         {
                             label: '55 EMA',
                             data: ema55,
-                            borderColor: '#059669', // emerald-600
+                            borderColor: '#059669',
                             borderWidth: 2,
                             tension: 0.4,
                             pointRadius: 0,
@@ -477,7 +491,7 @@
                         {
                             label: '89 EMA',
                             data: ema89,
-                            borderColor: '#064e3b', // emerald-900
+                            borderColor: '#064e3b',
                             borderWidth: 2,
                             tension: 0.4,
                             pointRadius: 0,
@@ -486,7 +500,7 @@
                         },
                         {
                             type: 'bar',
-                            label: 'Squeeze Momentum',
+                            label: 'Momentum',
                             data: squeezeData,
                             backgroundColor: squeezeColors,
                             yAxisID: 'y1',
@@ -498,49 +512,26 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
+                    interaction: { mode: 'index', intersect: false },
                     plugins: {
                         legend: { position: 'top', labels: { boxWidth: 12, usePointStyle: true } },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) { label += ': '; }
-                                    if (context.parsed.y !== null) {
-                                        label += context.parsed.y.toFixed(2);
-                                        // add hint text based on timeframe
-                                        if(context.datasetIndex === 6 && context.dataIndex > 23 && context.dataIndex < 26) {
-                                            label += " (Squeeze Firing!)";
-                                        }
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
                     },
                     scales: {
                         y: {
                             type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'Price' },
+                            title: { display: true, text: 'Price ($)' },
+                            beginAtZero: false,
                             grid: { color: '#f5f5f4' }
                         },
                         y1: {
                             type: 'linear',
-                            display: true,
-                            position: 'bottom', // Move histogram scale to bottom visual area conceptually
+                            display: false,
                             min: -5,
-                            max: 15, // scale so it sits at bottom
-                            grid: { drawOnChartArea: false },
-                            ticks: { display: false }
+                            max: 15
                         },
-                        x: {
-                            grid: { display: false }
-                        }
+                        x: { grid: { display: false } }
                     }
                 }
             };
