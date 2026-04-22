@@ -554,18 +554,23 @@
             
             // Logic mapping UI keys to Chart.js dataset indices
             if (myChart) {
-                if (key === 'price') myChart.setDatasetVisibility(0, chartStates.price);
-                if (key === 'ema21') myChart.setDatasetVisibility(1, chartStates.ema21);
+                const setVisibility = (idx, visible) => {
+                    const meta = myChart.getDatasetMeta(idx);
+                    meta.hidden = !visible;
+                };
+
+                if (key === 'price') setVisibility(0, chartStates.price);
+                if (key === 'ema21') setVisibility(1, chartStates.ema21);
                 if (key === 'emastack') {
                     // Toggle 8, 34, 55, 89 (Indices 2,3,4,5)
-                    [2,3,4,5].forEach(i => myChart.setDatasetVisibility(i, chartStates.emastack));
+                    [2,3,4,5].forEach(i => setVisibility(i, chartStates.emastack));
                     // If turning on stack, ensure 21 is also on to show full picture
                     if(chartStates.emastack && !chartStates.ema21) {
                         chartStates.ema21 = true;
-                        myChart.setDatasetVisibility(1, true);
+                        setVisibility(1, true);
                     }
                 }
-                if (key === 'squeeze') myChart.setDatasetVisibility(6, chartStates.squeeze);
+                if (key === 'squeeze') setVisibility(6, chartStates.squeeze);
                 
                 myChart.update();
                 updateButtonStyles();
@@ -593,7 +598,9 @@
         }
 
         // Initialize first view
-        nav('overview');
+        window.addEventListener('DOMContentLoaded', () => {
+            nav('overview');
+        });
 
     </script>
 </body>
