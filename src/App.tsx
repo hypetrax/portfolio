@@ -217,6 +217,73 @@ function App() {
           </section>
         ))}
 
+        <section className="case-study squeeze-study-section">
+          <div className="container">
+            <div className="case-study-grid">
+              <div className="case-study-content">
+                <div className="project-meta">
+                  <span className="project-number">STRATEGY</span>
+                  <div className="project-tags">
+                    <span>Momentum Trading</span>
+                    <span>Volatility Squeezes</span>
+                    <span>Risk Management</span>
+                  </div>
+                </div>
+                
+                <h2>Stacked Probabilities Swing System</h2>
+                <p className="project-intro">
+                  Een kwantitatieve benadering van swingtrading door het combineren van trendbevestiging, volatiliteits-squeezes en Out-of-the-Money credit spreads.
+                </p>
+                
+                <div className="case-details">
+                  <div className="detail-block">
+                    <h3>De Logica</h3>
+                    <p>Het identificeren van periodes van volatiliteitscompressie binnen een sterke bullish trend om de kans op een explosieve uitbraak te maximaliseren.</p>
+                  </div>
+                  <div className="detail-block">
+                    <h3>De Uitvoering</h3>
+                    <p>Gebruik van gestapelde EMA's (8, 21, 34, 55, 89) en de Squeeze Pro indicator om instapmomenten met een hoge waarschijnlijkheid te timen.</p>
+                  </div>
+                </div>
+
+                <div className="results-block">
+                  <h3>Systeemregels</h3>
+                  <ul>
+                    <li>Entry alleen boven de 21 EMA (Daily/Weekly)</li>
+                    <li>Strike selectie gebaseerd op institutionele support layers</li>
+                    <li>Gedisciplineerd beheer met een 80% profit target</li>
+                  </ul>
+                </div>
+
+                <div className="project-actions">
+                  <a href="/squeezespreads.html" className="btn-primary">
+                    Bekijk trading playbook
+                  </a>
+                </div>
+              </div>
+              
+              <div className="case-study-visual">
+                 <div className="squeeze-preview-card" style={{ background: '#fafaf9', padding: '40px', borderRadius: '4px', border: '1px solid #e7e5e4', display: 'flex', flexDirection: 'column', gap: '20px', aspectRatio: '16/11', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#10b981' }}>Squeeze Firing</div>
+                    <div style={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                       <div style={{ width: '100%', height: '2px', background: '#e7e5e4', position: 'relative' }}>
+                          <div style={{ position: 'absolute', left: '30%', top: '-4px', width: '10px', height: '10px', background: '#f59e0b', borderRadius: '50%' }}></div>
+                          <div style={{ position: 'absolute', left: '40%', top: '-4px', width: '10px', height: '10px', background: '#f59e0b', borderRadius: '50%' }}></div>
+                          <div style={{ position: 'absolute', left: '50%', top: '-4px', width: '10px', height: '10px', background: '#10b981', borderRadius: '50%' }}></div>
+                          <div style={{ position: 'absolute', left: '60%', top: '-4px', width: '10px', height: '10px', background: '#10b981', borderRadius: '50%' }}></div>
+                       </div>
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#78716c', fontFamily: 'monospace' }}>
+                       TIMEFRAME: 3-DAY / WEEKLY<br/>
+                       INDICATOR: SQUEEZE PRO<br/>
+                       BIAS: BULLISH STACKED
+                    </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="case-study spx-study-section">
           <div className="container">
             <div className="case-study-grid">
