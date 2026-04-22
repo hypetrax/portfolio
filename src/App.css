@@ -406,8 +406,60 @@ h3 {
 }
 
 .editorial-footer {
-  padding: 48px 0;
+  padding: 60px 0;
   border-top: 1px solid var(--border);
   font-size: 14px;
   color: var(--text-muted);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.footer-labs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+}
+
+.labs-title {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.labs-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.labs-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.labs-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.divider {
+  color: var(--border);
+  user-select: none;
 }
