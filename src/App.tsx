@@ -216,6 +216,72 @@ function App() {
             </div>
           </section>
         ))}
+
+        <section className="case-study spx-study-section">
+          <div className="container">
+            <div className="case-study-grid">
+              <div className="case-study-content">
+                <div className="project-meta">
+                  <span className="project-number">RESEARCH</span>
+                  <div className="project-tags">
+                    <span>Quantitative Analysis</span>
+                    <span>Options Trading</span>
+                    <span>Backtesting</span>
+                  </div>
+                </div>
+                
+                <h2>SPX Credit Spreads: 40-80 DTE Optimization</h2>
+                <p className="project-intro">
+                  Een uitgebreide kwantitatieve studie naar de Volatility Risk Premium en de mathematische "sweet spot" voor SPX opties.
+                </p>
+                
+                <div className="case-details">
+                  <div className="detail-block">
+                    <h3>Het Fenomeen</h3>
+                    <p>Het structurele verschil tussen impliciete en gerealiseerde volatiliteit creëert een positieve verwachtingswaarde voor verkopers van SPX spreads.</p>
+                  </div>
+                  <div className="detail-block">
+                    <h3>De Strategie</h3>
+                    <p>Door te focussen op de 40-80 DTE window maximaliseren we theta decay terwijl we catastrofale gamma-risico's vermijden.</p>
+                  </div>
+                </div>
+
+                <div className="results-block">
+                  <h3>Kernbevindingen</h3>
+                  <ul>
+                    <li>Win Rate van ~92.9% bij mechanisch beheer</li>
+                    <li>Optimaal beheer: sluiten op 50% van de maximale winst</li>
+                    <li>Superieur risico-gecorrigeerd rendement t.o.v. 0DTE strategieën</li>
+                  </ul>
+                </div>
+
+                <div className="project-actions">
+                  <a href="/spx.html" className="btn-primary">
+                    Bekijk volledige research rapport
+                  </a>
+                </div>
+              </div>
+              
+              <div className="case-study-visual">
+                 <div className="spx-preview-card" style={{ background: '#1e293b', padding: '40px', borderRadius: '4px', color: 'white', display: 'flex', flexDirection: 'column', gap: '20px', aspectRatio: '16/11' }}>
+                    <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#818cf8' }}>&Delta; Delta Neutral</div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexGrow: 1 }}>
+                       <div style={{ height: '40%', width: '15%', background: 'rgba(129, 140, 248, 0.3)' }}></div>
+                       <div style={{ height: '70%', width: '15%', background: 'rgba(129, 140, 248, 0.5)' }}></div>
+                       <div style={{ height: '100%', width: '15%', background: '#818cf8' }}></div>
+                       <div style={{ height: '60%', width: '15%', background: 'rgba(129, 140, 248, 0.7)' }}></div>
+                       <div style={{ height: '30%', width: '15%', background: 'rgba(129, 140, 248, 0.2)' }}></div>
+                    </div>
+                    <div style={{ fontSize: '12px', opacity: 0.7, fontFamily: 'monospace' }}>
+                       HISTORICAL BACKTEST: SPX_45DTE_16D<br/>
+                       REALIZED EDGE: +$1.06 / spread<br/>
+                       WIN RATE: 92.9%
+                    </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <section className="cta-section">
