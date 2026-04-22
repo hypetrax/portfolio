@@ -276,17 +276,8 @@ h3 {
 
 /* Live Iframe Slider */
 .case-study-visual {
-  position: sticky;
-  top: 40px;
+  position: relative;
   z-index: 5;
-}
-
-@media (max-width: 1100px) {
-  .case-study-visual {
-    position: relative;
-    top: 0;
-    margin-bottom: 24px;
-  }
 }
 
 .live-slider-container {
