@@ -151,6 +151,16 @@ function App() {
         </div>
       </header>
 
+      <section className="expertise-section">
+        <div className="container">
+          <p className="expertise-lead">
+            Ik werk samen met een team van specialisten: <strong>SEO & Performance Specialist</strong>, 
+            <strong> UX/UI Designer</strong> en een <strong>Frontend Developer</strong>. 
+            Mijn taak is om de klantvraag te vertalen naar techniek.
+          </p>
+        </div>
+      </section>
+
       <main>
         {projects.map((project, index) => (
           <section key={project.title} className="case-study">

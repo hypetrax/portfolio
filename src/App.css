@@ -95,6 +95,20 @@ h3 {
   color: #1a1a1a;
 }
 
+.expertise-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+  background: #fcfcfc;
+}
+
+.expertise-lead {
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0;
+  color: var(--text-main);
+}
+
 /* Case Study */
 .case-study {
   padding: clamp(60px, 10vh, 120px) 0;
