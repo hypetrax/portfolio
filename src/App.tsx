@@ -36,6 +36,8 @@ function App() {
                   <Link to="/" className="labs-link">Web Development</Link>
                   <span className="divider">|</span>
                   <Link to="/studies" className="labs-link">Trading Studies</Link>
+                  <span className="divider">|</span>
+                  <a href="/CRA.html" className="labs-link">CRA Analyse</a>
                 </nav>
               </div>
             </div>
