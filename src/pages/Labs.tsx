@@ -109,9 +109,7 @@ export const Labs = memo(() => {
                 </div>
                 
                 <div className="case-study-visual">
-                   <div className="placeholder-visual bg-slate-100 rounded-xl w-full aspect-[16/11] flex items-center justify-center border border-slate-200">
-                      <span className="text-slate-400 font-bold uppercase tracking-widest text-xs">Technical Report Preview</span>
-                   </div>
+                   <LiveSlider after={study.url} />
                 </div>
               </div>
             </div>

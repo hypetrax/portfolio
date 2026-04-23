@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { LiveSlider } from '../components/LiveSlider';
 
 export const Security = memo(() => {
   return (
@@ -109,8 +110,8 @@ export const Security = memo(() => {
                 </div>
               </div>
               
-              <div className="case-study-visual" style={{ background: '#fafaf9', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
-                 <span style={{ fontSize: '100px' }}>🛡️</span>
+              <div className="case-study-visual">
+                 <LiveSlider after="/security/iso27001" />
               </div>
             </div>
           </div>
@@ -119,4 +120,3 @@ export const Security = memo(() => {
     </>
   );
 });
-
