@@ -364,9 +364,9 @@ export const TurtleSoup = memo(() => {
                                 Algorithmic runs on liquidity are time-dependent. The probability of a successful Turtle Soup increases drastically if the sweep occurs during specific volatility windows:
                             </p>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#cbd5e1' }}>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <strong>London Open:</strong> 2:00 AM - 5:00 AM NY Time</li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <strong>NY AM Session:</strong> 8:30 AM - 11:00 AM NY Time</li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <strong>NY PM Session:</strong> 1:30 PM - 4:00 PM NY Time</li>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <span style={{ color: '#fff' }}><strong>London Open:</strong> 2:00 AM - 5:00 AM NY Time</span></li>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <span style={{ color: '#fff' }}><strong>NY AM Session:</strong> 8:30 AM - 11:00 AM NY Time</span></li>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <span style={{ color: '#fff' }}><strong>NY PM Session:</strong> 1:30 PM - 4:00 PM NY Time</span></li>
                             </ul>
                         </div>
 
