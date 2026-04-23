@@ -117,6 +117,14 @@ export const Security = memo(() => {
           </div>
         </section>
       </main>
+
+      <section className="cta-section">
+        <div className="container">
+          <h2>Vragen over Security of Compliance?</h2>
+          <p>Laten we bespreken hoe we jouw organisatie veiliger kunnen maken. Contact opnemen kan uitsluitend via LinkedIn.</p>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
+        </div>
+      </section>
     </>
   );
 });

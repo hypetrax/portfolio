@@ -116,6 +116,14 @@ export const Labs = memo(() => {
           </section>
         ))}
       </main>
+
+      <section className="cta-section">
+        <div className="container">
+          <h2>Interesse in mijn onderzoek?</h2>
+          <p>Ik bespreek graag mijn bevindingen en methodologieën. Contact opnemen kan uitsluitend via LinkedIn.</p>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
+        </div>
+      </section>
     </>
   );
 });

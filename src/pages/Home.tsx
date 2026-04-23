@@ -10,7 +10,7 @@ export const Home = memo(() => {
     "url": "https://bartpullen.nl",
     "jobTitle": "Webdesigner & Information Security Officer",
     "sameAs": [
-      "https://www.linkedin.com/in/bartpullen",
+      "https://www.linkedin.com/in/bartpullen/",
       "https://github.com/hypetrax"
     ],
     "description": "Het persoonlijke portfolio van Bart Pullen, met focus op webdesign, cybersecurity en kwantitatieve analyse."
@@ -105,8 +105,8 @@ export const Home = memo(() => {
       <section className="cta-section">
         <div className="container">
           <h2>Meer weten over mijn werk?</h2>
-          <p>Ik vertel je graag meer over de achtergrond van deze projecten.</p>
-          <a href="mailto:info@bartpullen.nl" className="btn-large">Stuur een bericht</a>
+          <p>Ik vertel je graag meer over de achtergrond van deze projecten. Contact opnemen kan uitsluitend via LinkedIn.</p>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
         </div>
       </section>
     </>
