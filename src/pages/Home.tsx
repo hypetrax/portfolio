@@ -1,8 +1,10 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 
 export const Home = memo(() => {
+  const [videoStarted, setVideoStarted] = useState(false);
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -18,18 +20,25 @@ export const Home = memo(() => {
 
   return (
     <>
-      <SEO 
-        title="Bart Pullen — Security, Web & Data Specialist" 
+      <SEO
+        title="Bart Pullen — Security, Web & Data Specialist"
         description="Senior Information Security Officer en Webdesigner. Expert in ISO 27001, Cyber Resilience Act en data-gedreven web development."
         canonical="/"
         schema={personSchema}
       />
       <header className="hero-header">
         <div className="video-background">
-          <video autoPlay loop muted playsInline poster="/assets/hero-poster.webp">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            poster="/assets/hero-poster.webp"
+            onPlay={() => setVideoStarted(true)}
+            className={videoStarted ? 'is-playing' : ''}
+          >
             <source src="/assets/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div className="video-overlay"></div>
+          </video>          <div className="video-overlay"></div>
           <div className="technical-metadata">
             <span className="metadata-item">SYS_READY</span>
             <span className="metadata-item">SEC_PROTOCOL_V2</span>
