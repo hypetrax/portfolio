@@ -66,9 +66,10 @@ export const CRA = memo(() => {
       <header className="hero-header" style={{ background: '#f8fafc' }}>
         <div className="container">
           <p className="overline">Security — Diepgang</p>
-          <h1 style={{ color: '#0f172a' }}>De Cyber Resilience Act: <br /><span style={{ color: '#2563eb' }}>Wat fabrikanten moeten weten</span></h1>
+          <h1 style={{ color: '#0f172a' }}>Onze Voorbereiding op de <br /><span style={{ color: '#2563eb' }}>Cyber Resilience Act (CRA)</span></h1>
           <p className="lead" style={{ color: '#475569' }}>
-            De CRA legt de verantwoordelijkheid voor cybersecurity eindelijk bij de makers van digitale producten. Een analyse van de verplichtingen, van ontwerp tot support.
+            De CRA stelt nieuwe eisen aan de cybersecurity van onze digitale producten. 
+            Ik leid de transitie om compliance te verweven in onze volledige productlevenscyclus, van ontwerp tot support.
           </p>
         </div>
       </header>
@@ -78,19 +79,20 @@ export const CRA = memo(() => {
           <div className="container">
             <div className="case-study-grid">
               <div className="case-study-content">
-                <h2>Security is geen optie meer</h2>
+                <h2>Compliance als Kwaliteitskeurmerk</h2>
                 <p className="project-intro">
-                  De tijd dat software ongestraft 'onveilig bij oplevering' kon zijn, loopt ten einde. De CRA dwingt fabrikanten om gedurende de hele levenscyclus verantwoordelijkheid te nemen voor hun product.
+                  Voor onze organisatie is de CRA meer dan een wettelijke verplichting; het is een kans om onze toewijding aan veilige producten te bewijzen. 
+                  We integreren security-eisen direct in onze ontwikkelprocessen.
                 </p>
                 
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>Focus op de keten</h3>
-                    <p>Beveiliging wordt een integraal onderdeel van het ontwikkelproces, niet een 'add-on' achteraf.</p>
+                    <p>We maken beveiliging een integraal onderdeel van onze sprint-doelen, niet een add-on achteraf.</p>
                   </div>
                   <div className="detail-block">
-                    <h3>Transparantie</h3>
-                    <p>Gebruikers krijgen eindelijk inzicht in hoe veilig een product écht is en hoe lang het ondersteund wordt.</p>
+                    <h3>Radicale Transparantie</h3>
+                    <p>We bereiden ons voor op het leveren van volledige transparantie over de veiligheid en ondersteuning van onze producten.</p>
                   </div>
                 </div>
               </div>

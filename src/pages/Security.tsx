@@ -8,10 +8,10 @@ export const Security = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Security & Compliance</p>
-          <h1>Security die de business <span className="italic">ondersteunt</span>.</h1>
+          <h1>Security die de business <span className="italic">versterkt</span>.</h1>
           <p className="lead">
-            Ik help organisaties om grip te krijgen op informatiebeveiliging en wetgeving. 
-            Geen dikke rapporten voor in de lade, maar praktische plannen die écht werken.
+            In mijn rol als Security Officer richt ik me op het bouwen van een robuust en werkbaar security-fundament. 
+            Geen theoretische exercities, maar meetbare resultaten die de continuïteit en het vertrouwen van de organisatie waarborgen.
           </p>
         </div>
       </header>
@@ -26,36 +26,36 @@ export const Security = memo(() => {
                   <div className="project-tags">
                     <span>EU Legislation</span>
                     <span>Cybersecurity</span>
-                    <span>Compliance</span>
+                    <span>Internal Impact</span>
                   </div>
                 </div>
                 
                 <h2>Cyber Resilience Act (CRA)</h2>
-                <p className="project-intro">Wat fabrikanten moeten weten over de nieuwe EU-wetgeving voor digitale producten.</p>
+                <p className="project-intro">Hoe we onze productontwikkeling voorbereiden op de nieuwe EU-wetgeving voor digitale producten.</p>
                 
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
-                    <p>De impact van de CRA op hoe we hardware en software bouwen en onderhouden.</p>
+                    <p>Het vertalen van de CRA naar concrete eisen voor onze hardware en software engineering teams.</p>
                   </div>
                   <div className="detail-block">
                     <h3>De Methode</h3>
-                    <p>Een heldere analyse van de verplichtingen, risico's en tijdlijnen.</p>
+                    <p>Een diepgaande gap-analyse en het inrichten van processen voor SBOM-beheer en incidentrapportage.</p>
                   </div>
                 </div>
 
                 <div className="results-block">
-                  <h3>Key Insights</h3>
+                  <h3>Behaalde Resultaten</h3>
                   <ul>
-                    <li>Product Check framework</li>
-                    <li>Overzicht van risico's</li>
-                    <li>Stappenplan voor fabrikanten</li>
+                    <li>Product Compliance framework</li>
+                    <li>Geautomatiseerde SBOM-generatie</li>
+                    <li>Governance voor kwetsbaarheidsbeheer</li>
                   </ul>
                 </div>
 
                 <div className="project-actions">
                   <Link to="/security/cra" className="btn-primary">
-                    Lees de volledige analyse
+                    Bekijk de analyse & aanpak
                   </Link>
                 </div>
               </div>
@@ -76,36 +76,36 @@ export const Security = memo(() => {
                   <div className="project-tags">
                     <span>ISO 27001</span>
                     <span>ISMS</span>
-                    <span>Security Officer</span>
+                    <span>Strategy</span>
                   </div>
                 </div>
                 
                 <h2>ISO 27001 Implementatie</h2>
-                <p className="project-intro">Meer dan alleen een certificaat aan de muur. Hoe je een ISMS bouwt waar de organisatie écht iets aan heeft.</p>
+                <p className="project-intro">De realisatie van een ISMS dat niet alleen voldoet aan de norm, maar ook de operationele efficiëntie verhoogt.</p>
                 
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
-                    <p>Het opzetten van een ISMS dat risico's beheersbaar maakt zonder de boel te vertragen.</p>
+                    <p>Het verankeren van informatiebeveiliging in de dagelijkse workflow van de organisatie.</p>
                   </div>
                   <div className="detail-block">
                     <h3>De Methode</h3>
-                    <p>Praktische toepassing van de ISO-norm met focus op draagvlak en werkbaarheid.</p>
+                    <p>Een pragmatische implementatie van de ISO 27001:2022 norm met sterke focus op risicomanagement en cultuur.</p>
                   </div>
                 </div>
 
                 <div className="results-block">
-                  <h3>Key Insights</h3>
+                  <h3>Behaalde Resultaten</h3>
                   <ul>
-                    <li>Maturity groei visualisaties</li>
-                    <li>PDCA-cyclus in de praktijk</li>
-                    <li>Aantoonbare risico-reductie</li>
+                    <li>ISO 27001:2022 certificering</li>
+                    <li>Significante stijging in security awareness</li>
+                    <li>Meetbare reductie in operationele risico's</li>
                   </ul>
                 </div>
 
                 <div className="project-actions">
                   <Link to="/security/iso27001" className="btn-primary">
-                    Bekijk de case study
+                    Bekijk de implementatie-aanpak
                   </Link>
                 </div>
               </div>
@@ -120,8 +120,8 @@ export const Security = memo(() => {
 
       <section className="cta-section">
         <div className="container">
-          <h2>Vragen over Security of Compliance?</h2>
-          <p>Laten we bespreken hoe we jouw organisatie veiliger kunnen maken. Contact opnemen kan uitsluitend via LinkedIn.</p>
+          <h2>Professionele dialoog?</h2>
+          <p>Ik wissel graag kennis uit over security-strategie, compliance-vraagstukken of de toekomst van cybersecurity. Connecten kan via LinkedIn.</p>
           <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
         </div>
       </section>
