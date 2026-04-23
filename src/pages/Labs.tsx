@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { LiveSlider } from '../components/LiveSlider';
+import { Link } from 'react-router-dom';
 
 interface Study {
   title: string;
@@ -18,7 +18,7 @@ const studies: Study[] = [
     challenge: "Het vinden van de 'sweet spot' tussen winstkans en rendement in de optiemarkt, rekening houdend met Theta decay en volatiliteit.",
     solution: "Middels uitgebreide backtesting en data-analyse zijn optimale entry- en exitregels gedefinieerd voor een consistent resultaat.",
     results: ["Duidelijke DTE optimalisatie matrix", "Interactieve strategie simulator", "Data-gedreven risk management regels"],
-    url: "/spx.html",
+    url: "/labs/spx",
     tags: ["Quantitative Research", "Options Trading", "Data Analysis"]
   },
   {
@@ -27,7 +27,7 @@ const studies: Study[] = [
     challenge: "Het elimineren van emotie bij trading door strikte technische regels en een herhaalbaar proces te creëren.",
     solution: "Een 'Playbook' benadering die EMAs, de Squeeze indicator en prijsactie combineert in een robuust framework.",
     results: ["Stap-voor-stap setup gids", "Vaste regels voor risk management", "Visuele breakdown van technische indicatoren"],
-    url: "/squeezespreads.html",
+    url: "/labs/squeeze",
     tags: ["Trading System", "Technical Analysis", "Systematic Trading"]
   },
   {
@@ -36,7 +36,7 @@ const studies: Study[] = [
     challenge: "Het herkennen van de 'Judas Swing' en het vermijden van retail traps bij belangrijke prijsniveaus.",
     solution: "Een educatieve breakdown van BSL/SSL, MSS en FVG confluences met een interactieve candlestick simulator.",
     results: ["Interactieve prijsactie simulator", "Duidelijke breakdown van liquidity pools", "Stap-voor-stap executie framework"],
-    url: "/turtlesoup.html",
+    url: "/labs/turtlesoup",
     tags: ["ICT Concepts", "Liquidity Analysis", "Market Structure"]
   },
   {
@@ -45,12 +45,12 @@ const studies: Study[] = [
     challenge: "Het begrijpen van de verschuiving van retail-paradigma's naar institutionele algoritmen en liquiditeits-gedreven markten.",
     solution: "Een interactieve masterclass die de kernconcepten zoals FVG, Order Blocks en Liquidity Sweeps vertaalt naar een visueel framework.",
     results: ["Interactieve concept glossary", "Visualisatie van retail vs smart money", "Diepgaande FAQ over marktmechanismen"],
-    url: "/ictconcepts.html",
+    url: "/labs/ict",
     tags: ["Institutional Trading", "Order Flow", "Market Theory"]
   }
 ];
 
-export const Studies = memo(() => {
+export const Labs = memo(() => {
   return (
     <>
       <header className="hero-header">
@@ -101,14 +101,16 @@ export const Studies = memo(() => {
                   </div>
 
                   <div className="project-actions">
-                    <a href={study.url} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                    <Link to={study.url} className="btn-primary">
                       Open de volledige studie
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 
                 <div className="case-study-visual">
-                   <LiveSlider after={study.url} />
+                   <div className="placeholder-visual bg-slate-100 rounded-xl w-full aspect-[16/11] flex items-center justify-center border border-slate-200">
+                      <span className="text-slate-400 font-bold uppercase tracking-widest text-xs">Technical Report Preview</span>
+                   </div>
                 </div>
               </div>
             </div>
