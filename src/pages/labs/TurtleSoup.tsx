@@ -48,13 +48,13 @@ const simData: any = {
             { 
                 idx: 11, 
                 title: "4. The FVG Entry", 
-                desc: "The energetic displacement leaves a Fair Value Gap (FVG) between 96.5 and 104.0. The pullback at 11:15 taps directly into this imbalance, offering the precision entry point.",
+                desc: "The energetic displacement leaves a Fair Value Gap (FVG) between 100.0 and 103.5. The pullback at 11:15 taps directly into this imbalance, offering the precision entry point.",
                 chk: 4,
                 shapes: [
-                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 96.5, y1: 103.5, fillcolor: 'rgba(16, 185, 129, 0.2)', line: {width: 0}},
+                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 100.0, y1: 103.5, fillcolor: 'rgba(16, 185, 129, 0.2)', line: {width: 0}},
                     {type: 'line', x0: '10:30', x1: '11:45', y0: 104.0, y1: 104.0, line: {color: 'green', width: 2}}
                 ],
-                annotations: [{x: '11:00', y: 100.0, text: 'Fair Value Gap (Entry)', showarrow: false, font: {color: 'green'}}]
+                annotations: [{x: '11:00', y: 101.5, text: 'Fair Value Gap (Entry)', showarrow: false, font: {color: 'green'}}]
             },
             { 
                 idx: 12, 
@@ -62,7 +62,7 @@ const simData: any = {
                 desc: "Once the institutional orders are mitigated within the FVG, price expands rapidly towards opposing Buy Side Liquidity pools (old highs). The setup is complete.",
                 chk: 4,
                 shapes: [
-                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 96.5, y1: 103.5, fillcolor: 'rgba(16, 185, 129, 0.2)', line: {width: 0}}
+                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 100.0, y1: 103.5, fillcolor: 'rgba(16, 185, 129, 0.2)', line: {width: 0}}
                 ],
                 annotations: []
             }
@@ -114,13 +114,13 @@ const simData: any = {
             { 
                 idx: 11, 
                 title: "4. The Bearish FVG Entry", 
-                desc: "The drop creates a massive Bearish FVG between 101.0 and 108.5. Price retraces upwards at 11:15, filling the gap. This is the institutional entry point to go short.",
+                desc: "The drop creates a massive Bearish FVG between 102.0 and 109.0. Price retraces upwards at 11:15, filling the gap. This is the institutional entry point to go short.",
                 chk: 4,
                 shapes: [
-                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 101.0, y1: 108.5, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}},
+                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 102.0, y1: 109.0, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}},
                     {type: 'line', x0: '10:30', x1: '11:45', y0: 101.5, y1: 101.5, line: {color: 'red', width: 2}}
                 ],
-                annotations: [{x: '11:00', y: 104.5, text: 'Fair Value Gap (Entry)', showarrow: false, font: {color: 'red'}}]
+                annotations: [{x: '11:00', y: 105.5, text: 'Fair Value Gap (Entry)', showarrow: false, font: {color: 'red'}}]
             },
             { 
                 idx: 12, 
@@ -128,7 +128,7 @@ const simData: any = {
                 desc: "After mitigating orders in the premium FVG array, price rapidly dumps towards lower liquidity pools.",
                 chk: 4,
                 shapes: [
-                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 101.0, y1: 108.5, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}}
+                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 102.0, y1: 109.0, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}}
                 ],
                 annotations: []
             }
@@ -205,7 +205,7 @@ export const TurtleSoup = memo(() => {
                     display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: isActive ? '#0ea5e9' : 'transparent',
                     color: isActive ? 'white' : 'transparent', fontSize: '12px', fontWeight: 'bold'
                 }}>
-                    \u2713
+                    ✓
                 </div>
                 <span style={{ fontWeight: isActive ? 500 : 400 }}>{text}</span>
             </div>
@@ -253,13 +253,13 @@ export const TurtleSoup = memo(() => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }} className="grid-cols-1 md:grid-cols-2">
                         <div style={{ backgroundColor: '#f8fafc', padding: '24px', borderRadius: '12px', border: '1px solid #f1f5f9' }}>
                             <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: '#10b981', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                                <span>\u2191</span> Bullish Turtle Soup
+                                Bullish Turtle Soup
                             </h3>
                             <p style={{ fontSize: '14px', color: '#475569' }}>Price drops below an established Old Low (sweeping Sell Side Liquidity), traps early breakout sellers, and aggressively reverses upward, breaking market structure to the upside.</p>
                         </div>
                         <div style={{ backgroundColor: '#f8fafc', padding: '24px', borderRadius: '12px', border: '1px solid #f1f5f9' }}>
                             <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: '#f43f5e', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                                <span>\u2193</span> Bearish Turtle Soup
+                                Bearish Turtle Soup
                             </h3>
                             <p style={{ fontSize: '14px', color: '#475569' }}>Price rallies above an established Old High (sweeping Buy Side Liquidity), traps early breakout buyers, and aggressively reverses downward, breaking market structure to the downside.</p>
                         </div>
@@ -337,7 +337,7 @@ export const TurtleSoup = memo(() => {
                                         display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px'
                                     }}
                                 >
-                                    {currentStepIndex >= dataDef.steps.length - 1 ? 'Simulation Complete' : <>Advance Price Action <span>\u2192</span></>}
+                                    {currentStepIndex >= dataDef.steps.length - 1 ? 'Simulation Complete' : <>Advance Price Action <span>→</span></>}
                                 </button>
                             </div>
                         </div>
@@ -358,20 +358,20 @@ export const TurtleSoup = memo(() => {
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }} className="grid-cols-1 md:grid-cols-2">
                         <div style={{ backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid #334155' }}>
-                            <div style={{ color: '#38bdf8', fontSize: '30px', marginBottom: '16px' }}>\u23F0</div>
+                            <div style={{ color: '#38bdf8', fontSize: '30px', marginBottom: '16px' }}>🕒</div>
                             <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>Killzones (Time of Day)</h3>
                             <p style={{ color: '#94a3b8', fontSize: '14px', lineHeight: 1.625, marginBottom: '16px' }}>
                                 Algorithmic runs on liquidity are time-dependent. The probability of a successful Turtle Soup increases drastically if the sweep occurs during specific volatility windows:
                             </p>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#cbd5e1' }}>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>\u25B8</span> <strong>London Open:</strong> 2:00 AM - 5:00 AM NY Time</li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>\u25B8</span> <strong>NY AM Session:</strong> 8:30 AM - 11:00 AM NY Time</li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>\u25B8</span> <strong>NY PM Session:</strong> 1:30 PM - 4:00 PM NY Time</li>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <strong>London Open:</strong> 2:00 AM - 5:00 AM NY Time</li>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <strong>NY AM Session:</strong> 8:30 AM - 11:00 AM NY Time</li>
+                                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#0ea5e9' }}>▸</span> <strong>NY PM Session:</strong> 1:30 PM - 4:00 PM NY Time</li>
                             </ul>
                         </div>
 
                         <div style={{ backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid #334155' }}>
-                            <div style={{ color: '#34d399', fontSize: '30px', marginBottom: '16px' }}>\u1F4C8</div>
+                            <div style={{ color: '#34d399', fontSize: '30px', marginBottom: '16px' }}>📈</div>
                             <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>HTF PD Arrays</h3>
                             <p style={{ color: '#94a3b8', fontSize: '14px', lineHeight: 1.625, marginBottom: '16px' }}>
                                 The setup must make sense in the context of the Higher Time Frame (HTF). A sweep of a 15-minute low is a high-probability buy IF it occurs inside a Daily timeframe bullish array.
