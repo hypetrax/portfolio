@@ -58,12 +58,14 @@ export const ISO27001 = memo(() => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        labels: { color: '#94a3b8', font: { family: 'Inter' } }
+        labels: { color: 'var(--text-muted)', font: { family: 'Inter' } }
       },
       tooltip: {
-        backgroundColor: '#1e293b',
-        titleColor: '#f8fafc',
-        bodyColor: '#94a3b8',
+        backgroundColor: 'var(--surface)',
+        titleColor: 'var(--text-main)',
+        bodyColor: 'var(--text-muted)',
+        borderColor: 'var(--border)',
+        borderWidth: 1,
         padding: 12,
         cornerRadius: 8
       }
@@ -79,9 +81,9 @@ export const ISO27001 = memo(() => {
     datasets: [{
       label: maturityState === 'start' ? 'Startmeting' : 'Na Implementatie (2022)',
       data: maturityState === 'start' ? maturityDataStart : maturityDataEnd,
-      backgroundColor: maturityState === 'start' ? 'rgba(148, 163, 184, 0.2)' : 'rgba(59, 130, 246, 0.2)',
-      borderColor: maturityState === 'start' ? 'rgba(148, 163, 184, 1)' : 'rgba(59, 130, 246, 1)',
-      pointBackgroundColor: maturityState === 'start' ? 'rgba(148, 163, 184, 1)' : 'rgba(59, 130, 246, 1)',
+      backgroundColor: maturityState === 'start' ? 'rgba(71, 85, 105, 0.1)' : 'rgba(37, 99, 235, 0.1)',
+      borderColor: maturityState === 'start' ? 'rgba(71, 85, 105, 0.8)' : 'rgba(37, 99, 235, 1)',
+      pointBackgroundColor: maturityState === 'start' ? 'rgba(71, 85, 105, 1)' : 'rgba(37, 99, 235, 1)',
       borderWidth: 2,
       fill: true
     }]
@@ -94,15 +96,15 @@ export const ISO27001 = memo(() => {
         type: 'bar' as const,
         label: 'Incidenten',
         data: [15, 22, 12, 5],
-        backgroundColor: 'rgba(148, 163, 184, 0.5)',
+        backgroundColor: 'rgba(71, 85, 105, 0.2)',
         borderRadius: 4
       },
       {
         type: 'line' as const,
         label: 'Maturity Score',
         data: [1.5, 2.2, 3.5, 4.2],
-        borderColor: '#3b82f6',
-        backgroundColor: '#3b82f6',
+        borderColor: 'var(--accent)',
+        backgroundColor: 'var(--accent)',
         borderWidth: 3,
         tension: 0.3,
         pointRadius: 4
@@ -246,9 +248,9 @@ export const ISO27001 = memo(() => {
                           ticks: { display: false }, 
                           min: 0, 
                           max: 5,
-                          grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                          angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
-                          pointLabels: { color: '#94a3b8', font: { size: 10 } }
+                          grid: { color: 'var(--border)' },
+                          angleLines: { color: 'var(--border)' },
+                          pointLabels: { color: 'var(--text-muted)', font: { size: 10 } }
                         } 
                       }
                     }}
@@ -267,12 +269,12 @@ export const ISO27001 = memo(() => {
                       scales: { 
                         y: { 
                           beginAtZero: true,
-                          grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                          ticks: { color: '#64748b' }
+                          grid: { color: 'var(--border)' },
+                          ticks: { color: 'var(--text-muted)' }
                         },
                         x: {
                           grid: { display: false },
-                          ticks: { color: '#64748b' }
+                          ticks: { color: 'var(--text-muted)' }
                         }
                       }
                     }}
