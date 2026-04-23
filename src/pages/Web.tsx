@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
+import { LinkedInIcon } from '../components/Icons';
 
 interface Project {
   title: string;
@@ -131,9 +132,13 @@ export const Web = memo(() => {
         <div className="container">
           <h2>Website <span style={{ color: 'var(--accent)' }}>vernieuwen</span>?</h2>
           <p>Benieuwd naar de techniek achter deze projecten of hulp nodig bij het opschonen van een bestaande site? Contact via LinkedIn.</p>
-          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large" aria-label="Connect op LinkedIn voor webdesign projecten">Connect op LinkedIn</a>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large linkedin-btn" aria-label="Connect op LinkedIn voor webdesign projecten">
+            <LinkedInIcon />
+            <span>Connect op LinkedIn</span>
+          </a>
         </div>
       </section>
     </>
   );
 });
+

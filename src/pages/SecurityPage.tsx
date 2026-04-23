@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
+import { LinkedInIcon } from '../components/Icons';
 
 export const SecurityPage = memo(() => {
   return (
@@ -42,7 +43,7 @@ export const SecurityPage = memo(() => {
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
-                    <p>Het vertalen van de CRA naar concrete eisen voor onze hardware en software engineering teams.</p>
+                    <p>Het vertaling van de CRA naar concrete eisen voor onze hardware en software engineering teams.</p>
                   </div>
                   <div className="detail-block">
                     <h3>De Methode</h3>
@@ -128,9 +129,13 @@ export const SecurityPage = memo(() => {
         <div className="container">
           <h2>Verder <span style={{ color: 'var(--accent)' }}>praten</span>?</h2>
           <p>Vragen over de details van deze trajecten of zin om ervaringen uit te wisselen over werkbare security? Je vindt me op LinkedIn.</p>
-          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large linkedin-btn">
+            <LinkedInIcon />
+            <span>Connect op LinkedIn</span>
+          </a>
         </div>
       </section>
     </>
   );
 });
+

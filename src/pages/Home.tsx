@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
+import { LinkedInIcon } from '../components/Icons';
 
 export const Home = memo(() => {
   const [videoStarted, setVideoStarted] = useState(false);
@@ -138,9 +139,13 @@ export const Home = memo(() => {
         <div className="container">
           <h2>Meer weten over mijn <span style={{ color: 'var(--accent)' }}>werk</span>?</h2>
           <p>Ik vertel je graag meer over de achtergrond van deze projecten. Contact opnemen kan uitsluitend via LinkedIn.</p>
-          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large linkedin-btn">
+            <LinkedInIcon />
+            <span>Connect op LinkedIn</span>
+          </a>
         </div>
       </section>
     </>
   );
 });
+

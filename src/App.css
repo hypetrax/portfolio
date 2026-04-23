@@ -441,6 +441,18 @@ p, li {
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
 
+.linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.linkedin-btn:hover {
+  background: #0077b5;
+  box-shadow: 0 8px 24px rgba(0, 119, 181, 0.4);
+}
+
 /* Live Iframe Slider */
 .live-slider-container {
   position: relative;
