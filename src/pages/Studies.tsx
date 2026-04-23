@@ -29,6 +29,15 @@ const studies: Study[] = [
     results: ["Stap-voor-stap setup gids", "Vaste regels voor risk management", "Visuele breakdown van technische indicatoren"],
     url: "/squeezespreads.html",
     tags: ["Trading System", "Technical Analysis", "Systematic Trading"]
+  },
+  {
+    title: "ICT Turtle Soup Setup Masterclass",
+    description: "Een modernisering van klassieke false-breakout strategieën, gericht op het identificeren van liquiditeits-sweeps en institutionele manipulatie.",
+    challenge: "Het herkennen van de 'Judas Swing' en het vermijden van retail traps bij belangrijke prijsniveaus.",
+    solution: "Een educatieve breakdown van BSL/SSL, MSS en FVG confluences met een interactieve candlestick simulator.",
+    results: ["Interactieve prijsactie simulator", "Duidelijke breakdown van liquidity pools", "Stap-voor-stap executie framework"],
+    url: "/turtlesoup.html",
+    tags: ["ICT Concepts", "Liquidity Analysis", "Market Structure"]
   }
 ];
 
