@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import './App.css';
-import './Labs.css';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { Web } from './pages/Web';

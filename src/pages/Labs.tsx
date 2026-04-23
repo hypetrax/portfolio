@@ -15,37 +15,37 @@ interface Study {
 const studies: Study[] = [
   {
     title: "SPX 40-80 DTE Study",
-    description: "Mijn onderzoek naar het optimaliseren van SPX credit spreads, specifiek voor looptijden tussen 40 en 80 dagen.",
-    challenge: "Het vinden van de juiste balans tussen winstkans en rendement, zonder dat de risico's uit de hand lopen.",
-    solution: "Door duizenden trades te simuleren heb ik een matrix ontwikkeld die laat zien welke instellingen het meest stabiel zijn.",
-    results: ["Optimalisatie matrix voor looptijden", "Interactieve simulator", "Praktische regels voor risicobeheer"],
+    description: "Een diepgaande kwantitatieve analyse naar het optimaliseren van SPX credit spreads met een focus op looptijden tussen 40 en 80 dagen.",
+    challenge: "Het vinden van de 'sweet spot' tussen winstkans en rendement in de optiemarkt, rekening houdend met Theta decay en volatiliteit.",
+    solution: "Middels uitgebreide backtesting en data-analyse zijn optimale entry- en exitregels gedefinieerd voor een consistent resultaat.",
+    results: ["Duidelijke DTE optimalisatie matrix", "Interactieve strategie simulator", "Data-gedreven risk management regels"],
     url: "/labs/spx",
     tags: ["Quantitative Research", "Options Trading", "Data Analysis"]
   },
   {
     title: "Stacked Probabilities System",
-    description: "Een systeem voor swing trading dat verschillende technische signalen combineert voor een hogere slaagkans.",
-    challenge: "Een trading-proces bouwen dat niet afhankelijk is van emoties of onderbuikgevoel, maar van vaste regels.",
-    solution: "Een 'Playbook' dat kijkt naar markttrends, voortschrijdende gemiddelden en de Squeeze indicator.",
-    results: ["Duidelijk stappenplan voor trades", "Vaste regels voor in- en uitstappen", "Uitleg van de gebruikte indicatoren"],
+    description: "Een systematische aanpak voor swing trading gebaseerd op het stapelen van technische en statistische kansen.",
+    challenge: "Het elimineren van emotie bij trading door strikte technische regels en een herhaalbaar proces te creëren.",
+    solution: "Een 'Playbook' benadering die EMAs, de Squeeze indicator en prijsactie combineert in een robuust framework.",
+    results: ["Stap-voor-stap setup gids", "Vaste regels voor risk management", "Visuele breakdown van technische indicatoren"],
     url: "/labs/squeeze",
     tags: ["Trading System", "Technical Analysis", "Systematic Trading"]
   },
   {
-    title: "ICT Turtle Soup Masterclass",
-    description: "Hoe je valse uitbraken in de markt herkent en deze gebruikt om liquiditeit te vinden.",
-    challenge: "Het herkennen van momenten waarop de markt 'vallen' zet voor particuliere beleggers.",
-    solution: "Een visuele uitleg van marktstructuur en liquiditeit, inclusief een simulator om bar-voor-bar te oefenen.",
-    results: ["Interactieve prijsactie simulator", "Uitleg over liquidity pools", "Stappenplan voor uitvoering"],
+    title: "ICT Turtle Soup Setup Masterclass",
+    description: "Een modernisering van klassieke false-breakout strategieën, gericht op het identificeren van liquiditeits-sweeps en institutionele manipulatie.",
+    challenge: "Het herkennen van de 'Judas Swing' en het vermijden van retail traps bij belangrijke prijsniveaus.",
+    solution: "Een educatieve breakdown van BSL/SSL, MSS en FVG confluences met een interactieve candlestick simulator.",
+    results: ["Interactieve prijsactie simulator", "Duidelijke breakdown van liquidity pools", "Stap-voor-stap executie framework"],
     url: "/labs/turtlesoup",
     tags: ["ICT Concepts", "Liquidity Analysis", "Market Structure"]
   },
   {
-    title: "ICT Trading Strategie",
-    description: "Een gids over de Inner Circle Trader (ICT) methode en het begrijpen van hoe grote spelers de markt bewegen.",
-    challenge: "De verschuiving begrijpen van standaard grafiekpatronen naar institutionele orderflow.",
-    solution: "De kernconcepten zoals Order Blocks en Fair Value Gaps vertaald naar een duidelijke, visuele uitleg.",
-    results: ["Interactieve begrippenlijst", "Verschil tussen retail en 'smart money'", "Veelgestelde vragen over marktmechanismen"],
+    title: "ICT Trading Strategy Masterclass",
+    description: "Een uitgebreide gids over de Inner Circle Trader (ICT) methodologie, gericht op het begrijpen van institutionele orderflow en marktmanipulatie.",
+    challenge: "Het begrijpen van de verschuiving van retail-paradigma's naar institutionele algoritmen en liquiditeits-gedreven markten.",
+    solution: "Een interactieve masterclass die de kernconcepten zoals FVG, Order Blocks en Liquidity Sweeps vertaalt naar een visueel framework.",
+    results: ["Interactieve concept glossary", "Visualisatie van retail vs smart money", "Diepgaande FAQ over marktmechanismen"],
     url: "/labs/ict",
     tags: ["Institutional Trading", "Order Flow", "Market Theory"]
   }
@@ -57,10 +57,10 @@ export const Labs = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Labs & Quantitative Research</p>
-          <h1>Mijn onderzoek naar de <span className="italic">markten</span>.</h1>
+          <h1>Data-gedreven <span className="italic">inzichten</span>.</h1>
           <p className="lead">
-            Naast webontwikkeling duik ik diep in de cijfers van financiële markten. 
-            Hieronder vind je een selectie van mijn studies naar opties en trading-systemen.
+            Naast webontwikkeling focus ik me op kwantitatief onderzoek naar de financiële markten. 
+            Hieronder vind je een selectie van mijn studies en systemen.
           </p>
         </div>
       </header>

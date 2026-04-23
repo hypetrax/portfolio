@@ -213,10 +213,12 @@ export const TurtleSoup = memo(() => {
     };
 
     return (
-        <div className="lab-page">
+        <div style={{ backgroundColor: '#FAFAF9', color: '#1C1917', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
             <style dangerouslySetInnerHTML={{ __html: `
                 .chart-container { position: relative; width: 100%; max-width: 100%; margin-left: auto; margin-right: auto; height: 450px; max-height: 500px; background: #ffffff; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden; }
                 @media (min-width: 1024px) { .chart-container { height: 550px; } }
+                .active-tab { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+                .inactive-tab { color: #64748b; }
             `}} />
 
             <nav style={{ backgroundColor: 'white', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', position: 'sticky', top: 0, zIndex: 50 }}>
@@ -224,7 +226,7 @@ export const TurtleSoup = memo(() => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <span style={{ fontWeight: 'bold', fontSize: '20px', letterSpacing: '-0.025em', color: '#1e293b' }}>Turtle Soup</span>
                     </div>
-                    <div className="hidden-mobile" style={{ display: 'flex', gap: '32px' }}>
+                    <div style={{ display: 'flex', gap: '32px' }} className="hidden md:flex">
                         <button onClick={() => scrollToSection('overview')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#475569', fontWeight: 500 }}>Overview</button>
                         <button onClick={() => scrollToSection('anatomy')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#475569', fontWeight: 500 }}>Anatomy</button>
                         <button onClick={() => scrollToSection('simulator')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#475569', fontWeight: 500 }}>Simulator</button>
@@ -235,20 +237,20 @@ export const TurtleSoup = memo(() => {
 
             <header id="overview" style={{ paddingTop: '80px', paddingBottom: '64px', paddingLeft: '16px', paddingRight: '16px', maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
                 <h1 style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em', marginBottom: '24px' }}>
-                    ICT <span style={{ color: '#0ea5e9' }}>Turtle Soup</span>: Valse Uitbraken Herkennen
+                    The ICT <span style={{ color: '#0ea5e9' }}>Turtle Soup</span> Setup
                 </h1>
                 <p style={{ marginTop: '16px', maxWidth: '768px', margin: '0 auto', fontSize: '20px', color: '#475569', lineHeight: 1.625 }}>
-                    De Turtle Soup setup richt zich op het identificeren van liquiditeit en valse uitbraken. In plaats van een uitbraak blind te volgen, wachten we op het moment dat de markt 'stops' opzoekt voordat de echte beweging begint.
+                    A modernization of classic false-breakout strategies. The Inner Circle Trader (ICT) Turtle Soup targets areas of resting liquidity. It relies on the premise that markets are engineered to sweep stops before initiating true directional moves.
                 </p>
             </header>
 
-            <section className="lab-container" style={{ paddingBottom: '48px' }}>
-                <div className="lab-card">
+            <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px 48px 16px' }}>
+                <div style={{ backgroundColor: 'white', borderRadius: '16px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: '1px solid #f1f5f9', padding: '32px' }}>
                     <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1e293b', marginBottom: '16px' }}>What is the "Soup"?</h2>
                     <p style={{ color: '#475569', marginBottom: '24px', lineHeight: 1.625 }}>
                         Originally popularized by Linda Raschke and Larry Connors in "Street Smarts," the Turtle Soup exploited the failure of the famous "Turtle Traders" trend-following breakout system. When retail traders buy a breakout of a 20-day high, smart money sells into them, reversing the price. ICT adapts this by focusing on <strong>Liquidity Pools</strong> (old highs/lows) across all timeframes, waiting for the algorithmic "Judas Swing" (the fake move) to trap retail traders before aligning with the true institutional order flow.
                     </p>
-                    <div className="lab-stat-grid" style={{ gap: '24px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }} className="grid-cols-1 md:grid-cols-2">
                         <div style={{ backgroundColor: '#f8fafc', padding: '24px', borderRadius: '12px', border: '1px solid #f1f5f9' }}>
                             <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: '#10b981', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                                 Bullish Turtle Soup
@@ -266,19 +268,19 @@ export const TurtleSoup = memo(() => {
             </section>
 
             <section id="anatomy" style={{ backgroundColor: '#f1f5f9', padding: '64px 0' }}>
-                <div className="lab-container">
+                <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
                     <div style={{ marginBottom: '48px', textAlign: 'center', maxWidth: '768px', margin: '0 auto 48px auto' }}>
                         <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '16px' }}>Anatomy of the Setup</h2>
                         <p style={{ color: '#475569', fontSize: '18px' }}>Understanding the core components is critical. A valid ICT Turtle Soup requires a specific sequence of events to unfold. Explore the foundational concepts below.</p>
                     </div>
 
-                    <div className="lab-stat-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }} className="grid-cols-1 md:grid-cols-3">
                         {[
                             { id: 'liquidity', num: 1, title: 'Liquidity Pools', desc: 'Areas where resting stop-loss orders accumulate.', color: '#e0f2fe', textColor: '#0284c7', detail: 'Buy Side Liquidity (BSL): Buy stops resting above old highs. Hunted for smart money to sell into.\n\nSell Side Liquidity (SSL): Sell stops resting below old lows. Hunted for smart money to buy into.' },
                             { id: 'sweep', num: 2, title: 'The Sweep (Raid)', desc: 'Price intentionally breaches the liquidity pool to trigger stops.', color: '#ffe4e6', textColor: '#e11d48', detail: 'This is the "Judas Swing." It looks like a breakout to retail traders, inducing them to enter in the wrong direction, while simultaneously fulfilling the orders of larger institutions preparing for a reversal.' },
                             { id: 'mss', num: 3, title: 'MSS & FVG', desc: 'Confirmation of the reversal and the entry mechanism.', color: '#dcfce7', textColor: '#059669', detail: 'Market Structure Shift (MSS): After the sweep, price aggressively reverses and breaks a recent opposing swing point.\n\nFair Value Gap (FVG): The aggressive reversal leaves an imbalance (a 3-candle pattern with a gap). This FVG is the optimal entry zone upon a pullback.' }
                         ].map(item => (
-                            <div key={item.id} className="lab-card" style={{ cursor: 'pointer', padding: '24px' }} onClick={() => toggleDetail(item.id)}>
+                            <div key={item.id} style={{ backgroundColor: 'white', borderRadius: '12px', padding: '24px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', cursor: 'pointer' }} onClick={() => toggleDetail(item.id)}>
                                 <div style={{ height: '48px', width: '48px', backgroundColor: item.color, color: item.textColor, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>{item.num}</div>
                                 <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1e293b', marginBottom: '8px' }}>{item.title}</h3>
                                 <p style={{ color: '#475569', fontSize: '14px', marginBottom: '16px' }}>{item.desc}</p>
@@ -294,20 +296,20 @@ export const TurtleSoup = memo(() => {
                 </div>
             </section>
 
-            <section id="simulator" style={{ padding: '64px 0' }} className="lab-container">
+            <section id="simulator" style={{ padding: '64px 0', maxWidth: '1280px', margin: '0 auto', paddingLeft: '16px', paddingRight: '16px' }}>
                 <div style={{ marginBottom: '40px', textAlign: 'center' }}>
                     <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '16px' }}>Interactive Setup Simulator</h2>
                     <p style={{ color: '#475569', fontSize: '18px', maxWidth: '768px', margin: '0 auto' }}>Watch how the Turtle Soup setup forms bar-by-bar. This section provides an interactive walkthrough of price action, identifying the exact moments of manipulation and entry.</p>
                 </div>
 
-                <div className="lab-card" style={{ padding: 0, overflow: 'hidden' }}>
-                    <div className="lab-tabs" style={{ marginBottom: 0 }}>
-                        <button onClick={() => { setCurrentType('bullish'); setCurrentStepIndex(0); }} className={`lab-tab ${currentType === 'bullish' ? 'active' : ''}`} style={{ flex: 1, padding: '16px 0', borderBottomWidth: '2px' }}>Bullish Setup Simulator</button>
-                        <button onClick={() => { setCurrentType('bearish'); setCurrentStepIndex(0); }} className={`lab-tab ${currentType === 'bearish' ? 'active' : ''}`} style={{ flex: 1, padding: '16px 0', borderBottomWidth: '2px' }}>Bearish Setup Simulator</button>
+                <div style={{ backgroundColor: 'white', borderRadius: '16px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+                    <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0' }}>
+                        <button onClick={() => { setCurrentType('bullish'); setCurrentStepIndex(0); }} style={{ flex: 1, padding: '16px 0', textAlign: 'center', fontWeight: 500, border: 'none', cursor: 'pointer', backgroundColor: 'transparent' }} className={currentType === 'bullish' ? 'active-tab' : 'inactive-tab'}>Bullish Setup Simulator</button>
+                        <button onClick={() => { setCurrentType('bearish'); setCurrentStepIndex(0); }} style={{ flex: 1, padding: '16px 0', textAlign: 'center', fontWeight: 500, border: 'none', cursor: 'pointer', backgroundColor: 'transparent' }} className={currentType === 'bearish' ? 'active-tab' : 'inactive-tab'}>Bearish Setup Simulator</button>
                     </div>
                     
-                    <div className="lab-report-grid" style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ padding: '32px', backgroundColor: '#f8fafc', borderRight: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', width: '33%' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }} className="grid-cols-1 lg:grid-cols-3">
+                        <div style={{ padding: '32px', backgroundColor: '#f8fafc', borderRight: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column' }}>
                             <div style={{ flexGrow: 1 }}>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
                                     <span style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '0.05em', color: '#94a3b8', textTransform: 'uppercase' }}>Phase Progression</span>
@@ -330,15 +332,17 @@ export const TurtleSoup = memo(() => {
                                 <button 
                                     onClick={() => setCurrentStepIndex(prev => Math.min(prev + 1, dataDef.steps.length - 1))} 
                                     disabled={currentStepIndex >= dataDef.steps.length - 1}
-                                    className="lab-btn-primary"
-                                    style={{ flex: 1, margin: 0 }}
+                                    style={{
+                                        flex: 1, backgroundColor: '#0ea5e9', color: 'white', padding: '8px 16px', borderRadius: '8px', border: 'none', fontWeight: 500, cursor: currentStepIndex >= dataDef.steps.length - 1 ? 'not-allowed' : 'pointer', opacity: currentStepIndex >= dataDef.steps.length - 1 ? 0.5 : 1,
+                                        display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px'
+                                    }}
                                 >
                                     {currentStepIndex >= dataDef.steps.length - 1 ? 'Simulation Complete' : <>Advance Price Action <span>→</span></>}
                                 </button>
                             </div>
                         </div>
 
-                        <div style={{ flex: 1, padding: '16px' }}>
+                        <div style={{ gridColumn: 'span 2', padding: '16px' }} className="col-span-1 lg:col-span-2">
                             <div id="plotly-chart" className="chart-container"></div>
                         </div>
                     </div>
@@ -346,13 +350,13 @@ export const TurtleSoup = memo(() => {
             </section>
 
             <section id="confluences" style={{ padding: '64px 0', backgroundColor: '#0f172a', color: '#f1f5f9' }}>
-                <div className="lab-container">
+                <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
                     <div style={{ textAlign: 'center', marginBottom: '48px' }}>
                         <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: 'white', marginBottom: '16px' }}>High-Probability Confluences</h2>
                         <p style={{ color: '#94a3b8', maxWidth: '672px', margin: '0 auto' }}>A Turtle Soup pattern alone is not enough. The highest probability setups occur when the sweep aligns with time and higher timeframe narratives.</p>
                     </div>
 
-                    <div className="lab-stat-grid" style={{ gap: '32px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }} className="grid-cols-1 md:grid-cols-2">
                         <div style={{ backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid #334155' }}>
                             <div style={{ color: '#38bdf8', fontSize: '30px', marginBottom: '16px' }}>🕒</div>
                             <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', marginBottom: '12px' }}>Killzones (Time of Day)</h3>

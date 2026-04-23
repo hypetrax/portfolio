@@ -188,8 +188,9 @@ export const SPX = memo(() => {
     };
 
     return (
-        <div className="lab-page">
+        <div style={{ backgroundColor: brandColors[50], color: brandColors[800], minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, system-ui, sans-serif' }}>
             <style dangerouslySetInnerHTML={{ __html: `
+                .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
                 .chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
                 @media (min-width: 768px) { .chart-container { height: 380px; } }
             `}} />
@@ -200,7 +201,7 @@ export const SPX = memo(() => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: brandColors[900], margin: 0 }}>SPX Quant Report</h1>
                     </div>
-                    <nav className="hidden-mobile" style={{ marginLeft: 'auto', display: 'flex', gap: '32px' }}>
+                    <nav style={{ marginLeft: 'auto', display: 'flex', gap: '32px' }}>
                         <a href="#summary" style={{ color: brandColors[600], textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Executive Summary</a>
                         <a href="#dte-analysis" style={{ color: brandColors[600], textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>DTE Optimization</a>
                         <a href="#management" style={{ color: brandColors[600], textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Trade Management</a>
@@ -210,11 +211,11 @@ export const SPX = memo(() => {
             </header>
 
             {/* Main Content */}
-            <main className="lab-container">
-                <div className="lab-report-grid">
+            <main style={{ flexGrow: 1, maxWidth: '1280px', margin: '0 auto', padding: '32px 16px', width: '100%', boxSizing: 'border-box' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '32px' }}>
                     
                     {/* LEFT COLUMN: Interactive Simulator */}
-                    <div className="lab-sidebar">
+                    <div style={{ gridColumn: 'span 4', position: 'sticky', top: '96px', height: 'fit-content', backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}` }}>
                         <h2 style={{ fontSize: '18px', fontWeight: 'bold', color: brandColors[900], marginBottom: '8px' }}>Interactive Strategy Simulator</h2>
                         <p style={{ fontSize: '12px', color: brandColors[500], marginBottom: '24px' }}>Adjust parameters to see the simulated historical impact on a hypothetical $10,000 account trading SPX Credit Spreads over 5 years.</p>
                         
@@ -261,7 +262,7 @@ export const SPX = memo(() => {
                             <button 
                                 onClick={runSimulation}
                                 disabled={simResults.isSimulating}
-                                className="lab-btn-primary"
+                                style={{ width: '100%', backgroundColor: accentColors.DEFAULT, color: 'white', fontWeight: 500, borderRadius: '8px', fontSize: '14px', padding: '12px', border: 'none', cursor: 'pointer', transition: 'background-color 0.2s', marginTop: '16px' }}
                             >
                                 {simResults.status}
                             </button>
@@ -269,34 +270,34 @@ export const SPX = memo(() => {
 
                         <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: `1px solid ${brandColors[200]}` }}>
                             <h3 style={{ fontSize: '14px', fontWeight: 'bold', color: brandColors[800], marginBottom: '16px' }}>Simulation Results</h3>
-                            <div className="lab-stat-grid">
-                                <div className="lab-stat-item">
-                                    <span className="lab-stat-label">Win Rate</span>
-                                    <span className="lab-stat-value" style={{ color: '#10b981' }}>{simResults.winRate}</span>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
+                                <div style={{ backgroundColor: brandColors[50], padding: '12px', borderRadius: '8px', border: `1px solid ${brandColors[100]}` }}>
+                                    <span style={{ display: 'block', fontSize: '10px', color: brandColors[500], textTransform: 'uppercase', letterSpacing: '0.05em' }}>Win Rate</span>
+                                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#10b981' }}>{simResults.winRate}</span>
                                 </div>
-                                <div className="lab-stat-item">
-                                    <span className="lab-stat-label">Max Drawdown</span>
-                                    <span className="lab-stat-value" style={{ color: '#f43f5e' }}>{simResults.drawdown}</span>
+                                <div style={{ backgroundColor: brandColors[50], padding: '12px', borderRadius: '8px', border: `1px solid ${brandColors[100]}` }}>
+                                    <span style={{ display: 'block', fontSize: '10px', color: brandColors[500], textTransform: 'uppercase', letterSpacing: '0.05em' }}>Max Drawdown</span>
+                                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#f43f5e' }}>{simResults.drawdown}</span>
                                 </div>
-                                <div className="lab-stat-item" style={{ gridColumn: 'span 2' }}>
-                                    <span className="lab-stat-label">Total Return (5y)</span>
-                                    <span className="lab-stat-value" style={{ fontSize: '24px', color: brandColors[900] }}>{simResults.totalReturn}</span>
+                                <div style={{ gridColumn: 'span 2', backgroundColor: brandColors[50], padding: '12px', borderRadius: '8px', border: `1px solid ${brandColors[100]}` }}>
+                                    <span style={{ display: 'block', fontSize: '10px', color: brandColors[500], textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Return (5y)</span>
+                                    <span style={{ fontSize: '24px', fontWeight: 'bold', color: brandColors[900] }}>{simResults.totalReturn}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* RIGHT COLUMN: Report Content */}
-                    <div className="lab-content">
+                    <div style={{ gridColumn: 'span 8', display: 'flex', flexDirection: 'column', gap: '48px' }}>
 
                         {/* Section: Executive Summary */}
-                        <section id="summary" className="lab-card">
-                            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: brandColors[900], marginBottom: '16px' }}>Samenvatting: SPX Options Backtest Study</h2>
+                        <section id="summary" style={{ backgroundColor: 'white', padding: '32px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}` }}>
+                            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: brandColors[900], marginBottom: '16px' }}>Executive Summary: SPX Options Backtest Study</h2>
                             <p style={{ color: brandColors[600], lineHeight: 1.625, marginBottom: '24px' }}>
-                                In dit rapport vind je de resultaten van uitgebreide backtests op SPX Credit Spreads. De focus ligt op het vinden van de optimale balans tussen risico en rendement in de 40 tot 80 DTE window.
+                                This report synthesizes extensive backtesting data to determine the optimal parameters for selling SPX Credit Spreads (both Bull Put and Bear Call) in the 40 to 80 Days to Expiration (DTE) window. Our goal is to identify the mathematical "sweet spot" that balances premium collection, theta decay acceleration, and gamma risk mitigation.
                             </p>
                             
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>
                                 <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px', border: '1px solid #dbeafe' }}>
                                     <div style={{ color: '#3b82f6', marginBottom: '8px', fontSize: '20px' }}>&#128176;</div>
                                     <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: brandColors[900], margin: '0 0 4px 0' }}>Optimal DTE: 45 Days</h3>
@@ -322,9 +323,9 @@ export const SPX = memo(() => {
                                 We analyzed credit spreads entered at 40, 45, 60, and 80 DTE. The objective is to understand how the duration of the trade impacts the probability of profit (POP) versus the actual realized Return on Capital (ROC). 
                             </p>
                             
-                            <div className="lab-card" style={{ marginBottom: '24px' }}>
+                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}`, marginBottom: '24px' }}>
                                 <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: brandColors[800], marginBottom: '16px', textAlign: 'center' }}>Win Rate vs. Avg Daily P&L by Entry DTE</h3>
-                                <div className="lab-chart-container">
+                                <div className="chart-container">
                                     <Chart type="bar" data={dteChartData} options={{
                                         responsive: true,
                                         maintainAspectRatio: false,
@@ -363,9 +364,9 @@ export const SPX = memo(() => {
                                 The most significant factor separating theoretical win rates from actual portfolio growth is trade management. Holding credit spreads to expiration exposes the portfolio to "Gamma Risk" — where small moves in the underlying SPX near expiration cause massive swings in the option's price.
                             </p>
 
-                            <div className="lab-card" style={{ marginBottom: '24px' }}>
+                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}`, marginBottom: '24px' }}>
                                 <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: brandColors[800], marginBottom: '16px', textAlign: 'center' }}>Hold to Expiration vs. Manage at 50% Max Profit</h3>
-                                <div className="lab-chart-container">
+                                <div className="chart-container">
                                     <Bar data={managementChartData} options={{
                                         responsive: true,
                                         maintainAspectRatio: false,
@@ -387,8 +388,8 @@ export const SPX = memo(() => {
                                 </div>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-                                <div className="lab-card" style={{ padding: '20px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
+                                <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', border: `1px solid ${brandColors[200]}`, boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                                         <span style={{ color: '#f43f5e', fontWeight: 'bold', fontSize: '20px' }}>&#10006;</span>
                                         <h4 style={{ fontWeight: 'bold', color: brandColors[900], margin: 0 }}>Holding to Expiration</h4>
@@ -399,7 +400,7 @@ export const SPX = memo(() => {
                                         <li>Reduces occurrences (number of trades you can make per year).</li>
                                     </ul>
                                 </div>
-                                <div className="lab-card" style={{ padding: '20px', borderTop: `4px solid ${accentColors.DEFAULT}` }}>
+                                <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', border: `1px solid ${brandColors[200]}`, boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', borderTop: `4px solid ${accentColors.DEFAULT}` }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                                         <span style={{ color: '#10b981', fontWeight: 'bold', fontSize: '20px' }}>&#10004;</span>
                                         <h4 style={{ fontWeight: 'bold', color: brandColors[900], margin: 0 }}>Managing at 50%</h4>
@@ -422,16 +423,18 @@ export const SPX = memo(() => {
                             </p>
 
                             {/* Tabs for Indicators */}
-                            <div className="lab-tabs">
+                            <div style={{ borderBottom: `1px solid ${brandColors[200]}`, marginBottom: '24px', display: 'flex', gap: '24px' }}>
                                 <button 
-                                    className={`lab-tab ${activeTab === 'ivr' ? 'active' : ''}`} 
+                                    className={activeTab === 'ivr' ? 'tab-active' : ''} 
                                     onClick={() => setActiveTab('ivr')}
+                                    style={{ paddingBottom: '8px', fontSize: '14px', fontWeight: 500, backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: activeTab === 'ivr' ? '#2563eb' : brandColors[500] }}
                                 >
                                     Implied Volatility Rank (IVR)
                                 </button>
                                 <button 
-                                    className={`lab-tab ${activeTab === 'rsi' ? 'active' : ''}`} 
+                                    className={activeTab === 'rsi' ? 'tab-active' : ''} 
                                     onClick={() => setActiveTab('rsi')}
+                                    style={{ paddingBottom: '8px', fontSize: '14px', fontWeight: 500, backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: activeTab === 'rsi' ? '#2563eb' : brandColors[500] }}
                                 >
                                     RSI Divergence
                                 </button>
@@ -439,67 +442,71 @@ export const SPX = memo(() => {
 
                             {/* IVR Content */}
                             {activeTab === 'ivr' && (
-                                <div className="lab-card">
-                                    <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: brandColors[800], marginBottom: '16px', textAlign: 'center' }}>Expected Value per Trade based on Entry IVR</h3>
-                                    <div className="lab-chart-container">
-                                        <Bar data={ivrChartData} options={{
-                                            responsive: true,
-                                            maintainAspectRatio: false,
-                                            plugins: {
-                                                legend: { display: false }
-                                            },
-                                            scales: {
-                                                y: {
-                                                    title: { display: true, text: 'Expected Value ($)' },
-                                                    beginAtZero: true
+                                <div style={{ display: 'block' }}>
+                                    <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}`, marginBottom: '24px' }}>
+                                        <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: brandColors[800], marginBottom: '16px', textAlign: 'center' }}>Expected Value per Trade based on Entry IVR</h3>
+                                        <div className="chart-container">
+                                            <Bar data={ivrChartData} options={{
+                                                responsive: true,
+                                                maintainAspectRatio: false,
+                                                plugins: {
+                                                    legend: { display: false }
                                                 },
-                                                x: {
-                                                    title: { display: true, text: 'IV Rank Range' }
+                                                scales: {
+                                                    y: {
+                                                        title: { display: true, text: 'Expected Value ($)' },
+                                                        beginAtZero: true
+                                                    },
+                                                    x: {
+                                                        title: { display: true, text: 'IV Rank Range' }
+                                                    }
                                                 }
-                                            }
-                                        }} />
+                                            }} />
+                                        </div>
+                                        <p style={{ fontSize: '14px', color: brandColors[600], marginTop: '24px' }}>
+                                            <strong>Analysis:</strong> IV Rank measures current implied volatility relative to its 52-week range. Selling spreads when IVR is low (&lt; 20) results in lower premiums collected and a higher vulnerability to volatility expansion. The optimal entry condition is when <strong>IVR &gt; 30</strong>, indicating that options are relatively expensive and more likely to experience "volatility crush" (mean reversion), accelerating profitability.
+                                        </p>
                                     </div>
-                                    <p style={{ color: brandColors[600], marginTop: '24px', fontSize: '14px' }}>
-                                        <strong>Analysis:</strong> IV Rank measures current implied volatility relative to its 52-week range. Selling spreads when IVR is low (&lt; 20) results in lower premiums collected and a higher vulnerability to volatility expansion. The optimal entry condition is when <strong>IVR &gt; 30</strong>, indicating that options are relatively expensive and more likely to experience "volatility crush" (mean reversion), accelerating profitability.
-                                    </p>
                                 </div>
                             )}
 
                             {/* RSI Content */}
                             {activeTab === 'rsi' && (
-                                <div className="lab-card">
-                                    <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: brandColors[800], marginBottom: '16px' }}>Relative Strength Index (RSI) Filtering</h3>
-                                    <p style={{ fontSize: '14px', color: brandColors[600], marginBottom: '16px' }}>
-                                        While IVR dictates <em>when</em> to sell premium, technicals can help dictate <em>direction</em>. Backtests show an edge in selling Bull Put Spreads during short-term oversold conditions, and Bear Call Spreads during overbought conditions.
-                                    </p>
-                                    
-                                    <div className="lab-table-container">
-                                        <table className="lab-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Strategy</th>
-                                                    <th>Optimal Entry Condition</th>
-                                                    <th>Win Rate Bump (vs Baseline)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td style={{ fontWeight: 'bold' }}>Bull Put Spreads</td>
-                                                    <td>SPX Daily RSI &lt; 35 (Oversold)</td>
-                                                    <td style={{ color: '#10b981', fontWeight: 'bold' }}>+6.2%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={{ fontWeight: 'bold' }}>Bear Call Spreads</td>
-                                                    <td>SPX Daily RSI &gt; 65 (Overbought)</td>
-                                                    <td style={{ color: '#10b981', fontWeight: 'bold' }}>+4.8%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style={{ fontWeight: 'bold' }}>Iron Condors (Neutral)</td>
-                                                    <td>SPX Daily RSI between 40-60</td>
-                                                    <td style={{ color: '#10b981', fontWeight: 'bold' }}>+3.1%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div style={{ display: 'block' }}>
+                                    <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}`, marginBottom: '24px' }}>
+                                        <h3 style={{ fontSize: '18px', fontWeight: 'semibold', color: brandColors[800], marginBottom: '16px' }}>Relative Strength Index (RSI) Filtering</h3>
+                                        <p style={{ fontSize: '14px', color: brandColors[600], marginBottom: '16px' }}>
+                                            While IVR dictates <em>when</em> to sell premium, technicals can help dictate <em>direction</em>. Backtests show an edge in selling Bull Put Spreads during short-term oversold conditions, and Bear Call Spreads during overbought conditions.
+                                        </p>
+                                        
+                                        <div style={{ overflowX: 'auto' }}>
+                                            <table style={{ minWidth: '100%', textAlign: 'left', fontSize: '14px', fontWeight: 300, color: brandColors[900], borderCollapse: 'collapse' }}>
+                                                <thead>
+                                                    <tr style={{ borderBottom: `1px solid ${brandColors[200]}`, backgroundColor: brandColors[100], fontWeight: 500 }}>
+                                                        <th style={{ padding: '12px 24px' }}>Strategy</th>
+                                                        <th style={{ padding: '12px 24px' }}>Optimal Entry Condition</th>
+                                                        <th style={{ padding: '12px 24px' }}>Win Rate Bump (vs Baseline)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style={{ borderBottom: `1px solid ${brandColors[200]}` }}>
+                                                        <td style={{ padding: '16px 24px', fontWeight: 'bold' }}>Bull Put Spreads</td>
+                                                        <td style={{ padding: '16px 24px' }}>SPX Daily RSI &lt; 35 (Oversold)</td>
+                                                        <td style={{ padding: '16px 24px', color: '#10b981', fontWeight: 'bold' }}>+6.2%</td>
+                                                    </tr>
+                                                    <tr style={{ borderBottom: `1px solid ${brandColors[200]}` }}>
+                                                        <td style={{ padding: '16px 24px', fontWeight: 'bold' }}>Bear Call Spreads</td>
+                                                        <td style={{ padding: '16px 24px' }}>SPX Daily RSI &gt; 65 (Overbought)</td>
+                                                        <td style={{ padding: '16px 24px', color: '#10b981', fontWeight: 'bold' }}>+4.8%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style={{ padding: '16px 24px', fontWeight: 'bold' }}>Iron Condors (Neutral)</td>
+                                                        <td style={{ padding: '16px 24px' }}>SPX Daily RSI between 40-60</td>
+                                                        <td style={{ padding: '16px 24px', color: '#10b981', fontWeight: 'bold' }}>+3.1%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -515,4 +522,4 @@ export const SPX = memo(() => {
         </div>
     );
 });
-
+;

@@ -181,8 +181,24 @@ export const SqueezeSpreads = memo(() => {
         }
     };
 
+    const navItemStyle = (id: string) => ({
+        width: '100%',
+        textAlign: 'left' as const,
+        padding: '12px 24px',
+        color: activeSection === id ? '#1e293b' : '#475569',
+        backgroundColor: activeSection === id ? '#e2e8f0' : 'transparent',
+        borderLeft: activeSection === id ? '4px solid #2563eb' : '4px solid transparent',
+        fontWeight: activeSection === id ? 600 : 400,
+        transition: 'all 0.2s',
+        borderTop: 'none',
+        borderRight: 'none',
+        borderBottom: 'none',
+        cursor: 'pointer',
+        fontSize: '16px'
+    });
+
     return (
-        <div className="lab-page" style={{ flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', overflow: 'hidden', backgroundColor: '#f8fafc', color: '#1e293b', fontFamily: 'Inter, sans-serif' }} className="flex-col md:flex-row">
             <style dangerouslySetInnerHTML={{ __html: `
                 .fade-in { animation: fadeIn 0.3s ease-in-out; }
                 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -190,7 +206,7 @@ export const SqueezeSpreads = memo(() => {
             `}} />
 
             {/* Sidebar Nav */}
-            <nav className="lab-nav-sidebar">
+            <nav style={{ width: '256px', backgroundColor: 'white', borderRight: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flexShrink: 0, zIndex: 10 }} className="w-full md:w-64">
                 <div style={{ padding: '24px', borderBottom: '1px solid #f1f5f9' }}>
                     <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: '#0f172a', lineHeight: 1.25, margin: 0 }}>
                         Stacked Probabilities<br />
@@ -199,10 +215,10 @@ export const SqueezeSpreads = memo(() => {
                 </div>
                 <div style={{ flex: 1, overflowY: 'auto', padding: '16px 0' }}>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                        <li><button onClick={() => setActiveSection('overview')} className={`lab-tab ${activeSection === 'overview' ? 'active' : ''}`} style={{ width: '100%', textAlign: 'left', padding: '12px 24px', borderLeft: '4px solid transparent', borderBottom: 'none' }}>1. Core Philosophy</button></li>
-                        <li><button onClick={() => setActiveSection('setup')} className={`lab-tab ${activeSection === 'setup' ? 'active' : ''}`} style={{ width: '100%', textAlign: 'left', padding: '12px 24px', borderLeft: '4px solid transparent', borderBottom: 'none' }}>2. Anatomy of the Setup</button></li>
-                        <li><button onClick={() => setActiveSection('execution')} className={`lab-tab ${activeSection === 'execution' ? 'active' : ''}`} style={{ width: '100%', textAlign: 'left', padding: '12px 24px', borderLeft: '4px solid transparent', borderBottom: 'none' }}>3. Strategy & Execution</button></li>
-                        <li><button onClick={() => setActiveSection('management')} className={`lab-tab ${activeSection === 'management' ? 'active' : ''}`} style={{ width: '100%', textAlign: 'left', padding: '12px 24px', borderLeft: '4px solid transparent', borderBottom: 'none' }}>4. Trade Management</button></li>
+                        <li><button onClick={() => setActiveSection('overview')} style={navItemStyle('overview')}>1. Core Philosophy</button></li>
+                        <li><button onClick={() => setActiveSection('setup')} style={navItemStyle('setup')}>2. Anatomy of the Setup</button></li>
+                        <li><button onClick={() => setActiveSection('execution')} style={navItemStyle('execution')}>3. Strategy & Execution</button></li>
+                        <li><button onClick={() => setActiveSection('management')} style={navItemStyle('management')}>4. Trade Management</button></li>
                     </ul>
                 </div>
                 <div style={{ padding: '24px', backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0', fontSize: '12px', color: '#64748b' }}>
@@ -214,18 +230,18 @@ export const SqueezeSpreads = memo(() => {
             <main style={{ flex: 1, overflowY: 'auto', backgroundColor: '#f8fafc', position: 'relative' }}>
                 
                 {activeSection === 'overview' && (
-                    <div className="fade-in lab-container" style={{ maxWidth: '1024px' }}>
+                    <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
-                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>De Basis</h2>
-                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Kansen stapelen voor meer rust en een duidelijk proces.</p>
+                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Core Philosophy</h2>
+                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Stacking probabilities for consistent growth and peace of mind.</p>
                         </div>
                         
                         <p style={{ marginBottom: '24px', color: '#334155', lineHeight: 1.625, fontSize: '18px' }}>
-                            Dit systeem draait om het vinden van momenten waarop de kansen overweldigend in ons voordeel zijn. Door de markttrend te combineren met sterke aandelen, specifieke technische structuren (squeezes) en een optiestrategie die een buffer biedt, creëren we een scenario waarin de 'weg van de minste weerstand' winst oplevert.
+                            This system is designed around finding high-probability moments in time where the odds are overwhelmingly in our favor. By combining market trend, market-leading stocks, specific technical structures (squeezes & EMAs), and an options strategy that only requires the stock <i>not</i> to crash, we construct a scenario where the "path of least resistance" generates profit.
                         </p>
 
-                        <div className="lab-stat-grid" style={{ gap: '24px', marginBottom: '40px' }}>
-                            <div className="lab-card" style={{ borderTop: '4px solid #2563eb' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '40px' }} className="grid-cols-1 md:grid-cols-2">
+                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderTop: '4px solid #2563eb' }}>
                                 <div style={{ fontSize: '30px', marginBottom: '12px' }}>&#9889;</div>
                                 <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '8px', color: '#1e293b' }}>The Goal: Stack the Odds</h3>
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#475569', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -235,7 +251,7 @@ export const SqueezeSpreads = memo(() => {
                                     <li>&#10003; Require only that the structure holds, not a massive rally.</li>
                                 </ul>
                             </div>
-                            <div className="lab-card" style={{ borderTop: '4px solid #2563eb' }}>
+                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderTop: '4px solid #2563eb' }}>
                                 <div style={{ fontSize: '30px', marginBottom: '12px' }}>&#129496;</div>
                                 <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '8px', color: '#1e293b' }}>Psychological Edge</h3>
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#475569', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -253,7 +269,7 @@ export const SqueezeSpreads = memo(() => {
                 )}
 
                 {activeSection === 'setup' && (
-                    <div className="fade-in lab-container" style={{ maxWidth: '1152px' }}>
+                    <div className="fade-in" style={{ padding: '48px', maxWidth: '1152px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
                             <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Anatomy of the Setup</h2>
                             <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Visualizing the Bullish Structure & The Launching Pad.</p>
@@ -263,7 +279,7 @@ export const SqueezeSpreads = memo(() => {
                             A valid entry requires a strict technical structure. Use the controls below the chart to build the setup and understand how the indicators interact to signal a high-probability moment.
                         </p>
 
-                        <div className="lab-card" style={{ marginBottom: '32px' }}>
+                        <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', marginBottom: '32px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                                 <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#1e293b', margin: 0 }}>Visual Setup Preview <span style={{ color: '#94a3b8', fontWeight: 400, marginLeft: '8px' }}>| TICKER: SPX</span></h3>
                                 <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#d1fae5', color: '#065f46', padding: '4px 8px', borderRadius: '4px' }}>STRUCTURE: BULLISH</div>
@@ -300,7 +316,7 @@ export const SqueezeSpreads = memo(() => {
                                 </button>
                             </div>
                             
-                            <div className="lab-stat-grid" style={{ marginTop: '24px', gap: '16px' }}>
+                            <div style={{ marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }} className="grid-cols-1 md:grid-cols-2">
                                 <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '4px', fontSize: '14px' }}>
                                     <h4 style={{ fontWeight: 'bold', marginBottom: '8px', margin: 0 }}>1. The Launching Pad</h4>
                                     <p style={{ color: '#475569', marginBottom: '8px', marginTop: '8px' }}>Stock must be trading <b>at or just above the 21 EMA</b>. If extended (2+ ATR above), no entry.</p>
@@ -316,7 +332,7 @@ export const SqueezeSpreads = memo(() => {
                         
                         <div style={{ backgroundColor: '#1e293b', color: '#e2e8f0', padding: '24px', borderRadius: '8px' }}>
                             <h4 style={{ fontWeight: 'bold', color: 'white', marginBottom: '8px', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.05em', margin: 0 }}>Required Tools Checklist</h4>
-                            <ul className="lab-stat-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '14px', listStyle: 'none', padding: 0, margin: '8px 0 0 0' }}>
+                            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '14px', listStyle: 'none', padding: 0, margin: '8px 0 0 0' }} className="grid-cols-2 md:grid-cols-3">
                                 <li>• Market &gt; 21 EMA (Daily/Weekly)</li>
                                 <li>• Stock &gt; 21 EMA (Daily/Weekly)</li>
                                 <li>• Stacked EMA Label</li>
@@ -329,7 +345,7 @@ export const SqueezeSpreads = memo(() => {
                 )}
 
                 {activeSection === 'execution' && (
-                    <div className="fade-in lab-container" style={{ maxWidth: '1024px' }}>
+                    <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
                             <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Strategy & Execution</h2>
                             <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Deploying the Out-of-the-Money (OTM) Put Credit Spread.</p>
@@ -339,9 +355,9 @@ export const SqueezeSpreads = memo(() => {
                             The core mechanism is selling an OTM Put Credit Spread. We place a bet that the established bullish structure won't completely fail. Our only requirement for profit is that the stock doesn't move significantly in the opposite direction.
                         </p>
 
-                        <div className="lab-card" style={{ marginBottom: '32px' }}>
+                        <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', marginBottom: '32px' }}>
                             <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '16px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px', color: '#1e293b', margin: 0 }}>The Trade Structure</h3>
-                            <div className="lab-report-grid" style={{ display: 'flex' }}>
+                            <div style={{ display: 'flex', gap: '32px' }} className="flex-col md:flex-row">
                                 <div style={{ flex: 1 }}>
                                     <div style={{ position: 'relative', width: '100%', height: '160px', borderLeft: '2px solid #cbd5e1', borderBottom: '2px solid #cbd5e1', paddingLeft: '16px', paddingBottom: '16px' }}>
                                         <div style={{ position: 'absolute', bottom: '128px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
@@ -368,7 +384,7 @@ export const SqueezeSpreads = memo(() => {
                                         </div>
                                     </div>
                                 </div>
-                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14px', color: '#475569', paddingLeft: '32px' }}>
+                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14px', color: '#475569' }}>
                                     <p style={{ margin: 0 }}><b>Goal:</b> Sell strikes as far UNDER the 21 EMA as possible.</p>
                                     <p style={{ margin: 0 }}><b>Requirement:</b> Must still achieve at least a <b>3:1 risk to reward ratio</b>.</p>
                                     <p style={{ margin: 0 }}><b>Mechanism:</b> Time decay (Theta) works in our favor. As long as price stays above the Sell Strike, the spread expires worthless, and we keep the premium.</p>
@@ -376,7 +392,7 @@ export const SqueezeSpreads = memo(() => {
                             </div>
                         </div>
 
-                        <div className="lab-card">
+                        <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
                             <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '16px', color: '#1e293b', margin: 0 }}>Squeeze Timeframes & Expirations (DTE)</h3>
                             <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '24px', margin: '8px 0 24px 0' }}>Select a timeframe where you found a squeeze to see the recommended Days To Expiration.</p>
                             
@@ -405,16 +421,16 @@ export const SqueezeSpreads = memo(() => {
                 )}
 
                 {activeSection === 'management' && (
-                    <div className="fade-in lab-container" style={{ maxWidth: '1024px' }}>
+                    <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
                             <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Trade Management</h2>
                             <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Protecting capital, taking profits, and ignoring noise.</p>
                         </div>
 
-                        <div className="lab-stat-grid" style={{ gap: '32px', marginBottom: '32px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', marginBottom: '32px' }} className="grid-cols-1 md:grid-cols-2">
                             
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                                <div className="lab-card" style={{ borderLeft: '4px solid #10b981' }}>
+                                <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderLeft: '4px solid #10b981' }}>
                                     <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', color: '#1e293b', margin: 0 }}>
                                         <span style={{ color: '#10b981' }}>&#10004;</span> Profit Taking
                                     </h3>
@@ -422,7 +438,7 @@ export const SqueezeSpreads = memo(() => {
                                     <p style={{ fontSize: '14px', color: '#64748b', fontStyle: 'italic', margin: 0 }}>"Don't be greedy. Once a spread reaches 70-80% max profit, holding for extra gains isn't worth risking all open profit PLUS original risk."</p>
                                 </div>
 
-                                <div className="lab-card" style={{ borderLeft: '4px solid #2563eb' }}>
+                                <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderLeft: '4px solid #2563eb' }}>
                                     <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', color: '#1e293b', margin: 0 }}>
                                         <span style={{ color: '#2563eb' }}>&#128202;</span> Position Sizing
                                     </h3>
@@ -432,7 +448,7 @@ export const SqueezeSpreads = memo(() => {
                                 </div>
                             </div>
 
-                            <div className="lab-card" style={{ borderLeft: '4px solid #f59e0b' }}>
+                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderLeft: '4px solid #f59e0b' }}>
                                 <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: '#1e293b', margin: 0 }}>
                                     <span style={{ color: '#f59e0b' }}>&#9888;</span> Exits & "The Noise"
                                 </h3>
@@ -465,4 +481,3 @@ export const SqueezeSpreads = memo(() => {
         </div>
     );
 });
-

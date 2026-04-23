@@ -103,14 +103,14 @@ export const ICTConcepts = memo(() => {
   };
 
   return (
-    <div className="lab-page">
+    <div style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#f8fafc', color: '#1e293b', minHeight: '100vh' }}>
       <nav style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(4px)', borderBottom: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-        <div className="lab-container" style={{ height: '64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px' }}>
+        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 16px', height: '64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ fontSize: '24px', marginRight: '8px' }}>📈</span>
             <span style={{ fontWeight: 700, fontSize: '20px', letterSpacing: '-0.025em', color: '#0f172a' }}>ICT Mastery</span>
           </div>
-          <div className="hidden-mobile" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+          <div style={{ display: 'none' }} className="md:flex space-x-8 items-center">
             {['overview', 'paradigm', 'concepts', 'analysis', 'faq'].map(section => (
               <a 
                 key={section}
@@ -128,25 +128,26 @@ export const ICTConcepts = memo(() => {
         </div>
       </nav>
 
-      <main className="lab-container" style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+      <main style={{ maxWidth: '1152px', margin: '0 auto', padding: '32px 16px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
         <section id="overview" style={{ paddingTop: '32px', paddingBottom: '48px', borderBottom: '1px solid #e2e8f0' }}>
-          <div className="lab-report-grid">
-            <div style={{ gridColumn: 'span 7' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center' }}>
+            <div>
               <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', backgroundColor: '#dbeafe', color: '#1e40af', fontSize: '12px', fontWeight: 600, letterSpacing: '0.025em', textTransform: 'uppercase', marginBottom: '16px' }}>
                 Trading Strategy Report
               </div>
               <h1 style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: '24px' }}>
-                ICT Trading — <span style={{ color: '#2563eb' }}>De Kern Uitgelegd</span>
+                Demystifying the <span style={{ color: '#2563eb' }}>ICT</span> Trading Strategy
               </h1>
               <p style={{ fontSize: '18px', color: '#475569', marginBottom: '24px', lineHeight: 1.6 }}>
-                De Inner Circle Trader (ICT) methode kijkt naar hoe grote instellingen de markt bewegen. Geen vage indicatoren, maar een focus op liquiditeit en marktstructuur om 'retail traps' te vermijden.
+                The Inner Circle Trader (ICT) methodology, developed by Michael J. Huddleston, is a comprehensive approach to analyzing financial market structure. 
+                It sheds light on the actions of institutional traders, equipping you to sidestep the common pitfalls of retail trading.
               </p>
               <div style={{ display: 'flex', gap: '16px' }}>
-                <a href="#concepts" className="btn-primary" style={{ padding: '12px 24px' }}>Explore Concepts</a>
-                <a href="#faq" className="btn-secondary" style={{ padding: '12px 24px' }}>Read FAQs</a>
+                <a href="#concepts" style={{ backgroundColor: '#2563eb', color: 'white', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }}>Explore Concepts</a>
+                <a href="#faq" style={{ backgroundColor: 'white', color: '#334155', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', border: '1px solid #d1d5db', textDecoration: 'none', transition: 'background 0.2s' }}>Read FAQs</a>
               </div>
             </div>
-            <div className="lab-card" style={{ gridColumn: 'span 5', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ backgroundColor: 'white', padding: '32px', borderRadius: '16px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)', border: '1px solid #f1f5f9', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', top: 0, right: 0, marginRight: '-32px', marginTop: '-32px', fontSize: '120px', opacity: 0.05 }}>🏛️</div>
               <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px', color: '#1e293b' }}>Core Objective</h3>
               <p style={{ color: '#475569', marginBottom: '24px' }}>
@@ -169,7 +170,7 @@ export const ICTConcepts = memo(() => {
               How "Smart Money" manipulates price to tap into retail liquidity (stop losses) before moving the market in their intended direction.
             </p>
           </div>
-          <div className="lab-card">
+          <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
             <div style={{ height: '350px', position: 'relative' }}>
               <Line 
                 data={paradigmData}
@@ -198,7 +199,7 @@ export const ICTConcepts = memo(() => {
                 }}
               />
             </div>
-            <div className="lab-stat-grid" style={{ marginTop: '24px', textAlign: 'center', fontSize: '14px' }}>
+            <div style={{ marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', textAlign: 'center', fontSize: '14px' }}>
               <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '8px' }}>
                 <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>👤</span>
                 <strong style={{ display: 'block', color: '#1e293b' }}>1. Retail Engineering</strong>
@@ -209,7 +210,7 @@ export const ICTConcepts = memo(() => {
                 <strong style={{ display: 'block', color: '#991b1b' }}>2. Liquidity Sweep</strong>
                 <span style={{ color: '#b91c1c' }}>SM drives price through support to hit stops.</span>
               </div>
-              <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px', gridColumn: 'span 2' }}>
+              <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px' }}>
                 <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>🚀</span>
                 <strong style={{ display: 'block', color: '#1e40af' }}>3. Institutional Move</strong>
                 <span style={{ color: '#1d4ed8' }}>True directional move begins.</span>
@@ -218,13 +219,13 @@ export const ICTConcepts = memo(() => {
           </div>
         </section>
 
-        <section id="concepts" className="lab-card" style={{ backgroundColor: '#0f172a', color: 'white', border: 'none' }}>
+        <section id="concepts" style={{ backgroundColor: '#0f172a', color: 'white', borderRadius: '24px', padding: '48px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
           <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 40px' }}>
             <h2 style={{ fontSize: '30px', fontWeight: 700, color: 'white', marginBottom: '16px' }}>Key ICT Concepts</h2>
             <p style={{ color: '#94a3b8', fontSize: '18px' }}>Click the concepts below to explore the framework.</p>
           </div>
-          <div className="lab-report-grid">
-            <div style={{ gridColumn: 'span 4', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {concepts.map(c => (
                 <button 
                   key={c.id}
@@ -240,9 +241,9 @@ export const ICTConcepts = memo(() => {
                 </button>
               ))}
             </div>
-            <div style={{ gridColumn: 'span 8', backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid rgba(51, 65, 85, 0.5)', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '300px' }}>
+            <div style={{ backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid rgba(51, 65, 85, 0.5)', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '300px' }}>
               <div style={{ fontSize: '48px', marginBottom: '24px', color: '#60a5fa' }}>{activeConcept.icon}</div>
-              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px', color: 'white', textTransform: 'none' }}>{activeConcept.title}</h3>
+              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px' }}>{activeConcept.title}</h3>
               <p style={{ color: '#cbd5e1', fontSize: '18px', lineHeight: 1.6, marginBottom: '24px' }}>{activeConcept.desc}</p>
               <div style={{ paddingTop: '24px', borderTop: '1px solid #334155' }}>
                 <p style={{ color: '#93c5fd', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 8px' }}>Application</p>
@@ -253,11 +254,11 @@ export const ICTConcepts = memo(() => {
         </section>
 
         <section id="analysis">
-          <div className="lab-report-grid">
-            <div style={{ gridColumn: 'span 6' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
+            <div>
               <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px' }}>Anatomy of an ICT Setup</h2>
               <p style={{ color: '#475569', marginBottom: '32px' }}>A confluence of time, price, and structural elements.</p>
-              <div className="lab-card" style={{ height: '300px' }}>
+              <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '16px', border: '1px solid #e2e8f0', height: '300px' }}>
                 <Doughnut 
                   data={componentsData}
                   options={{
@@ -271,7 +272,7 @@ export const ICTConcepts = memo(() => {
                 />
               </div>
             </div>
-            <div style={{ gridColumn: 'span 6', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '0' }}>Benefits & Limitations</h2>
               {[
                 { i: '📈', c: 'green', t: 'Follows Institutional Money', d: 'Logical framework based on how large players actually move prices.' },
@@ -290,7 +291,7 @@ export const ICTConcepts = memo(() => {
           </div>
         </section>
 
-        <section id="faq" style={{ maxWidth: '896px', margin: '0 auto', paddingBottom: '80px', width: '100%' }}>
+        <section id="faq" style={{ maxWidth: '896px', margin: '0 auto', paddingBottom: '80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span style={{ fontSize: '32px', display: 'block', marginBottom: '16px' }}>❓</span>
             <h2 style={{ fontSize: '30px', fontWeight: 700 }}>Frequently Asked Questions</h2>
@@ -298,7 +299,7 @@ export const ICTConcepts = memo(() => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {faqs.map((faq, i) => (
-              <div key={i} className="lab-card" style={{ padding: 0, overflow: 'hidden' }}>
+              <div key={i} style={{ backgroundColor: 'white', border: '1px solid #e2e8f0', borderRadius: '12px', overflow: 'hidden' }}>
                 <button 
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   style={{ width: '100%', textAlign: 'left', padding: '20px 24px', fontWeight: 700, color: '#1e293b', border: 'none', background: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
@@ -315,8 +316,8 @@ export const ICTConcepts = memo(() => {
         </section>
       </main>
 
-      <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '48px 0', textAlign: 'center', borderTop: '1px solid #1e293b' }}>
-        <p style={{ margin: 0, color: 'white', fontWeight: 600 }}>Interactive Analysis based on "ICT Trading Strategy Report"</p>
+      <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '32px 0', textAlign: 'center', borderTop: '1px solid #1e293b' }}>
+        <p style={{ margin: 0 }}>Interactive Analysis based on "ICT Trading Strategy Report"</p>
         <p style={{ fontSize: '14px', marginTop: '8px' }}>Educational Purposes Only. Not Financial Advice.</p>
       </footer>
     </div>
