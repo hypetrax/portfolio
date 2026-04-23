@@ -97,14 +97,6 @@ export const Studies = memo(() => {
           </section>
         ))}
       </main>
-
-      <section className="cta-section">
-        <div className="container">
-          <h2>Interesse in kwantitatieve analyse?</h2>
-          <p>Ik sta altijd open voor discussies over marktmechanismen en data-analyse.</p>
-          <a href="mailto:info@bartpullen.nl" className="btn-large">Neem contact op</a>
-        </div>
-      </section>
     </>
   );
 });

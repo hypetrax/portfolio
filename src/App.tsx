@@ -19,16 +19,6 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="editorial-portfolio">
-        <nav className="main-nav">
-          <div className="container">
-            <Link to="/" className="nav-logo">Bart Pullen</Link>
-            <div className="nav-links">
-              <Link to="/">Projecten</Link>
-              <Link to="/studies">Studies</Link>
-            </div>
-          </div>
-        </nav>
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/studies" element={<Studies />} />
@@ -41,11 +31,11 @@ function App() {
                 <p>&copy; {new Date().getFullYear()} Bart Pullen. Gebouwd met React & TypeScript.</p>
               </div>
               <div className="footer-labs">
-                <span className="labs-title">Expertise:</span>
+                <span className="labs-title">Labs & Quantitative Research:</span>
                 <nav className="labs-nav">
                   <Link to="/" className="labs-link">Web Development</Link>
                   <span className="divider">|</span>
-                  <Link to="/studies" className="labs-link">Quantitative Research</Link>
+                  <Link to="/studies" className="labs-link">Trading Studies</Link>
                 </nav>
               </div>
             </div>
