@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/cra",
+      "destination": "/CRA.html"
+    },
+    {
+      "source": "/CRA",
+      "destination": "/CRA.html"
+    },
+    {
       "source": "/((?!api/|archives/|assets/|.*\\..*).*)",
       "destination": "/index.html"
     }
