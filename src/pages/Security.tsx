@@ -59,8 +59,8 @@ export const Security = memo(() => {
                 </div>
               </div>
               
-              <div className="case-study-visual" style={{ background: '#eef2ff', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
-                 <span style={{ fontSize: '100px' }}>📜</span>
+              <div className="case-study-visual">
+                 <LiveSlider after="/security/cra" />
               </div>
             </div>
           </div>
@@ -119,3 +119,4 @@ export const Security = memo(() => {
     </>
   );
 });
+

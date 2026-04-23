@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { LiveSlider } from '../components/LiveSlider';
 
 interface Study {
   title: string;
