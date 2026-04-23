@@ -52,6 +52,23 @@ export const ISO27001 = memo(() => {
   const [activePhase, setActivePhase] = useState<keyof typeof pdcaData>('plan');
   const [maturityState, setMaturityState] = useState<'start' | 'end'>('end');
 
+  const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: { color: '#94a3b8', font: { family: 'Inter' } }
+      },
+      tooltip: {
+        backgroundColor: '#1e293b',
+        titleColor: '#f8fafc',
+        bodyColor: '#94a3b8',
+        padding: 12,
+        cornerRadius: 8
+      }
+    }
+  };
+
   const maturityLabels = ['Organisatorisch', 'Mensen', 'Fysiek', 'Technologisch', 'Governance', 'Risico Mgt.'];
   const maturityDataStart = [1.5, 2.0, 1.2, 1.8, 1.0, 2.5];
   const maturityDataEnd = [4.2, 4.0, 3.8, 4.5, 4.0, 4.2];
@@ -61,9 +78,9 @@ export const ISO27001 = memo(() => {
     datasets: [{
       label: maturityState === 'start' ? 'Startmeting' : 'Na Implementatie (2022)',
       data: maturityState === 'start' ? maturityDataStart : maturityDataEnd,
-      backgroundColor: maturityState === 'start' ? 'rgba(203, 213, 225, 0.4)' : 'rgba(15, 23, 42, 0.1)',
-      borderColor: maturityState === 'start' ? 'rgba(148, 163, 184, 1)' : 'rgba(15, 23, 42, 1)',
-      pointBackgroundColor: maturityState === 'start' ? 'rgba(148, 163, 184, 1)' : 'rgba(15, 23, 42, 1)',
+      backgroundColor: maturityState === 'start' ? 'rgba(148, 163, 184, 0.2)' : 'rgba(59, 130, 246, 0.2)',
+      borderColor: maturityState === 'start' ? 'rgba(148, 163, 184, 1)' : 'rgba(59, 130, 246, 1)',
+      pointBackgroundColor: maturityState === 'start' ? 'rgba(148, 163, 184, 1)' : 'rgba(59, 130, 246, 1)',
       borderWidth: 2,
       fill: true
     }]
@@ -76,15 +93,15 @@ export const ISO27001 = memo(() => {
         type: 'bar' as const,
         label: 'Incidenten',
         data: [15, 22, 12, 5],
-        backgroundColor: 'rgba(148, 163, 184, 0.7)',
+        backgroundColor: 'rgba(148, 163, 184, 0.5)',
         borderRadius: 4
       },
       {
         type: 'line' as const,
         label: 'Maturity Score',
         data: [1.5, 2.2, 3.5, 4.2],
-        borderColor: '#1e293b',
-        backgroundColor: '#1e293b',
+        borderColor: '#3b82f6',
+        backgroundColor: '#3b82f6',
         borderWidth: 3,
         tension: 0.3,
         pointRadius: 4
@@ -94,11 +111,11 @@ export const ISO27001 = memo(() => {
 
   return (
     <div className="iso-page">
-      <header className="hero-header" style={{ background: '#fafaf9' }}>
+      <header className="hero-header">
         <div className="container">
           <p className="overline">Security Officer — Impact</p>
-          <h1 style={{ color: '#1c1917' }}>ISO 27001:2022 — Strategische Waarde voor de Organisatie</h1>
-          <p className="lead" style={{ color: '#57534e' }}>
+          <h1><span style={{ color: 'var(--accent)' }}>ISO 27001:2022</span> — Strategische Waarde voor de Organisatie</h1>
+          <p className="lead">
             Informatiebeveiliging is geen 'vinkje op de muur', maar een essentieel onderdeel van onze bedrijfsvoering. 
             Ik leid de transitie naar een ISMS dat de business versterkt en risico's proactief beheerst.
           </p>
@@ -121,24 +138,24 @@ export const ISO27001 = memo(() => {
                     { t: 'Risico-gebaseerd', d: 'Prioriteit geven aan wat écht impact heeft op onze continuïteit.' },
                     { t: 'Continue Verbetering', d: 'Elke dag een stap zetten in onze volwassenheid op security-vlak.' }
                   ].map(item => (
-                    <div key={item.t} style={{ padding: '24px', background: '#fff', border: '1px solid #e7e5e4', borderRadius: '12px' }}>
-                      <h4 style={{ margin: '0 0 12px' }}>{item.t}</h4>
-                      <p style={{ fontSize: '14px', color: '#78716c', margin: 0, lineHeight: 1.5 }}>{item.d}</p>
+                    <div key={item.t} style={{ padding: '24px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '12px' }}>
+                      <h4 style={{ margin: '0 0 12px', color: 'var(--text-main)' }}>{item.t}</h4>
+                      <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{item.d}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="case-study-visual" style={{ background: '#f5f5f4', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px' }}>
+              <div className="case-study-visual" style={{ background: 'var(--surface)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', border: '1px solid var(--border)' }}>
                  <div style={{ textAlign: 'center' }}>
                    <div style={{ fontSize: '64px', marginBottom: '16px' }}>🚀</div>
-                   <p style={{ fontWeight: 600, color: '#44403c' }}>Van Controle naar Strategie</p>
+                   <p style={{ fontWeight: 600, color: 'var(--text-main)' }}>Van Controle naar Strategie</p>
                  </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section style={{ padding: '80px 0', background: '#f8fafc' }}>
+        <section style={{ padding: '80px 0', background: 'var(--bg-color)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
           <div className="container">
             <h2 style={{ textAlign: 'center', marginBottom: '48px' }}>De 4 Thema's van ISO 27001:2022</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
@@ -148,17 +165,17 @@ export const ISO27001 = memo(() => {
                 { t: 'Fysiek', i: '🏢', d: 'Toegangsbeveiliging, monitoring en beveiliging van assets.' },
                 { t: 'Technologisch', i: '💻', d: 'Encryptie, netwerkbeveiliging, secure coding en data leakage.' }
               ].map(item => (
-                <div key={item.t} style={{ background: '#fff', padding: '32px', borderRadius: '16px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                <div key={item.t} style={{ background: 'var(--surface)', padding: '32px', borderRadius: '16px', border: '1px solid var(--border)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
                   <div style={{ fontSize: '32px', marginBottom: '16px' }}>{item.i}</div>
-                  <h4 style={{ marginBottom: '12px' }}>{item.t}</h4>
-                  <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.6 }}>{item.d}</p>
+                  <h4 style={{ marginBottom: '12px', color: 'var(--text-main)' }}>{item.t}</h4>
+                  <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.6 }}>{item.d}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="expertise-section" style={{ background: '#fff' }}>
+        <section className="expertise-section">
           <div className="container">
             <h2 style={{ marginBottom: '32px' }}>Het ISMS Raamwerk: PDCA</h2>
             <div className="case-study-grid">
@@ -171,22 +188,23 @@ export const ISO27001 = memo(() => {
                       textAlign: 'left', 
                       padding: '16px 24px', 
                       borderRadius: '8px', 
-                      border: '1px solid #e7e5e4',
-                      background: activePhase === phase ? '#0f172a' : '#fff',
-                      color: activePhase === phase ? '#fff' : '#44403c',
+                      border: '1px solid var(--border)',
+                      background: activePhase === phase ? 'var(--accent)' : 'var(--surface)',
+                      color: activePhase === phase ? '#fff' : 'var(--text-muted)',
                       fontWeight: 600,
                       cursor: 'pointer',
-                      transition: 'all 0.2s ease'
+                      transition: 'all 0.2s ease',
+                      fontFamily: 'var(--font-sans)'
                     }}
                   >
                     {phase.toUpperCase()} — {pdcaData[phase].title.split(': ')[1]}
                   </button>
                 ))}
               </div>
-              <div style={{ background: '#fafaf9', padding: '40px', borderRadius: '16px', border: '1px solid #e7e5e4' }}>
-                 <h3>{pdcaData[activePhase].title}</h3>
-                 <p style={{ color: '#57534e', lineHeight: 1.6 }}>{pdcaData[activePhase].text}</p>
-                 <ul style={{ marginTop: '24px', paddingLeft: '20px', color: '#78716c' }}>
+              <div style={{ background: 'var(--surface)', padding: '40px', borderRadius: '16px', border: '1px solid var(--border)' }}>
+                 <h3 style={{ color: 'var(--text-main)', textTransform: 'none', letterSpacing: 'normal', fontSize: '20px', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>{pdcaData[activePhase].title}</h3>
+                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>{pdcaData[activePhase].text}</p>
+                 <ul style={{ marginTop: '24px', paddingLeft: '20px', color: 'var(--text-muted)' }}>
                    {pdcaData[activePhase].list.map(item => <li key={item} style={{ marginBottom: '8px' }}>{item}</li>)}
                  </ul>
               </div>
@@ -194,21 +212,21 @@ export const ISO27001 = memo(() => {
           </div>
         </section>
 
-        <section className="case-study">
+        <section className="case-study" style={{ background: 'var(--surface)' }}>
           <div className="container">
             <h2 style={{ textAlign: 'center', marginBottom: '48px' }}>Meetbare Impact</h2>
             <div className="case-study-grid">
-              <div style={{ background: '#fff', padding: '32px', borderRadius: '16px', border: '1px solid #e7e5e4' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                  <h4 style={{ margin: 0 }}>Maturity Groei (ISO 27001:2022)</h4>
-                  <div style={{ display: 'flex', gap: '8px', background: '#f5f5f4', padding: '4px', borderRadius: '8px' }}>
+              <div style={{ background: 'var(--bg-color)', padding: '32px', borderRadius: '16px', border: '1px solid var(--border)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                  <h4 style={{ margin: 0, color: 'var(--text-main)' }}>Maturity Groei</h4>
+                  <div style={{ display: 'flex', gap: '4px', background: 'var(--surface)', padding: '4px', borderRadius: '8px', border: '1px solid var(--border)' }}>
                     <button 
                       onClick={() => setMaturityState('start')}
-                      style={{ padding: '4px 12px', borderRadius: '6px', border: 'none', background: maturityState === 'start' ? '#fff' : 'transparent', cursor: 'pointer', fontSize: '12px' }}
+                      style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', background: maturityState === 'start' ? 'var(--accent)' : 'transparent', color: maturityState === 'start' ? '#fff' : 'var(--text-muted)', cursor: 'pointer', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' }}
                     >Start</button>
                     <button 
                       onClick={() => setMaturityState('end')}
-                      style={{ padding: '4px 12px', borderRadius: '6px', border: 'none', background: maturityState === 'end' ? '#fff' : 'transparent', cursor: 'pointer', fontSize: '12px' }}
+                      style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', background: maturityState === 'end' ? 'var(--accent)' : 'transparent', color: maturityState === 'end' ? '#fff' : 'var(--text-muted)', cursor: 'pointer', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' }}
                     >Na 1 Jaar</button>
                   </div>
                 </div>
@@ -216,24 +234,41 @@ export const ISO27001 = memo(() => {
                   <Radar 
                     data={radarData}
                     options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      scales: { r: { ticks: { display: false }, min: 0, max: 5 } }
+                      ...commonOptions,
+                      scales: { 
+                        r: { 
+                          ticks: { display: false }, 
+                          min: 0, 
+                          max: 5,
+                          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                          angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                          pointLabels: { color: '#94a3b8', font: { size: 10 } }
+                        } 
+                      }
                     }}
                   />
                 </div>
               </div>
 
-              <div style={{ background: '#fff', padding: '32px', borderRadius: '16px', border: '1px solid #e7e5e4' }}>
-                <h4 style={{ marginBottom: '24px' }}>Incidenten vs. Maturity</h4>
+              <div style={{ background: 'var(--bg-color)', padding: '32px', borderRadius: '16px', border: '1px solid var(--border)' }}>
+                <h4 style={{ marginBottom: '32px', color: 'var(--text-main)' }}>Incidenten vs. Maturity</h4>
                 <div style={{ height: '300px' }}>
                   <Chart 
                     type="bar"
                     data={incidentData}
                     options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      scales: { y: { beginAtZero: true } }
+                      ...commonOptions,
+                      scales: { 
+                        y: { 
+                          beginAtZero: true,
+                          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                          ticks: { color: '#64748b' }
+                        },
+                        x: {
+                          grid: { display: false },
+                          ticks: { color: '#64748b' }
+                        }
+                      }
                     }}
                   />
                 </div>

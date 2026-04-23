@@ -55,7 +55,7 @@ export const Web = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Bart Pullen — Portfolio</p>
-          <h1>Websites die simpelweg <span className="italic">werken</span>.</h1>
+          <h1>Websites die simpelweg <span style={{ color: 'var(--accent)' }}>werken</span>.</h1>
           <p className="lead">
             Ik help bedrijven met het opschonen van hun online aanwezigheid. Geen overbodige poespas, maar snelle sites met een logische structuur en een fris design.
           </p>
@@ -75,7 +75,9 @@ export const Web = memo(() => {
                     </div>
                   </div>
                   
-                  <h2>{project.title}</h2>
+                  <h2>
+                    {project.title.split(' ').slice(0, -1).join(' ')} <span style={{ color: 'var(--accent)' }}>{project.title.split(' ').slice(-1)}</span>
+                  </h2>
                   <p className="project-intro">{project.description}</p>
                   
                   <div className="case-details">
@@ -121,7 +123,7 @@ export const Web = memo(() => {
 
       <section className="cta-section">
         <div className="container">
-          <h2>Website vernieuwen?</h2>
+          <h2>Website <span style={{ color: 'var(--accent)' }}>vernieuwen</span>?</h2>
           <p>Benieuwd naar de techniek achter deze projecten of hulp nodig bij het opschonen van een bestaande site? Contact via LinkedIn.</p>
           <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
         </div>

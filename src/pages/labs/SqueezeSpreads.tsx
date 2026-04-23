@@ -75,7 +75,7 @@ export const SqueezeSpreads = memo(() => {
             if(i < 10) return 'rgba(239, 68, 68, 0.7)'; 
             if(i < 24) return 'rgba(234, 179, 8, 0.8)'; 
             if(i < 32) return 'rgba(56, 189, 248, 0.8)'; 
-            return 'rgba(37, 99, 235, 0.7)'; 
+            return 'rgba(59, 130, 246, 0.7)'; 
         });
         const squeezeValues = labels.map((_, i) => {
             if(i < 10) return -2 + Math.random();
@@ -90,8 +90,8 @@ export const SqueezeSpreads = memo(() => {
                 {
                     label: 'SPX Price',
                     data: basePrice,
-                    borderColor: '#292524',
-                    borderWidth: 3,
+                    borderColor: '#f8fafc',
+                    borderWidth: 2,
                     tension: 0.2,
                     pointRadius: 2,
                     hidden: !chartStates.price
@@ -100,7 +100,7 @@ export const SqueezeSpreads = memo(() => {
                     label: '21 EMA',
                     data: ema21,
                     borderColor: '#10b981',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     borderDash: [5, 5],
                     tension: 0.4,
                     pointRadius: 0,
@@ -119,7 +119,7 @@ export const SqueezeSpreads = memo(() => {
                     label: '34 EMA',
                     data: ema34,
                     borderColor: '#34d399',
-                    borderWidth: 2,
+                    borderWidth: 1.5,
                     tension: 0.4,
                     pointRadius: 0,
                     hidden: !chartStates.emastack
@@ -128,7 +128,7 @@ export const SqueezeSpreads = memo(() => {
                     label: '55 EMA',
                     data: ema55,
                     borderColor: '#059669',
-                    borderWidth: 2,
+                    borderWidth: 1.5,
                     tension: 0.4,
                     pointRadius: 0,
                     hidden: !chartStates.emastack
@@ -137,7 +137,7 @@ export const SqueezeSpreads = memo(() => {
                     label: '89 EMA',
                     data: ema89,
                     borderColor: '#064e3b',
-                    borderWidth: 2,
+                    borderWidth: 1.5,
                     tension: 0.4,
                     pointRadius: 0,
                     hidden: !chartStates.emastack
@@ -160,16 +160,24 @@ export const SqueezeSpreads = memo(() => {
         maintainAspectRatio: false,
         interaction: { mode: 'index' as const, intersect: false },
         plugins: {
-            legend: { position: 'top' as const, labels: { boxWidth: 12, usePointStyle: true } },
+            legend: { 
+                position: 'top' as const, 
+                labels: { 
+                    boxWidth: 12, 
+                    usePointStyle: true,
+                    color: '#94a3b8'
+                } 
+            },
         },
         scales: {
             y: {
                 type: 'linear' as const,
                 display: true,
                 position: 'left' as const,
-                title: { display: true, text: 'Price ($)' },
+                title: { display: true, text: 'Price ($)', color: '#94a3b8' },
                 beginAtZero: false,
-                grid: { color: '#f5f5f4' }
+                grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                ticks: { color: '#94a3b8' }
             },
             y1: {
                 type: 'linear' as const,
@@ -177,7 +185,10 @@ export const SqueezeSpreads = memo(() => {
                 min: -5,
                 max: 15
             },
-            x: { grid: { display: false } }
+            x: { 
+                grid: { display: false },
+                ticks: { color: '#94a3b8' }
+            }
         }
     };
 
@@ -185,20 +196,20 @@ export const SqueezeSpreads = memo(() => {
         width: '100%',
         textAlign: 'left' as const,
         padding: '12px 24px',
-        color: activeSection === id ? '#1e293b' : '#475569',
-        backgroundColor: activeSection === id ? '#e2e8f0' : 'transparent',
-        borderLeft: activeSection === id ? '4px solid #2563eb' : '4px solid transparent',
+        color: activeSection === id ? 'var(--text-main)' : 'var(--text-muted)',
+        backgroundColor: activeSection === id ? 'var(--surface-hover)' : 'transparent',
+        borderLeft: activeSection === id ? '4px solid var(--accent)' : '4px solid transparent',
         fontWeight: activeSection === id ? 600 : 400,
         transition: 'all 0.2s',
         borderTop: 'none',
         borderRight: 'none',
         borderBottom: 'none',
         cursor: 'pointer',
-        fontSize: '16px'
+        fontSize: '15px'
     });
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', overflow: 'hidden', backgroundColor: '#f8fafc', color: '#1e293b', fontFamily: 'Inter, sans-serif' }} className="flex-col md:flex-row">
+        <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', overflow: 'hidden', backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', fontFamily: 'var(--font-sans)' }} className="flex-col md:flex-row">
             <style dangerouslySetInnerHTML={{ __html: `
                 .fade-in { animation: fadeIn 0.3s ease-in-out; }
                 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -206,11 +217,11 @@ export const SqueezeSpreads = memo(() => {
             `}} />
 
             {/* Sidebar Nav */}
-            <nav style={{ width: '256px', backgroundColor: 'white', borderRight: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', flexShrink: 0, zIndex: 10 }} className="w-full md:w-64">
-                <div style={{ padding: '24px', borderBottom: '1px solid #f1f5f9' }}>
-                    <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: '#0f172a', lineHeight: 1.25, margin: 0 }}>
-                        Stacked Probabilities<br />
-                        <span style={{ color: '#10b981', fontSize: '14px' }}>Swing Setup</span>
+            <nav style={{ width: '256px', backgroundColor: 'var(--surface)', borderRight: '1px solid var(--border)', display: 'flex', flexDirection: 'column', flexShrink: 0, zIndex: 10 }} className="w-full md:w-64">
+                <div style={{ padding: '24px', borderBottom: '1px solid var(--border)' }}>
+                    <h1 style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--text-main)', lineHeight: 1.25, margin: 0, fontFamily: 'var(--font-serif)' }}>
+                        Stacked <span style={{ color: 'var(--accent)' }}>Probabilities</span><br />
+                        <span style={{ color: 'var(--accent)', fontSize: '12px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Swing Playbook</span>
                     </h1>
                 </div>
                 <div style={{ flex: 1, overflowY: 'auto', padding: '16px 0' }}>
@@ -221,49 +232,49 @@ export const SqueezeSpreads = memo(() => {
                         <li><button onClick={() => setActiveSection('management')} style={navItemStyle('management')}>4. Trade Management</button></li>
                     </ul>
                 </div>
-                <div style={{ padding: '24px', backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0', fontSize: '12px', color: '#64748b' }}>
-                    System Playbook Overview
+                <div style={{ padding: '20px 24px', backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-mono)' }}>
+                    System V.2.1-Noir
                 </div>
             </nav>
 
             {/* Main Content */}
-            <main style={{ flex: 1, overflowY: 'auto', backgroundColor: '#f8fafc', position: 'relative' }}>
+            <main style={{ flex: 1, overflowY: 'auto', backgroundColor: 'var(--bg-color)', position: 'relative' }}>
                 
                 {activeSection === 'overview' && (
                     <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
-                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Core Philosophy</h2>
-                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Stacking probabilities for consistent growth and peace of mind.</p>
+                            <h2 style={{ fontSize: '32px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>Core <span style={{ color: 'var(--accent)' }}>Philosophy</span></h2>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: 0 }}>Stacking probabilities for consistent growth and peace of mind.</p>
                         </div>
                         
-                        <p style={{ marginBottom: '24px', color: '#334155', lineHeight: 1.625, fontSize: '18px' }}>
+                        <p style={{ marginBottom: '24px', color: 'var(--text-muted)', lineHeight: 1.625, fontSize: '17px' }}>
                             This system is designed around finding high-probability moments in time where the odds are overwhelmingly in our favor. By combining market trend, market-leading stocks, specific technical structures (squeezes & EMAs), and an options strategy that only requires the stock <i>not</i> to crash, we construct a scenario where the "path of least resistance" generates profit.
                         </p>
 
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '40px' }} className="grid-cols-1 md:grid-cols-2">
-                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderTop: '4px solid #2563eb' }}>
+                            <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', borderTop: '4px solid var(--accent)' }}>
                                 <div style={{ fontSize: '30px', marginBottom: '12px' }}>&#9889;</div>
-                                <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '8px', color: '#1e293b' }}>The Goal: Stack the Odds</h3>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#475569', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                    <li>&#10003; Trade with the overall market trend.</li>
-                                    <li>&#10003; Focus on Big Money flowing into leading stocks.</li>
-                                    <li>&#10003; Enter during a "squeeze" (growing probability of a big move).</li>
-                                    <li>&#10003; Require only that the structure holds, not a massive rally.</li>
+                                <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '12px', color: 'var(--text-main)' }}>The Goal: Stack the Odds</h3>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '15px' }}>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> Trade with the overall market trend.</li>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> Focus on Big Money flowing into leading stocks.</li>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> Enter during a "squeeze" (growing probability).</li>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> Require only that the structure holds.</li>
                                 </ul>
                             </div>
-                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderTop: '4px solid #2563eb' }}>
+                            <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', borderTop: '4px solid var(--accent)' }}>
                                 <div style={{ fontSize: '30px', marginBottom: '12px' }}>&#129496;</div>
-                                <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '8px', color: '#1e293b' }}>Psychological Edge</h3>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#475569', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                    <li>&#10003; <strong>Peace of Mind:</strong> Knowing probabilities are stacked prevents hesitation.</li>
-                                    <li>&#10003; <strong>Less Stress:</strong> Put credit spreads insulate P&L from day-to-day noise and chop.</li>
-                                    <li>&#10003; <strong>Healthier Relationship:</strong> Accepting that the <i>next</i> trade might fail, but 100 trades will yield favorable results.</li>
+                                <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '12px', color: 'var(--text-main)' }}>Psychological Edge</h3>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '15px' }}>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> <strong>Peace of Mind:</strong> Odds stacked prevents hesitation.</li>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> <strong>Less Stress:</strong> Spreads insulate P&L from noise.</li>
+                                    <li><span style={{ color: 'var(--accent)' }}>&#10003;</span> <strong>Relationship:</strong> Accepting individual trade outcomes.</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div style={{ backgroundColor: '#e2e8f0', padding: '24px', borderRadius: '8px', textAlign: 'center' }}>
-                            <p style={{ color: '#1e293b', fontWeight: 500, fontStyle: 'italic', margin: 0 }}>"Probabilities on probabilities. Over the course of 100+ trades... this mindset is what allows me to take trade after trade with no hesitation."</p>
+                        <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '8px', textAlign: 'center', border: '1px solid var(--border)', borderStyle: 'dashed' }}>
+                            <p style={{ color: 'var(--text-main)', fontWeight: 500, fontStyle: 'italic', margin: 0 }}>"Probabilities on probabilities. Over the course of 100+ trades... this mindset is what allows me to take trade after trade with no hesitation."</p>
                         </div>
                     </div>
                 )}
@@ -271,73 +282,73 @@ export const SqueezeSpreads = memo(() => {
                 {activeSection === 'setup' && (
                     <div className="fade-in" style={{ padding: '48px', maxWidth: '1152px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
-                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Anatomy of the Setup</h2>
-                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Visualizing the Bullish Structure & The Launching Pad.</p>
+                            <h2 style={{ fontSize: '32px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>Anatomy of the <span style={{ color: 'var(--accent)' }}>Setup</span></h2>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: 0 }}>Visualizing the Bullish Structure & The Launching Pad.</p>
                         </div>
                         
-                        <p style={{ marginBottom: '24px', color: '#334155', lineHeight: 1.625 }}>
+                        <p style={{ marginBottom: '24px', color: 'var(--text-muted)', lineHeight: 1.625 }}>
                             A valid entry requires a strict technical structure. Use the controls below the chart to build the setup and understand how the indicators interact to signal a high-probability moment.
                         </p>
 
-                        <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', marginBottom: '32px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                                <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#1e293b', margin: 0 }}>Visual Setup Preview <span style={{ color: '#94a3b8', fontWeight: 400, marginLeft: '8px' }}>| TICKER: SPX</span></h3>
-                                <div style={{ fontSize: '12px', fontFamily: 'monospace', backgroundColor: '#d1fae5', color: '#065f46', padding: '4px 8px', borderRadius: '4px' }}>STRUCTURE: BULLISH</div>
+                        <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', marginBottom: '32px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                                <h3 style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--accent)', margin: 0, textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: 'var(--font-mono)' }}>Visual Setup Preview | TICKER: SPX</h3>
+                                <div style={{ fontSize: '10px', fontFamily: 'var(--font-mono)', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#10b981', padding: '4px 8px', borderRadius: '4px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>STRUCTURE: BULLISH</div>
                             </div>
                             
                             <div className="chart-container">
                                 <Chart type="line" data={chartData} options={chartOptions} />
                             </div>
 
-                            <div style={{ marginTop: '24px', display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', borderTop: '1px solid #f1f5f9', paddingTop: '24px' }}>
+                            <div style={{ marginTop: '32px', display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
                                 <button 
                                     onClick={() => setChartStates({...chartStates, price: !chartStates.price})}
-                                    style={{ padding: '8px 16px', backgroundColor: chartStates.price ? '#1e293b' : '#e2e8f0', color: chartStates.price ? 'white' : '#334155', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
+                                    style={{ padding: '10px 20px', backgroundColor: chartStates.price ? 'var(--accent)' : 'var(--bg-color)', color: chartStates.price ? 'white' : 'var(--text-muted)', borderRadius: '6px', border: '1px solid var(--border)', cursor: 'pointer', fontSize: '13px', fontWeight: 600, transition: 'all 0.2s' }}
                                 >
                                     Price Action
                                 </button>
                                 <button 
                                     onClick={() => setChartStates({...chartStates, ema21: !chartStates.ema21})}
-                                    style={{ padding: '8px 16px', backgroundColor: chartStates.ema21 ? '#1e293b' : '#e2e8f0', color: chartStates.ema21 ? 'white' : '#334155', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
+                                    style={{ padding: '10px 20px', backgroundColor: chartStates.ema21 ? 'var(--accent)' : 'var(--bg-color)', color: chartStates.ema21 ? 'white' : 'var(--text-muted)', borderRadius: '6px', border: '1px solid var(--border)', cursor: 'pointer', fontSize: '13px', fontWeight: 600, transition: 'all 0.2s' }}
                                 >
-                                    + 21 EMA (The Line in Sand)
+                                    + 21 EMA
                                 </button>
                                 <button 
                                     onClick={() => setChartStates({...chartStates, emastack: !chartStates.emastack})}
-                                    style={{ padding: '8px 16px', backgroundColor: chartStates.emastack ? '#1e293b' : '#e2e8f0', color: chartStates.emastack ? 'white' : '#334155', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
+                                    style={{ padding: '10px 20px', backgroundColor: chartStates.emastack ? 'var(--accent)' : 'var(--bg-color)', color: chartStates.emastack ? 'white' : 'var(--text-muted)', borderRadius: '6px', border: '1px solid var(--border)', cursor: 'pointer', fontSize: '13px', fontWeight: 600, transition: 'all 0.2s' }}
                                 >
-                                    + Stacked EMAs (Backbone)
+                                    + Stacked EMAs
                                 </button>
                                 <button 
                                     onClick={() => setChartStates({...chartStates, squeeze: !chartStates.squeeze})}
-                                    style={{ padding: '8px 16px', backgroundColor: chartStates.squeeze ? '#1e293b' : '#e2e8f0', color: chartStates.squeeze ? 'white' : '#334155', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
+                                    style={{ padding: '10px 20px', backgroundColor: chartStates.squeeze ? 'var(--accent)' : 'var(--bg-color)', color: chartStates.squeeze ? 'white' : 'var(--text-muted)', borderRadius: '6px', border: '1px solid var(--border)', cursor: 'pointer', fontSize: '13px', fontWeight: 600, transition: 'all 0.2s' }}
                                 >
-                                    + Squeeze Histogram
+                                    + Squeeze
                                 </button>
                             </div>
                             
-                            <div style={{ marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }} className="grid-cols-1 md:grid-cols-2">
-                                <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '4px', fontSize: '14px' }}>
-                                    <h4 style={{ fontWeight: 'bold', marginBottom: '8px', margin: 0 }}>1. The Launching Pad</h4>
-                                    <p style={{ color: '#475569', marginBottom: '8px', marginTop: '8px' }}>Stock must be trading <b>at or just above the 21 EMA</b>. If extended (2+ ATR above), no entry.</p>
-                                    <p style={{ color: '#475569', margin: 0 }}>The 21 EMA acts as support. Price action above it during a squeeze is just "noise".</p>
+                            <div style={{ marginTop: '32px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }} className="grid-cols-1 md:grid-cols-2">
+                                <div style={{ padding: '20px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '8px', fontSize: '14px', border: '1px solid var(--border)' }}>
+                                    <h4 style={{ fontWeight: 'bold', marginBottom: '12px', color: 'var(--text-main)', fontSize: '16px' }}>1. The Launching Pad</h4>
+                                    <p style={{ color: 'var(--text-muted)', marginBottom: '10px', lineHeight: 1.5 }}>Stock must be trading <b>at or just above the 21 EMA</b>. If extended (2+ ATR above), no entry.</p>
+                                    <p style={{ color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>The 21 EMA acts as support. Price action above it during a squeeze is just "noise".</p>
                                 </div>
-                                <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '4px', fontSize: '14px' }}>
-                                    <h4 style={{ fontWeight: 'bold', marginBottom: '8px', margin: 0 }}>2. Stacked EMAs & Squeeze</h4>
-                                    <p style={{ color: '#475569', marginBottom: '8px', marginTop: '8px' }}><b>EMAs (8, 21, 34, 55, 89)</b> must be stacked positively (shortest on top). Indicates strong bullish backbone.</p>
-                                    <p style={{ color: '#475569', margin: 0 }}><b>Squeeze Histogram</b> must be Yellow (exhaustion of selling) or Light Blue (release of bullish momentum).</p>
+                                <div style={{ padding: '20px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '8px', fontSize: '14px', border: '1px solid var(--border)' }}>
+                                    <h4 style={{ fontWeight: 'bold', marginBottom: '12px', color: 'var(--text-main)', fontSize: '16px' }}>2. Stacked EMAs & Squeeze</h4>
+                                    <p style={{ color: 'var(--text-muted)', marginBottom: '10px', lineHeight: 1.5 }}><b>EMAs (8, 21-89)</b> must be stacked positively (shortest on top). Indicates strong bullish backbone.</p>
+                                    <p style={{ color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}><b>Squeeze Histogram</b> must be Yellow (exhaustion) or Light Blue (release of bullish momentum).</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div style={{ backgroundColor: '#1e293b', color: '#e2e8f0', padding: '24px', borderRadius: '8px' }}>
-                            <h4 style={{ fontWeight: 'bold', color: 'white', marginBottom: '8px', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.05em', margin: 0 }}>Required Tools Checklist</h4>
-                            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '14px', listStyle: 'none', padding: 0, margin: '8px 0 0 0' }} className="grid-cols-2 md:grid-cols-3">
-                                <li>• Market &gt; 21 EMA (Daily/Weekly)</li>
-                                <li>• Stock &gt; 21 EMA (Daily/Weekly)</li>
+                        <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '8px', border: '1px solid var(--border)' }}>
+                            <h4 style={{ fontWeight: 'bold', color: 'var(--accent)', marginBottom: '16px', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '0.1em', fontFamily: 'var(--font-mono)', margin: 0 }}>Required Tools Checklist</h4>
+                            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', fontSize: '13px', listStyle: 'none', padding: 0, margin: '8px 0 0 0', color: 'var(--text-muted)' }} className="grid-cols-2 md:grid-cols-3">
+                                <li>• Market &gt; 21 EMA</li>
+                                <li>• Stock &gt; 21 EMA</li>
                                 <li>• Stacked EMA Label</li>
                                 <li>• Bollinger Bands</li>
-                                <li>• Keltner Channels (2 ATR)</li>
+                                <li>• Keltner Channels</li>
                                 <li>• Squeeze Pro Indicator</li>
                             </ul>
                         </div>
@@ -347,73 +358,73 @@ export const SqueezeSpreads = memo(() => {
                 {activeSection === 'execution' && (
                     <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
-                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Strategy & Execution</h2>
-                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Deploying the Out-of-the-Money (OTM) Put Credit Spread.</p>
+                            <h2 style={{ fontSize: '32px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>Strategy & <span style={{ color: 'var(--accent)' }}>Execution</span></h2>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: 0 }}>Deploying the Out-of-the-Money (OTM) Put Credit Spread.</p>
                         </div>
 
-                        <p style={{ marginBottom: '24px', color: '#334155', lineHeight: 1.625 }}>
+                        <p style={{ marginBottom: '24px', color: 'var(--text-muted)', lineHeight: 1.625, fontSize: '17px' }}>
                             The core mechanism is selling an OTM Put Credit Spread. We place a bet that the established bullish structure won't completely fail. Our only requirement for profit is that the stock doesn't move significantly in the opposite direction.
                         </p>
 
-                        <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', marginBottom: '32px' }}>
-                            <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '16px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px', color: '#1e293b', margin: 0 }}>The Trade Structure</h3>
-                            <div style={{ display: 'flex', gap: '32px' }} className="flex-col md:flex-row">
+                        <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', marginBottom: '32px' }}>
+                            <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '24px', borderBottom: '1px solid var(--border)', paddingBottom: '12px', color: 'var(--text-main)', margin: 0 }}>The Trade Structure</h3>
+                            <div style={{ display: 'flex', gap: '48px' }} className="flex-col md:flex-row">
                                 <div style={{ flex: 1 }}>
-                                    <div style={{ position: 'relative', width: '100%', height: '160px', borderLeft: '2px solid #cbd5e1', borderBottom: '2px solid #cbd5e1', paddingLeft: '16px', paddingBottom: '16px' }}>
-                                        <div style={{ position: 'absolute', bottom: '128px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
-                                            <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#64748b', marginRight: '8px', width: '80px', textAlign: 'right' }}>Stock Price</span>
-                                            <div style={{ height: 0, borderTop: '2px dashed #94a3b8', width: '100%', position: 'relative' }}>
-                                                <div style={{ position: 'absolute', top: '-12px', left: '25%', width: '12px', height: '12px', backgroundColor: '#10b981', borderRadius: '50%', boxShadow: '0 1px 2px rgba(0,0,0,0.1)' }}></div>
+                                    <div style={{ position: 'relative', width: '100%', height: '180px', borderLeft: '2px solid var(--border)', borderBottom: '2px solid var(--border)', paddingLeft: '16px', paddingBottom: '16px' }}>
+                                        <div style={{ position: 'absolute', bottom: '144px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
+                                            <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-muted)', marginRight: '12px', width: '80px', textAlign: 'right', fontFamily: 'var(--font-mono)' }}>PRICE</span>
+                                            <div style={{ height: 0, borderTop: '2px dashed var(--text-muted)', width: '100%', position: 'relative' }}>
+                                                <div style={{ position: 'absolute', top: '-6px', left: '25%', width: '12px', height: '12px', backgroundColor: 'var(--success)', borderRadius: '50%', boxShadow: '0 0 10px var(--success)' }}></div>
                                             </div>
                                         </div>
-                                        <div style={{ position: 'absolute', bottom: '96px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
-                                            <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#059669', marginRight: '8px', width: '80px', textAlign: 'right' }}>21 EMA</span>
-                                            <div style={{ height: 0, borderTop: '2px solid #10b981', width: '100%' }}></div>
+                                        <div style={{ position: 'absolute', bottom: '108px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
+                                            <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--success)', marginRight: '12px', width: '80px', textAlign: 'right', fontFamily: 'var(--font-mono)' }}>21 EMA</span>
+                                            <div style={{ height: 0, borderTop: '2px solid var(--success)', width: '100%' }}></div>
                                         </div>
-                                        <div style={{ position: 'absolute', bottom: '48px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
-                                            <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#d97706', marginRight: '8px', width: '80px', textAlign: 'right' }}>Sell Strike</span>
+                                        <div style={{ position: 'absolute', bottom: '54px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
+                                            <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#f59e0b', marginRight: '12px', width: '80px', textAlign: 'right', fontFamily: 'var(--font-mono)' }}>SHORT</span>
                                             <div style={{ height: 0, borderTop: '2px solid #f59e0b', width: '100%', position: 'relative' }}>
-                                                <div style={{ position: 'absolute', top: '4px', right: 0, backgroundColor: '#f8fafc', padding: '4px 8px', fontSize: '10px', borderRadius: '4px', border: '1px solid #e2e8f0', color: '#475569' }}>Credit Collected</div>
+                                                <div style={{ position: 'absolute', top: '6px', right: 0, backgroundColor: 'var(--bg-color)', padding: '4px 8px', fontSize: '9px', borderRadius: '4px', border: '1px solid var(--border)', color: 'var(--text-muted)', fontWeight: 600 }}>CREDIT COLLECTED</div>
                                             </div>
                                         </div>
-                                        <div style={{ position: 'absolute', bottom: '16px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
-                                            <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#dc2626', marginRight: '8px', width: '80px', textAlign: 'right' }}>Buy Strike</span>
+                                        <div style={{ position: 'absolute', bottom: '18px', left: 0, width: '100%', display: 'flex', alignItems: 'center' }}>
+                                            <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#ef4444', marginRight: '12px', width: '80px', textAlign: 'right', fontFamily: 'var(--font-mono)' }}>LONG</span>
                                             <div style={{ height: 0, borderTop: '2px solid #ef4444', width: '100%', position: 'relative' }}>
-                                                <div style={{ position: 'absolute', top: '4px', right: 0, backgroundColor: '#f8fafc', padding: '4px 8px', fontSize: '10px', borderRadius: '4px', border: '1px solid #e2e8f0', color: '#475569' }}>Defines Max Risk</div>
+                                                <div style={{ position: 'absolute', top: '6px', right: 0, backgroundColor: 'var(--bg-color)', padding: '4px 8px', fontSize: '9px', borderRadius: '4px', border: '1px solid var(--border)', color: 'var(--text-muted)', fontWeight: 600 }}>MAX RISK</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14px', color: '#475569' }}>
+                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '15px', color: 'var(--text-muted)', justifyContent: 'center' }}>
                                     <p style={{ margin: 0 }}><b>Goal:</b> Sell strikes as far UNDER the 21 EMA as possible.</p>
-                                    <p style={{ margin: 0 }}><b>Requirement:</b> Must still achieve at least a <b>3:1 risk to reward ratio</b>.</p>
-                                    <p style={{ margin: 0 }}><b>Mechanism:</b> Time decay (Theta) works in our favor. As long as price stays above the Sell Strike, the spread expires worthless, and we keep the premium.</p>
+                                    <p style={{ margin: 0 }}><b>Requirement:</b> Must achieve &gt; <b>3:1 risk/reward</b>.</p>
+                                    <p style={{ margin: 0 }}><b>Mechanism:</b> Time decay (Theta) is the engine. As long as price holds above Short strike, we profit.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
-                            <h3 style={{ fontSize: '20px', fontWeight: 'semibold', marginBottom: '16px', color: '#1e293b', margin: 0 }}>Squeeze Timeframes & Expirations (DTE)</h3>
-                            <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '24px', margin: '8px 0 24px 0' }}>Select a timeframe where you found a squeeze to see the recommended Days To Expiration.</p>
+                        <div style={{ backgroundColor: 'var(--surface)', padding: '32px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                            <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px', color: 'var(--text-main)', margin: 0 }}>Squeeze Timeframes & DTE</h3>
+                            <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '24px' }}>Select a timeframe to see the recommended Days To Expiration.</p>
                             
-                            <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
+                            <div style={{ display: 'flex', gap: '12px', marginBottom: '32px' }}>
                                 {(['daily', '3day', 'weekly'] as const).map(tf => (
                                     <button 
                                         key={tf}
                                         onClick={() => setSelectedDte(tf)}
-                                        style={{ flex: 1, padding: '12px 16px', border: selectedDte === tf ? '2px solid #10b981' : '2px solid #e2e8f0', backgroundColor: selectedDte === tf ? '#ecfdf5' : 'white', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.2s', fontWeight: 600, color: '#334155' }}
+                                        style={{ flex: 1, padding: '14px 16px', border: '1px solid var(--border)', backgroundColor: selectedDte === tf ? 'var(--accent)' : 'var(--bg-color)', color: selectedDte === tf ? 'white' : 'var(--text-muted)', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.2s', fontWeight: 600, fontSize: '14px' }}
                                     >
-                                        {tf === 'daily' ? 'Daily' : tf === '3day' ? '3-Day' : 'Weekly'} Squeeze
+                                        {tf.toUpperCase()}
                                     </button>
                                 ))}
                             </div>
 
-                            <div style={{ backgroundColor: '#f1f5f9', padding: '32px', borderRadius: '8px', textAlign: 'center', border: '1px solid #e2e8f0', minHeight: '150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                            <div style={{ backgroundColor: 'var(--bg-color)', padding: '40px', borderRadius: '8px', textAlign: 'center', border: '1px solid var(--border)', minHeight: '160px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                                 <div className="fade-in">
-                                    <h4 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1e293b', marginBottom: '4px', margin: 0 }}>{dteData[selectedDte].title}</h4>
-                                    <div style={{ color: '#10b981', fontWeight: 600, marginBottom: '4px' }}>{dteData[selectedDte].target}</div>
-                                    <div style={{ fontSize: '30px', fontWeight: 800, color: '#0f172a', marginBottom: '12px' }}>{dteData[selectedDte].range}</div>
-                                    <p style={{ color: '#475569', maxWidth: '448px', margin: '0 auto', fontSize: '14px' }}>{dteData[selectedDte].text}</p>
+                                    <h4 style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', margin: 0, fontFamily: 'var(--font-serif)' }}>{dteData[selectedDte].title}</h4>
+                                    <div style={{ color: 'var(--accent)', fontWeight: 600, marginBottom: '8px', fontSize: '14px', fontFamily: 'var(--font-mono)' }}>{dteData[selectedDte].target}</div>
+                                    <div style={{ fontSize: '40px', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>{dteData[selectedDte].range}</div>
+                                    <p style={{ color: 'var(--text-muted)', maxWidth: '500px', margin: '0 auto', fontSize: '14px', lineHeight: 1.5 }}>{dteData[selectedDte].text}</p>
                                 </div>
                             </div>
                         </div>
@@ -423,52 +434,51 @@ export const SqueezeSpreads = memo(() => {
                 {activeSection === 'management' && (
                     <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
-                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Trade Management</h2>
-                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Protecting capital, taking profits, and ignoring noise.</p>
+                            <h2 style={{ fontSize: '32px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>Trade <span style={{ color: 'var(--accent)' }}>Management</span></h2>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: 0 }}>Protecting capital, taking profits, and ignoring noise.</p>
                         </div>
 
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', marginBottom: '32px' }} className="grid-cols-1 md:grid-cols-2">
                             
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                                <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderLeft: '4px solid #10b981' }}>
-                                    <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', color: '#1e293b', margin: 0 }}>
-                                        <span style={{ color: '#10b981' }}>&#10004;</span> Profit Taking
+                                <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', borderLeft: '4px solid var(--success)' }}>
+                                    <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-main)', margin: 0 }}>
+                                        <span style={{ color: 'var(--success)' }}>&#10004;</span> Profit Taking
                                     </h3>
-                                    <p style={{ color: '#334155', marginBottom: '12px', marginTop: '12px' }}>As soon as filled on entry, set a GTC (Good-Til-Cancel) order to buy back the spread at <b>80% of max potential profit</b>.</p>
-                                    <p style={{ fontSize: '14px', color: '#64748b', fontStyle: 'italic', margin: 0 }}>"Don't be greedy. Once a spread reaches 70-80% max profit, holding for extra gains isn't worth risking all open profit PLUS original risk."</p>
+                                    <p style={{ color: 'var(--text-muted)', marginBottom: '12px', marginTop: '12px', fontSize: '15px', lineHeight: 1.5 }}>Set a GTC order to buy back the spread at <b>80% of max potential profit</b>.</p>
+                                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', fontStyle: 'italic', margin: 0, opacity: 0.8 }}>"Don't be greedy. Once a spread reaches 80%, holding for extra gains isn't worth the risk."</p>
                                 </div>
 
-                                <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderLeft: '4px solid #2563eb' }}>
-                                    <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', color: '#1e293b', margin: 0 }}>
-                                        <span style={{ color: '#2563eb' }}>&#128202;</span> Position Sizing
+                                <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', borderLeft: '4px solid var(--accent)' }}>
+                                    <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-main)', margin: 0 }}>
+                                        <span style={{ color: 'var(--accent)' }}>&#128202;</span> Position Sizing
                                     </h3>
-                                    <p style={{ color: '#334155', marginBottom: '12px', marginTop: '12px' }}>Risk <b>5% to 15%</b> of account on any given position.</p>
-                                    <p style={{ fontSize: '14px', color: '#475569', margin: 0 }}>Size depends on: Market conditions, setup quality, recent P&L, number of open positions.</p>
-                                    <p style={{ fontSize: '14px', color: '#475569', marginTop: '8px', margin: '8px 0 0 0' }}>If current setups are struggling, hold off on new entries or cut "weak links" to free capital for better setups.</p>
+                                    <p style={{ color: 'var(--text-muted)', marginBottom: '12px', marginTop: '12px', fontSize: '15px', lineHeight: 1.5 }}>Risk <b>5% to 15%</b> of account on any given position.</p>
+                                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>Size depends on: Market conditions, setup quality, and number of open positions.</p>
                                 </div>
                             </div>
 
-                            <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', borderLeft: '4px solid #f59e0b' }}>
-                                <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: '#1e293b', margin: 0 }}>
+                            <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', borderLeft: '4px solid #f59e0b' }}>
+                                <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-main)', margin: 0 }}>
                                     <span style={{ color: '#f59e0b' }}>&#9888;</span> Exits & "The Noise"
                                 </h3>
                                 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                                    <div style={{ backgroundColor: '#fffbeb', padding: '16px', borderRadius: '4px', color: '#78350f', fontSize: '14px' }}>
-                                        <span style={{ fontWeight: 'bold' }}>The Golden Rule:</span> Only exit if "something changes" about the structure.
+                                    <div style={{ backgroundColor: 'rgba(245, 158, 11, 0.1)', padding: '16px', borderRadius: '4px', color: '#f59e0b', fontSize: '14px', border: '1px solid rgba(245, 158, 11, 0.2)' }}>
+                                        <span style={{ fontWeight: 'bold' }}>Golden Rule:</span> Only exit if "something changes" about the technical structure.
                                     </div>
                                     
-                                    <p style={{ color: '#334155', margin: 0 }}>The first step to losing bullish structure is a <b>close BELOW the 21 EMA</b> on the timeframe you are trading.</p>
+                                    <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '15px', lineHeight: 1.5 }}>Structure fails on a <b>close BELOW the 21 EMA</b> on your trading timeframe.</p>
                                     
-                                    <ul style={{ listStyle: 'disc', paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', color: '#475569' }}>
-                                        <li>Any price action, selling, or chop taking place <i>above</i> the 21 EMA is meaningless "noise".</li>
-                                        <li>Do not get shaken out by intraday movements.</li>
-                                        <li>On down days, ask: <span style={{ fontWeight: 600, fontStyle: 'italic', color: '#1e293b' }}>"Has anything changed?"</span> If not (still above 21), hang on tight!</li>
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', color: 'var(--text-muted)' }}>
+                                        <li style={{ display: 'flex', gap: '8px' }}><span>•</span> Any chop <i>above</i> the 21 EMA is meaningless noise.</li>
+                                        <li style={{ display: 'flex', gap: '8px' }}><span>•</span> Do not get shaken out by intraday movements.</li>
+                                        <li style={{ display: 'flex', gap: '8px' }}><span>•</span> On down days, ask: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>"Has anything changed?"</span></li>
                                     </ul>
 
-                                    <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #e2e8f0' }}>
-                                        <h4 style={{ fontWeight: 'bold', color: '#1e293b', marginBottom: '8px', margin: 0 }}>Adjustments for Extended Markets:</h4>
-                                        <p style={{ fontSize: '14px', color: '#475569', margin: 0 }}>If the general market is 2+ ATR above its daily 21 EMA, be patient. If you must enter a great setup, <b>lower position size</b> or <b>add more time (DTE)</b> to sit through potential pullbacks.</p>
+                                    <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
+                                        <h4 style={{ fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', margin: 0, fontSize: '15px' }}>Extended Markets:</h4>
+                                        <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>If market is 2+ ATR above 21 EMA, lower position size or add more time (DTE).</p>
                                     </div>
                                 </div>
                             </div>
@@ -481,3 +491,4 @@ export const SqueezeSpreads = memo(() => {
         </div>
     );
 });
+

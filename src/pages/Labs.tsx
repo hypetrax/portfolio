@@ -57,7 +57,7 @@ export const Labs = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Labs & Quantitative Research</p>
-          <h1>Data-gedreven <span className="italic">inzichten</span>.</h1>
+          <h1>Data-gedreven <span style={{ color: 'var(--accent)' }}>inzichten</span>.</h1>
           <p className="lead">
             Naast webontwikkeling focus ik me op kwantitatief onderzoek naar de financiële markten. 
             Hieronder vind je een selectie van mijn studies en systemen.
@@ -78,7 +78,9 @@ export const Labs = memo(() => {
                     </div>
                   </div>
                   
-                  <h2>{study.title}</h2>
+                  <h2>
+                    {study.title.split(' ').slice(0, -1).join(' ')} <span style={{ color: 'var(--accent)' }}>{study.title.split(' ').slice(-1)}</span>
+                  </h2>
                   <p className="project-intro">{study.description}</p>
                   
                   <div className="case-details">

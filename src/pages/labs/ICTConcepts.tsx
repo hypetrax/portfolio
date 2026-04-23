@@ -83,10 +83,10 @@ export const ICTConcepts = memo(() => {
     datasets: [{
       label: 'Price Action',
       data: [100, 102, 105, 95, 110, 115],
-      borderColor: '#1e293b',
-      backgroundColor: 'rgba(30, 41, 59, 0.1)',
+      borderColor: '#3b82f6',
+      backgroundColor: 'rgba(59, 130, 246, 0.1)',
       borderWidth: 3,
-      pointBackgroundColor: ['#94a3b8', '#94a3b8', '#ef4444', '#ef4444', '#22c55e', '#22c55e'],
+      pointBackgroundColor: ['#94a3b8', '#94a3b8', '#ef4444', '#ef4444', '#10b981', '#10b981'],
       pointRadius: 6,
       tension: 0.4,
       fill: true
@@ -102,13 +102,28 @@ export const ICTConcepts = memo(() => {
     }]
   };
 
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      y: { display: false, min: 90, max: 120 },
+      x: { 
+        grid: { display: false },
+        ticks: { color: '#94a3b8' }
+      }
+    }
+  };
+
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#f8fafc', color: '#1e293b', minHeight: '100vh' }}>
-      <nav style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(4px)', borderBottom: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+    <div style={{ fontFamily: 'var(--font-sans)', backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', minHeight: '100vh' }}>
+      <nav style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(2, 6, 23, 0.8)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border)' }}>
         <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 16px', height: '64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ fontSize: '24px', marginRight: '8px' }}>📈</span>
-            <span style={{ fontWeight: 700, fontSize: '20px', letterSpacing: '-0.025em', color: '#0f172a' }}>ICT Mastery</span>
+            <span style={{ fontWeight: 700, fontSize: '20px', letterSpacing: '-0.025em', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>ICT Mastery</span>
           </div>
           <div style={{ display: 'none' }} className="md:flex space-x-8 items-center">
             {['overview', 'paradigm', 'concepts', 'analysis', 'faq'].map(section => (
@@ -116,12 +131,12 @@ export const ICTConcepts = memo(() => {
                 key={section}
                 href={`#${section}`} 
                 style={{ 
-                  color: activeNav === section ? '#2563eb' : '#475569', 
-                  borderBottom: activeNav === section ? '2px solid #2563eb' : '2px solid transparent',
-                  padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'all 0.3s'
+                  color: activeNav === section ? 'var(--accent)' : 'var(--text-muted)', 
+                  borderBottom: activeNav === section ? '2px solid var(--accent)' : '2px solid transparent',
+                  padding: '8px 0', fontSize: '13px', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s', textTransform: 'uppercase', letterSpacing: '0.05em'
                 }}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {section}
               </a>
             ))}
           </div>
@@ -129,161 +144,171 @@ export const ICTConcepts = memo(() => {
       </nav>
 
       <main style={{ maxWidth: '1152px', margin: '0 auto', padding: '32px 16px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
-        <section id="overview" style={{ paddingTop: '32px', paddingBottom: '48px', borderBottom: '1px solid #e2e8f0' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center' }}>
+        <section id="overview" style={{ paddingTop: '64px', paddingBottom: '64px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '64px', alignItems: 'center' }}>
             <div>
-              <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', backgroundColor: '#dbeafe', color: '#1e40af', fontSize: '12px', fontWeight: 600, letterSpacing: '0.025em', textTransform: 'uppercase', marginBottom: '16px' }}>
+              <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '4px', backgroundColor: 'var(--accent-glow)', color: 'var(--accent)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '24px', border: '1px solid var(--accent-glow)' }}>
                 Trading Strategy Report
               </div>
-              <h1 style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: '24px' }}>
-                Demystifying the <span style={{ color: '#2563eb' }}>ICT</span> Trading Strategy
+              <h1 style={{ fontSize: 'clamp(40px, 6vw, 64px)', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.1, marginBottom: '24px', fontFamily: 'var(--font-serif)' }}>
+                Demystifying the <span style={{ color: 'var(--accent)' }}>ICT</span> Paradigm
               </h1>
-              <p style={{ fontSize: '18px', color: '#475569', marginBottom: '24px', lineHeight: 1.6 }}>
-                The Inner Circle Trader (ICT) methodology, developed by Michael J. Huddleston, is a comprehensive approach to analyzing financial market structure. 
-                It sheds light on the actions of institutional traders, equipping you to sidestep the common pitfalls of retail trading.
+              <p style={{ fontSize: '18px', color: 'var(--text-muted)', marginBottom: '32px', lineHeight: 1.6 }}>
+                The Inner Circle Trader (ICT) methodology is a comprehensive framework for institutional order flow analysis. It equips traders to identify the footprints of large-scale market participants.
               </p>
               <div style={{ display: 'flex', gap: '16px' }}>
-                <a href="#concepts" style={{ backgroundColor: '#2563eb', color: 'white', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }}>Explore Concepts</a>
-                <a href="#faq" style={{ backgroundColor: 'white', color: '#334155', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', border: '1px solid #d1d5db', textDecoration: 'none', transition: 'background 0.2s' }}>Read FAQs</a>
+                <a href="#concepts" style={{ backgroundColor: 'var(--accent)', color: 'white', fontWeight: 600, padding: '14px 28px', borderRadius: '6px', textDecoration: 'none', transition: 'all 0.2s', fontSize: '14px', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)' }}>Explore Concepts</a>
+                <a href="#faq" style={{ backgroundColor: 'transparent', color: 'var(--text-main)', fontWeight: 600, padding: '14px 28px', borderRadius: '6px', border: '1px solid var(--border)', textDecoration: 'none', transition: 'all 0.2s', fontSize: '14px' }}>Read FAQs</a>
               </div>
             </div>
-            <div style={{ backgroundColor: 'white', padding: '32px', borderRadius: '16px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)', border: '1px solid #f1f5f9', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, right: 0, marginRight: '-32px', marginTop: '-32px', fontSize: '120px', opacity: 0.05 }}>🏛️</div>
-              <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px', color: '#1e293b' }}>Core Objective</h3>
-              <p style={{ color: '#475569', marginBottom: '24px' }}>
+            <div style={{ backgroundColor: 'var(--surface)', padding: '40px', borderRadius: '16px', border: '1px solid var(--border)', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, marginRight: '-32px', marginTop: '-32px', fontSize: '120px', opacity: 0.03 }}>🏛️</div>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>Core Objective</h3>
+              <p style={{ color: 'var(--text-muted)', marginBottom: '32px', lineHeight: 1.6 }}>
                 "In the financial market, large players and market makers often accumulate large order blocks before making significant price moves. ICT aims to identify these footprints."
               </p>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: '#64748b', display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: '#10b981', marginRight: '8px' }}>✔</span> Emulates Smart Money Behavior
+              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-main)', display: 'flex', alignItems: 'center' }}>
+                <span style={{ color: 'var(--success)', marginRight: '10px' }}>✔</span> Institutional Order Flow Tracking
               </div>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: '#64748b', display: 'flex', alignItems: 'center', marginTop: '8px' }}>
-                <span style={{ color: '#10b981', marginRight: '8px' }}>✔</span> Sidesteps Retail Traps
+              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-main)', display: 'flex', alignItems: 'center', marginTop: '12px' }}>
+                <span style={{ color: 'var(--success)', marginRight: '10px' }}>✔</span> Retail Liquidity Trap Mitigation
               </div>
             </div>
           </div>
         </section>
 
         <section id="paradigm">
-          <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 40px' }}>
-            <h2 style={{ fontSize: '30px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>The Smart Money Paradigm</h2>
-            <p style={{ color: '#475569', fontSize: '18px' }}>
-              How "Smart Money" manipulates price to tap into retail liquidity (stop losses) before moving the market in their intended direction.
+          <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 48px' }}>
+            <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>The <span style={{ color: 'var(--accent)' }}>Smart Money</span> Paradigm</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '18px' }}>
+              Price manipulation to tap into retail liquidity before institutional expansion.
             </p>
           </div>
-          <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+          <div style={{ backgroundColor: 'var(--surface)', padding: '32px', borderRadius: '16px', border: '1px solid var(--border)' }}>
             <div style={{ height: '350px', position: 'relative' }}>
               <Line 
                 data={paradigmData}
                 options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
+                  ...chartOptions,
                   plugins: {
-                    legend: { display: false },
+                    ...chartOptions.plugins,
                     tooltip: {
+                      backgroundColor: '#1e293b',
+                      padding: 12,
+                      titleFont: { size: 14, weight: 'bold' },
+                      bodyFont: { size: 13 },
                       callbacks: {
                         label: (context) => {
                           const labels = [
-                            'Asian Session',
-                            'London Open',
-                            'Retail induced to buy (Breakout)',
-                            'SM drives price down to hit stops',
-                            'SM accumulates orders & drives up',
-                            'Expansion'
+                            'Asian Session: Range bound',
+                            'London Open: Initial push',
+                            'Judas Swing: Fake move',
+                            'Stop Hunt: Hit retail stops',
+                            'Institutional Buy/Sell',
+                            'Expansion: True direction'
                           ];
                           return labels[context.dataIndex] || '';
                         }
                       }
                     }
-                  },
-                  scales: { y: { display: false, min: 90, max: 120 }, x: { grid: { display: false } } }
+                  }
                 }}
               />
             </div>
-            <div style={{ marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', textAlign: 'center', fontSize: '14px' }}>
-              <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '8px' }}>
-                <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>👤</span>
-                <strong style={{ display: 'block', color: '#1e293b' }}>1. Retail Engineering</strong>
-                <span style={{ color: '#64748b' }}>Price creates obvious support/resistance.</span>
+            <div style={{ marginTop: '32px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', textAlign: 'center', fontSize: '14px' }}>
+              <div style={{ padding: '20px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                <span style={{ fontSize: '20px', display: 'block', marginBottom: '8px' }}>👤</span>
+                <strong style={{ display: 'block', color: 'var(--text-main)', marginBottom: '4px' }}>1. Retail Engineering</strong>
+                <span style={{ color: 'var(--text-muted)' }}>Obvious support/resistance levels.</span>
               </div>
-              <div style={{ padding: '16px', backgroundColor: '#fef2f2', borderRadius: '8px' }}>
-                <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>🚨</span>
-                <strong style={{ display: 'block', color: '#991b1b' }}>2. Liquidity Sweep</strong>
-                <span style={{ color: '#b91c1c' }}>SM drives price through support to hit stops.</span>
+              <div style={{ padding: '20px', backgroundColor: 'rgba(239, 68, 68, 0.05)', borderRadius: '12px', border: '1px solid rgba(239, 68, 68, 0.1)' }}>
+                <span style={{ fontSize: '20px', display: 'block', marginBottom: '8px' }}>🚨</span>
+                <strong style={{ display: 'block', color: '#ef4444', marginBottom: '4px' }}>2. Liquidity Sweep</strong>
+                <span style={{ color: 'rgba(239, 68, 68, 0.8)' }}>Triggering resting retail stops.</span>
               </div>
-              <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px' }}>
-                <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>🚀</span>
-                <strong style={{ display: 'block', color: '#1e40af' }}>3. Institutional Move</strong>
-                <span style={{ color: '#1d4ed8' }}>True directional move begins.</span>
+              <div style={{ padding: '20px', backgroundColor: 'rgba(16, 185, 129, 0.05)', borderRadius: '12px', border: '1px solid rgba(16, 185, 129, 0.1)' }}>
+                <span style={{ fontSize: '20px', display: 'block', marginBottom: '8px' }}>🚀</span>
+                <strong style={{ display: 'block', color: '#10b981', marginBottom: '4px' }}>3. Institutional Move</strong>
+                <span style={{ color: 'rgba(16, 185, 129, 0.8)' }}>True directional expansion begins.</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="concepts" style={{ backgroundColor: '#0f172a', color: 'white', borderRadius: '24px', padding: '48px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
-          <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 40px' }}>
-            <h2 style={{ fontSize: '30px', fontWeight: 700, color: 'white', marginBottom: '16px' }}>Key ICT Concepts</h2>
-            <p style={{ color: '#94a3b8', fontSize: '18px' }}>Click the concepts below to explore the framework.</p>
+        <section id="concepts" style={{ backgroundColor: 'var(--surface)', color: 'var(--text-main)', borderRadius: '24px', padding: '48px', border: '1px solid var(--border)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+          <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 48px' }}>
+            <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>Key <span style={{ color: 'var(--accent)' }}>Framework</span> Components</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '18px' }}>Select a concept to explore the technical logic.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {concepts.map(c => (
                 <button 
                   key={c.id}
                   onClick={() => setActiveConcept(c)}
                   style={{ 
-                    textAlign: 'left', padding: '16px 24px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
-                    border: '1px solid #334155',
-                    backgroundColor: activeConcept.id === c.id ? '#2563eb' : '#1e293b',
-                    color: activeConcept.id === c.id ? 'white' : '#cbd5e1'
+                    textAlign: 'left', padding: '18px 24px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
+                    border: '1px solid var(--border)',
+                    backgroundColor: activeConcept.id === c.id ? 'var(--accent)' : 'var(--bg-color)',
+                    color: activeConcept.id === c.id ? 'white' : 'var(--text-muted)',
+                    fontSize: '15px'
                   }}
                 >
-                  <span style={{ marginRight: '8px' }}>{c.icon}</span> {c.title}
+                  <span style={{ marginRight: '12px', fontSize: '18px' }}>{c.icon}</span> {c.title}
                 </button>
               ))}
             </div>
-            <div style={{ backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid rgba(51, 65, 85, 0.5)', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '300px' }}>
-              <div style={{ fontSize: '48px', marginBottom: '24px', color: '#60a5fa' }}>{activeConcept.icon}</div>
-              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px' }}>{activeConcept.title}</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '18px', lineHeight: 1.6, marginBottom: '24px' }}>{activeConcept.desc}</p>
-              <div style={{ paddingTop: '24px', borderTop: '1px solid #334155' }}>
-                <p style={{ color: '#93c5fd', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 8px' }}>Application</p>
-                <p style={{ color: 'white', margin: 0 }}>{activeConcept.action}</p>
+            <div style={{ backgroundColor: 'var(--bg-color)', padding: '40px', borderRadius: '16px', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '320px' }}>
+              <div style={{ fontSize: '48px', marginBottom: '24px', color: 'var(--accent)' }}>{activeConcept.icon}</div>
+              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '20px', fontFamily: 'var(--font-serif)' }}>{activeConcept.title}</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '17px', lineHeight: 1.6, marginBottom: '28px' }}>{activeConcept.desc}</p>
+              <div style={{ paddingTop: '28px', borderTop: '1px solid var(--border)' }}>
+                <p style={{ color: 'var(--accent)', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 10px', fontFamily: 'var(--font-mono)' }}>Tactical Application</p>
+                <p style={{ color: 'var(--text-main)', margin: 0, fontSize: '15px' }}>{activeConcept.action}</p>
               </div>
             </div>
           </div>
         </section>
 
         <section id="analysis">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '64px' }}>
             <div>
-              <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px' }}>Anatomy of an ICT Setup</h2>
-              <p style={{ color: '#475569', marginBottom: '32px' }}>A confluence of time, price, and structural elements.</p>
-              <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '16px', border: '1px solid #e2e8f0', height: '300px' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '20px', fontFamily: 'var(--font-serif)' }}>Setup Anatomy</h2>
+              <p style={{ color: 'var(--text-muted)', marginBottom: '32px' }}>A confluence of time, price, and institutional footprints.</p>
+              <div style={{ backgroundColor: 'var(--surface)', padding: '32px', borderRadius: '16px', border: '1px solid var(--border)', height: '320px' }}>
                 <Doughnut 
                   data={componentsData}
                   options={{
                     responsive: true,
                     maintainAspectRatio: false,
-                    cutout: '70%',
+                    cutout: '75%',
                     plugins: {
-                      legend: { position: 'right', labels: { padding: 20, usePointStyle: true, font: { family: 'Inter', size: 13 } } }
+                      legend: { 
+                        position: 'right', 
+                        labels: { 
+                          padding: 20, 
+                          usePointStyle: true, 
+                          color: '#94a3b8',
+                          font: { family: 'var(--font-sans)', size: 12, weight: 500 } 
+                        } 
+                      }
                     }
                   }}
                 />
               </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '0' }}>Benefits & Limitations</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '12px', fontFamily: 'var(--font-serif)' }}>Risk & Reward Profile</h2>
               {[
-                { i: '📈', c: 'green', t: 'Follows Institutional Money', d: 'Logical framework based on how large players actually move prices.' },
-                { i: '🧠', c: 'orange', t: 'Steep Learning Curve', d: 'Requires significant study and backtesting to apply correctly.' },
-                { i: '🎯', c: 'green', t: 'High Risk-to-Reward', d: 'Precision entries allow for tight stops and massive potential upside.' }
+                { i: '📈', c: 'blue', t: 'Institutional Alignment', d: 'Logical framework based on actual massive volume injections.' },
+                { i: '🧠', c: 'orange', t: 'Conceptual Density', d: 'Requires significant study to master algorithmic behavior.' },
+                { i: '🎯', c: 'green', t: 'Precision Execution', d: 'High risk-to-reward via tight stops in FVG entry zones.' }
               ].map((item, idx) => (
-                <div key={idx} style={{ display: 'flex', gap: '16px', padding: '20px', backgroundColor: item.c === 'green' ? '#f0fdf4' : '#fff7ed', border: `1px solid ${item.c === 'green' ? '#dcfce7' : '#ffedd5'}`, borderRadius: '16px' }}>
+                <div key={idx} style={{ display: 'flex', gap: '20px', padding: '24px', backgroundColor: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '16px' }}>
                   <div style={{ fontSize: '24px' }}>{item.i}</div>
                   <div>
-                    <h4 style={{ fontWeight: 700, marginBottom: '4px', color: item.c === 'green' ? '#14532d' : '#7c2d12' }}>{item.t}</h4>
-                    <p style={{ fontSize: '14px', color: item.c === 'green' ? '#166534' : '#9a3412', margin: 0 }}>{item.d}</p>
+                    <h4 style={{ fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)', fontSize: '16px' }}>{item.t}</h4>
+                    <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{item.d}</p>
                   </div>
                 </div>
               ))}
@@ -291,24 +316,24 @@ export const ICTConcepts = memo(() => {
           </div>
         </section>
 
-        <section id="faq" style={{ maxWidth: '896px', margin: '0 auto', paddingBottom: '80px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <section id="faq" style={{ maxWidth: '896px', margin: '0 auto', paddingBottom: '100px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <span style={{ fontSize: '32px', display: 'block', marginBottom: '16px' }}>❓</span>
-            <h2 style={{ fontSize: '30px', fontWeight: 700 }}>Frequently Asked Questions</h2>
-            <p style={{ color: '#475569', marginTop: '8px' }}>Direct answers from the source report.</p>
+            <h2 style={{ fontSize: '32px', fontWeight: 700, fontFamily: 'var(--font-serif)' }}>Strategic <span style={{ color: 'var(--accent)' }}>FAQ</span></h2>
+            <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Direct insights into the methodology application.</p>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {faqs.map((faq, i) => (
-              <div key={i} style={{ backgroundColor: 'white', border: '1px solid #e2e8f0', borderRadius: '12px', overflow: 'hidden' }}>
+              <div key={i} style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
                 <button 
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  style={{ width: '100%', textAlign: 'left', padding: '20px 24px', fontWeight: 700, color: '#1e293b', border: 'none', background: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                  style={{ width: '100%', textAlign: 'left', padding: '24px', fontWeight: 700, color: 'var(--text-main)', border: 'none', background: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                 >
-                  <span style={{ fontSize: '18px' }}>{faq.q}</span>
-                  <span style={{ fontSize: '24px', color: '#94a3b8', transition: 'transform 0.3s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
+                  <span style={{ fontSize: '17px' }}>{faq.q}</span>
+                  <span style={{ fontSize: '20px', color: 'var(--accent)', transition: 'transform 0.3s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
                 </button>
-                <div style={{ maxHeight: openFaq === i ? '500px' : '0', overflow: 'hidden', transition: 'max-height 0.3s ease-out', backgroundColor: '#f8fafc', borderTop: openFaq === i ? '1px solid #f1f5f9' : 'none' }}>
-                  <p style={{ padding: '20px 24px', color: '#475569', lineHeight: 1.6, margin: 0 }}>{faq.a}</p>
+                <div style={{ maxHeight: openFaq === i ? '500px' : '0', overflow: 'hidden', transition: 'max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1)', backgroundColor: 'rgba(255,255,255,0.01)' }}>
+                  <p style={{ padding: '0 24px 24px', color: 'var(--text-muted)', lineHeight: 1.6, margin: 0, fontSize: '15px' }}>{faq.a}</p>
                 </div>
               </div>
             ))}
@@ -316,10 +341,11 @@ export const ICTConcepts = memo(() => {
         </section>
       </main>
 
-      <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '32px 0', textAlign: 'center', borderTop: '1px solid #1e293b' }}>
-        <p style={{ margin: 0 }}>Interactive Analysis based on "ICT Trading Strategy Report"</p>
-        <p style={{ fontSize: '14px', marginTop: '8px' }}>Educational Purposes Only. Not Financial Advice.</p>
+      <footer style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-muted)', padding: '48px 0', textAlign: 'center', borderTop: '1px solid var(--border)', fontFamily: 'var(--font-mono)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+        <p style={{ margin: 0 }}>Institutional Intelligence & Algorithmic Analysis Lab</p>
+        <p style={{ marginTop: '10px', opacity: 0.6 }}>Educational Context Only • No Financial Guarantee</p>
       </footer>
     </div>
   );
 });
+

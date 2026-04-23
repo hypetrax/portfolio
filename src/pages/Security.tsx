@@ -8,7 +8,7 @@ export const Security = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Security & Compliance</p>
-          <h1>Security die de business <span className="italic">versterkt</span>.</h1>
+          <h1>Security die de business <span style={{ color: 'var(--accent)' }}>versterkt</span>.</h1>
           <p className="lead">
             In mijn rol als Security Officer richt ik me op het bouwen van een robuust en werkbaar security-fundament. 
             Geen theoretische exercities, maar meetbare resultaten die de continuïteit en het vertrouwen van de organisatie waarborgen.
@@ -30,7 +30,7 @@ export const Security = memo(() => {
                   </div>
                 </div>
                 
-                <h2>Cyber Resilience Act (CRA)</h2>
+                <h2>Cyber Resilience Act <span style={{ color: 'var(--accent)' }}>(CRA)</span></h2>
                 <p className="project-intro">Hoe we onze productontwikkeling voorbereiden op de nieuwe EU-wetgeving voor digitale producten.</p>
                 
                 <div className="case-details">
@@ -80,7 +80,7 @@ export const Security = memo(() => {
                   </div>
                 </div>
                 
-                <h2>ISO 27001 Implementatie</h2>
+                <h2><span style={{ color: 'var(--accent)' }}>ISO 27001</span> Implementatie</h2>
                 <p className="project-intro">De realisatie van een ISMS dat niet alleen voldoet aan de norm, maar ook de operationele efficiëntie verhoogt.</p>
                 
                 <div className="case-details">
@@ -120,7 +120,7 @@ export const Security = memo(() => {
 
       <section className="cta-section">
         <div className="container">
-          <h2>Verder praten?</h2>
+          <h2>Verder <span style={{ color: 'var(--accent)' }}>praten</span>?</h2>
           <p>Vragen over de details van deze trajecten of zin om ervaringen uit te wisselen over werkbare security? Je vindt me op LinkedIn.</p>
           <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
         </div>
