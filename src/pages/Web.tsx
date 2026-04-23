@@ -121,8 +121,8 @@ export const Web = memo(() => {
 
       <section className="cta-section">
         <div className="container">
-          <h2>Klaar voor een modernisering?</h2>
-          <p>Laten we bespreken hoe we jouw website naar het volgende niveau kunnen tillen. Contact opnemen kan uitsluitend via LinkedIn.</p>
+          <h2>Website vernieuwen?</h2>
+          <p>Benieuwd naar de techniek achter deze projecten of hulp nodig bij het opschonen van een bestaande site? Contact via LinkedIn.</p>
           <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
         </div>
       </section>

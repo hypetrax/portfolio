@@ -120,8 +120,8 @@ export const Security = memo(() => {
 
       <section className="cta-section">
         <div className="container">
-          <h2>Professionele dialoog?</h2>
-          <p>Ik wissel graag kennis uit over security-strategie, compliance-vraagstukken of de toekomst van cybersecurity. Connecten kan via LinkedIn.</p>
+          <h2>Verder praten?</h2>
+          <p>Vragen over de details van deze trajecten of zin om ervaringen uit te wisselen over werkbare security? Je vindt me op LinkedIn.</p>
           <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
         </div>
       </section>
