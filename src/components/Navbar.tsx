@@ -10,8 +10,8 @@ export const Navbar = () => {
       <div className="container">
         <Link to="/" className="nav-logo">Bart Pullen</Link>
         <div className="nav-links">
-          <Link to="/web" className={isActive('/web')}>Web</Link>
           <Link to="/security" className={isActive('/security')}>Security</Link>
+          <Link to="/web" className={isActive('/web')}>Web</Link>
           <Link to="/labs" className={isActive('/labs')}>Labs</Link>
         </div>
       </div>

@@ -20,16 +20,16 @@ export const Home = memo(() => {
     <>
       <SEO 
         title="Bart Pullen — Portfolio" 
-        description="Het werk van Bart Pullen: van webdesign en development tot ISO 27001 security en kwantitatieve data-analyse."
+        description="Het werk van Bart Pullen: van ISO 27001 security en compliance tot webdesign en kwantitatieve data-analyse."
         canonical="/"
         schema={personSchema}
       />
       <header className="hero-header">
         <div className="container">
           <p className="overline">Bart Pullen — Portfolio</p>
-          <h1>Ik bouw <span className="italic">websites</span>, regel <span className="italic">security</span> en analyseer <span className="italic">data</span>.</h1>
+          <h1>Ik regel <span className="italic">security</span>, bouw <span className="italic">websites</span> en analyseer <span className="italic">data</span>.</h1>
           <p className="lead">
-            Dit is mijn persoonlijke plek waar ik projecten en onderzoeken deel. Geen theoretische verhalen, maar tastbaar werk: van het moderniseren van verouderde sites tot diepgaande security-analyses en trading modellen.
+            Dit is mijn persoonlijke plek waar ik projecten en onderzoeken deel. Geen theoretische verhalen, maar tastbaar werk: van diepgaande security-analyses tot het moderniseren van verouderde sites en trading modellen.
           </p>
         </div>
       </header>
@@ -40,29 +40,7 @@ export const Home = memo(() => {
             <article className="case-study-grid">
               <div className="case-study-content">
                 <header>
-                  <h3>01 — Design & Development</h3>
-                  <h2>Websites & Code.</h2>
-                </header>
-                <p className="project-intro">
-                  Ik help bedrijven met het opschonen van hun digitale aanwezigheid. Geen zware thema's, maar snelle, schone code en een design dat werkt op elk scherm.
-                </p>
-                <div className="project-actions">
-                  <Link to="/web" className="btn-primary" aria-label="Bekijk webdesign portfolio">Bekijk mijn werk</Link>
-                </div>
-              </div>
-              <div className="case-study-visual" style={{ background: '#f5f5f5', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
-                <span style={{ fontSize: '80px' }} role="img" aria-label="Webdesign icoon">🌐</span>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section className="expertise-section">
-          <div className="container">
-            <article className="case-study-grid" style={{ direction: 'rtl' }}>
-              <div className="case-study-content" style={{ direction: 'ltr' }}>
-                <header>
-                  <h3>02 — Security & Compliance</h3>
+                  <h3>01 — Security & Compliance</h3>
                   <h2>Security Officer.</h2>
                 </header>
                 <p className="project-intro">
@@ -74,6 +52,28 @@ export const Home = memo(() => {
               </div>
               <div className="case-study-visual" style={{ background: '#f5f5f4', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
                 <span style={{ fontSize: '80px' }} role="img" aria-label="Security icoon">🛡️</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="expertise-section">
+          <div className="container">
+            <article className="case-study-grid" style={{ direction: 'rtl' }}>
+              <div className="case-study-content" style={{ direction: 'ltr' }}>
+                <header>
+                  <h3>02 — Design & Development</h3>
+                  <h2>Websites & Code.</h2>
+                </header>
+                <p className="project-intro">
+                  Ik help bedrijven met het opschonen van hun digitale aanwezigheid. Geen zware thema's, maar snelle, schone code en een design dat werkt op elk scherm.
+                </p>
+                <div className="project-actions">
+                  <Link to="/web" className="btn-primary" aria-label="Bekijk webdesign portfolio">Bekijk mijn werk</Link>
+                </div>
+              </div>
+              <div className="case-study-visual" style={{ background: '#f5f5f5', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
+                <span style={{ fontSize: '80px' }} role="img" aria-label="Webdesign icoon">🌐</span>
               </div>
             </article>
           </div>
