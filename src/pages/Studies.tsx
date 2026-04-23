@@ -47,6 +47,15 @@ const studies: Study[] = [
     results: ["Interactieve concept glossary", "Visualisatie van retail vs smart money", "Diepgaande FAQ over marktmechanismen"],
     url: "/ictconcepts.html",
     tags: ["Institutional Trading", "Order Flow", "Market Theory"]
+  },
+  {
+    title: "Cyber Resilience Act (CRA) Impact Analyse",
+    description: "Een diepgaande analyse van de Europese Cyber Resilience Act en de gevolgen hiervan voor hardware- en softwarefabrikanten.",
+    challenge: "Het navigeren door complexe EU-wetgeving en het begrijpen van de technische compliance-eisen voor digitale producten.",
+    solution: "Een modulaire analyse die fabrikanten helpt hun productcategorie te bepalen en de bijbehorende beveiligingsverplichtingen in kaart te brengen.",
+    results: ["Interactieve product-checker", "Visuele tijdlijn van handhaving", "Overzicht van compliance-risico's en boetes"],
+    url: "/CRA.html",
+    tags: ["Cybersecurity", "EU Legislation", "Compliance"]
   }
 ];
 

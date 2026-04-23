@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRA Impact Analyse - bartpullen.nl</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Bart Pullen Brand (Bright Blue accents, Slate darks, and clean White backgrounds) -->
+    <!-- Application Structure Plan: Een lineaire, modulaire opbouw die past bij een zakelijke blog of kennisbank. De flow is: Directe waarde (Wat is het?) -> Relevantie check (Geldt dit voor mij?) -> Diepgang (Verplichtingen) -> Actie (Tijdlijn). De UI is minimalistisch met scherpe randen en subtiele schaduwen. -->
+    <!-- Visualization & Content Choices:
+    1. Trends -> Area Chart (Chart.js) -> Gebruik van Bart Pullen blauw om de urgentie van cybersecurity te tonen.
+    2. Product Checker -> Interactieve Tegels -> Clean design met hover-effecten voor directe feedback.
+    3. Verplichtingen -> Verticale Stappenplan -> Focus op leesbaarheid en hiërarchie.
+    4. Boetes -> Donut Chart -> Om de verhouding van financiële risico's visueel te maken. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; color: #0f172a; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .step-active { border-left-color: #2563eb; background-color: #f8fafc; }
+        .transition-all { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-scrolled { box-shadow: 0 1px 3px rgba(0,0,0,0.1); background-color: rgba(255, 255, 255, 0.95); }
+    </style>
+</head>
+<body class="selection:bg-slate-100 selection:text-brand-700">
+
+    <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all py-4">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white font-bold text-lg">B</div>
+                <span class="font-bold text-xl tracking-tight text-slate-900">bartpullen.nl <span class="font-light text-brand-600">/ CRA</span></span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                <a href="#intro" class="hover:text-brand-600">Introductie</a>
+                <a href="#check" class="hover:text-brand-600">Check</a>
+                <a href="#compliance" class="hover:text-brand-600">Eisen</a>
+                <a href="#future" class="hover:text-brand-600">Toekomst</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="intro" class="pt-32 pb-20 px-6 bg-slate-50">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider mb-6">Expert Analyse</div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">De Cyber Resilience Act: <br><span class="text-brand-600">Impact voor Fabrikanten</span></h1>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+                    De Europese Unie zet een nieuwe standaard voor cybersecurity. Ontdek hoe deze wetgeving de manier waarop we digitale producten bouwen en onderhouden voorgoed verandert.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#check" class="bg-brand-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-brand-700 transition-all shadow-lg shadow-brand-200">Start Product Check</a>
+                    <a href="#compliance" class="bg-white border border-slate-200 text-slate-700 px-8 py-3 rounded-md font-semibold hover:bg-slate-50 transition-all">Bekijk Verplichtingen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Context & Data Section -->
+        <section class="py-20 px-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Waarom deze wetgeving nu komt</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        De economische schade door onveilige software en hardware is niet langer houdbaar. De CRA dwingt fabrikanten om verantwoordelijkheid te nemen voor de gehele levenscyclus van hun product.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                            <span class="text-2xl mr-4">📉</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Marktfalen</h4>
+                                <p class="text-sm text-slate-500">Beveiliging wordt vaak opgeofferd voor een snellere 'time-to-market'.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-slate-50 rounded-lg">
+                            <span class="text-2xl mr-4">⚖️</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Informatie-asymmetrie</h4>
+                                <p class="text-sm text-slate-500">Gebruikers kunnen de veiligheid van een product niet eenvoudig beoordelen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-100 shadow-xl rounded-2xl p-6">
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    <p class="text-center text-xs text-slate-400 mt-4">Groei in gerapporteerde kwetsbaarheden (CVE's) per jaar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Scope Checker -->
+        <section id="check" class="py-20 px-6 bg-slate-900 text-white overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-600 rounded-full filter blur-[120px] opacity-20 translate-x-1/2 -translate-y-1/2"></div>
+            
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Geldt de CRA voor jouw product?</h2>
+                    <p class="text-slate-400 max-w-xl">Bijna elk product met 'digitale elementen' valt onder de wet. Klik op een categorie voor meer details.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="product-grid">
+                    <!-- Dynamic Content via JS -->
+                </div>
+
+                <div id="check-result" class="mt-10 p-6 bg-brand-900/50 border border-brand-700/50 rounded-xl hidden animate-in fade-in slide-in-from-bottom-4">
+                    <div class="flex items-center space-x-4">
+                        <div id="result-icon" class="text-3xl"></div>
+                        <div>
+                            <h3 id="result-title" class="text-xl font-bold"></h3>
+                            <p id="result-text" class="text-slate-300 mt-1"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance Roadmap -->
+        <section id="compliance" class="py-20 px-6 max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">De 4 Fasen van Compliance</h2>
+                <p class="text-slate-500 mt-2">Een stappenplan voor fabrikanten om markttoegang te behouden.</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="group relative pl-8 pb-10 border-l-2 border-slate-200 last:pb-0">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-brand-600 group-hover:bg-brand-600 transition-all"></div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-xl hover:shadow-md transition-all">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">1. Security by Design & Default</h3>
+                        <p class="text-slate-600 text-sm">Beveiliging is geen add-on meer. Het moet vanaf de eerste regel code en het eerste hardware-ontwerp centraal staan. Denk aan automatische updates en standaard sterke wachtwoorden.</p>
+                    </div>
+                </div>
+
+                <div class="group relative pl-8 pb-10 border-l-2 border-slate-200 last:pb-0">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-brand-600 group-hover:bg-brand-600 transition-all"></div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-xl hover:shadow-md transition-all">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">2. Kwetsbaarheidsbeheer</h3>
+                        <p class="text-slate-600 text-sm">Fabrikanten zijn verplicht om een proces in te richten voor het rapporteren en patchen van beveiligingslekken. Een SBOM (Software Bill of Materials) wordt een standaard vereiste.</p>
+                    </div>
+                </div>
+
+                <div class="group relative pl-8 pb-10 border-l-2 border-slate-200 last:pb-0">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-brand-600 group-hover:bg-brand-600 transition-all"></div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-xl hover:shadow-md transition-all">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">3. Transparantie naar de Gebruiker</h3>
+                        <p class="text-slate-600 text-sm">Duidelijke communicatie over de ondersteuningsperiode en beveiligingsinstructies. De eindgebruiker moet weten wat hij koopt en hoe lang hij veilig blijft.</p>
+                    </div>
+                </div>
+
+                <div class="group relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-brand-600 group-hover:bg-brand-600 transition-all"></div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-xl hover:shadow-md transition-all">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">4. Conformiteitsbeoordeling & CE</h3>
+                        <p class="text-slate-600 text-sm">Voordat het product de markt op gaat, moet er een formele check plaatsvinden. Voor kritieke producten is dit een verplichte externe audit (Notified Body).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk & Timeline -->
+        <section id="future" class="py-20 px-6 bg-slate-50">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6">Financiële Risico's</h3>
+                        <div class="chart-container" style="height: 250px;">
+                            <canvas id="finesPieChart"></canvas>
+                        </div>
+                        <ul class="mt-8 space-y-3">
+                            <li class="flex justify-between text-sm">
+                                <span class="text-slate-500">Niet-naleving essentiële eisen</span>
+                                <span class="font-bold text-brand-600">€15M of 2.5% omzet</span>
+                            </li>
+                            <li class="flex justify-between text-sm">
+                                <span class="text-slate-500">Andere verplichtingen</span>
+                                <span class="font-bold text-brand-600">€10M of 2.0% omzet</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6">De Tijdlijn</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-600 shrink-0">24</div>
+                                <div>
+                                    <h4 class="font-bold">Eind 2024</h4>
+                                    <p class="text-sm text-slate-500">Definitieve publicatie en inwerkingtreding.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center font-bold text-brand-600 shrink-0">26</div>
+                                <div>
+                                    <h4 class="font-bold">Medio 2026</h4>
+                                    <p class="text-sm text-slate-500">Meldplicht voor incidenten wordt actief.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center font-bold text-white shrink-0">27</div>
+                                <div>
+                                    <h4 class="font-bold">Eind 2027</h4>
+                                    <p class="text-sm text-slate-500">Volledige handhaving van alle productvereisten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Call to Action -->
+        <footer class="py-12 bg-white border-t border-slate-100 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-xl font-bold text-slate-900 mb-4">Hulp nodig bij jouw CRA-strategie?</h2>
+                <p class="text-slate-600 mb-8">Neem contact op voor een diepgaande analyse van jouw productportfolio.</p>
+                <a href="mailto:info@bartpullen.nl" class="inline-block text-brand-600 font-bold hover:underline">info@bartpullen.nl</a>
+                <div class="mt-12 pt-8 border-t border-slate-50 text-xs text-slate-400">
+                    © 2024 Bart Pullen - Cybersecurity Expertise & Strategie
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- UI Interactions ---
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    nav.classList.add('nav-scrolled', 'py-2');
+                    nav.classList.remove('py-4');
+                } else {
+                    nav.classList.remove('nav-scrolled', 'py-2');
+                    nav.classList.add('py-4');
+                }
+            });
+
+            // --- Scope Checker Data ---
+            const products = [
+                { id: 'iot', name: 'Smart Home & IoT', icon: '🏠', applies: true, info: 'Bijna alle verbonden apparaten vallen onder de basisvereisten.' },
+                { id: 'software', name: 'Software & Apps', icon: '💻', applies: true, info: 'Zowel embedded software als losse applicaties moeten voldoen.' },
+                { id: 'crit', name: 'Kritieke Producten', icon: '🔒', applies: true, critical: true, info: 'Operating systems en firewalls vallen in Klasse I of II (strengere controle).' },
+                { id: 'med', name: 'Medische Apparaten', icon: '🩺', applies: false, info: 'Uitzondering: Valt reeds onder de MDR regelgeving.' },
+                { id: 'car', name: 'Automotive', icon: '🚗', applies: false, info: 'Uitzondering: Heeft eigen specifieke EU-cybersecurity regels.' },
+                { id: 'cloud', name: 'Puur SaaS', icon: '☁️', applies: false, note: 'Gedeeltelijk', info: 'SaaS valt vaak onder NIS2, tenzij er hardware/client componenten zijn.' }
+            ];
+
+            const grid = document.getElementById('product-grid');
+            const resultBox = document.getElementById('check-result');
+
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "p-6 bg-slate-800 border border-slate-700 rounded-xl cursor-pointer hover:bg-slate-700 hover:border-brand-500 transition-all";
+                card.innerHTML = `
+                    <div class="text-3xl mb-4">${p.icon}</div>
+                    <h4 class="font-bold text-white">${p.name}</h4>
+                    <p class="text-xs text-slate-400 mt-2">Klik voor impact</p>
+                `;
+                card.onclick = () => {
+                    document.getElementById('result-icon').textContent = p.icon;
+                    document.getElementById('result-title').textContent = p.name;
+                    document.getElementById('result-text').textContent = p.info;
+                    resultBox.classList.remove('hidden');
+                    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                };
+                grid.appendChild(card);
+            });
+
+            // --- Charts Configuration ---
+            const growthCtx = document.getElementById('growthChart').getContext('2d');
+            new Chart(growthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'Aantal CVE\'s',
+                        data: [16500, 17300, 18400, 20100, 25000, 29000],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        borderWidth: 3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#3b82f6',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: { backgroundColor: '#1e293b' }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: false, 
+                            grid: { color: '#f1f5f9' },
+                            ticks: { font: { family: 'Inter' } }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            const finesCtx = document.getElementById('finesPieChart').getContext('2d');
+            new Chart(finesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Essentieel', 'Procesmatig', 'Informatief'],
+                    datasets: [{
+                        data: [15, 10, 5],
+                        backgroundColor: ['#1d4ed8', '#3b82f6', '#93c5fd'],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, padding: 20 } }
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
