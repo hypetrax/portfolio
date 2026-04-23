@@ -30,7 +30,7 @@
                         },
                         accent: {
                             light: '#818cf8',
-                            DEFAULT: '#4f46e5',
+                            DEFAULT: '#2563eb',
                             dark: '#3730a3',
                         }
                     },
@@ -82,8 +82,8 @@
         }
 
         .tab-active {
-            border-bottom: 2px solid #4f46e5;
-            color: #4f46e5;
+            border-bottom: 2px solid #2563eb;
+            color: #2563eb;
             font-weight: 600;
         }
     </style>
@@ -192,8 +192,8 @@
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                        <div class="p-4 bg-indigo-50 rounded-lg border border-indigo-100">
-                            <div class="text-indigo-500 mb-2 text-xl">&#128176;</div>
+                        <div class="p-4 bg-blue-50 rounded-lg border border-blue-100">
+                            <div class="text-blue-500 mb-2 text-xl">&#128176;</div>
                             <h3 class="font-bold text-brand-900">Optimal DTE: 45 Days</h3>
                             <p class="text-sm text-brand-600 mt-1">45 DTE captures the steepest part of the theta decay curve while leaving room to exit before gamma risk spikes near expiration.</p>
                         </div>
@@ -403,8 +403,8 @@
                         {
                             label: 'Avg Daily P&L ($)',
                             data: reportData.dteAnalysis.avgDailyPnl,
-                            borderColor: '#4f46e5',
-                            backgroundColor: '#4f46e5',
+                            borderColor: '#2563eb',
+                            backgroundColor: '#2563eb',
                             borderWidth: 3,
                             tension: 0.3,
                             yAxisID: 'y1',
@@ -450,7 +450,7 @@
                         {
                             label: 'Manage at 50% Profit',
                             data: reportData.management.managed,
-                            backgroundColor: '#4f46e5',
+                            backgroundColor: '#2563eb',
                             borderRadius: 4
                         }
                     ]
