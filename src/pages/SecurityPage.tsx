@@ -1,10 +1,16 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { LiveSlider } from '../components/LiveSlider';
+import { SEO } from '../components/SEO';
 
-export const Security = memo(() => {
+export const SecurityPage = memo(() => {
   return (
     <>
+      <SEO 
+        title="Information Security & Compliance (ISO 27001 / CRA)" 
+        description="Senior Security Officer diensten: ISO 27001:2022 implementatie en Cyber Resilience Act compliance voor digitale producten."
+        canonical="/security"
+      />
       <header className="hero-header">
         <div className="container">
           <p className="overline">Security & Compliance</p>

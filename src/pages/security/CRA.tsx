@@ -1,5 +1,6 @@
 import { memo, useState } from 'react';
 import { Line, Doughnut } from 'react-chartjs-2';
+import { SEO } from '../../components/SEO';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -93,6 +94,11 @@ export const CRA = memo(() => {
 
   return (
     <div className="cra-page">
+      <SEO 
+        title="Cyber Resilience Act (CRA) Impact Analyse" 
+        description="Diepgaande analyse van de Cyber Resilience Act voor digitale producten. SBOM beheer, kwetsbaarheidsrapportage en compliance strategie."
+        canonical="/security/cra"
+      />
       <header className="hero-header">
         <div className="container">
           <p className="overline">Security — Diepgang</p>
@@ -150,7 +156,7 @@ export const CRA = memo(() => {
         <section className="expertise-section" style={{ background: 'var(--bg-color)', padding: '100px 0' }}>
           <div className="container">
             <h2 style={{ marginBottom: '16px' }}>De Risicogebaseerde Categorieën</h2>
-            <p style={{ color: 'var(--text-muted)', maxWidth: '600px', marginBottom: '48px' }}>
+            <p style={{ color: '#cbd5e1', maxWidth: '600px', marginBottom: '48px' }}>
               De intensiteit van de conformiteitsbeoordeling hangt af van de risicoklasse. Klik op een categorie voor de specifieke route naar CE-markering.
             </p>
 
@@ -171,7 +177,7 @@ export const CRA = memo(() => {
                 >
                   <div style={{ fontSize: '32px', marginBottom: '16px' }}>{p.icon}</div>
                   <h4 style={{ color: 'var(--text-main)', margin: '0 0 8px' }}>{p.name}</h4>
-                  <p style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-mono)' }}>Klik voor details</p>
+                  <p style={{ fontSize: '11px', color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-mono)' }}>Klik voor details</p>
                 </div>
               ))}
             </div>
@@ -182,7 +188,7 @@ export const CRA = memo(() => {
                   <div style={{ fontSize: '48px' }}>{selectedClass.icon}</div>
                   <div>
                     <h3 style={{ color: 'var(--accent)', margin: '0 0 8px' }}>{selectedClass.name}</h3>
-                    <p style={{ color: 'var(--text-muted)', margin: 0, lineHeight: 1.6 }}>{selectedClass.info}</p>
+                    <p style={{ color: '#cbd5e1', margin: 0, lineHeight: 1.6 }}>{selectedClass.info}</p>
                   </div>
                 </div>
               </div>
@@ -194,7 +200,7 @@ export const CRA = memo(() => {
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '64px' }}>
               <h2>Incidentrapportage: De Onverbiddelijke Klok</h2>
-              <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto' }}>
+              <p style={{ color: '#cbd5e1', maxWidth: '700px', margin: '0 auto' }}>
                 Vanaf september 2026 gelden er strikte deadlines voor het melden van actief uitgebuite kwetsbaarheden en ernstige incidenten via het Single Reporting Platform (SRP).
               </p>
             </div>
@@ -209,7 +215,7 @@ export const CRA = memo(() => {
                 <div key={i} style={{ background: 'var(--bg-color)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
                   <div style={{ color: 'var(--accent)', fontWeight: 'bold', fontSize: '20px', marginBottom: '8px', fontFamily: 'var(--font-mono)' }}>{step.time}</div>
                   <h4 style={{ margin: '0 0 12px 0', color: 'var(--text-main)' }}>{step.label}</h4>
-                  <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '14px', lineHeight: 1.5 }}>{step.text}</p>
+                  <p style={{ margin: 0, color: '#cbd5e1', fontSize: '14px', lineHeight: 1.5 }}>{step.text}</p>
                 </div>
               ))}
             </div>
@@ -228,7 +234,7 @@ export const CRA = memo(() => {
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>Vereiste Velden</h3>
-                    <ul style={{ paddingLeft: '20px', margin: 0, color: 'var(--text-muted)' }}>
+                    <ul style={{ paddingLeft: '20px', margin: 0, color: '#cbd5e1' }}>
                       <li>Component-identificatie</li>
                       <li>Versie-informatie</li>
                       <li>Traceerbaarheid van oorsprong</li>
@@ -256,7 +262,7 @@ export const CRA = memo(() => {
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '64px' }}>
               <h2 style={{ color: 'var(--text-main)' }}>Strategische Aanbevelingen voor Transitie</h2>
-              <p style={{ color: 'var(--text-muted)' }}>Een gestructureerd programma voor compliance opzetten.</p>
+              <p style={{ color: '#cbd5e1' }}>Een gestructureerd programma voor compliance opzetten.</p>
             </div>
 
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -273,7 +279,7 @@ export const CRA = memo(() => {
                    </div>
                    <div style={{ paddingBottom: '20px' }}>
                      <h3 style={{ margin: '0 0 8px', color: 'var(--text-main)' }}>{step.title}</h3>
-                     <p style={{ color: 'var(--text-muted)', fontSize: '15px', lineHeight: 1.6 }}>{step.text}</p>
+                     <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: 1.6 }}>{step.text}</p>
                    </div>
                  </div>
                ))}
@@ -302,7 +308,7 @@ export const CRA = memo(() => {
                     }}
                   />
                 </div>
-                <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
+                <div style={{ fontSize: '14px', color: '#cbd5e1' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', borderBottom: '1px solid var(--border)', paddingBottom: '8px' }}>
                     <span>Essentiële eisen (Annex I)</span>
                     <span style={{ fontWeight: 700, color: 'var(--accent)' }}>€15M of 2.5% omzet</span>
@@ -320,7 +326,7 @@ export const CRA = memo(() => {
 
               <div>
                 <h2>Het Tijdspad van Compliance</h2>
-                <p style={{ color: 'var(--text-muted)', marginBottom: '32px' }}>De volledige toepasbaarheid is eind 2027, maar kritieke rapportage-eisen starten al in 2026.</p>
+                <p style={{ color: '#cbd5e1', marginBottom: '32px' }}>De volledige toepasbaarheid is eind 2027, maar kritieke rapportage-eisen starten al in 2026.</p>
                 <div style={{ marginTop: '32px' }}>
                   {[
                     { date: '10 Dec 2024', label: 'Inwerkingtreding CRA', text: 'Start van de 36-maanden durende transitieperiode.' },
@@ -332,13 +338,13 @@ export const CRA = memo(() => {
                       <div style={{ 
                         padding: '10px 14px', borderRadius: '8px', 
                         background: i === 2 || i === 3 ? 'var(--accent)' : 'var(--surface)',
-                        color: i === 2 || i === 3 ? '#fff' : 'var(--text-muted)',
+                        color: i === 2 || i === 3 ? '#fff' : '#cbd5e1',
                         fontWeight: 700, fontSize: '12px', whiteSpace: 'nowrap', minWidth: '100px', textAlign: 'center',
                         fontFamily: 'var(--font-mono)', border: '1px solid var(--border)'
                       }}>{item.date}</div>
                       <div>
                         <h4 style={{ margin: '0 0 4px 0', color: 'var(--text-main)' }}>{item.label}</h4>
-                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.5 }}>{item.text}</p>
+                        <p style={{ margin: 0, fontSize: '14px', color: '#cbd5e1', lineHeight: 1.5 }}>{item.text}</p>
                       </div>
                     </div>
                   ))}

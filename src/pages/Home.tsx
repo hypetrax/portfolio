@@ -19,23 +19,28 @@ export const Home = memo(() => {
   return (
     <>
       <SEO 
-        title="Bart Pullen — Portfolio" 
-        description="Het werk van Bart Pullen: van ISO 27001 security en compliance tot webdesign en kwantitatieve data-analyse."
+        title="Bart Pullen — Security, Web & Data Specialist" 
+        description="Senior Information Security Officer en Webdesigner. Expert in ISO 27001, Cyber Resilience Act en data-gedreven web development."
         canonical="/"
         schema={personSchema}
       />
       <header className="hero-header">
         <div className="video-background">
-          <video autoPlay loop muted playsInline>
-            <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=3386348a28766100529944a3397984024b423f03&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
+          <video autoPlay loop muted playsInline poster="/assets/hero-poster.webp">
+            <source src="/assets/hero-video.mp4" type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
+          <div className="technical-metadata">
+            <span className="metadata-item">SYS_READY</span>
+            <span className="metadata-item">SEC_PROTOCOL_V2</span>
+            <span className="metadata-item">DATA_SYNC_OK</span>
+          </div>
         </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <p className="overline">Bart Pullen — Portfolio</p>
           <h1>Ik regel <span style={{ color: 'var(--accent)' }}>security</span>, bouw <span style={{ color: 'var(--accent)' }}>websites</span> en analyseer <span style={{ color: 'var(--accent)' }}>data</span>.</h1>
           <p className="lead">
-            Dit is mijn persoonlijke plek waar ik projecten en onderzoeken deel. Geen theoretische verhalen, maar tastbaar werk: van diepgaande security-analyses tot het moderniseren van verouderde sites en trading modellen.
+            Dit is mijn persoonlijke plek waar ik projecten en onderzoeken deel. Geen theoretische verhalen, maar tastbaar <span style={{ color: 'var(--accent)' }}>werk</span>: van diepgaande security-analyses tot het moderniseren van verouderde sites en trading modellen.
           </p>
         </div>
       </header>
@@ -58,7 +63,7 @@ export const Home = memo(() => {
               </div>
               <div className="case-study-visual">
                 <img 
-                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" 
+                  src="/assets/expertise/security.webp" 
                   alt="Cybersecurity en data encryptie concept" 
                   className="expertise-image"
                 />
@@ -84,7 +89,7 @@ export const Home = memo(() => {
               </div>
               <div className="case-study-visual">
                 <img 
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" 
+                  src="/assets/expertise/web.webp" 
                   alt="Modern web development en clean code" 
                   className="expertise-image"
                 />
@@ -110,7 +115,7 @@ export const Home = memo(() => {
               </div>
               <div className="case-study-visual">
                 <img 
-                  src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&q=80&w=800" 
+                  src="/assets/expertise/labs.webp" 
                   alt="Technical analysis trading charts" 
                   className="expertise-image"
                 />

@@ -1,5 +1,6 @@
 import { useState, useEffect, memo } from 'react';
 import Plotly from 'plotly.js-dist-min';
+import { SEO } from '../../components/SEO';
 
 const simData: any = {
     bullish: {
@@ -217,10 +218,28 @@ export const TurtleSoup = memo(() => {
         );
     };
 
+    const soupSchema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ICT Turtle Soup Strategy Simulator",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "description": "Interactieve simulator voor de Turtle Soup trading strategie. Visualiseert liquidity sweeps en market structure shifts.",
+        "author": {
+            "@type": "Person",
+            "name": "Bart Pullen"
+        }
+    };
+
     return (
-        <div style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', minHeight: '100vh', fontFamily: 'var(--font-sans)' }}>
-            <style dangerouslySetInnerHTML={{ __html: `
-                .chart-container { position: relative; width: 100%; max-width: 100%; margin-left: auto; margin-right: auto; height: 450px; max-height: 500px; background: var(--surface); border-radius: 0.5rem; border: 1px solid var(--border); overflow: hidden; }
+      <div style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', minHeight: '100vh', fontFamily: 'var(--font-sans)' }}>
+        <SEO 
+          title="ICT Turtle Soup Strategy Simulator — Liquidity Sweeps" 
+          description="Interactieve simulator voor de Turtle Soup strategie. Leer hoe je liquidity raids, stop hunts en market structure shifts herkent in de grafieken."
+          canonical="/labs/turtlesoup"
+          schema={soupSchema}
+        />
+        <style dangerouslySetInnerHTML={{ __html: `                .chart-container { position: relative; width: 100%; max-width: 100%; margin-left: auto; margin-right: auto; height: 450px; max-height: 500px; background: var(--surface); border-radius: 0.5rem; border: 1px solid var(--border); overflow: hidden; }
                 @media (min-width: 1024px) { .chart-container { height: 550px; } }
                 .active-tab { border-bottom: 2px solid var(--accent); color: var(--accent) !important; font-weight: 600; }
                 .inactive-tab { color: var(--text-muted) !important; }

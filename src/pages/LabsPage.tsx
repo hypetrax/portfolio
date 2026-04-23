@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { LiveSlider } from '../components/LiveSlider';
+import { SEO } from '../components/SEO';
 
 interface Study {
   title: string;
@@ -51,9 +52,14 @@ const studies: Study[] = [
   }
 ];
 
-export const Labs = memo(() => {
+export const LabsPage = memo(() => {
   return (
     <>
+      <SEO 
+        title="Quantitative Research & Trading Systems Lab" 
+        description="Exploratie van systematische trading strategieën, SPX optie backtests en institutionele orderflow analyse (ICT). Data-gedreven financiële inzichten."
+        canonical="/labs"
+      />
       <header className="hero-header">
         <div className="container">
           <p className="overline">Labs & Quantitative Research</p>
@@ -104,7 +110,7 @@ export const Labs = memo(() => {
                   </div>
 
                   <div className="project-actions">
-                    <Link to={study.url} className="btn-primary">
+                    <Link to={study.url} className="btn-primary" aria-label={`Open de volledige studie: ${study.title}`}>
                       Open de volledige studie
                     </Link>
                   </div>

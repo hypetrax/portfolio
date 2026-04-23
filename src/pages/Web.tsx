@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { LiveSlider } from '../components/LiveSlider';
+import { SEO } from '../components/SEO';
 
 interface Project {
   title: string;
@@ -52,6 +53,11 @@ const projects: Project[] = [
 export const Web = memo(() => {
   return (
     <>
+      <SEO 
+        title="High-Performance Web Design & React Development" 
+        description="Moderne, snelle websites zonder overbodige ballast. Expert in React, Vite en performance optimalisatie voor MKB."
+        canonical="/web"
+      />
       <header className="hero-header">
         <div className="container">
           <p className="overline">Bart Pullen — Portfolio</p>
@@ -101,11 +107,11 @@ export const Web = memo(() => {
                   </div>
 
                   <div className="project-actions">
-                    <a href={project.newUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                    <a href={project.newUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label={`Bekijk de nieuwe site van ${project.title}`}>
                       Bekijk de nieuwe site
                     </a>
                     {project.oldUrl && (
-                      <a href={project.oldUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                      <a href={project.oldUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" aria-label={`Bekijk de oude versie van ${project.title}`}>
                         Bekijk oude versie
                       </a>
                     )}
@@ -125,7 +131,7 @@ export const Web = memo(() => {
         <div className="container">
           <h2>Website <span style={{ color: 'var(--accent)' }}>vernieuwen</span>?</h2>
           <p>Benieuwd naar de techniek achter deze projecten of hulp nodig bij het opschonen van een bestaande site? Contact via LinkedIn.</p>
-          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large">Connect op LinkedIn</a>
+          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large" aria-label="Connect op LinkedIn voor webdesign projecten">Connect op LinkedIn</a>
         </div>
       </section>
     </>

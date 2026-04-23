@@ -1,6 +1,7 @@
 import { memo, useState, useEffect } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler, ArcElement } from 'chart.js';
 import { Line, Doughnut } from 'react-chartjs-2';
+import { SEO } from '../../components/SEO';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler, ArcElement);
 
@@ -117,8 +118,34 @@ export const ICTConcepts = memo(() => {
     }
   };
 
+  const ictSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ICT Trading Strategy & Smart Money Concepts Masterclass",
+    "description": "Diepgaande gids over de Inner Circle Trader (ICT) methodologie. Leer over Liquidity Pools, Order Blocks, Fair Value Gaps en institutional orderflow.",
+    "author": {
+      "@type": "Person",
+      "name": "Bart Pullen"
+    },
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bart Pullen Portfolio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bartpullen.nl/portfolio.png"
+      }
+    }
+  };
+
   return (
     <div style={{ fontFamily: 'var(--font-sans)', backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', minHeight: '100vh' }}>
+      <SEO 
+        title="ICT Trading Strategy & Smart Money Concepts Masterclass" 
+        description="Diepgaande gids over de Inner Circle Trader (ICT) methodologie. Leer over Liquidity Pools, Order Blocks, Fair Value Gaps en institutional orderflow."
+        canonical="/labs/ict"
+        schema={ictSchema}
+      />
       <nav style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(2, 6, 23, 0.8)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border)' }}>
         <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 16px', height: '64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -348,4 +375,3 @@ export const ICTConcepts = memo(() => {
     </div>
   );
 });
-

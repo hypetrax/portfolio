@@ -1,4 +1,5 @@
 import { useState, useEffect, memo } from 'react';
+import { SEO } from '../../components/SEO';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -200,6 +201,11 @@ export const SPX = memo(() => {
 
     return (
         <div style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-sans)' }}>
+            <SEO 
+                title="SPX Options Backtest Study — 45 DTE Optimization" 
+                description="Kwantitatief onderzoek naar SPX Credit Spreads. Analyse van DTE, winstratio's en mechanisch trade management."
+                canonical="/labs/spx"
+            />
             <style dangerouslySetInnerHTML={{ __html: `
                 .tab-active { border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 600; }
                 .chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
@@ -214,10 +220,10 @@ export const SPX = memo(() => {
                         <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--text-main)', margin: 0, fontFamily: 'var(--font-serif)' }}>SPX Quant Report</h1>
                     </div>
                     <nav style={{ marginLeft: 'auto', display: 'flex', gap: '32px' }}>
-                        <a href="#summary" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Executive Summary</a>
-                        <a href="#dte-analysis" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>DTE Optimization</a>
-                        <a href="#management" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Trade Management</a>
-                        <a href="#indicators" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Entry Indicators</a>
+                        <a href="#summary" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Executive Summary</a>
+                        <a href="#dte-analysis" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>DTE Optimization</a>
+                        <a href="#management" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Trade Management</a>
+                        <a href="#indicators" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: 500, fontSize: '14px' }}>Entry Indicators</a>
                     </nav>
                 </div>
             </header>
@@ -229,7 +235,7 @@ export const SPX = memo(() => {
                     {/* LEFT COLUMN: Interactive Simulator */}
                     <div style={{ gridColumn: 'span 4', position: 'sticky', top: '96px', height: 'fit-content', backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
                         <h2 style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>Interactive Strategy Simulator</h2>
-                        <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '24px' }}>Adjust parameters to see the simulated historical impact on a hypothetical $10,000 account trading SPX Credit Spreads over 5 years.</p>
+                        <p style={{ fontSize: '12px', color: '#cbd5e1', marginBottom: '24px' }}>Adjust parameters to see the simulated historical impact on a hypothetical $10,000 account trading SPX Credit Spreads over 5 years.</p>
                         
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div>
@@ -284,15 +290,15 @@ export const SPX = memo(() => {
                             <h3 style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--accent)', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: 'var(--font-mono)' }}>Simulation Results</h3>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
                                 <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }}>
-                                    <span style={{ display: 'block', fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Win Rate</span>
+                                    <span style={{ display: 'block', fontSize: '10px', color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Win Rate</span>
                                     <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#10b981' }}>{simResults.winRate}</span>
                                 </div>
                                 <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }}>
-                                    <span style={{ display: 'block', fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Max Drawdown</span>
+                                    <span style={{ display: 'block', fontSize: '10px', color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Max Drawdown</span>
                                     <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#f43f5e' }}>{simResults.drawdown}</span>
                                 </div>
                                 <div style={{ gridColumn: 'span 2', backgroundColor: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }}>
-                                    <span style={{ display: 'block', fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Return (5y)</span>
+                                    <span style={{ display: 'block', fontSize: '10px', color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Return (5y)</span>
                                     <span style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--text-main)' }}>{simResults.totalReturn}</span>
                                 </div>
                             </div>
@@ -305,7 +311,7 @@ export const SPX = memo(() => {
                         {/* Section: Executive Summary */}
                         <section id="summary" style={{ backgroundColor: 'var(--surface)', padding: '32px', borderRadius: '12px', border: '1px solid var(--border)', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
                             <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>Executive Summary: <span style={{ color: 'var(--accent)' }}>SPX Options Backtest</span> Study</h2>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: 1.625, marginBottom: '24px' }}>
+                            <p style={{ color: '#cbd5e1', lineHeight: 1.625, marginBottom: '24px' }}>
                                 This report synthesizes extensive backtesting data to determine the optimal parameters for selling SPX Credit Spreads (both Bull Put and Bear Call) in the 40 to 80 Days to Expiration (DTE) window. Our goal is to identify the mathematical "sweet spot" that balances premium collection, theta decay acceleration, and gamma risk mitigation.
                             </p>
                             
@@ -313,17 +319,17 @@ export const SPX = memo(() => {
                                 <div style={{ padding: '16px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: '8px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
                                     <div style={{ color: 'var(--accent)', marginBottom: '8px', fontSize: '20px' }}>&#128176;</div>
                                     <h3 style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--text-main)', margin: '0 0 4px 0' }}>Optimal DTE: 45 Days</h3>
-                                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>45 DTE captures the steepest part of the theta decay curve while leaving room to exit before gamma risk spikes near expiration.</p>
+                                    <p style={{ fontSize: '13px', color: '#cbd5e1', margin: 0 }}>45 DTE captures the steepest part of the theta decay curve while leaving room to exit before gamma risk spikes near expiration.</p>
                                 </div>
                                 <div style={{ padding: '16px', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
                                     <div style={{ color: '#10b981', marginBottom: '8px', fontSize: '20px' }}>&#9851;</div>
                                     <h3 style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--text-main)', margin: '0 0 4px 0' }}>Manage at 50%</h3>
-                                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>Closing positions at 50% of max profit drastically increases win rates (~85%+) and minimizes tail-risk drawdowns.</p>
+                                    <p style={{ fontSize: '13px', color: '#cbd5e1', margin: 0 }}>Closing positions at 50% of max profit drastically increases win rates (~85%+) and minimizes tail-risk drawdowns.</p>
                                 </div>
                                 <div style={{ padding: '16px', backgroundColor: 'rgba(245, 158, 11, 0.1)', borderRadius: '8px', border: '1px solid rgba(245, 158, 11, 0.2)' }}>
                                     <div style={{ color: '#f59e0b', marginBottom: '8px', fontSize: '20px' }}>&#128200;</div>
                                     <h3 style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--text-main)', margin: '0 0 4px 0' }}>IVR &gt; 30 Entry</h3>
-                                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>Selling spreads when Implied Volatility Rank is above 30 yields a 22% higher average return per trade due to volatility crush.</p>
+                                    <p style={{ fontSize: '13px', color: '#cbd5e1', margin: 0 }}>Selling spreads when Implied Volatility Rank is above 30 yields a 22% higher average return per trade due to volatility crush.</p>
                                 </div>
                             </div>
                         </section>
@@ -331,7 +337,7 @@ export const SPX = memo(() => {
                         {/* Section: DTE Analysis */}
                         <section id="dte-analysis">
                             <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>1. Days to Expiration (DTE) <span style={{ color: 'var(--accent)' }}>Optimization</span></h2>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: 1.625, marginBottom: '24px' }}>
+                            <p style={{ color: '#cbd5e1', lineHeight: 1.625, marginBottom: '24px' }}>
                                 We analyzed credit spreads entered at 40, 45, 60, and 80 DTE. The objective is to understand how the duration of the trade impacts the probability of profit (POP) versus the actual realized Return on Capital (ROC). 
                             </p>
                             
@@ -358,14 +364,14 @@ export const SPX = memo(() => {
                                         }
                                     }} />
                                 </div>
-                                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '24px', textAlign: 'center', fontStyle: 'italic' }}>
+                                <p style={{ fontSize: '13px', color: '#cbd5e1', marginTop: '24px', textAlign: 'center', fontStyle: 'italic' }}>
                                     *Assumes 16 Delta (roughly 1 Standard Deviation) short strikes, held to expiration.
                                 </p>
                             </div>
 
                             <div style={{ backgroundColor: 'rgba(59, 130, 246, 0.05)', borderLeft: '4px solid var(--accent)', padding: '20px', borderRadius: '0 8px 8px 0', border: '1px solid var(--border)', borderLeftWidth: '4px' }}>
                                 <h4 style={{ fontWeight: 'bold', color: 'var(--text-main)', margin: 0, fontSize: '16px' }}>Key Finding: The 45 DTE Sweet Spot</h4>
-                                <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '8px', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                                <p style={{ fontSize: '14px', color: '#cbd5e1', marginTop: '8px', margin: '8px 0 0 0', lineHeight: 1.6 }}>
                                     While 80 DTE offers slightly higher total premiums, the <strong>daily average P&L peaks at 45 DTE</strong>. This is because theta (time decay) is non-linear. Entering at 45 DTE places the trade squarely in the phase where the option loses value most rapidly due to time, allowing the trader to exit profitably much faster than an 80 DTE trade.
                                 </p>
                             </div>
@@ -374,7 +380,7 @@ export const SPX = memo(() => {
                         {/* Section: Management Mechanics */}
                         <section id="management">
                             <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>2. Trade Management <span style={{ color: 'var(--accent)' }}>Mechanics</span></h2>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: 1.625, marginBottom: '24px' }}>
+                            <p style={{ color: '#cbd5e1', lineHeight: 1.625, marginBottom: '24px' }}>
                                 The most significant factor separating theoretical win rates from actual portfolio growth is trade management. Holding credit spreads to expiration exposes the portfolio to "Gamma Risk" — where small moves in the underlying SPX near expiration cause massive swings in the option's price.
                             </p>
 
@@ -410,7 +416,7 @@ export const SPX = memo(() => {
                                         <span style={{ color: '#f43f5e', fontWeight: 'bold', fontSize: '20px' }}>&#10006;</span>
                                         <h4 style={{ fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>Holding to Expiration</h4>
                                     </div>
-                                    <ul style={{ fontSize: '14px', color: 'var(--text-muted)', paddingLeft: '20px', margin: 0 }}>
+                                    <ul style={{ fontSize: '14px', color: '#cbd5e1', paddingLeft: '20px', margin: 0 }}>
                                         <li style={{ marginBottom: '8px' }}>Maximizes potential profit per trade (collects 100% of credit).</li>
                                         <li style={{ marginBottom: '8px' }}>Significantly increases the frequency and severity of max losses.</li>
                                         <li>Reduces occurrences (number of trades you can make per year).</li>
@@ -421,7 +427,7 @@ export const SPX = memo(() => {
                                         <span style={{ color: '#10b981', fontWeight: 'bold', fontSize: '20px' }}>&#10004;</span>
                                         <h4 style={{ fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>Managing at 50%</h4>
                                     </div>
-                                    <ul style={{ fontSize: '14px', color: 'var(--text-muted)', paddingLeft: '20px', margin: 0 }}>
+                                    <ul style={{ fontSize: '14px', color: '#cbd5e1', paddingLeft: '20px', margin: 0 }}>
                                         <li style={{ marginBottom: '8px' }}>Closing when the trade reaches 50% of the initial credit received.</li>
                                         <li style={{ marginBottom: '8px' }}>Increases Win Rate from ~68% to over 85%.</li>
                                         <li style={{ marginBottom: '8px' }}>Frees up capital faster (higher velocity of money).</li>
@@ -434,7 +440,7 @@ export const SPX = memo(() => {
                         {/* Section: Entry Indicators */}
                         <section id="indicators">
                             <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>3. Optimal Entry Indicators & Conditions</h2>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: 1.625, marginBottom: '24px' }}>
+                            <p style={{ color: '#cbd5e1', lineHeight: 1.625, marginBottom: '24px' }}>
                                 Mechanical selling regardless of market environment is suboptimal. Incorporating implied volatility metrics and basic technical indicators significantly improves Expected Value (EV).
                             </p>
 
@@ -443,14 +449,14 @@ export const SPX = memo(() => {
                                 <button 
                                     className={activeTab === 'ivr' ? 'tab-active' : ''} 
                                     onClick={() => setActiveTab('ivr')}
-                                    style={{ paddingBottom: '8px', fontSize: '14px', fontWeight: 600, backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: activeTab === 'ivr' ? 'var(--accent)' : 'var(--text-muted)', transition: 'all 0.2s' }}
+                                    style={{ paddingBottom: '8px', fontSize: '14px', fontWeight: 600, backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: activeTab === 'ivr' ? 'var(--accent)' : '#cbd5e1', transition: 'all 0.2s' }}
                                 >
                                     Implied Volatility Rank (IVR)
                                 </button>
                                 <button 
                                     className={activeTab === 'rsi' ? 'tab-active' : ''} 
                                     onClick={() => setActiveTab('rsi')}
-                                    style={{ paddingBottom: '8px', fontSize: '14px', fontWeight: 600, backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: activeTab === 'rsi' ? 'var(--accent)' : 'var(--text-muted)', transition: 'all 0.2s' }}
+                                    style={{ paddingBottom: '8px', fontSize: '14px', fontWeight: 600, backgroundColor: 'transparent', border: 'none', cursor: 'pointer', color: activeTab === 'rsi' ? 'var(--accent)' : '#cbd5e1', transition: 'all 0.2s' }}
                                 >
                                     RSI Divergence
                                 </button>
@@ -482,7 +488,7 @@ export const SPX = memo(() => {
                                                 }
                                             }} />
                                         </div>
-                                        <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '24px', lineHeight: 1.6 }}>
+                                        <p style={{ fontSize: '14px', color: '#cbd5e1', marginTop: '24px', lineHeight: 1.6 }}>
                                             <strong>Analysis:</strong> IV Rank measures current implied volatility relative to its 52-week range. Selling spreads when IVR is low (&lt; 20) results in lower premiums collected and a higher vulnerability to volatility expansion. The optimal entry condition is when <strong>IVR &gt; 30</strong>, indicating that options are relatively expensive and more likely to experience "volatility crush" (mean reversion), accelerating profitability.
                                         </p>
                                     </div>
@@ -494,7 +500,7 @@ export const SPX = memo(() => {
                                 <div style={{ display: 'block' }}>
                                     <div style={{ backgroundColor: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)', marginBottom: '24px' }}>
                                         <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '12px' }}>Relative Strength Index (RSI) Filtering</h3>
-                                        <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '20px', lineHeight: 1.6 }}>
+                                        <p style={{ fontSize: '14px', color: '#cbd5e1', marginBottom: '20px', lineHeight: 1.6 }}>
                                             While IVR dictates <em>when</em> to sell premium, technicals can help dictate <em>direction</em>. Backtests show an edge in selling Bull Put Spreads during short-term oversold conditions, and Bear Call Spreads during overbought conditions.
                                         </p>
                                         
@@ -510,17 +516,17 @@ export const SPX = memo(() => {
                                                 <tbody>
                                                     <tr style={{ borderBottom: '1px solid var(--border)' }}>
                                                         <td style={{ padding: '16px 24px', fontWeight: 500 }}>Bull Put Spreads</td>
-                                                        <td style={{ padding: '16px 24px', color: 'var(--text-muted)' }}>SPX Daily RSI &lt; 35 (Oversold)</td>
+                                                        <td style={{ padding: '16px 24px', color: '#cbd5e1' }}>SPX Daily RSI &lt; 35 (Oversold)</td>
                                                         <td style={{ padding: '16px 24px', color: '#10b981', fontWeight: 'bold' }}>+6.2%</td>
                                                     </tr>
                                                     <tr style={{ borderBottom: '1px solid var(--border)' }}>
                                                         <td style={{ padding: '16px 24px', fontWeight: 500 }}>Bear Call Spreads</td>
-                                                        <td style={{ padding: '16px 24px', color: 'var(--text-muted)' }}>SPX Daily RSI &gt; 65 (Overbought)</td>
+                                                        <td style={{ padding: '16px 24px', color: '#cbd5e1' }}>SPX Daily RSI &gt; 65 (Overbought)</td>
                                                         <td style={{ padding: '16px 24px', color: '#10b981', fontWeight: 'bold' }}>+4.8%</td>
                                                     </tr>
                                                     <tr>
                                                         <td style={{ padding: '16px 24px', fontWeight: 500 }}>Iron Condors (Neutral)</td>
-                                                        <td style={{ padding: '16px 24px', color: 'var(--text-muted)' }}>SPX Daily RSI between 40-60</td>
+                                                        <td style={{ padding: '16px 24px', color: '#cbd5e1' }}>SPX Daily RSI between 40-60</td>
                                                         <td style={{ padding: '16px 24px', color: '#10b981', fontWeight: 'bold' }}>+3.1%</td>
                                                     </tr>
                                                 </tbody>
@@ -531,7 +537,7 @@ export const SPX = memo(() => {
                             )}
                         </section>
 
-                        <footer style={{ textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', paddingTop: '32px', paddingBottom: '16px', borderTop: '1px solid var(--border)', fontStyle: 'italic' }}>
+                        <footer style={{ textAlign: 'center', fontSize: '12px', color: '#cbd5e1', paddingTop: '32px', paddingBottom: '16px', borderTop: '1px solid var(--border)', fontStyle: 'italic' }}>
                             <p>Quantitative Report generated based on simulated historical SPX data. Past performance is not indicative of future results.</p>
                         </footer>
 

@@ -1,5 +1,6 @@
 import { memo, useState } from 'react';
 import { Radar, Chart } from 'react-chartjs-2';
+import { SEO } from '../../components/SEO';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -111,6 +112,11 @@ export const ISO27001 = memo(() => {
 
   return (
     <div className="iso-page">
+      <SEO 
+        title="ISO 27001:2022 Implementatie & ISMS Management" 
+        description="Pragmatische implementatie van ISO 27001:2022. Van nulmeting en risicoanalyse tot certificering en continue verbetering van uw informatiebeveiliging."
+        canonical="/security/iso27001"
+      />
       <header className="hero-header">
         <div className="container">
           <p className="overline">Security Officer — Impact</p>
