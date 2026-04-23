@@ -333,12 +333,12 @@ export const SqueezeSpreads = memo(() => {
                         <div style={{ backgroundColor: '#1e293b', color: '#e2e8f0', padding: '24px', borderRadius: '8px' }}>
                             <h4 style={{ fontWeight: 'bold', color: 'white', marginBottom: '8px', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.05em', margin: 0 }}>Required Tools Checklist</h4>
                             <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '14px', listStyle: 'none', padding: 0, margin: '8px 0 0 0' }} className="grid-cols-2 md:grid-cols-3">
-                                <li>\u2022 Market &gt; 21 EMA (Daily/Weekly)</li>
-                                <li>\u2022 Stock &gt; 21 EMA (Daily/Weekly)</li>
-                                <li>\u2022 Stacked EMA Label</li>
-                                <li>\u2022 Bollinger Bands</li>
-                                <li>\u2022 Keltner Channels (2 ATR)</li>
-                                <li>\u2022 Squeeze Pro Indicator</li>
+                                <li>• Market &gt; 21 EMA (Daily/Weekly)</li>
+                                <li>• Stock &gt; 21 EMA (Daily/Weekly)</li>
+                                <li>• Stacked EMA Label</li>
+                                <li>• Bollinger Bands</li>
+                                <li>• Keltner Channels (2 ATR)</li>
+                                <li>• Squeeze Pro Indicator</li>
                             </ul>
                         </div>
                     </div>

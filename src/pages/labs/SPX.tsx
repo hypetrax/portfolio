@@ -114,11 +114,11 @@ export const SPX = memo(() => {
                 drawdown: '-' + baseDd + '%',
                 totalReturn: '+' + baseReturn + '%',
                 isSimulating: false,
-                status: 'Simulation Complete \u2714'
+                status: 'Simulation Complete ✔'
             });
 
             setTimeout(() => {
-                setSimResults(prev => ({ ...prev, status: 'Run Simulation \u25B6' }));
+                setSimResults(prev => ({ ...prev, status: 'Run Simulation ▶' }));
             }, 2000);
         }, 600);
     };
@@ -522,3 +522,4 @@ export const SPX = memo(() => {
         </div>
     );
 });
+;
