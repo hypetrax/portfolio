@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 27001 Portfolio | Bart Pullen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chosen Palette: Warm Professional Neutrals (Stone/Slate) -->
+    <!-- Application Structure Plan: The SPA is structured as a professional portfolio article. It uses a linear, scrollable narrative that breaks down complex ISO 27001 concepts into digestible chunks. 1. Hero (Introduction to the professional), 2. Core Concepts (CIA triad using card grid), 3. Methodology (PDCA cycle using interactive tabs to avoid overwhelming text), 4. Results/Data (Interactive charts showing maturity growth and risk reduction to prove capability), 5. Conclusion. This structure guides the reader from theory to practical application. -->
+    <!-- Visualization & Content Choices: 
+        1. CIA Triad -> Inform -> CSS Grid Cards -> Hover effects -> Clean layout for basic concepts -> HTML/Tailwind.
+        2. PDCA Cycle -> Organize/Process -> Interactive Tabs -> Click to reveal phases -> Keeps UI clean while offering depth -> HTML/JS.
+        3. ISMS Maturity -> Compare/Show Progress -> Radar Chart -> Button toggle (Before/After) -> Visually demonstrates the impact of a Security Officer -> Chart.js (Canvas).
+        4. Incident Trend -> Trend/Data -> Bar Chart -> Hover tooltips -> Shows operational control over time -> Chart.js (Canvas). 
+        Confirming NO SVG graphics used. Confirming NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf9; /* stone-50 */
+            color: #292524; /* stone-800 */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            background-color: #334155; /* slate-700 */
+            color: #ffffff;
+            border-color: #334155;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-slate-300 selection:text-slate-900">
+
+    <nav class="bg-white border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <span class="font-bold text-xl tracking-tight text-slate-800">Bart Pullen<span class="text-slate-400 font-light"> | Security Officer</span></span>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <header class="text-center max-w-3xl mx-auto space-y-6 pt-10">
+            <div class="inline-block bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase mb-4">
+                Portfolio Case
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight text-stone-900">
+                ISO 27001: Van Vinkje naar Vertrouwen
+            </h1>
+            <p class="text-lg md:text-xl text-stone-600 leading-relaxed">
+                Als Security Officer is het implementeren en beheren van een Information Security Management System (ISMS) mijn kernexpertise. In dit interactieve overzicht laat ik zien hoe ik de theorie van ISO 27001 omzet in meetbare, praktische beveiliging voor organisaties.
+            </p>
+        </header>
+
+        <section id="fundament">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="text-2xl font-bold text-stone-800 mb-4">Het Fundament: De CIA-Triade</h2>
+                <p class="text-stone-600 max-w-2xl">
+                    Informatiebeveiliging draait niet alleen om het buitenhouden van hackers. Het is het balanceren van drie kernprincipes. Bij elke risicoanalyse en beleidskeuze weeg ik deze drie factoren af.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center text-2xl font-bold mb-4">C</div>
+                    <h3 class="font-semibold text-lg mb-2">Confidentiality</h3>
+                    <p class="text-stone-600 text-sm">Vertrouwelijkheid. Alleen geautoriseerde personen hebben toegang tot gevoelige gegevens. Denk aan encryptie en strikt toegangsbeheer (Need-to-Know).</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center text-2xl font-bold mb-4">I</div>
+                    <h3 class="font-semibold text-lg mb-2">Integrity</h3>
+                    <p class="text-stone-600 text-sm">Integriteit. Gegevens moeten juist, actueel en volledig zijn en mogen niet ongeautoriseerd gewijzigd worden. Denk aan logging, checksums en versiebeheer.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center text-2xl font-bold mb-4">A</div>
+                    <h3 class="font-semibold text-lg mb-2">Availability</h3>
+                    <p class="text-stone-600 text-sm">Beschikbaarheid. Systemen en gegevens moeten toegankelijk zijn wanneer ze nodig zijn voor de bedrijfsvoering. Denk aan back-ups, redundantie en disaster recovery.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="werkwijze" class="bg-white p-8 md:p-12 rounded-2xl border border-stone-200 shadow-sm">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-stone-800 mb-4">Mijn Werkwijze: De PDCA-Cyclus</h2>
+                <p class="text-stone-600">
+                    Een ISMS is nooit 'af'. Het is een continu proces van verbetering. Klik door de fasen hieronder om te zien hoe ik dit in de praktijk aanstuur.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-4 md:pb-0">
+                    <button onclick="updatePDCA('plan')" id="btn-plan" class="tab-btn active text-left px-4 py-3 rounded-lg border border-slate-200 font-semibold text-slate-700 whitespace-nowrap">Plan (Voorbereiding)</button>
+                    <button onclick="updatePDCA('do')" id="btn-do" class="tab-btn text-left px-4 py-3 rounded-lg border border-slate-200 font-semibold text-slate-700 whitespace-nowrap bg-stone-50">Do (Uitvoering)</button>
+                    <button onclick="updatePDCA('check')" id="btn-check" class="tab-btn text-left px-4 py-3 rounded-lg border border-slate-200 font-semibold text-slate-700 whitespace-nowrap bg-stone-50">Check (Controle)</button>
+                    <button onclick="updatePDCA('act')" id="btn-act" class="tab-btn text-left px-4 py-3 rounded-lg border border-slate-200 font-semibold text-slate-700 whitespace-nowrap bg-stone-50">Act (Verbetering)</button>
+                </div>
+                
+                <div class="md:w-2/3 bg-stone-50 p-6 rounded-xl border border-stone-100 min-h-[250px] flex flex-col justify-center">
+                    <div id="pdca-content" class="fade-in">
+                        <h3 class="text-xl font-bold text-slate-800 mb-3" id="pdca-title">Plan: Context & Risico's</h3>
+                        <p class="text-stone-600 leading-relaxed mb-4" id="pdca-text">
+                            Voordat we maatregelen implementeren, breng ik de context van de organisatie in kaart. Wie zijn de stakeholders? Wat zijn de kroonjuwelen? Vervolgens voer ik een grondige risicoanalyse uit. We bepalen de 'risk appetite' en stellen het informatiebeveiligingsbeleid op.
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-stone-500 space-y-1" id="pdca-list">
+                            <li>Nulmeting uitvoeren</li>
+                            <li>Asset inventarisatie</li>
+                            <li>Risicobeoordeling (Threats & Vulnerabilities)</li>
+                            <li>Verklaring van Toepasselijkheid (VvT) opstellen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resultaten">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="text-2xl font-bold text-stone-800 mb-4">Aantoonbare Resultaten</h2>
+                <p class="text-stone-600 max-w-2xl">
+                    Als Security Officer stuur ik op data. Hieronder visualiseer ik de typische impact van mijn werk op de volwassenheid van de organisatie en de reductie van incidenten in het eerste jaar na implementatie.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-800">Maturity Groei (Annex A)</h3>
+                            <p class="text-sm text-stone-500 mt-1">Scores per domein (Schaal 1-5)</p>
+                        </div>
+                        <div class="flex bg-stone-100 rounded-lg p-1">
+                            <button onclick="toggleRadar('start')" id="btn-start" class="px-3 py-1 text-xs font-semibold rounded-md bg-white shadow-sm text-slate-700 transition-colors">Start</button>
+                            <button onclick="toggleRadar('huidig')" id="btn-huidig" class="px-3 py-1 text-xs font-semibold rounded-md text-stone-500 transition-colors">Na 1 Jaar</button>
+                        </div>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="maturityChart"></canvas>
+                        </div>
+                    </div>
+                    <p class="text-xs text-stone-500 mt-4 text-center">Data toont een gesimuleerde groeicurve op basis van best practices.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-stone-800">Incident & Audit Bevindingen</h3>
+                        <p class="text-sm text-stone-500 mt-1">Verloop gedurende het kalenderjaar</p>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="incidentChart"></canvas>
+                        </div>
+                    </div>
+                    <p class="text-xs text-stone-500 mt-4 text-center">Door de PDCA-cyclus dalen openstaande bevindingen en worden incidenten sneller opgelost.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusie" class="border-t border-stone-200 pt-12 pb-16 text-center max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold text-stone-800 mb-4">Meer dan een Certificaat</h2>
+            <p class="text-stone-600">
+                ISO 27001 is voor mij geen doel op zich, maar een middel om de weerbaarheid van de organisatie structureel te verhogen en vertrouwen te wekken bij klanten en partners.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="py-12 bg-white border-t border-stone-100 text-center">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-xs text-stone-400">
+                Bart Pullen - Security Officer
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data for PDCA interaction
+        const pdcaData = {
+            plan: {
+                title: "Plan: Context & Risico's",
+                text: "Voordat we maatregelen implementeren, breng ik de context van de organisatie in kaart. Wie zijn de stakeholders? Wat zijn de kroonjuwelen? Vervolgens voer ik een grondige risicoanalyse uit. We bepalen de 'risk appetite' en stellen het informatiebeveiligingsbeleid op.",
+                list: ["Nulmeting uitvoeren", "Asset inventarisatie", "Risicobeoordeling (Threats & Vulnerabilities)", "Verklaring van Toepasselijkheid (VvT) opstellen"]
+            },
+            do: {
+                title: "Do: Implementatie & Awareness",
+                text: "Dit is de uitvoerende fase. Gebaseerd op de VvT selecteren en implementeren we de benodigde beheersmaatregelen (Annex A controls). Techniek is slechts een deel; ik focus sterk op awareness-trainingen voor medewerkers om menselijke fouten te minimaliseren.",
+                list: ["Uitrollen beleidsdocumenten", "Inrichten toegangsbeheer (IAM)", "Awareness sessies en phishing simulaties", "Incident Response plan inrichten"]
+            },
+            check: {
+                title: "Check: Audits & Monitoring",
+                text: "Meten is weten. Werken de geïmplementeerde maatregelen daadwerkelijk? We monitoren systemen, analyseren incidenten en voeren interne audits uit. Ook begeleid ik de externe audits voor de daadwerkelijke certificering.",
+                list: ["Uitvoeren interne audits", "Monitoren van Key Performance Indicators (KPI's)", "Management review voorbereiden", "Begeleiden externe auditor"]
+            },
+            act: {
+                title: "Act: Corrigeren & Verbeteren",
+                text: "Op basis van de resultaten uit de 'Check' fase, ondernemen we actie. Dit omvat het oplossen van non-conformiteiten (afwijkingen), het updaten van beleid op basis van nieuwe dreigingen en het initiëren van verbeterprojecten.",
+                list: ["Root-cause analyse van incidenten", "CAPA (Corrective and Preventive Actions) uitvoeren", "Risicoanalyse herzien bij grote wijzigingen", "Continu verbeterproces borgen"]
+            }
+        };
+
+        // PDCA Interaction Logic
+        function updatePDCA(phase) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-slate-700', 'text-white');
+                btn.classList.add('bg-stone-50', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById(`btn-${phase}`);
+            activeBtn.classList.remove('bg-stone-50', 'text-slate-700');
+            activeBtn.classList.add('active', 'bg-slate-700', 'text-white');
+
+            // Update Content with animation
+            const contentDiv = document.getElementById('pdca-content');
+            contentDiv.classList.remove('fade-in');
+            
+            // Trigger reflow to restart animation
+            void contentDiv.offsetWidth; 
+            
+            document.getElementById('pdca-title').textContent = pdcaData[phase].title;
+            document.getElementById('pdca-text').textContent = pdcaData[phase].text;
+            
+            const listHtml = pdcaData[phase].list.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('pdca-list').innerHTML = listHtml;
+            
+            contentDiv.classList.add('fade-in');
+        }
+
+        // --- Chart.js Implementations ---
+
+        // Common Chart Defaults
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#78716c'; // stone-500
+
+        // 1. Radar Chart (Maturity)
+        const maturityDataStart = [1.5, 2.0, 1.2, 1.8, 1.0, 2.5];
+        const maturityDataEnd = [4.0, 3.8, 3.5, 4.2, 3.9, 4.0];
+        const maturityLabels = ['Beleid & Org.', 'HR Security', 'Asset Mgt.', 'Toegang', 'Incident Mgt.', 'Fysieke Sec.'];
+
+        const ctxRadar = document.getElementById('maturityChart').getContext('2d');
+        const maturityChart = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: maturityLabels,
+                datasets: [{
+                    label: 'Startmeting',
+                    data: maturityDataStart,
+                    backgroundColor: 'rgba(203, 213, 225, 0.4)', // slate-300
+                    borderColor: 'rgba(148, 163, 184, 1)',     // slate-400
+                    pointBackgroundColor: 'rgba(148, 163, 184, 1)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#e7e5e4' }, // stone-200
+                        grid: { color: '#e7e5e4' },
+                        pointLabels: {
+                            font: { size: 11, weight: '600' },
+                            color: '#44403c' // stone-700
+                        },
+                        ticks: {
+                            min: 0,
+                            max: 5,
+                            stepSize: 1,
+                            display: false // Hide numbers on web
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#334155',
+                        padding: 10,
+                        callbacks: {
+                            label: function(context) {
+                                return ` Score: ${context.raw} / 5`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Toggle Logic for Radar Chart
+        function toggleRadar(state) {
+            const btnStart = document.getElementById('btn-start');
+            const btnHuidig = document.getElementById('btn-huidig');
+
+            if (state === 'start') {
+                btnStart.classList.replace('text-stone-500', 'text-slate-700');
+                btnStart.classList.replace('bg-transparent', 'bg-white');
+                btnStart.classList.add('shadow-sm');
+                
+                btnHuidig.classList.replace('text-slate-700', 'text-stone-500');
+                btnHuidig.classList.replace('bg-white', 'bg-transparent');
+                btnHuidig.classList.remove('shadow-sm');
+
+                maturityChart.data.datasets[0] = {
+                    label: 'Startmeting',
+                    data: maturityDataStart,
+                    backgroundColor: 'rgba(203, 213, 225, 0.4)',
+                    borderColor: 'rgba(148, 163, 184, 1)',
+                    pointBackgroundColor: 'rgba(148, 163, 184, 1)',
+                    borderWidth: 2,
+                    fill: true
+                };
+            } else {
+                btnHuidig.classList.replace('text-stone-500', 'text-slate-700');
+                btnHuidig.classList.replace('bg-transparent', 'bg-white');
+                btnHuidig.classList.add('shadow-sm');
+                
+                btnStart.classList.replace('text-slate-700', 'text-stone-500');
+                btnStart.classList.replace('bg-white', 'bg-transparent');
+                btnStart.classList.remove('shadow-sm');
+
+                maturityChart.data.datasets[0] = {
+                    label: 'Na 1 Jaar',
+                    data: maturityDataEnd,
+                    backgroundColor: 'rgba(51, 65, 85, 0.2)', // slate-700 light
+                    borderColor: 'rgba(51, 65, 85, 1)',
+                    pointBackgroundColor: 'rgba(51, 65, 85, 1)',
+                    borderWidth: 2,
+                    fill: true
+                };
+            }
+            maturityChart.update();
+        }
+
+        // 2. Bar/Line Chart (Incidents/Audits over time)
+        const ctxIncident = document.getElementById('incidentChart').getContext('2d');
+        new Chart(ctxIncident, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: 'Geregistreerde Incidenten',
+                        data: [15, 22, 12, 5],
+                        backgroundColor: 'rgba(148, 163, 184, 0.7)', // slate-400
+                        borderRadius: 4
+                    },
+                    {
+                        type: 'line',
+                        label: 'Openstaande Audit Bevindingen',
+                        data: [20, 15, 8, 2],
+                        borderColor: '#334155', // slate-700
+                        backgroundColor: '#334155',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        pointRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f5f5f4', // stone-100
+                            drawBorder: false,
+                        },
+                        ticks: { stepSize: 5 }
+                    },
+                    x: {
+                        grid: { display: false, drawBorder: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            boxWidth: 8,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#334155',
+                        padding: 10,
+                        usePointStyle: true
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

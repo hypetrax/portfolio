@@ -9,6 +9,14 @@
       "destination": "/CRA.html"
     },
     {
+      "source": "/iso27001",
+      "destination": "/iso27001.html"
+    },
+    {
+      "source": "/ISO27001",
+      "destination": "/iso27001.html"
+    },
+    {
       "source": "/((?!api/|archives/|assets/|.*\\..*).*)",
       "destination": "/index.html"
     }
