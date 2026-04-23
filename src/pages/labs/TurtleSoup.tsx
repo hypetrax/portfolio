@@ -237,10 +237,10 @@ export const TurtleSoup = memo(() => {
 
             <header id="overview" style={{ paddingTop: '80px', paddingBottom: '64px', paddingLeft: '16px', paddingRight: '16px', maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
                 <h1 style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em', marginBottom: '24px' }}>
-                    The ICT <span style={{ color: '#0ea5e9' }}>Turtle Soup</span> Setup
+                    ICT <span style={{ color: '#0ea5e9' }}>Turtle Soup</span>: Valse Uitbraken Herkennen
                 </h1>
                 <p style={{ marginTop: '16px', maxWidth: '768px', margin: '0 auto', fontSize: '20px', color: '#475569', lineHeight: 1.625 }}>
-                    A modernization of classic false-breakout strategies. The Inner Circle Trader (ICT) Turtle Soup targets areas of resting liquidity. It relies on the premise that markets are engineered to sweep stops before initiating true directional moves.
+                    De Turtle Soup setup richt zich op het identificeren van liquiditeit en valse uitbraken. In plaats van een uitbraak blind te volgen, wachten we op het moment dat de markt 'stops' opzoekt voordat de echte beweging begint.
                 </p>
             </header>
 

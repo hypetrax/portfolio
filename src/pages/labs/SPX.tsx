@@ -292,9 +292,9 @@ export const SPX = memo(() => {
 
                         {/* Section: Executive Summary */}
                         <section id="summary" style={{ backgroundColor: 'white', padding: '32px', borderRadius: '12px', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)', border: `1px solid ${brandColors[200]}` }}>
-                            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: brandColors[900], marginBottom: '16px' }}>Executive Summary: SPX Options Backtest Study</h2>
+                            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: brandColors[900], marginBottom: '16px' }}>Samenvatting: SPX Options Backtest Study</h2>
                             <p style={{ color: brandColors[600], lineHeight: 1.625, marginBottom: '24px' }}>
-                                This report synthesizes extensive backtesting data to determine the optimal parameters for selling SPX Credit Spreads (both Bull Put and Bear Call) in the 40 to 80 Days to Expiration (DTE) window. Our goal is to identify the mathematical "sweet spot" that balances premium collection, theta decay acceleration, and gamma risk mitigation.
+                                In dit rapport vind je de resultaten van uitgebreide backtests op SPX Credit Spreads. De focus ligt op het vinden van de optimale balans tussen risico en rendement in de 40 tot 80 DTE window.
                             </p>
                             
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>

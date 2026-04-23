@@ -8,10 +8,10 @@ export const Security = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Security & Compliance</p>
-          <h1>Bescherming in een <span className="italic">digitale</span> wereld.</h1>
+          <h1>Security die de business <span className="italic">ondersteunt</span>.</h1>
           <p className="lead">
-            Ik help organisaties navigeren door het complexe landschap van cybersecurity en wetgeving. 
-            Van strategisch advies tot praktische implementatie van beveiligingsstandaarden.
+            Ik help organisaties om grip te krijgen op informatiebeveiliging en wetgeving. 
+            Geen dikke rapporten voor in de lade, maar praktische plannen die écht werken.
           </p>
         </div>
       </header>
@@ -31,16 +31,16 @@ export const Security = memo(() => {
                 </div>
                 
                 <h2>Cyber Resilience Act (CRA)</h2>
-                <p className="project-intro">Een diepgaande analyse van de nieuwe EU-wetgeving voor fabrikanten van digitale producten.</p>
+                <p className="project-intro">Wat fabrikanten moeten weten over de nieuwe EU-wetgeving voor digitale producten.</p>
                 
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
-                    <p>Het begrijpen van de impact van de CRA op de levenscyclus van hardware en software.</p>
+                    <p>De impact van de CRA op hoe we hardware en software bouwen en onderhouden.</p>
                   </div>
                   <div className="detail-block">
                     <h3>De Methode</h3>
-                    <p>Analyse van de verplichtingen, risico-classificaties en tijdlijnen voor compliance.</p>
+                    <p>Een heldere analyse van de verplichtingen, risico's en tijdlijnen.</p>
                   </div>
                 </div>
 
@@ -48,7 +48,7 @@ export const Security = memo(() => {
                   <h3>Key Insights</h3>
                   <ul>
                     <li>Product Check framework</li>
-                    <li>Overzicht van boetes en risico's</li>
+                    <li>Overzicht van risico's</li>
                     <li>Stappenplan voor fabrikanten</li>
                   </ul>
                 </div>
@@ -81,16 +81,16 @@ export const Security = memo(() => {
                 </div>
                 
                 <h2>ISO 27001 Implementatie</h2>
-                <p className="project-intro">Van 'vinkje' naar echt vertrouwen. Hoe ik organisaties help bij het opzetten van een robuust ISMS.</p>
+                <p className="project-intro">Meer dan alleen een certificaat aan de muur. Hoe je een ISMS bouwt waar de organisatie écht iets aan heeft.</p>
                 
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
-                    <p>Het bouwen van een Information Security Management System dat meegroeit met de organisatie.</p>
+                    <p>Het opzetten van een ISMS dat risico's beheersbaar maakt zonder de boel te vertragen.</p>
                   </div>
                   <div className="detail-block">
                     <h3>De Methode</h3>
-                    <p>Toepassing van de PDCA-cyclus en focus op de CIA-triade (Confidentiality, Integrity, Availability).</p>
+                    <p>Praktische toepassing van de ISO-norm met focus op draagvlak en werkbaarheid.</p>
                   </div>
                 </div>
 

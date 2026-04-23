@@ -19,17 +19,17 @@ export const Home = memo(() => {
   return (
     <>
       <SEO 
-        title="Persoonlijk Portfolio" 
-        description="Bekijk het werk van Bart Pullen op het gebied van webdesign, cybersecurity (ISO 27001) en kwantitatieve analyse."
+        title="Bart Pullen — Portfolio" 
+        description="Het werk van Bart Pullen: van webdesign en development tot ISO 27001 security en kwantitatieve data-analyse."
         canonical="/"
         schema={personSchema}
       />
       <header className="hero-header">
         <div className="container">
-          <p className="overline">Bart Pullen — Showcase</p>
-          <h1>Een verzameling van <span className="italic">design</span>, <span className="italic">data</span> en <span className="italic">security</span>.</h1>
+          <p className="overline">Bart Pullen — Portfolio</p>
+          <h1>Ik bouw <span className="italic">websites</span>, regel <span className="italic">security</span> en analyseer <span className="italic">data</span>.</h1>
           <p className="lead">
-            Dit is mijn persoonlijke plek waar ik mijn projecten en onderzoeken deel. Van het moderniseren van websites tot diepgaande cybersecurity analyses en kwantitatieve modellen.
+            Dit is mijn persoonlijke plek waar ik projecten en onderzoeken deel. Geen theoretische verhalen, maar tastbaar werk: van het moderniseren van verouderde sites tot diepgaande security-analyses en trading modellen.
           </p>
         </div>
       </header>
@@ -41,13 +41,13 @@ export const Home = memo(() => {
               <div className="case-study-content">
                 <header>
                   <h3>01 — Design & Development</h3>
-                  <h2>Webdesign & Development.</h2>
+                  <h2>Websites & Code.</h2>
                 </header>
                 <p className="project-intro">
-                  Een selectie van webprojecten waarbij ik focus op het transformeren van verouderde platformen naar moderne, performante ervaringen.
+                  Ik help bedrijven met het opschonen van hun digitale aanwezigheid. Geen zware thema's, maar snelle, schone code en een design dat werkt op elk scherm.
                 </p>
                 <div className="project-actions">
-                  <Link to="/web" className="btn-primary" aria-label="Bekijk webdesign portfolio">Projecten Bekijken</Link>
+                  <Link to="/web" className="btn-primary" aria-label="Bekijk webdesign portfolio">Bekijk mijn werk</Link>
                 </div>
               </div>
               <div className="case-study-visual" style={{ background: '#f5f5f5', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
@@ -63,16 +63,16 @@ export const Home = memo(() => {
               <div className="case-study-content" style={{ direction: 'ltr' }}>
                 <header>
                   <h3>02 — Security & Compliance</h3>
-                  <h2>Security Officer Expertise.</h2>
+                  <h2>Security Officer.</h2>
                 </header>
                 <p className="project-intro">
-                  Mijn werk op het gebied van informatiebeveiliging, variërend van ISO 27001 implementaties tot analyses over de Cyber Resilience Act (CRA).
+                  Informatiebeveiliging is meer dan alleen een certificaat aan de muur. Ik richt me op werkbare security: van ISO 27001 implementaties tot impact-analyses van de Cyber Resilience Act.
                 </p>
                 <div className="project-actions">
-                  <Link to="/security" className="btn-primary" aria-label="Bekijk security expertise">Expertise Bekijken</Link>
+                  <Link to="/security" className="btn-primary" aria-label="Bekijk security expertise">Bekijk expertise</Link>
                 </div>
               </div>
-              <div className="case-study-visual" style={{ background: '#f5f5f5', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
+              <div className="case-study-visual" style={{ background: '#f5f5f4', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>
                 <span style={{ fontSize: '80px' }} role="img" aria-label="Security icoon">🛡️</span>
               </div>
             </article>
@@ -85,13 +85,13 @@ export const Home = memo(() => {
               <div className="case-study-content">
                 <header>
                   <h3>03 — Labs & Research</h3>
-                  <h2>Quantitative Research & Data.</h2>
+                  <h2>Labs & Onderzoek.</h2>
                 </header>
                 <p className="project-intro">
-                  Onderzoek en modellen gericht op financiële markten, optiestrategieën en systematische trading frameworks.
+                  Mijn speeltuin voor data. Hier onderzoek ik systematische trading-strategieën, bouw ik modellen voor opties en test ik nieuwe technologieën.
                 </p>
                 <div className="project-actions">
-                  <Link to="/labs" className="btn-primary" aria-label="Bekijk trading studies">Studies Bekijken</Link>
+                  <Link to="/labs" className="btn-primary" aria-label="Bekijk trading studies">Bekijk de labs</Link>
                 </div>
               </div>
               <div className="case-study-visual" style={{ background: '#f5f5f5', borderRadius: '4px', padding: '40px', textAlign: 'center' }}>

@@ -96,11 +96,10 @@ export const ISO27001 = memo(() => {
     <div className="iso-page">
       <header className="hero-header" style={{ background: '#fafaf9' }}>
         <div className="container">
-          <p className="overline">Portfolio Case — Security Officer 2.0</p>
-          <h1 style={{ color: '#1c1917' }}>ISO 27001:2022 — Strategische Weerbaarheid</h1>
+          <p className="overline">Security Officer — Case Study</p>
+          <h1 style={{ color: '#1c1917' }}>ISO 27001:2022 — Meer dan alleen vinkjes zetten</h1>
           <p className="lead" style={{ color: '#57534e' }}>
-            Hoe ik de transformatie van 'vinkjes zetten' naar 'business enabling' heb vormgegeven. 
-            Een integrale aanpak op basis van de nieuwste internationale norm.
+            Informatiebeveiliging wordt vaak gezien als een noodzakelijk kwaad. Ik laat zien hoe je een ISMS bouwt dat de business ondersteunt in plaats van in de weg zit.
           </p>
         </div>
       </header>
@@ -110,16 +109,15 @@ export const ISO27001 = memo(() => {
           <div className="container">
             <div className="case-study-grid">
               <div className="case-study-content">
-                <h2>De Evoluerende Rol</h2>
+                <h2>Security als Fundament</h2>
                 <p className="project-intro">
-                  In de moderne organisatie is de Security Officer geen 'poortwachter' meer, maar een strategisch adviseur. 
-                  Mijn focus ligt op het integreren van security in de kern van de bedrijfsvoering.
+                  Een Security Officer moet geen 'nee-zegger' zijn, maar iemand die helpt om risico's begrijpelijk te maken. Mijn aanpak focust op praktische werkbaarheid en draagvlak binnen het hele team.
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', marginTop: '32px' }}>
                   {[
-                    { t: 'Business Enabler', d: 'Security die innovatie ondersteunt in plaats van blokkeert.' },
-                    { t: 'Risico-gebaseerd', d: 'Focus op wat er écht toe doet voor de continuïteit.' },
-                    { t: 'Cultuur-drager', d: 'Beveiliging tussen de oren van élke medewerker krijgen.' }
+                    { t: 'Werkbare Security', d: 'Beveiliging die innovatie helpt in plaats van blokkeert.' },
+                    { t: 'Focus op Risico', d: 'Geen ellenlange lijsten, maar aandacht voor wat écht impact heeft.' },
+                    { t: 'Gedeelde Verantwoordelijkheid', d: 'Security tussen de oren krijgen van elke medewerker.' }
                   ].map(item => (
                     <div key={item.t} style={{ padding: '24px', background: '#fff', border: '1px solid #e7e5e4', borderRadius: '12px' }}>
                       <h4 style={{ margin: '0 0 12px' }}>{item.t}</h4>

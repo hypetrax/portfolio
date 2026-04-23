@@ -16,10 +16,10 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Fluitman Auto's",
-    description: "Een complete digitale herstructurering voor een lokaal autobedrijf.",
-    challenge: "De oude website was traag, niet mobielvriendelijk en maakte gebruik van een verouderd CMS dat de groei van de onderneming belemmerde.",
-    solution: "Ik heb de site volledig herbouwd met React en TypeScript, met een focus op razendsnelle laadtijden en een intuïtieve interface voor klanten om diensten te bekijken.",
-    results: ["100/100 Lighthouse Performance score", "Volledig responsive design", "Betere SEO vindbaarheid"],
+    description: "Een nieuwe, snelle website voor een lokaal autobedrijf.",
+    challenge: "De oude website was traag, werkte niet goed op telefoons en was lastig aan te passen.",
+    solution: "Ik heb de site vanaf de grond opgebouwd met React. De focus lag op snelheid en een helder overzicht van de occasions.",
+    results: ["100/100 Lighthouse Performance score", "Werkt perfect op mobiel", "Betere vindbaarheid in Google"],
     oldUrl: "/archives/fluitmanautos/index.html",
     sliderBeforeUrl: "/archives/fluitmanautos/index.html",
     newUrl: "https://age.bartpullen.nl",
@@ -27,10 +27,10 @@ const projects: Project[] = [
   },
   {
     title: "Badminton Hardenberg",
-    description: "Van een statisch archief naar een levendig verenigingsplatform.",
-    challenge: "De vereniging had een website die fungeerde als een digitaal stoffig archief, lastig te navigeren voor nieuwe leden.",
-    solution: "Door een moderne UX-strategie toe te passen, heb ik de informatiearchitectuur versimpeld en een fris, sportief ontwerp geïmplementeerd dat uitnodigt tot actie.",
-    results: ["60% snellere toegang tot informatie", "Modern mobiel menu", "Eigentijdse uitstraling"],
+    description: "Een frisse site voor de lokale badmintonclub.",
+    challenge: "De oude site was onoverzichtelijk en het was voor nieuwe leden lastig om de juiste informatie te vinden.",
+    solution: "Ik heb de structuur versimpeld en een sportief ontwerp gemaakt dat duidelijk laat zien waar de club voor staat.",
+    results: ["Informatie is veel sneller te vinden", "Modern mobiel menu", "Eigentijdse uitstraling"],
     oldUrl: "/archives/badmintonhardenberg/index.html",
     sliderBeforeUrl: "/archives/badmintonhardenberg/index.html",
     newUrl: "https://badminton.bartpullen.nl",
@@ -38,10 +38,10 @@ const projects: Project[] = [
   },
   {
     title: "Landhuis — Echt Duurzaam",
-    description: "Een krachtige online identiteit voor een specialist in duurzame installatietechniek.",
-    challenge: "Dit installatiebedrijf in Hardenberg werkte zonder website, waardoor zij online onzichtbaar waren voor potentiële klanten die zochten naar warmtepompen en airco-oplossingen.",
-    solution: "Ik heb 'Echt Duurzaam' op de digitale kaart gezet met een professionele, conversiegerichte website die hun expertise in warmtepompen, airconditioning en elektrotechniek benadrukt.",
-    results: ["Lokaal marktleider in regio Hardenberg, Coevorden & Emmen", "Professionele uitstraling die vertrouwen wekt", "Duidelijke presentatie van duurzame diensten"],
+    description: "Een professionele website voor een specialist in duurzame installatietechniek.",
+    challenge: "Dit installatiebedrijf werkte zonder website, waardoor ze online onzichtbaar waren voor mensen die zochten naar warmtepompen.",
+    solution: "Ik heb een website gebouwd die hun expertise in warmtepompen en airconditioning duidelijk presenteert aan de regio.",
+    results: ["Goede lokale vindbaarheid", "Professionele uitstraling die vertrouwen wekt", "Duidelijke presentatie van diensten"],
     oldUrl: "https://www.google.com/search?q=Landhuis+Installatietechniek",
     sliderBeforeUrl: "/archives/landhuis-google/index.html",
     newUrl: "https://landhuis.bartpullen.nl/",
@@ -55,10 +55,9 @@ export const Web = memo(() => {
       <header className="hero-header">
         <div className="container">
           <p className="overline">Bart Pullen — Portfolio</p>
-          <h1>Websites die <span className="italic">werken</span> in 2026.</h1>
+          <h1>Websites die simpelweg <span className="italic">werken</span>.</h1>
           <p className="lead">
-            Ik transformeer verouderde websites naar moderne, snelle en doelgerichte web-ervaringen. 
-            Geen gimmicks, maar pure performance en doordacht design.
+            Ik help bedrijven met het opschonen van hun online aanwezigheid. Geen overbodige poespas, maar snelle sites met een logische structuur en een fris design.
           </p>
         </div>
       </header>

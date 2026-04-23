@@ -65,10 +65,10 @@ export const CRA = memo(() => {
     <div className="cra-page">
       <header className="hero-header" style={{ background: '#f8fafc' }}>
         <div className="container">
-          <p className="overline">Expert Analyse — Security</p>
-          <h1 style={{ color: '#0f172a' }}>De Cyber Resilience Act: <br /><span style={{ color: '#2563eb' }}>Impact voor Fabrikanten</span></h1>
+          <p className="overline">Security — Diepgang</p>
+          <h1 style={{ color: '#0f172a' }}>De Cyber Resilience Act: <br /><span style={{ color: '#2563eb' }}>Wat fabrikanten moeten weten</span></h1>
           <p className="lead" style={{ color: '#475569' }}>
-            De Europese Unie zet een nieuwe standaard voor cybersecurity. Ontdek hoe deze wetgeving de manier waarop we digitale producten bouwen en onderhouden voorgoed verandert.
+            De CRA legt de verantwoordelijkheid voor cybersecurity eindelijk bij de makers van digitale producten. Een analyse van de verplichtingen, van ontwerp tot support.
           </p>
         </div>
       </header>
@@ -78,19 +78,19 @@ export const CRA = memo(() => {
           <div className="container">
             <div className="case-study-grid">
               <div className="case-study-content">
-                <h2>Waarom deze wetgeving nu komt</h2>
+                <h2>Security is geen optie meer</h2>
                 <p className="project-intro">
-                  De economische schade door onveilige software en hardware is niet langer houdbaar. De CRA dwingt fabrikanten om verantwoordelijkheid te nemen voor de gehele levenscyclus van hun product.
+                  De tijd dat software ongestraft 'onveilig bij oplevering' kon zijn, loopt ten einde. De CRA dwingt fabrikanten om gedurende de hele levenscyclus verantwoordelijkheid te nemen voor hun product.
                 </p>
                 
                 <div className="case-details">
                   <div className="detail-block">
-                    <h3>Marktfalen</h3>
-                    <p>Beveiliging wordt vaak opgeofferd voor een snellere 'time-to-market'.</p>
+                    <h3>Focus op de keten</h3>
+                    <p>Beveiliging wordt een integraal onderdeel van het ontwikkelproces, niet een 'add-on' achteraf.</p>
                   </div>
                   <div className="detail-block">
-                    <h3>Informatie-asymmetrie</h3>
-                    <p>Gebruikers kunnen de veiligheid van een product niet eenvoudig beoordelen.</p>
+                    <h3>Transparantie</h3>
+                    <p>Gebruikers krijgen eindelijk inzicht in hoe veilig een product écht is en hoe lang het ondersteund wordt.</p>
                   </div>
                 </div>
               </div>

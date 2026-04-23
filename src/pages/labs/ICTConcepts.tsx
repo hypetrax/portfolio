@@ -136,11 +136,10 @@ export const ICTConcepts = memo(() => {
                 Trading Strategy Report
               </div>
               <h1 style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: '24px' }}>
-                Demystifying the <span style={{ color: '#2563eb' }}>ICT</span> Trading Strategy
+                ICT Trading — <span style={{ color: '#2563eb' }}>De Kern Uitgelegd</span>
               </h1>
               <p style={{ fontSize: '18px', color: '#475569', marginBottom: '24px', lineHeight: 1.6 }}>
-                The Inner Circle Trader (ICT) methodology, developed by Michael J. Huddleston, is a comprehensive approach to analyzing financial market structure. 
-                It sheds light on the actions of institutional traders, equipping you to sidestep the common pitfalls of retail trading.
+                De Inner Circle Trader (ICT) methode kijkt naar hoe grote instellingen de markt bewegen. Geen vage indicatoren, maar een focus op liquiditeit en marktstructuur om 'retail traps' te vermijden.
               </p>
               <div style={{ display: 'flex', gap: '16px' }}>
                 <a href="#concepts" style={{ backgroundColor: '#2563eb', color: 'white', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }}>Explore Concepts</a>

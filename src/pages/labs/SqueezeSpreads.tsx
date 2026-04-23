@@ -232,12 +232,12 @@ export const SqueezeSpreads = memo(() => {
                 {activeSection === 'overview' && (
                     <div className="fade-in" style={{ padding: '48px', maxWidth: '1024px', margin: '0 auto' }}>
                         <div style={{ marginBottom: '32px' }}>
-                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>Core Philosophy</h2>
-                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Stacking probabilities for consistent growth and peace of mind.</p>
+                            <h2 style={{ fontSize: '30px', fontWeight: 'bold', color: '#0f172a', marginBottom: '8px' }}>De Basis</h2>
+                            <p style={{ color: '#64748b', fontSize: '18px', margin: 0 }}>Kansen stapelen voor meer rust en een duidelijk proces.</p>
                         </div>
                         
                         <p style={{ marginBottom: '24px', color: '#334155', lineHeight: 1.625, fontSize: '18px' }}>
-                            This system is designed around finding high-probability moments in time where the odds are overwhelmingly in our favor. By combining market trend, market-leading stocks, specific technical structures (squeezes & EMAs), and an options strategy that only requires the stock <i>not</i> to crash, we construct a scenario where the "path of least resistance" generates profit.
+                            Dit systeem draait om het vinden van momenten waarop de kansen overweldigend in ons voordeel zijn. Door de markttrend te combineren met sterke aandelen, specifieke technische structuren (squeezes) en een optiestrategie die een buffer biedt, creëren we een scenario waarin de 'weg van de minste weerstand' winst oplevert.
                         </p>
 
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '40px' }} className="grid-cols-1 md:grid-cols-2">
