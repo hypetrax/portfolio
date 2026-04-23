@@ -31,7 +31,6 @@ function App() {
                 <p>&copy; {new Date().getFullYear()} Bart Pullen. Gebouwd met React & TypeScript.</p>
               </div>
               <div className="footer-labs">
-                <span className="labs-title">Labs & Quantitative Research:</span>
                 <nav className="labs-nav">
                   <Link to="/" className="labs-link">Web Development</Link>
                   <span className="divider">|</span>
