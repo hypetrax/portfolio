@@ -1,76 +1,85 @@
-import { memo, useState } from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  Filler
-} from 'chart.js';
+import { memo, useState, useEffect } from 'react';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler, ArcElement } from 'chart.js';
 import { Line, Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler, ArcElement);
 
 const concepts = [
-    {
-        id: 'liquidity',
-        title: 'Liquidity Pools',
-        icon: '💧',
-        desc: 'Areas on a chart where retail traders typically place their stop-loss orders. ICT theory suggests Smart Money algorithms actively seek out these pools to fill their large orders.',
-        action: 'Look for obvious swing highs/lows where masses of stops are resting.'
-    },
-    {
-        id: 'orderblock',
-        title: 'Order Blocks (OB)',
-        icon: '🏛️',
-        desc: 'Specific price candles where financial institutions have accumulated substantial positions. When price returns to these zones, strong reactions are expected as institutions defend their entries.',
-        action: 'Identify the last down-candle before an explosive up-move (Bullish OB).'
-    },
-    {
-        id: 'fvg',
-        title: 'Fair Value Gap (FVG)',
-        icon: '📏',
-        desc: 'A three-candle pattern indicating an imbalance in price delivery. Price moved so fast in one direction that the other side was not offered fair trading opportunity.',
-        action: 'Used as high-probability targets or entry points when price retraces.'
-    },
-    {
-        id: 'mss',
-        title: 'Market Structure Shift',
-        icon: '🔄',
-        desc: 'A distinct change in the trend direction, characterized by a forceful break of a key swing high or low. It is the first clue that Smart Money has reversed bias.',
-        action: 'Wait for a liquidity sweep, followed immediately by an MSS.'
-    },
-    {
-        id: 'killzones',
-        title: 'Time & Killzones',
-        icon: '🕒',
-        desc: 'In ICT, time is as important as price. Killzones are specific windows of the day characterized by high volatility and institutional volume injections.',
-        action: 'Only look for high-probability setups during these specific time windows.'
-    }
+  {
+    id: 'liquidity',
+    title: 'Liquidity Pools',
+    icon: '💧',
+    desc: 'Areas on a chart where retail traders typically place their stop-loss orders. ICT theory suggests Smart Money algorithms actively seek out these pools to fill their large orders.',
+    action: 'Look for obvious swing highs/lows where masses of stops are resting.'
+  },
+  {
+    id: 'orderblock',
+    title: 'Order Blocks (OB)',
+    icon: '🏛️',
+    desc: 'Specific price candles where financial institutions have accumulated substantial positions. When price returns to these zones, strong reactions are expected as institutions defend their entries.',
+    action: 'Identify the last down-candle before an explosive up-move (Bullish OB).'
+  },
+  {
+    id: 'fvg',
+    title: 'Fair Value Gap (FVG)',
+    icon: '📏',
+    desc: 'A three-candle pattern indicating an imbalance in price delivery (inefficiency). Price moved so fast in one direction that the other side was not offered fair trading opportunity. Price often returns to fill these gaps.',
+    action: 'Used as high-probability targets or entry points when price retraces.'
+  },
+  {
+    id: 'mss',
+    title: 'Market Structure Shift (MSS)',
+    icon: '🔄',
+    desc: 'A distinct change in the trend direction, characterized by a forceful break of a key swing high or low. It is the first clue that Smart Money has reversed its directional bias.',
+    action: 'Wait for a liquidity sweep, followed immediately by an MSS.'
+  },
+  {
+    id: 'killzones',
+    title: 'Time & Killzones',
+    icon: '🕒',
+    desc: 'In ICT, time is as important as price. Killzones are specific windows of the day (e.g., London Open, NY Session Open) characterized by high volatility and institutional volume injections.',
+    action: 'Only look for high-probability setups during these specific time windows.'
+  }
+];
+
+const faqs = [
+  {
+    q: "Is the ICT Trading Strategy Really Profitable?",
+    a: "The ICT trading strategy has been reported to be profitable by traders who have embraced its concepts and executed it skillfully. However, the report stresses that no trading strategy is foolproof, and success is not guaranteed in every trade. It depends heavily on the trader's ability to understand and apply the methodology correctly."
+  },
+  {
+    q: "Are ICT and SMC (Smart Money Concepts) the same?",
+    a: "No, they are not the same, but closely related. SMC refers specifically to the concepts associated with understanding Smart Money's movements. ICT, developed by Michael J. Huddleston, is the broader, overarching framework and methodology that incorporates these Smart Money Concepts to emulate their behavior."
+  },
+  {
+    q: "How can you learn ICT trading?",
+    a: "You can start by accessing the wealth of educational resources provided by Michael J. Huddleston, particularly his tutorials available on YouTube. Additionally, joining online trading communities or forums where ICT traders share insights is highly recommended to build foundational understanding."
+  }
 ];
 
 export const ICTConcepts = memo(() => {
   const [activeConcept, setActiveConcept] = useState(concepts[0]);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeNav, setActiveNav] = useState('overview');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['overview', 'paradigm', 'concepts', 'analysis', 'faq'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el && scrollPosition >= el.offsetTop) {
+          setActiveNav(section);
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const paradigmData = {
-    labels: ['Asian Session', 'London Open', 'Manipulation', 'Stop Hunt', 'True Direction', 'Expansion'],
+    labels: ['Asian Session', 'London Open', 'Manipulation (Judas)', 'Stop Hunt', 'True Direction', 'Expansion'],
     datasets: [{
       label: 'Price Action',
       data: [100, 102, 105, 95, 110, 115],
@@ -85,188 +94,232 @@ export const ICTConcepts = memo(() => {
   };
 
   const componentsData = {
-    labels: ['Time', 'Liquidity', 'Structure', 'FVG'],
+    labels: ['Time (Killzones)', 'Liquidity (Stops)', 'Structure', 'Inefficiency (FVG)'],
     datasets: [{
       data: [25, 30, 25, 20],
       backgroundColor: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b'],
-      borderWidth: 0,
+      borderWidth: 0
     }]
   };
 
-  const faqs = [
-    {
-        q: "Is the ICT Trading Strategy Really Profitable?",
-        a: "The ICT strategy has been reported profitable by traders who execute it skillfully. However, success depends heavily on the trader's ability to apply the methodology correctly; no strategy is foolproof."
-    },
-    {
-        q: "Are ICT and SMC the same?",
-        a: "They are closely related. SMC (Smart Money Concepts) refers to the core concepts of institutional movement. ICT is the broader framework developed by Michael J. Huddleston that incorporates these concepts."
-    },
-    {
-        q: "How can you learn ICT trading?",
-        a: "Michael J. Huddleston provides extensive tutorials on YouTube. Building a foundational understanding through backtesting and joining trading communities is also recommended."
-    }
-  ];
-
   return (
-    <div className="labs-page">
-      <header className="hero-header">
-        <div className="container">
-          <p className="overline">Labs — Institutional Theory</p>
-          <h1>Demystifying the <span className="text-blue-600 italic">ICT</span> Methodology</h1>
-          <p className="lead">
-            A comprehensive approach to analyzing financial market structure by identifying the footprints of institutional traders.
-          </p>
-        </div>
-      </header>
-
-      <main className="container py-12 space-y-32">
-        <section id="paradigm">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2>The Smart Money Paradigm</h2>
-            <p className="text-slate-600">How "Smart Money" manipulates price to tap into retail liquidity (stop losses) before moving the market in their intended direction.</p>
+    <div style={{ fontFamily: "'Inter', sans-serif", backgroundColor: '#f8fafc', color: '#1e293b', minHeight: '100vh' }}>
+      <nav style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(4px)', borderBottom: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 16px', height: '64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ fontSize: '24px', marginRight: '8px' }}>📈</span>
+            <span style={{ fontWeight: 700, fontSize: '20px', letterSpacing: '-0.025em', color: '#0f172a' }}>ICT Mastery</span>
           </div>
-          
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-            <div className="h-[400px]">
+          <div style={{ display: 'none' }} className="md:flex space-x-8 items-center">
+            {['overview', 'paradigm', 'concepts', 'analysis', 'faq'].map(section => (
+              <a 
+                key={section}
+                href={`#${section}`} 
+                style={{ 
+                  color: activeNav === section ? '#2563eb' : '#475569', 
+                  borderBottom: activeNav === section ? '2px solid #2563eb' : '2px solid transparent',
+                  padding: '8px 0', fontSize: '14px', fontWeight: 500, textDecoration: 'none', transition: 'all 0.3s'
+                }}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <main style={{ maxWidth: '1152px', margin: '0 auto', padding: '32px 16px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
+        <section id="overview" style={{ paddingTop: '32px', paddingBottom: '48px', borderBottom: '1px solid #e2e8f0' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center' }}>
+            <div>
+              <div style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', backgroundColor: '#dbeafe', color: '#1e40af', fontSize: '12px', fontWeight: 600, letterSpacing: '0.025em', textTransform: 'uppercase', marginBottom: '16px' }}>
+                Trading Strategy Report
+              </div>
+              <h1 style={{ fontSize: '48px', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: '24px' }}>
+                Demystifying the <span style={{ color: '#2563eb' }}>ICT</span> Trading Strategy
+              </h1>
+              <p style={{ fontSize: '18px', color: '#475569', marginBottom: '24px', lineHeight: 1.6 }}>
+                The Inner Circle Trader (ICT) methodology, developed by Michael J. Huddleston, is a comprehensive approach to analyzing financial market structure. 
+                It sheds light on the actions of institutional traders, equipping you to sidestep the common pitfalls of retail trading.
+              </p>
+              <div style={{ display: 'flex', gap: '16px' }}>
+                <a href="#concepts" style={{ backgroundColor: '#2563eb', color: 'white', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }}>Explore Concepts</a>
+                <a href="#faq" style={{ backgroundColor: 'white', color: '#334155', fontWeight: 600, padding: '12px 24px', borderRadius: '8px', border: '1px solid #d1d5db', textDecoration: 'none', transition: 'background 0.2s' }}>Read FAQs</a>
+              </div>
+            </div>
+            <div style={{ backgroundColor: 'white', padding: '32px', borderRadius: '16px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)', border: '1px solid #f1f5f9', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, marginRight: '-32px', marginTop: '-32px', fontSize: '120px', opacity: 0.05 }}>🏛️</div>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px', color: '#1e293b' }}>Core Objective</h3>
+              <p style={{ color: '#475569', marginBottom: '24px' }}>
+                "In the financial market, large players and market makers often accumulate large order blocks before making significant price moves. ICT aims to identify these footprints."
+              </p>
+              <div style={{ fontSize: '14px', fontWeight: 500, color: '#64748b', display: 'flex', alignItems: 'center' }}>
+                <span style={{ color: '#10b981', marginRight: '8px' }}>✔</span> Emulates Smart Money Behavior
+              </div>
+              <div style={{ fontSize: '14px', fontWeight: 500, color: '#64748b', display: 'flex', alignItems: 'center', marginTop: '8px' }}>
+                <span style={{ color: '#10b981', marginRight: '8px' }}>✔</span> Sidesteps Retail Traps
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="paradigm">
+          <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 40px' }}>
+            <h2 style={{ fontSize: '30px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>The Smart Money Paradigm</h2>
+            <p style={{ color: '#475569', fontSize: '18px' }}>
+              How "Smart Money" manipulates price to tap into retail liquidity (stop losses) before moving the market in their intended direction.
+            </p>
+          </div>
+          <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+            <div style={{ height: '350px', position: 'relative' }}>
               <Line 
                 data={paradigmData}
                 options={{
                   responsive: true,
                   maintainAspectRatio: false,
-                  plugins: { legend: { display: false } },
-                  scales: {
-                    y: { display: false, min: 90, max: 120 },
-                    x: { grid: { display: false } }
-                  }
+                  plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                      callbacks: {
+                        label: (context) => {
+                          const labels = [
+                            'Asian Session',
+                            'London Open',
+                            'Retail induced to buy (Breakout)',
+                            'SM drives price down to hit stops',
+                            'SM accumulates orders & drives up',
+                            'Expansion'
+                          ];
+                          return labels[context.dataIndex] || '';
+                        }
+                      }
+                    }
+                  },
+                  scales: { y: { display: false, min: 90, max: 120 }, x: { grid: { display: false } } }
                 }}
               />
             </div>
-            <div className="mt-12 grid md:grid-cols-3 gap-8 text-center text-sm">
-              <div className="p-6 bg-slate-50 rounded-xl">
-                <span className="block text-2xl mb-2">👤</span>
-                <strong className="block text-slate-800 mb-2">1. Retail Engineering</strong>
-                <span className="text-slate-500">Price creates obvious support/resistance, inducing retail traders to enter early.</span>
+            <div style={{ marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', textAlign: 'center', fontSize: '14px' }}>
+              <div style={{ padding: '16px', backgroundColor: '#f8fafc', borderRadius: '8px' }}>
+                <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>👤</span>
+                <strong style={{ display: 'block', color: '#1e293b' }}>1. Retail Engineering</strong>
+                <span style={{ color: '#64748b' }}>Price creates obvious support/resistance.</span>
               </div>
-              <div className="p-6 bg-rose-50 rounded-xl">
-                <span className="block text-2xl mb-2">🚨</span>
-                <strong className="block text-rose-800 mb-2">2. Liquidity Sweep</strong>
-                <span className="text-rose-600/80">Smart Money drives price through support to hit stops, accumulating orders.</span>
+              <div style={{ padding: '16px', backgroundColor: '#fef2f2', borderRadius: '8px' }}>
+                <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>🚨</span>
+                <strong style={{ display: 'block', color: '#991b1b' }}>2. Liquidity Sweep</strong>
+                <span style={{ color: '#b91c1c' }}>SM drives price through support to hit stops.</span>
               </div>
-              <div className="p-6 bg-blue-50 rounded-xl">
-                <span className="block text-2xl mb-2">🚀</span>
-                <strong className="block text-blue-800 mb-2">3. Institutional Move</strong>
-                <span className="text-blue-600/80">With sufficient liquidity grabbed, the true directional move begins.</span>
+              <div style={{ padding: '16px', backgroundColor: '#eff6ff', borderRadius: '8px' }}>
+                <span style={{ fontSize: '20px', display: 'block', marginBottom: '4px' }}>🚀</span>
+                <strong style={{ display: 'block', color: '#1e40af' }}>3. Institutional Move</strong>
+                <span style={{ color: '#1d4ed8' }}>True directional move begins.</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="concepts" className="bg-slate-900 text-white rounded-3xl p-12 shadow-2xl overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 blur-3xl -mr-32 -mt-32"></div>
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-white">Key ICT Concepts</h2>
-            <p className="text-slate-400">Mastering ICT requires understanding specific mechanics of order flow.</p>
+        <section id="concepts" style={{ backgroundColor: '#0f172a', color: 'white', borderRadius: '24px', padding: '48px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+          <div style={{ textAlign: 'center', maxWidth: '768px', margin: '0 auto 40px' }}>
+            <h2 style={{ fontSize: '30px', fontWeight: 700, color: 'white', marginBottom: '16px' }}>Key ICT Concepts</h2>
+            <p style={{ color: '#94a3b8', fontSize: '18px' }}>Click the concepts below to explore the framework.</p>
           </div>
-
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4 flex flex-col gap-2">
-              {concepts.map(concept => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {concepts.map(c => (
                 <button 
-                  key={concept.id}
-                  onClick={() => setActiveConcept(concept)}
-                  className={`text-left px-8 py-5 rounded-xl font-bold transition-all border ${activeConcept.id === concept.id ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-750'}`}
+                  key={c.id}
+                  onClick={() => setActiveConcept(c)}
+                  style={{ 
+                    textAlign: 'left', padding: '16px 24px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
+                    border: '1px solid #334155',
+                    backgroundColor: activeConcept.id === c.id ? '#2563eb' : '#1e293b',
+                    color: activeConcept.id === c.id ? 'white' : '#cbd5e1'
+                  }}
                 >
-                  <span className="mr-3">{concept.icon}</span> {concept.title}
+                  <span style={{ marginRight: '8px' }}>{c.icon}</span> {c.title}
                 </button>
               ))}
             </div>
-            
-            <div className="lg:col-span-8 bg-slate-800/50 rounded-2xl p-10 border border-slate-700/50 backdrop-blur-sm flex flex-col justify-center min-h-[350px]">
-              <div className="text-5xl mb-8">{activeConcept.icon}</div>
-              <h3 className="text-white text-3xl font-bold mb-4">{activeConcept.title}</h3>
-              <p className="text-slate-300 text-lg leading-relaxed mb-8">{activeConcept.desc}</p>
-              <div className="pt-8 border-t border-slate-700">
-                <p className="text-blue-400 font-mono text-sm uppercase tracking-widest font-bold">Application</p>
-                <p className="text-white mt-2">{activeConcept.action}</p>
+            <div style={{ backgroundColor: '#1e293b', padding: '32px', borderRadius: '16px', border: '1px solid rgba(51, 65, 85, 0.5)', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '300px' }}>
+              <div style={{ fontSize: '48px', marginBottom: '24px', color: '#60a5fa' }}>{activeConcept.icon}</div>
+              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '16px' }}>{activeConcept.title}</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '18px', lineHeight: 1.6, marginBottom: '24px' }}>{activeConcept.desc}</p>
+              <div style={{ paddingTop: '24px', borderTop: '1px solid #334155' }}>
+                <p style={{ color: '#93c5fd', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 8px' }}>Application</p>
+                <p style={{ color: 'white', margin: 0 }}>{activeConcept.action}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="analysis" className="grid md:grid-cols-2 gap-20">
-          <div>
-            <h3>Anatomy of a Setup</h3>
-            <p className="text-slate-600 mb-12">The strategy is a confluence of time, price, and structural elements.</p>
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm h-[300px]">
-              <Doughnut 
-                data={componentsData}
-                options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  cutout: '70%',
-                  plugins: {
-                    legend: {
-                      position: 'right' as const,
-                      labels: { padding: 20, usePointStyle: true, font: { weight: 'bold' } }
+        <section id="analysis">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
+            <div>
+              <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px' }}>Anatomy of an ICT Setup</h2>
+              <p style={{ color: '#475569', marginBottom: '32px' }}>A confluence of time, price, and structural elements.</p>
+              <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '16px', border: '1px solid #e2e8f0', height: '300px' }}>
+                <Doughnut 
+                  data={componentsData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                      legend: { position: 'right', labels: { padding: 20, usePointStyle: true, font: { family: 'Inter', size: 13 } } }
                     }
-                  }
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h3 className="mb-12">Pros & Realities</h3>
-            <div className="p-6 bg-emerald-50 rounded-xl border border-emerald-100 flex gap-6">
-              <span className="text-2xl">🛡️</span>
-              <div>
-                <h4 className="text-emerald-900 font-bold mb-1">Institutional Alignment</h4>
-                <p className="text-emerald-800/70 text-sm">Follows the footprints of banks and central institutions rather than retail indicators.</p>
+                  }}
+                />
               </div>
             </div>
-            <div className="p-6 bg-amber-50 rounded-xl border border-amber-100 flex gap-6">
-              <span className="text-2xl">🧠</span>
-              <div>
-                <h4 className="text-amber-900 font-bold mb-1">Steep Learning Curve</h4>
-                <p className="text-amber-800/70 text-sm">Requires significant study of complex terminology and hundreds of hours of backtesting.</p>
-              </div>
-            </div>
-            <div className="p-6 bg-emerald-50 rounded-xl border border-emerald-100 flex gap-6">
-              <span className="text-2xl">🎯</span>
-              <div>
-                <h4 className="text-emerald-900 font-bold mb-1">High Risk-to-Reward</h4>
-                <p className="text-emerald-800/70 text-sm">Precision entries allow for tight stops and massive potential upside on expansions.</p>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '0' }}>Benefits & Limitations</h2>
+              {[
+                { i: '📈', c: 'green', t: 'Follows Institutional Money', d: 'Logical framework based on how large players actually move prices.' },
+                { i: '🧠', c: 'orange', t: 'Steep Learning Curve', d: 'Requires significant study and backtesting to apply correctly.' },
+                { i: '🎯', c: 'green', t: 'High Risk-to-Reward', d: 'Precision entries allow for tight stops and massive potential upside.' }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', gap: '16px', padding: '20px', backgroundColor: item.c === 'green' ? '#f0fdf4' : '#fff7ed', border: `1px solid ${item.c === 'green' ? '#dcfce7' : '#ffedd5'}`, borderRadius: '16px' }}>
+                  <div style={{ fontSize: '24px' }}>{item.i}</div>
+                  <div>
+                    <h4 style={{ fontWeight: 700, marginBottom: '4px', color: item.c === 'green' ? '#14532d' : '#7c2d12' }}>{item.t}</h4>
+                    <p style={{ fontSize: '14px', color: item.c === 'green' ? '#166534' : '#9a3412', margin: 0 }}>{item.d}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="faq" className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2>Frequently Asked Questions</h2>
+        <section id="faq" style={{ maxWidth: '896px', margin: '0 auto', paddingBottom: '80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <span style={{ fontSize: '32px', display: 'block', marginBottom: '16px' }}>❓</span>
+            <h2 style={{ fontSize: '30px', fontWeight: 700 }}>Frequently Asked Questions</h2>
+            <p style={{ color: '#475569', marginTop: '8px' }}>Direct answers from the source report.</p>
           </div>
-          <div className="space-y-4">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+              <div key={i} style={{ backgroundColor: 'white', border: '1px solid #e2e8f0', borderRadius: '12px', overflow: 'hidden' }}>
                 <button 
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left px-8 py-6 font-bold text-slate-900 hover:bg-slate-50 flex justify-between items-center transition-colors"
+                  style={{ width: '100%', textAlign: 'left', padding: '20px 24px', fontWeight: 700, color: '#1e293b', border: 'none', background: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                 >
-                  <span className="text-lg">{faq.q}</span>
-                  <span className={`text-2xl text-slate-400 transition-transform ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
+                  <span style={{ fontSize: '18px' }}>{faq.q}</span>
+                  <span style={{ fontSize: '24px', color: '#94a3b8', transition: 'transform 0.3s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
                 </button>
-                {openFaq === i && (
-                  <div className="px-8 pb-8 bg-white animate-in slide-in-from-top-2 duration-300">
-                    <p className="text-slate-600 leading-relaxed border-t border-slate-100 pt-6">{faq.a}</p>
-                  </div>
-                )}
+                <div style={{ maxHeight: openFaq === i ? '500px' : '0', overflow: 'hidden', transition: 'max-height 0.3s ease-out', backgroundColor: '#f8fafc', borderTop: openFaq === i ? '1px solid #f1f5f9' : 'none' }}>
+                  <p style={{ padding: '20px 24px', color: '#475569', lineHeight: 1.6, margin: 0 }}>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>
         </section>
       </main>
+
+      <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '32px 0', textAlign: 'center', borderTop: '1px solid #1e293b' }}>
+        <p style={{ margin: 0 }}>Interactive Analysis based on "ICT Trading Strategy Report"</p>
+        <p style={{ fontSize: '14px', marginTop: '8px' }}>Educational Purposes Only. Not Financial Advice.</p>
+      </footer>
     </div>
   );
 });
