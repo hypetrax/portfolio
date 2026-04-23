@@ -199,7 +199,6 @@ export const SPX = memo(() => {
             <header style={{ backgroundColor: 'white', borderBottom: `1px solid ${brandColors[200]}`, position: 'sticky', top: 0, zIndex: 50, boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
                 <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '24px', color: accentColors.DEFAULT }}>\u25B2</span>
                         <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: brandColors[900], margin: 0 }}>SPX Quant Report</h1>
                     </div>
                     <nav style={{ marginLeft: 'auto', display: 'flex', gap: '32px' }}>

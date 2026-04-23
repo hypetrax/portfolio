@@ -224,7 +224,6 @@ export const TurtleSoup = memo(() => {
             <nav style={{ backgroundColor: 'white', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', position: 'sticky', top: 0, zIndex: 50 }}>
                 <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#2563eb' }}>\u25B2</span>
                         <span style={{ fontWeight: 'bold', fontSize: '20px', letterSpacing: '-0.025em', color: '#1e293b' }}>Turtle Soup</span>
                     </div>
                     <div style={{ display: 'flex', gap: '32px' }} className="hidden md:flex">
