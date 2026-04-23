@@ -114,13 +114,13 @@ const simData: any = {
             { 
                 idx: 11, 
                 title: "4. The Bearish FVG Entry", 
-                desc: "The drop creates a massive Bearish FVG between 101.0 and 103.5. Price retraces upwards at 11:15, filling the gap. This is the institutional entry point to go short.",
+                desc: "The drop creates a technically precise Bearish FVG between 102.0 and 103.0. Price retraces upwards at 11:15, filling the gap. This is the institutional entry point to go short.",
                 chk: 4,
                 shapes: [
-                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 101.0, y1: 103.5, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}},
+                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 102.0, y1: 103.0, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}},
                     {type: 'line', x0: '10:30', x1: '11:45', y0: 101.5, y1: 101.5, line: {color: 'red', width: 2}}
                 ],
-                annotations: [{x: '11:00', y: 102.25, text: 'Fair Value Gap (Entry)', showarrow: false, font: {color: 'red'}}]
+                annotations: [{x: '11:00', y: 102.5, text: 'Fair Value Gap (Entry)', showarrow: false, font: {color: 'red'}}]
             },
             { 
                 idx: 12, 
@@ -128,7 +128,7 @@ const simData: any = {
                 desc: "After mitigating orders in the premium FVG array, price rapidly dumps towards lower liquidity pools.",
                 chk: 4,
                 shapes: [
-                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 101.0, y1: 103.5, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}}
+                    {type: 'rect', x0: '10:30', x1: '11:45', y0: 102.0, y1: 103.0, fillcolor: 'rgba(239, 68, 68, 0.2)', line: {width: 0}}
                 ],
                 annotations: []
             }
