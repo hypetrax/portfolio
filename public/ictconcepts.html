@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Trading Strategy: Interactive Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chosen Palette: Institutional Neutrals (Slate/Zinc) with Trust Blue & Alert Amber accents -->
+    <!-- Application Structure Plan: A dashboard-style learning journey. 
+         1. Hero/Intro: Establishes the core definition from the text.
+         2. The Paradigm Shift (Chart): Visualizes Retail vs. Institutional behavior to explain the *why*.
+         3. Interactive Concept Glossary: Tabbed interface for 'Key ICT Concepts' to prevent text overload.
+         4. Pros/Cons Comparison: Interactive balance visualization.
+         5. FAQ Accordion: Directly addresses the specific questions from the PDF. 
+         This structure translates a static document into an active learning flow, guiding the user from theory to practical application concepts. -->
+    <!-- Visualization & Content Choices: 
+         - Goal: Compare Retail vs Smart Money -> Viz: Line/Area Chart (Chart.js) showing conceptual price manipulation (Liquidity sweeps) -> Interaction: Hover tooltips -> Justification: Simplifies complex order flow theory into a visual model. NO SVG.
+         - Goal: Explain Key Concepts -> Viz: Interactive Tabbed Panel -> Interaction: Click to reveal definitions -> Justification: Breaks down the dense "Concepts" section of the report. NO SVG.
+         - Goal: Present FAQs -> Viz: Accordion List -> Interaction: Click to expand -> Justification: Saves space and allows users to self-serve information. NO SVG. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+            color: #1e293b; /* Tailwind slate-800 */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 250px;
+            }
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb; /* blue-600 */
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .concept-btn {
+            transition: all 0.2s ease;
+        }
+        .concept-btn.active {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Arbitrary large height for animation */
+        }
+        
+        /* Unicode Icon Styling */
+        .icon-lg { font-size: 2rem; line-height: 1; }
+        .icon-md { font-size: 1.5rem; line-height: 1; }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl mr-2">&#128200;</span>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">ICT Mastery</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#overview" class="nav-link active py-2 text-sm font-medium text-slate-600">Overview</a>
+                    <a href="#paradigm" class="nav-link py-2 text-sm font-medium text-slate-600">The Paradigm</a>
+                    <a href="#concepts" class="nav-link py-2 text-sm font-medium text-slate-600">Core Concepts</a>
+                    <a href="#analysis" class="nav-link py-2 text-sm font-medium text-slate-600">Analysis</a>
+                    <a href="#faq" class="nav-link py-2 text-sm font-medium text-slate-600">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-20">
+
+        <!-- Section 1: Overview / Hero -->
+        <section id="overview" class="pt-8 pb-12 border-b border-slate-200">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold tracking-wide uppercase mb-4">
+                        Trading Strategy Report
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                        Demystifying the <span class="text-blue-600">ICT</span> Trading Strategy
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        The Inner Circle Trader (ICT) methodology, developed by Michael J. Huddleston, is a comprehensive approach to analyzing financial market structure. 
+                        It sheds light on the actions of institutional traders, equipping you to sidestep the common pitfalls of retail trading.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#concepts" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition shadow-md">
+                            Explore Concepts
+                        </a>
+                        <a href="#faq" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold py-3 px-6 rounded-lg border border-slate-300 transition shadow-sm">
+                            Read FAQs
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mr-8 -mt-8 text-[120px] opacity-5">&#127976;</div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800">Core Objective</h3>
+                    <p class="text-slate-600 mb-6">
+                        "In the financial market, large players and market makers often accumulate large order blocks before making significant price moves. ICT aims to identify these footprints."
+                    </p>
+                    <div class="flex items-center text-sm font-medium text-slate-500">
+                        <span class="mr-2 text-green-500">&#10004;</span> Emulates Smart Money Behavior
+                    </div>
+                    <div class="flex items-center text-sm font-medium text-slate-500 mt-2">
+                        <span class="mr-2 text-green-500">&#10004;</span> Sidesteps Retail Traps
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Paradigm Shift (Data Visualization) -->
+        <section id="paradigm" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Smart Money Paradigm</h2>
+                <p class="text-slate-600 text-lg">
+                    This interactive chart illustrates the foundational premise of ICT: How "Smart Money" manipulates price to tap into retail liquidity (stop losses) before moving the market in their intended direction.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <!-- Required Chart Container implementation -->
+                <div class="chart-container">
+                    <canvas id="paradigmChart"></canvas>
+                </div>
+                <div class="mt-6 grid md:grid-cols-3 gap-4 text-center text-sm">
+                    <div class="p-4 bg-slate-50 rounded-lg">
+                        <span class="block text-xl mb-1">&#128113;</span>
+                        <strong class="block text-slate-800">1. Retail Engineering</strong>
+                        <span class="text-slate-500">Price creates obvious support/resistance, inducing retail traders to enter early.</span>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <span class="block text-xl mb-1">&#128680;</span>
+                        <strong class="block text-red-800">2. Liquidity Sweep</strong>
+                        <span class="text-red-600/80">Smart Money drives price through support to hit retail stop-losses, accumulating orders.</span>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <span class="block text-xl mb-1">&#128640;</span>
+                        <strong class="block text-blue-800">3. Institutional Move</strong>
+                        <span class="text-blue-600/80">With sufficient liquidity grabbed, the true, explosive directional move begins.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Interactive Core Concepts -->
+        <section id="concepts" class="scroll-mt-20 bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold mb-4">Key ICT Concepts</h2>
+                <p class="text-slate-400 text-lg">
+                    Mastering ICT requires understanding a specific vocabulary describing market mechanics. Click the concepts below to explore the framework.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8">
+                <!-- Concept Navigation -->
+                <div class="md:col-span-4 flex flex-col space-y-2" id="concept-nav">
+                    <!-- Buttons generated by JS -->
+                </div>
+                
+                <!-- Concept Display -->
+                <div class="md:col-span-8 bg-slate-800 rounded-xl p-8 border border-slate-700 flex flex-col justify-center min-h-[300px]">
+                    <div id="concept-icon" class="text-5xl mb-6 text-blue-400">&#128269;</div>
+                    <h3 id="concept-title" class="text-2xl font-bold mb-4">Select a Concept</h3>
+                    <p id="concept-desc" class="text-slate-300 text-lg leading-relaxed">
+                        Choose a term from the menu to understand its role in the Inner Circle Trader strategy.
+                    </p>
+                    <div id="concept-action" class="mt-6 text-sm font-mono text-blue-300 hidden border-t border-slate-700 pt-4">
+                        <!-- Actionable insight here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Analysis & Realities (Pros/Cons & Components) -->
+        <section id="analysis" class="scroll-mt-20">
+            <div class="grid md:grid-cols-2 gap-12">
+                
+                <!-- Strategy Components Chart -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Anatomy of an ICT Setup</h2>
+                    <p class="text-slate-600 mb-8">
+                        The strategy does not rely on a single indicator. It is a confluence of time, price, and structural elements.
+                    </p>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="componentsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits & Limitations -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Benefits & Limitations</h2>
+                    <p class="text-slate-600 mb-8">
+                        As noted in the report, no strategy is foolproof. Success depends heavily on the trader's skill and psychology.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- Pro Card -->
+                        <div class="flex items-start bg-green-50 p-5 rounded-xl border border-green-100">
+                            <div class="text-green-600 text-2xl mr-4">&#10710;</div>
+                            <div>
+                                <h4 class="font-bold text-green-900 mb-1">Follows Institutional Money</h4>
+                                <p class="text-green-800/80 text-sm">Provides a logical framework based on how large players (central banks, market makers) actually move prices, rather than retail indicators.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Con Card -->
+                        <div class="flex items-start bg-orange-50 p-5 rounded-xl border border-orange-100">
+                            <div class="text-orange-600 text-2xl mr-4">&#9888;</div>
+                            <div>
+                                <h4 class="font-bold text-orange-900 mb-1">Steep Learning Curve</h4>
+                                <p class="text-orange-800/80 text-sm">The methodology involves complex terminology and concepts. It requires significant study and backtesting to apply correctly in live markets.</p>
+                            </div>
+                        </div>
+
+                        <!-- Pro Card -->
+                        <div class="flex items-start bg-green-50 p-5 rounded-xl border border-green-100">
+                            <div class="text-green-600 text-2xl mr-4">&#9878;</div>
+                            <div>
+                                <h4 class="font-bold text-green-900 mb-1">High Risk-to-Reward</h4>
+                                <p class="text-green-800/80 text-sm">By identifying precise manipulation points (Optimal Trade Entries), traders can utilize tight stop-losses for massive potential upside.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 5: FAQs (Accordion) -->
+        <section id="faq" class="scroll-mt-20 max-w-4xl mx-auto pb-20">
+            <div class="text-center mb-10">
+                <span class="text-4xl block mb-4">&#10068;</span>
+                <h2 class="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+                <p class="text-slate-600 mt-2">Direct answers from the source report.</p>
+            </div>
+
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQs inserted via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p>Interactive Analysis based on "ICT Trading Strategy Report"</p>
+        <p class="text-sm mt-2">Educational Purposes Only. Not Financial Advice.</p>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. Navigation Active State Logic ---
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // --- 2. Chart.js Implementations ---
+
+            // Chart A: The Paradigm (Line Chart visualizing manipulation)
+            const ctxParadigm = document.getElementById('paradigmChart').getContext('2d');
+            
+            // Mock data representing a typical "Stop Hunt" scenario
+            const labels = ['Asian Session', 'London Open', 'Manipulation (Judas Swing)', 'Stop Hunt (Liquidity Grab)', 'True Direction (NY)', 'Expansion'];
+            const priceData = [100, 102, 105, 95, 110, 115];
+            
+            new Chart(ctxParadigm, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Price Action',
+                        data: priceData,
+                        borderColor: '#1e293b', // slate-800
+                        backgroundColor: 'rgba(30, 41, 59, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: ['#94a3b8', '#94a3b8', '#ef4444', '#ef4444', '#22c55e', '#22c55e'],
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        tension: 0.4, // Smooth curve
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // CRITICAL for chart-container styling
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = '';
+                                    if (context.dataIndex === 2) label = 'Retail induced to buy (Breakout)';
+                                    if (context.dataIndex === 3) label = 'SM drives price down to hit stops';
+                                    if (context.dataIndex === 4) label = 'SM accumulates orders & drives up';
+                                    return label;
+                                }
+                            },
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            padding: 12,
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 13 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            display: false, // Hide exact numbers to focus on the concept
+                            min: 90,
+                            max: 120
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                font: { family: 'Inter', size: 11 },
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart B: Components Chart (Doughnut)
+            const ctxComponents = document.getElementById('componentsChart').getContext('2d');
+            new Chart(ctxComponents, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Time (Killzones)', 'Liquidity (Stops)', 'Market Structure', 'Inefficiency (FVG)'],
+                    datasets: [{
+                        data: [25, 30, 25, 20],
+                        backgroundColor: [
+                            '#3b82f6', // blue-500
+                            '#ef4444', // red-500
+                            '#10b981', // emerald-500
+                            '#f59e0b'  // amber-500
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: { family: 'Inter', size: 13 },
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.label + ': Core Pillar';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+
+            // --- 3. Interactive Concepts Data & Logic ---
+            const concepts = [
+                {
+                    id: 'liquidity',
+                    title: 'Liquidity Pools',
+                    icon: '&#128167;',
+                    desc: 'Areas on a chart where retail traders typically place their stop-loss orders. ICT theory suggests Smart Money algorithms actively seek out these pools to fill their large orders.',
+                    action: 'Look for obvious swing highs/lows where masses of stops are resting.'
+                },
+                {
+                    id: 'orderblock',
+                    title: 'Order Blocks (OB)',
+                    icon: '&#127974;',
+                    desc: 'Specific price candles where financial institutions have accumulated substantial positions. When price returns to these zones, strong reactions are expected as institutions defend their entries.',
+                    action: 'Identify the last down-candle before an explosive up-move (Bullish OB).'
+                },
+                {
+                    id: 'fvg',
+                    title: 'Fair Value Gap (FVG)',
+                    icon: '&#128207;',
+                    desc: 'A three-candle pattern indicating an imbalance in price delivery (inefficiency). Price moved so fast in one direction that the other side was not offered fair trading opportunity. Price often returns to fill these gaps.',
+                    action: 'Used as high-probability targets or entry points when price retraces.'
+                },
+                {
+                    id: 'mss',
+                    title: 'Market Structure Shift (MSS)',
+                    icon: '&#128257;',
+                    desc: 'A distinct change in the trend direction, characterized by a forceful break of a key swing high or low. It is the first clue that Smart Money has reversed its directional bias.',
+                    action: 'Wait for a liquidity sweep, followed immediately by an MSS.'
+                },
+                {
+                    id: 'killzones',
+                    title: 'Time & Killzones',
+                    icon: '&#9200;',
+                    desc: 'In ICT, time is as important as price. Killzones are specific windows of the day (e.g., London Open, NY Session Open) characterized by high volatility and institutional volume injections.',
+                    action: 'Only look for high-probability setups during these specific time windows.'
+                }
+            ];
+
+            const navContainer = document.getElementById('concept-nav');
+            const titleEl = document.getElementById('concept-title');
+            const descEl = document.getElementById('concept-desc');
+            const iconEl = document.getElementById('concept-icon');
+            const actionEl = document.getElementById('concept-action');
+
+            // Render Buttons
+            concepts.forEach((concept, index) => {
+                const btn = document.createElement('button');
+                btn.className = `concept-btn text-left px-6 py-4 rounded-xl font-semibold border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700 ${index === 0 ? 'active' : ''}`;
+                btn.innerHTML = `<span class="mr-2">${concept.icon}</span> ${concept.title}`;
+                
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    document.querySelectorAll('.concept-btn').forEach(b => b.classList.remove('active', 'bg-blue-600', 'text-white'));
+                    btn.classList.add('active');
+                    
+                    // Update content with fade effect
+                    titleEl.parentElement.style.opacity = 0;
+                    setTimeout(() => {
+                        titleEl.innerHTML = concept.title;
+                        descEl.innerHTML = concept.desc;
+                        iconEl.innerHTML = concept.icon;
+                        actionEl.innerHTML = `<strong>Application:</strong> ${concept.action}`;
+                        actionEl.classList.remove('hidden');
+                        titleEl.parentElement.style.opacity = 1;
+                        titleEl.parentElement.style.transition = 'opacity 0.3s';
+                    }, 150);
+                });
+                
+                navContainer.appendChild(btn);
+            });
+            
+            // Trigger first concept
+            document.querySelector('.concept-btn').click();
+
+
+            // --- 4. FAQ Accordion Logic ---
+            const faqs = [
+                {
+                    q: "Is the ICT Trading Strategy Really Profitable?",
+                    a: "The ICT trading strategy has been reported to be profitable by traders who have embraced its concepts and executed it skillfully. However, the report stresses that no trading strategy is foolproof, and success is not guaranteed in every trade. It depends heavily on the trader's ability to understand and apply the methodology correctly."
+                },
+                {
+                    q: "Are ICT and SMC (Smart Money Concepts) the same?",
+                    a: "No, they are not the same, but closely related. SMC refers specifically to the concepts associated with understanding Smart Money's movements. ICT, developed by Michael J. Huddleston, is the broader, overarching framework and methodology that incorporates these Smart Money Concepts to emulate their behavior."
+                },
+                {
+                    q: "How can you learn ICT trading?",
+                    a: "You can start by accessing the wealth of educational resources provided by Michael J. Huddleston, particularly his tutorials available on YouTube. Additionally, joining online trading communities or forums where ICT traders share insights is highly recommended to build foundational understanding."
+                }
+            ];
+
+            const faqContainer = document.getElementById('faq-container');
+
+            faqs.forEach((faq, index) => {
+                const div = document.createElement('div');
+                div.className = "bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm";
+                
+                const header = document.createElement('button');
+                header.className = "w-full text-left px-6 py-5 font-bold text-slate-800 hover:bg-slate-50 flex justify-between items-center focus:outline-none transition-colors";
+                header.innerHTML = `
+                    <span class="text-lg">${faq.q}</span>
+                    <span class="text-2xl text-slate-400 transition-transform duration-300" id="icon-${index}">&#43;</span>
+                `;
+
+                const content = document.createElement('div');
+                content.className = "accordion-content bg-slate-50 border-t border-slate-100";
+                content.innerHTML = `<p class="px-6 py-5 text-slate-600 leading-relaxed">${faq.a}</p>`;
+
+                header.addEventListener('click', () => {
+                    const isOpen = content.classList.contains('open');
+                    
+                    // Close all
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                    document.querySelectorAll('[id^="icon-"]').forEach(i => i.innerHTML = '&#43;'); // Plus symbol
+                    document.querySelectorAll('[id^="icon-"]').forEach(i => i.style.transform = 'rotate(0deg)');
+
+                    // Open clicked if it wasn't open
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        const icon = document.getElementById(`icon-${index}`);
+                        icon.innerHTML = '&#8722;'; // Minus symbol
+                    }
+                });
+
+                div.appendChild(header);
+                div.appendChild(content);
+                faqContainer.appendChild(div);
+            });
+
+        });
+    </script>
+</body>
+</html>

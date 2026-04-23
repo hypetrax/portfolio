@@ -38,6 +38,15 @@ const studies: Study[] = [
     results: ["Interactieve prijsactie simulator", "Duidelijke breakdown van liquidity pools", "Stap-voor-stap executie framework"],
     url: "/turtlesoup.html",
     tags: ["ICT Concepts", "Liquidity Analysis", "Market Structure"]
+  },
+  {
+    title: "ICT Trading Strategy Masterclass",
+    description: "Een uitgebreide gids over de Inner Circle Trader (ICT) methodologie, gericht op het begrijpen van institutionele orderflow en marktmanipulatie.",
+    challenge: "Het begrijpen van de verschuiving van retail-paradigma's naar institutionele algoritmen en liquiditeits-gedreven markten.",
+    solution: "Een interactieve masterclass die de kernconcepten zoals FVG, Order Blocks en Liquidity Sweeps vertaalt naar een visueel framework.",
+    results: ["Interactieve concept glossary", "Visualisatie van retail vs smart money", "Diepgaande FAQ over marktmechanismen"],
+    url: "/ictconcepts.html",
+    tags: ["Institutional Trading", "Order Flow", "Market Theory"]
   }
 ];
 
