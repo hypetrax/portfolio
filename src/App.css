@@ -337,7 +337,7 @@ h3 {
 }
 
 .detail-block p {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.6;
   margin: 0;
 }
@@ -360,7 +360,7 @@ h3 {
 }
 
 .results-block li {
-  font-size: 15px;
+  font-size: 17px;
   margin-bottom: 12px;
   color: var(--text-muted);
 }
