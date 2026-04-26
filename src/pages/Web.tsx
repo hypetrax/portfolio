@@ -74,13 +74,12 @@ export const Web = memo(() => {
             loop
             muted
             playsInline
-            style={{ opacity: 0.4 }}
           >
             <source src="/assets/webdesign.mp4" type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
         </div>
-        <div className="container">
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Bart Pullen — Portfolio
           </motion.p>
