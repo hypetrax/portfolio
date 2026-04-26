@@ -74,7 +74,7 @@ export const Web = memo(() => {
             loop
             muted
             playsInline
-            style={{ opacity: 0.4 }}
+            style={{ opacity: 0.2 }}
           >
             <source src="/assets/webdesign.mp4" type="video/mp4" />
           </video>

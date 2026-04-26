@@ -27,7 +27,7 @@ export const SecurityPage = memo(() => {
             loop
             muted
             playsInline
-            style={{ opacity: 0.4 }}
+            style={{ opacity: 0.2 }}
           >
             <source src="/assets/security.mp4" type="video/mp4" />
           </video>
