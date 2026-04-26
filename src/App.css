@@ -88,12 +88,13 @@ h3 {
 }
 
 .main-nav {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(226, 224, 216, 0.4);
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
+  background: rgba(250, 248, 245, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   z-index: 100;
 }
 
@@ -105,7 +106,7 @@ h3 {
 
 .nav-logo {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   text-decoration: none;
   color: var(--text-main);
@@ -224,7 +225,7 @@ h3 {
 }
 
 .expertise-section {
-  padding: 40px 0;
+  padding: 80px 0;
   border-bottom: 1px solid var(--border);
   background: var(--bg-color);
 }
@@ -233,10 +234,10 @@ h3 {
   width: 100%;
   aspect-ratio: 16/10;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 24px;
   border: 1px solid var(--border);
   background: var(--surface);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 40px rgba(45, 55, 72, 0.04);
 }
 
 .expertise-image {
@@ -244,17 +245,17 @@ h3 {
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
-  filter: grayscale(100%) brightness(1) contrast(1.1);
+  filter: sepia(20%) brightness(0.95) contrast(1.05);
 }
 
 .case-study-grid:hover .expertise-image {
-  transform: scale(1.05);
-  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.02);
+  filter: sepia(0%) brightness(1) contrast(1);
 }
 
 /* Case Study */
 .case-study {
-  padding: clamp(40px, 8vh, 100px) 0;
+  padding: clamp(80px, 12vh, 160px) 0;
   border-bottom: 1px solid var(--border);
 }
 
