@@ -4,7 +4,7 @@
   --font-sans: "Nunito", "DM Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "Fira Code", "Space Mono", ui-monospace, monospace;
   
-  --bg-color: #faf8f5; /* Warm paper cream */
+  --bg-color: #fdfdfd; /* Whiter background */
   --surface: #ffffff; /* White surface */
   --surface-hover: #f1f0eb; /* Slightly darker cream */
   --text-main: #2d3748; /* Deep slate ink */
@@ -157,19 +157,8 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
+  opacity: 0.5;
   filter: grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(150%) brightness(1.1);
-}
-
-.video-background video.is-playing {
-  animation: video-crossfade 20.16s linear infinite;
-}
-
-@keyframes video-crossfade {
-  0% { opacity: 0; }
-  4.96% { opacity: 0.15; }
-  95.04% { opacity: 0.15; }
-  100% { opacity: 0; }
 }
 
 .video-overlay {
@@ -289,7 +278,7 @@ h3 {
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--accent);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .project-tags {

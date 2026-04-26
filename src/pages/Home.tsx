@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SEO } from '../components/SEO';
@@ -6,7 +6,6 @@ import { LinkedInIcon } from '../components/Icons';
 import { viewportOnce, delayed } from '../lib/motion';
 
 export const Home = memo(() => {
-  const [videoStarted, setVideoStarted] = useState(false);
   const reduced = useReducedMotion();
 
   const t  = (delay = 0) => reduced ? { duration: 0 } : delayed(delay);
@@ -41,16 +40,14 @@ export const Home = memo(() => {
             loop
             muted
             playsInline
-            poster="/assets/hero-poster.webp"
-            onPlay={() => setVideoStarted(true)}
-            className={videoStarted ? 'is-playing' : ''}
+            poster="/assets/hero-poster.png"
           >
             <source src="/assets/hero-video.mp4" type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
         </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
+          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Bart Pullen — Portfolio
           </motion.p>
           <motion.h1 initial={hi} animate={vp} transition={t(0.2)}>
@@ -58,7 +55,7 @@ export const Home = memo(() => {
             <span style={{ color: 'var(--accent)' }}>websites</span> en analyseer{' '}
             <span style={{ color: 'var(--accent)' }}>data</span>.
           </motion.h1>
-          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)}>
+          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)} style={{ color: '#1a202c' }}>
             Dit is mijn persoonlijke plek waar ik projecten en onderzoeken deel. Geen theoretische
             verhalen, maar tastbaar <span style={{ color: 'var(--accent)' }}>werk</span>: van
             diepgaande security-analyses tot het moderniseren van verouderde sites en trading modellen.
