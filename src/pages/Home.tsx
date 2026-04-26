@@ -41,6 +41,7 @@ export const Home = memo(() => {
             muted
             playsInline
             poster="/assets/hero-poster.png"
+            style={{ opacity: 1 }}
           >
             <source src="/assets/hero-video.mp4" type="video/mp4" />
           </video>
