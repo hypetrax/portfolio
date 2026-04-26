@@ -75,6 +75,10 @@ export const LabsPage = memo(() => {
             loop
             muted
             playsInline
+<<<<<<< HEAD
+=======
+            style={{ opacity: 0.2 }}
+>>>>>>> f0a1bfda0dd1c5c1ac324c1e9a1bde08726cd6b3
           >
             <source src="/assets/trading.mp4" type="video/mp4" />
           </video>
