@@ -69,14 +69,26 @@ export const LabsPage = memo(() => {
         canonical="/labs"
       />
       <header className="hero-header">
+        <div className="video-background">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ opacity: 0.4 }}
+          >
+            <source src="/assets/trading.mp4" type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
+        </div>
         <div className="container">
-          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
+          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Labs & Quantitative Research
           </motion.p>
           <motion.h1 initial={hi} animate={vp} transition={t(0.2)}>
             Data-gedreven <span style={{ color: 'var(--accent)' }}>inzichten</span>.
           </motion.h1>
-          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)}>
+          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)} style={{ color: '#1a202c' }}>
             Naast webontwikkeling focus ik me op kwantitatief onderzoek naar de financiële markten.
             Hieronder vind je een selectie van mijn studies en systemen.
           </motion.p>

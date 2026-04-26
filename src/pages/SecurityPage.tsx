@@ -21,14 +21,26 @@ export const SecurityPage = memo(() => {
         canonical="/security"
       />
       <header className="hero-header">
+        <div className="video-background">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ opacity: 0.4 }}
+          >
+            <source src="/assets/security.mp4" type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
+        </div>
         <div className="container">
-          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
+          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Security & Compliance
           </motion.p>
           <motion.h1 initial={hi} animate={vp} transition={t(0.2)}>
             Security die de business <span style={{ color: 'var(--accent)' }}>versterkt</span>.
           </motion.h1>
-          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)}>
+          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)} style={{ color: '#1a202c' }}>
             In mijn rol als Security Officer richt ik me op het bouwen van een robuust en werkbaar
             security-fundament. Geen theoretische exercities, maar meetbare resultaten die de
             continuïteit en het vertrouwen van de organisatie waarborgen.
