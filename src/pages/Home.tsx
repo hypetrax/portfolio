@@ -48,11 +48,6 @@ export const Home = memo(() => {
             <source src="/assets/hero-video.mp4" type="video/mp4" />
           </video>
           <div className="video-overlay"></div>
-          <div className="technical-metadata">
-            <span className="metadata-item">SYS_READY</span>
-            <span className="metadata-item">SEC_PROTOCOL_V2</span>
-            <span className="metadata-item">DATA_SYNC_OK</span>
-          </div>
         </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
