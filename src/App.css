@@ -136,15 +136,13 @@ h3 {
 }
 
 .hero-header {
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  padding: clamp(60px, 8vh, 100px) 0 clamp(40px, 6vh, 80px);
   border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
   background: var(--bg-color);
-  margin-top: -85px; /* Pulls header up to account for navbar height */
-  padding-top: 85px;
+  margin-top: -85px; /* Bring header up to navbar */
+  padding-top: 140px; /* Offset content for navbar */
 }
 
 .video-background {
