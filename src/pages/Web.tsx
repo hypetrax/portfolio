@@ -19,17 +19,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Fluitman Auto's",
-    description: "Een nieuwe, snelle website voor een lokaal autobedrijf.",
-    challenge: "De oude website was traag, werkte niet goed op telefoons en was lastig aan te passen.",
-    solution: "Ik heb de site vanaf de grond opgebouwd met React. De focus lag op snelheid en een helder overzicht van de occasions.",
-    results: ["100/100 Lighthouse Performance score", "Werkt perfect op mobiel", "Betere vindbaarheid in Google"],
-    oldUrl: "/archives/fluitmanautos/index.html",
-    sliderBeforeUrl: "/archives/fluitmanautos/index.html",
-    newUrl: "https://age.bartpullen.nl",
-    tags: ["Full Rebuild", "React", "Performance"]
-  },
-  {
     title: "Badminton Hardenberg",
     description: "Een frisse site voor de lokale badmintonclub.",
     challenge: "De oude site was onoverzichtelijk en het was voor nieuwe leden lastig om de juiste informatie te vinden.",
@@ -50,6 +39,17 @@ const projects: Project[] = [
     sliderBeforeUrl: "/archives/landhuis-google/index.html",
     newUrl: "https://landhuis.bartpullen.nl/",
     tags: ["Brand Identity", "Duurzaamheid", "SEO"]
+  },
+  {
+    title: "Fluitman Auto's",
+    description: "Een nieuwe, snelle website voor een lokaal autobedrijf.",
+    challenge: "De oude website was traag, werkte niet goed op telefoons en was lastig aan te passen.",
+    solution: "Ik heb de site vanaf de grond opgebouwd met React. De focus lag op snelheid en een helder overzicht van de occasions.",
+    results: ["100/100 Lighthouse Performance score", "Werkt perfect op mobiel", "Betere vindbaarheid in Google"],
+    oldUrl: "/archives/fluitmanautos/index.html",
+    sliderBeforeUrl: "/archives/fluitmanautos/index.html",
+    newUrl: "https://age.bartpullen.nl",
+    tags: ["Full Rebuild", "React", "Performance"]
   }
 ];
 
