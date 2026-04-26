@@ -10,7 +10,8 @@ interface SEOProps {
 }
 
 export const SEO = ({ title, description, canonical, type = 'website', name = 'Bart Pullen', schema }: SEOProps) => {
-  const fullTitle = `${title} | ${name}`;
+  // Only append | name if the title doesn't already start with the name
+  const fullTitle = title.startsWith(name) ? title : `${title} | ${name}`;
   const siteUrl = 'https://bartpullen.nl'; // Aanpassen indien nodig
   
   return (
