@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
+import { viewportOnce } from '../lib/motion';
 
 export const Footer = () => {
+  const reduced = useReducedMotion();
+
   return (
-    <footer className="editorial-footer">
+    <motion.footer
+      className="editorial-footer"
+      initial={reduced ? {} : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={viewportOnce}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+    >
       <div className="container">
         <div className="footer-content">
           <div className="footer-main">
@@ -21,6 +31,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };

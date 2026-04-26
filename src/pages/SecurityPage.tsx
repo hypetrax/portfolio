@@ -1,45 +1,75 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
+import { viewportOnce, delayed } from '../lib/motion';
 
 export const SecurityPage = memo(() => {
+  const reduced = useReducedMotion();
+
+  const hi = reduced ? {} : { opacity: 0, y: 24 };
+  const vp = { opacity: 1, y: 0 };
+  const t  = (delay = 0) => reduced ? { duration: 0 } : delayed(delay);
+
   return (
     <>
-      <SEO 
-        title="Information Security & Compliance (ISO 27001 / CRA)" 
+      <SEO
+        title="Information Security & Compliance (ISO 27001 / CRA)"
         description="Senior Security Officer diensten: ISO 27001:2022 implementatie en Cyber Resilience Act compliance voor digitale producten."
         canonical="/security"
       />
       <header className="hero-header">
         <div className="container">
-          <p className="overline">Security & Compliance</p>
-          <h1>Security die de business <span style={{ color: 'var(--accent)' }}>versterkt</span>.</h1>
-          <p className="lead">
-            In mijn rol als Security Officer richt ik me op het bouwen van een robuust en werkbaar security-fundament. 
-            Geen theoretische exercities, maar meetbare resultaten die de continuïteit en het vertrouwen van de organisatie waarborgen.
-          </p>
+          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
+            Security & Compliance
+          </motion.p>
+          <motion.h1 initial={hi} animate={vp} transition={t(0.2)}>
+            Security die de business <span style={{ color: 'var(--accent)' }}>versterkt</span>.
+          </motion.h1>
+          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)}>
+            In mijn rol als Security Officer richt ik me op het bouwen van een robuust en werkbaar
+            security-fundament. Geen theoretische exercities, maar meetbare resultaten die de
+            continuïteit en het vertrouwen van de organisatie waarborgen.
+          </motion.p>
         </div>
       </header>
 
       <main>
-        <section className="case-study">
+        {/* CRA */}
+        <motion.section
+          className="case-study"
+          initial={hi}
+          whileInView={vp}
+          viewport={viewportOnce}
+          transition={reduced ? { duration: 0 } : { duration: 0.38, ease: 'easeOut', delay: 0.05 }}
+        >
           <div className="container">
             <div className="case-study-grid">
               <div className="case-study-content">
                 <div className="project-meta">
                   <span className="project-number">01</span>
                   <div className="project-tags">
-                    <span>EU Legislation</span>
-                    <span>Cybersecurity</span>
-                    <span>Internal Impact</span>
+                    {['EU Legislation', 'Cybersecurity', 'Internal Impact'].map((tag, i) => (
+                      <motion.span
+                        key={tag}
+                        initial={reduced ? {} : { opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={viewportOnce}
+                        transition={reduced ? { duration: 0 } : { duration: 0.25, ease: 'easeOut', delay: 0.1 + i * 0.05 }}
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
                   </div>
                 </div>
-                
+
                 <h2>Cyber Resilience Act <span style={{ color: 'var(--accent)' }}>(CRA)</span></h2>
-                <p className="project-intro">Hoe we onze productontwikkeling voorbereiden op de nieuwe EU-wetgeving voor digitale producten.</p>
-                
+                <p className="project-intro">
+                  Hoe we onze productontwikkeling voorbereiden op de nieuwe EU-wetgeving voor digitale producten.
+                </p>
+
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
@@ -61,35 +91,59 @@ export const SecurityPage = memo(() => {
                 </div>
 
                 <div className="project-actions">
-                  <Link to="/security/cra" className="btn-primary">
-                    Bekijk de analyse & aanpak
-                  </Link>
+                  <motion.div
+                    whileHover={reduced ? {} : { scale: 1.02 }}
+                    whileTap={reduced ? {} : { scale: 0.97 }}
+                    transition={{ duration: 0.15 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <Link to="/security/cra" className="btn-primary">
+                      Bekijk de analyse & aanpak
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
-              
+
               <div className="case-study-visual">
-                 <LiveSlider after="/security/cra" />
+                <LiveSlider after="/security/cra" />
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="case-study">
+        {/* ISO 27001 */}
+        <motion.section
+          className="case-study"
+          initial={hi}
+          whileInView={vp}
+          viewport={viewportOnce}
+          transition={reduced ? { duration: 0 } : { duration: 0.38, ease: 'easeOut', delay: 0.05 }}
+        >
           <div className="container">
             <div className="case-study-grid">
               <div className="case-study-content">
                 <div className="project-meta">
                   <span className="project-number">02</span>
                   <div className="project-tags">
-                    <span>ISO 27001</span>
-                    <span>ISMS</span>
-                    <span>Strategy</span>
+                    {['ISO 27001', 'ISMS', 'Strategy'].map((tag, i) => (
+                      <motion.span
+                        key={tag}
+                        initial={reduced ? {} : { opacity: 0, y: 8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={viewportOnce}
+                        transition={reduced ? { duration: 0 } : { duration: 0.25, ease: 'easeOut', delay: 0.1 + i * 0.05 }}
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
                   </div>
                 </div>
-                
+
                 <h2><span style={{ color: 'var(--accent)' }}>ISO 27001</span> Implementatie</h2>
-                <p className="project-intro">De realisatie van een ISMS dat niet alleen voldoet aan de norm, maar ook de operationele efficiëntie verhoogt.</p>
-                
+                <p className="project-intro">
+                  De realisatie van een ISMS dat niet alleen voldoet aan de norm, maar ook de operationele efficiëntie verhoogt.
+                </p>
+
                 <div className="case-details">
                   <div className="detail-block">
                     <h3>De Focus</h3>
@@ -111,31 +165,51 @@ export const SecurityPage = memo(() => {
                 </div>
 
                 <div className="project-actions">
-                  <Link to="/security/iso27001" className="btn-primary">
-                    Bekijk de implementatie-aanpak
-                  </Link>
+                  <motion.div
+                    whileHover={reduced ? {} : { scale: 1.02 }}
+                    whileTap={reduced ? {} : { scale: 0.97 }}
+                    transition={{ duration: 0.15 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <Link to="/security/iso27001" className="btn-primary">
+                      Bekijk de implementatie-aanpak
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
-              
+
               <div className="case-study-visual">
-                 <LiveSlider after="/security/iso27001" />
+                <LiveSlider after="/security/iso27001" />
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
-      <section className="cta-section">
+      <motion.section
+        className="cta-section"
+        initial={hi}
+        whileInView={vp}
+        viewport={viewportOnce}
+        transition={reduced ? { duration: 0 } : { duration: 0.35, ease: 'easeOut' }}
+      >
         <div className="container">
           <h2>Verder <span style={{ color: 'var(--accent)' }}>praten</span>?</h2>
           <p>Vragen over de details van deze trajecten of zin om ervaringen uit te wisselen over werkbare security? Je vindt me op LinkedIn.</p>
-          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large linkedin-btn">
+          <motion.a
+            href="https://www.linkedin.com/in/bartpullen/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-large linkedin-btn"
+            whileHover={reduced ? {} : { scale: 1.03 }}
+            whileTap={reduced ? {} : { scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+          >
             <LinkedInIcon />
             <span>Connect op LinkedIn</span>
-          </a>
+          </motion.a>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 });
-

@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
+import { viewportOnce, delayed } from '../lib/motion';
 
 interface Study {
   title: string;
@@ -53,42 +55,70 @@ const studies: Study[] = [
 ];
 
 export const LabsPage = memo(() => {
+  const reduced = useReducedMotion();
+
+  const hi = reduced ? {} : { opacity: 0, y: 24 };
+  const vp = { opacity: 1, y: 0 };
+  const t  = (delay = 0) => reduced ? { duration: 0 } : delayed(delay);
+
   return (
     <>
-      <SEO 
-        title="Quantitative Research & Trading Systems Lab" 
+      <SEO
+        title="Quantitative Research & Trading Systems Lab"
         description="Exploratie van systematische trading strategieën, SPX optie backtests en institutionele orderflow analyse (ICT). Data-gedreven financiële inzichten."
         canonical="/labs"
       />
       <header className="hero-header">
         <div className="container">
-          <p className="overline">Labs & Quantitative Research</p>
-          <h1>Data-gedreven <span style={{ color: 'var(--accent)' }}>inzichten</span>.</h1>
-          <p className="lead">
-            Naast webontwikkeling focus ik me op kwantitatief onderzoek naar de financiële markten. 
+          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
+            Labs & Quantitative Research
+          </motion.p>
+          <motion.h1 initial={hi} animate={vp} transition={t(0.2)}>
+            Data-gedreven <span style={{ color: 'var(--accent)' }}>inzichten</span>.
+          </motion.h1>
+          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)}>
+            Naast webontwikkeling focus ik me op kwantitatief onderzoek naar de financiële markten.
             Hieronder vind je een selectie van mijn studies en systemen.
-          </p>
+          </motion.p>
         </div>
       </header>
 
       <main>
         {studies.map((study, index) => (
-          <section key={study.title} className="case-study">
+          <motion.section
+            key={study.title}
+            className="case-study"
+            initial={hi}
+            whileInView={vp}
+            viewport={viewportOnce}
+            transition={reduced ? { duration: 0 } : { duration: 0.38, ease: 'easeOut', delay: 0.05 }}
+          >
             <div className="container">
               <div className="case-study-grid">
                 <div className="case-study-content">
                   <div className="project-meta">
                     <span className="project-number">S{index + 1}</span>
                     <div className="project-tags">
-                      {study.tags.map(tag => <span key={tag}>{tag}</span>)}
+                      {study.tags.map((tag, i) => (
+                        <motion.span
+                          key={tag}
+                          initial={reduced ? {} : { opacity: 0, y: 8 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={viewportOnce}
+                          transition={reduced ? { duration: 0 } : { duration: 0.25, ease: 'easeOut', delay: 0.1 + i * 0.05 }}
+                        >
+                          {tag}
+                        </motion.span>
+                      ))}
                     </div>
                   </div>
-                  
+
                   <h2>
-                    {study.title.split(' ').slice(0, -1).join(' ')} <span style={{ color: 'var(--accent)' }}>{study.title.split(' ').slice(-1)}</span>
+                    {study.title.split(' ').slice(0, -1).join(' ')}{' '}
+                    <span style={{ color: 'var(--accent)' }}>{study.title.split(' ').slice(-1)}</span>
                   </h2>
                   <p className="project-intro">{study.description}</p>
-                  
+
                   <div className="case-details">
                     <div className="detail-block">
                       <h3>De Focus</h3>
@@ -110,18 +140,29 @@ export const LabsPage = memo(() => {
                   </div>
 
                   <div className="project-actions">
-                    <Link to={study.url} className="btn-primary" aria-label={`Open de volledige studie: ${study.title}`}>
-                      Open de volledige studie
-                    </Link>
+                    <motion.div
+                      whileHover={reduced ? {} : { scale: 1.02 }}
+                      whileTap={reduced ? {} : { scale: 0.97 }}
+                      transition={{ duration: 0.15 }}
+                      style={{ display: 'inline-block' }}
+                    >
+                      <Link
+                        to={study.url}
+                        className="btn-primary"
+                        aria-label={`Open de volledige studie: ${study.title}`}
+                      >
+                        Open de volledige studie
+                      </Link>
+                    </motion.div>
                   </div>
                 </div>
-                
+
                 <div className="case-study-visual">
-                   <LiveSlider after={study.url} />
+                  <LiveSlider after={study.url} />
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         ))}
       </main>
     </>

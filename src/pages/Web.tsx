@@ -1,7 +1,9 @@
 import { memo } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
+import { viewportOnce, delayed } from '../lib/motion';
 
 interface Project {
   title: string;
@@ -52,41 +54,70 @@ const projects: Project[] = [
 ];
 
 export const Web = memo(() => {
+  const reduced = useReducedMotion();
+
+  const hi = reduced ? {} : { opacity: 0, y: 24 };
+  const vp = { opacity: 1, y: 0 };
+  const t  = (delay = 0) => reduced ? { duration: 0 } : delayed(delay);
+
   return (
     <>
-      <SEO 
-        title="High-Performance Web Design & React Development" 
+      <SEO
+        title="High-Performance Web Design & React Development"
         description="Moderne, snelle websites zonder overbodige ballast. Expert in React, Vite en performance optimalisatie voor MKB."
         canonical="/web"
       />
       <header className="hero-header">
         <div className="container">
-          <p className="overline">Bart Pullen — Portfolio</p>
-          <h1>Websites die simpelweg <span style={{ color: 'var(--accent)' }}>werken</span>.</h1>
-          <p className="lead">
-            Ik help bedrijven met het opschonen van hun online aanwezigheid. Geen overbodige poespas, maar snelle sites met een logische structuur en een fris design.
-          </p>
+          <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)}>
+            Bart Pullen — Portfolio
+          </motion.p>
+          <motion.h1 initial={hi} animate={vp} transition={t(0.2)}>
+            Websites die simpelweg <span style={{ color: 'var(--accent)' }}>werken</span>.
+          </motion.h1>
+          <motion.p className="lead" initial={hi} animate={vp} transition={t(0.32)}>
+            Ik help bedrijven met het opschonen van hun online aanwezigheid. Geen overbodige poespas,
+            maar snelle sites met een logische structuur en een fris design.
+          </motion.p>
         </div>
       </header>
 
       <main>
         {projects.map((project, index) => (
-          <section key={project.title} className="case-study">
+          <motion.section
+            key={project.title}
+            className="case-study"
+            initial={hi}
+            whileInView={vp}
+            viewport={viewportOnce}
+            transition={reduced ? { duration: 0 } : { duration: 0.38, ease: 'easeOut', delay: 0.05 }}
+          >
             <div className="container">
               <div className="case-study-grid">
                 <div className="case-study-content">
                   <div className="project-meta">
                     <span className="project-number">0{index + 1}</span>
                     <div className="project-tags">
-                      {project.tags.map(tag => <span key={tag}>{tag}</span>)}
+                      {project.tags.map((tag, i) => (
+                        <motion.span
+                          key={tag}
+                          initial={reduced ? {} : { opacity: 0, y: 8 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={viewportOnce}
+                          transition={reduced ? { duration: 0 } : { duration: 0.25, ease: 'easeOut', delay: 0.1 + i * 0.05 }}
+                        >
+                          {tag}
+                        </motion.span>
+                      ))}
                     </div>
                   </div>
-                  
+
                   <h2>
-                    {project.title.split(' ').slice(0, -1).join(' ')} <span style={{ color: 'var(--accent)' }}>{project.title.split(' ').slice(-1)}</span>
+                    {project.title.split(' ').slice(0, -1).join(' ')}{' '}
+                    <span style={{ color: 'var(--accent)' }}>{project.title.split(' ').slice(-1)}</span>
                   </h2>
                   <p className="project-intro">{project.description}</p>
-                  
+
                   <div className="case-details">
                     <div className="detail-block">
                       <h3>De Uitdaging</h3>
@@ -108,37 +139,69 @@ export const Web = memo(() => {
                   </div>
 
                   <div className="project-actions">
-                    <a href={project.newUrl} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label={`Bekijk de nieuwe site van ${project.title}`}>
+                    <motion.a
+                      href={project.newUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                      aria-label={`Bekijk de nieuwe site van ${project.title}`}
+                      whileHover={reduced ? {} : { scale: 1.02 }}
+                      whileTap={reduced ? {} : { scale: 0.97 }}
+                      transition={{ duration: 0.15 }}
+                    >
                       Bekijk de nieuwe site
-                    </a>
+                    </motion.a>
                     {project.oldUrl && (
-                      <a href={project.oldUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" aria-label={`Bekijk de oude versie van ${project.title}`}>
+                      <motion.a
+                        href={project.oldUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-secondary"
+                        aria-label={`Bekijk de oude versie van ${project.title}`}
+                        whileHover={reduced ? {} : { scale: 1.02 }}
+                        whileTap={reduced ? {} : { scale: 0.97 }}
+                        transition={{ duration: 0.15 }}
+                      >
                         Bekijk oude versie
-                      </a>
+                      </motion.a>
                     )}
                   </div>
                 </div>
-                
+
                 <div className="case-study-visual">
-                   <LiveSlider before={project.sliderBeforeUrl} after={project.newUrl} />
+                  <LiveSlider before={project.sliderBeforeUrl} after={project.newUrl} />
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         ))}
       </main>
 
-      <section className="cta-section">
+      <motion.section
+        className="cta-section"
+        initial={hi}
+        whileInView={vp}
+        viewport={viewportOnce}
+        transition={reduced ? { duration: 0 } : { duration: 0.35, ease: 'easeOut' }}
+      >
         <div className="container">
           <h2>Website <span style={{ color: 'var(--accent)' }}>vernieuwen</span>?</h2>
           <p>Benieuwd naar de techniek achter deze projecten of hulp nodig bij het opschonen van een bestaande site? Contact via LinkedIn.</p>
-          <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="btn-large linkedin-btn" aria-label="Connect op LinkedIn voor webdesign projecten">
+          <motion.a
+            href="https://www.linkedin.com/in/bartpullen/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-large linkedin-btn"
+            aria-label="Connect op LinkedIn voor webdesign projecten"
+            whileHover={reduced ? {} : { scale: 1.03 }}
+            whileTap={reduced ? {} : { scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+          >
             <LinkedInIcon />
             <span>Connect op LinkedIn</span>
-          </a>
+          </motion.a>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 });
-
