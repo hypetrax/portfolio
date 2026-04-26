@@ -63,7 +63,7 @@ export const Web = memo(() => {
   return (
     <>
       <SEO
-        title="High-Performance Web Design & React Development"
+        title="Bart Pullen | Security Officer, Designer, Data analyst"
         description="Moderne, snelle websites zonder overbodige ballast. Expert in React, Vite en performance optimalisatie voor MKB."
         canonical="/web"
       />
