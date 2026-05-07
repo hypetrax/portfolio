@@ -14,7 +14,15 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
   posterWebp,
 }: DeferredHeroVideoProps) {
   const [videoReady, setVideoReady] = useState(false);
-  const [allowVideo, setAllowVideo] = useState(true);
+  const [allowVideo, setAllowVideo] = useState(() => {
+    // SSR safe check
+    if (typeof window === 'undefined') return true;
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const connection = (navigator as Navigator & {
+      connection?: { saveData?: boolean };
+    }).connection;
+    return !(mediaQuery.matches || connection?.saveData);
+  });
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -27,10 +35,14 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
     };
 
     mediaQuery.addEventListener('change', handlePreferenceChange);
-    handlePreferenceChange();
-
+    // Already initialized in useState, but handlePreferenceChange handles both conditions
+    
     return () => mediaQuery.removeEventListener('change', handlePreferenceChange);
   }, []);
+
+  useEffect(() => {
+    setVideoReady(false);
+  }, [src, mobileSrc]);
 
   useEffect(() => {
     if (allowVideo && videoRef.current) {
@@ -41,7 +53,7 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
         }
       });
     }
-  }, [allowVideo]);
+  }, [allowVideo, src, mobileSrc]);
 
   return (
     <div className="video-background" aria-hidden="true">
