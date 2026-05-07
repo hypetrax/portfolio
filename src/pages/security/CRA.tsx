@@ -36,6 +36,16 @@ const riskClasses = [
 
 export const CRA = memo(() => {
   const [selectedClass, setSelectedClass] = useState<typeof riskClasses[0] | null>(null);
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Cyber Resilience Act impact analyse",
+    "provider": { "@type": "Person", "name": "Bart Pullen" },
+    "areaServed": "Nederland",
+    "serviceType": "CRA gap-analyse, SBOM governance, kwetsbaarheidsrapportage en product compliance",
+    "url": "https://www.bartpullen.nl/security/cra",
+    "description": "Analyse van Cyber Resilience Act verplichtingen voor digitale producten, inclusief risicoklasse, SBOM, incidentrapportage en transitie-aanpak."
+  };
 
   const commonOptions = {
     responsive: true,
@@ -100,6 +110,7 @@ export const CRA = memo(() => {
         title="Cyber Resilience Act (CRA) Impact Analyse" 
         description="Diepgaande analyse van de Cyber Resilience Act voor digitale producten. SBOM beheer, kwetsbaarheidsrapportage en compliance strategie."
         canonical="/security/cra"
+        schema={serviceSchema}
       />
       <header className="hero-header">
         <div className="container">

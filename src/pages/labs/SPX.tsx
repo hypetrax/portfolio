@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
 import { SEO } from '../../components/SEO';
 import {
   Chart as ChartJS,
@@ -69,8 +69,17 @@ export const SPX = memo(() => {
         isSimulating: false,
         status: 'Run Simulation \u25B6'
     });
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "SPX Options Backtest Study - 45 DTE Optimization",
+        "author": { "@type": "Person", "name": "Bart Pullen" },
+        "url": "https://www.bartpullen.nl/labs/spx",
+        "description": "Kwantitatief onderzoek naar SPX credit spreads, DTE-selectie, winstratio's en mechanisch trade management.",
+        "about": ["SPX options", "Credit spreads", "Backtesting", "Risk management"]
+    };
 
-    const runSimulation = () => {
+    const runSimulation = useCallback(() => {
         setSimResults(prev => ({ ...prev, isSimulating: true, status: 'Simulating... \u23F3' }));
 
         setTimeout(() => {
@@ -107,11 +116,11 @@ export const SPX = memo(() => {
                 setSimResults(prev => ({ ...prev, status: 'Run Simulation ▶' }));
             }, 2000);
         }, 600);
-    };
+    }, [simParams.dte, simParams.ivr, simParams.pt]);
 
     useEffect(() => {
         runSimulation();
-    }, []);
+    }, [runSimulation]);
 
     const dteChartData = {
         labels: reportData.dteAnalysis.labels,
@@ -165,7 +174,7 @@ export const SPX = memo(() => {
         datasets: [{
             label: 'Expected Value ($ per trade)',
             data: reportData.ivr.expectedValue,
-            backgroundColor: (context: any) => {
+            backgroundColor: (context: { dataIndex: number }) => {
                 const index = context.dataIndex;
                 return index >= 3 ? '#10b981' : '#475569';
             },
@@ -209,6 +218,7 @@ export const SPX = memo(() => {
                 title="SPX Options Backtest Study — 45 DTE Optimization" 
                 description="Kwantitatief onderzoek naar SPX Credit Spreads. Analyse van DTE, winstratio's en mechanisch trade management."
                 canonical="/labs/spx"
+                schema={articleSchema}
             />
             <style dangerouslySetInnerHTML={{ __html: `
                 .tab-active { border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 600; }

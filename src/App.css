@@ -9,8 +9,8 @@
   --surface-hover: #f1f0eb; /* Slightly darker cream */
   --text-main: #2d3748; /* Deep slate ink */
   --text-muted: #718096; /* Softer slate */
-  --accent: #059669; /* Natural Forest Green */
-  --accent-glow: rgba(5, 150, 105, 0.08);
+  --accent: #047857; /* Accessible forest green */
+  --accent-glow: rgba(4, 120, 87, 0.08);
   --border: #e2e0d8; /* Warm border */
   --success: #10b981;
   
@@ -137,6 +137,9 @@ h3 {
 
 .hero-header {
   padding: clamp(60px, 8vh, 100px) 0 clamp(40px, 6vh, 80px);
+  min-height: clamp(520px, 76vh, 760px);
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
@@ -156,10 +159,24 @@ h3 {
 }
 
 .video-background video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 1;
+}
+
+.video-background picture,
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-poster {
+  object-fit: cover;
 }
 
 .video-overlay {
@@ -393,7 +410,7 @@ h3 {
 .btn-primary:hover {
   background: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 20px rgba(4, 120, 87, 0.22);
 }
 
 .btn-secondary:hover {
@@ -407,12 +424,12 @@ h3 {
   color: white;
   padding: 18px 48px;
   font-size: 16px;
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 20px rgba(4, 120, 87, 0.22);
 }
 
 .btn-large:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 8px 24px rgba(4, 120, 87, 0.32);
 }
 
 .linkedin-btn {
@@ -454,6 +471,12 @@ h3 {
   border: none;
   transform-origin: 0 0;
   pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .hero-header {
+    min-height: 520px;
+  }
 }
 
 .before-frame {

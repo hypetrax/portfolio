@@ -13,15 +13,6 @@ const routes = [
     path: '/',
     title: 'Bart Pullen | Security Officer, Webdesigner & Data Analist',
     description: 'Portfolio van Bart Pullen: Senior Information Security Officer, webdesigner en data analist met werk rond ISO 27001, Cyber Resilience Act, React websites en trading research.',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Bart Pullen',
-      url: `${siteUrl}/`,
-      jobTitle: 'Webdesigner & Information Security Officer',
-      sameAs: ['https://www.linkedin.com/in/bartpullen/', 'https://github.com/hypetrax'],
-      description: 'Portfolio van Bart Pullen, met focus op webdesign, cybersecurity en kwantitatieve analyse.',
-    },
   },
   {
     path: '/web',
@@ -86,10 +77,6 @@ const renderMeta = (route) => {
   const canonical = routeUrl(route.path);
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
-  const jsonLd = route.schema
-    ? `\n    <script type="application/ld+json">${JSON.stringify(route.schema).replaceAll('<', '\\u003c')}</script>`
-    : '';
-
   return `<!-- SEO_META_START -->
     <title>${title}</title>
     <meta name="description" content="${description}" />
@@ -107,7 +94,7 @@ const renderMeta = (route) => {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${defaultImage}" />${jsonLd}
+    <meta name="twitter:image" content="${defaultImage}" />
     <!-- SEO_META_END -->`;
 };
 

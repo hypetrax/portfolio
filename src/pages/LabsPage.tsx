@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
+import { DeferredHeroVideo } from '../components/DeferredHeroVideo';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
 import { viewportOnce, delayed } from '../lib/motion';
@@ -69,18 +70,7 @@ export const LabsPage = memo(() => {
         canonical="/labs"
       />
       <header className="hero-header">
-        <div className="video-background">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{ opacity: 1 }}
-          >
-            <source src="/assets/trading.mp4" type="video/mp4" />
-          </video>
-          <div className="video-overlay"></div>
-        </div>
+        <DeferredHeroVideo src="/assets/trading.mp4" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Labs & Quantitative Research

@@ -54,6 +54,15 @@ export const SqueezeSpreads = memo(() => {
         squeeze: true
     });
     const [selectedDte, setSelectedDte] = useState<'daily' | '3day' | 'weekly'>('daily');
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Stacked Probabilities Swing Playbook",
+        "author": { "@type": "Person", "name": "Bart Pullen" },
+        "url": "https://www.bartpullen.nl/labs/squeeze",
+        "description": "Systematisch trading framework op basis van TTM Squeeze, EMA stacks en optie credit spreads.",
+        "about": ["Systematic trading", "TTM Squeeze", "EMA stacks", "Credit spreads"]
+    };
 
     const chartData = useMemo(() => {
         const labels = Array.from({length: 40}, (_, i) => `Day ${i+1}`);
@@ -128,7 +137,7 @@ export const SqueezeSpreads = memo(() => {
                 {
                     label: '55 EMA',
                     data: ema55,
-                    borderColor: '#059669',
+                    borderColor: '#047857',
                     borderWidth: 1.5,
                     tension: 0.4,
                     pointRadius: 0,
@@ -215,6 +224,7 @@ export const SqueezeSpreads = memo(() => {
                 title="Stacked Probabilities Swing Playbook — Systematic Trading" 
                 description="Een systematisch trading framework gebaseerd op de TTM Squeeze, EMA stacks en optie credit spreads. Focus op probabilistische groei."
                 canonical="/labs/squeeze"
+                schema={articleSchema}
             />
             <style dangerouslySetInnerHTML={{ __html: `
                 .fade-in { animation: fadeIn 0.3s ease-in-out; }
@@ -255,6 +265,9 @@ export const SqueezeSpreads = memo(() => {
                         
                         <p style={{ marginBottom: '24px', color: '#cbd5e1', lineHeight: 1.625, fontSize: '17px' }}>
                             This system is designed around finding high-probability moments in time where the odds are overwhelmingly in our favor. By combining market trend, market-leading stocks, specific technical structures (squeezes & EMAs), and an options strategy that only requires the stock <i>not</i> to crash, we construct a scenario where the "path of least resistance" generates profit.
+                        </p>
+                        <p style={{ marginBottom: '24px', color: '#cbd5e1', lineHeight: 1.625, fontSize: '17px' }}>
+                            The playbook is intentionally rule-based: market regime first, ticker selection second, setup validation third, and position sizing last. That order matters because a clean squeeze setup inside a weak index trend has a very different risk profile than the same setup aligned with broad market momentum.
                         </p>
 
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginBottom: '40px' }} className="grid-cols-1 md:grid-cols-2">

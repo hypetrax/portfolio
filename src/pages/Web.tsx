@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { DeferredHeroVideo } from '../components/DeferredHeroVideo';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
@@ -59,6 +60,16 @@ export const Web = memo(() => {
   const hi = reduced ? {} : { opacity: 0, y: 24 };
   const vp = { opacity: 1, y: 0 };
   const t  = (delay = 0) => reduced ? { duration: 0 } : delayed(delay);
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Webdesign en React websites",
+    "provider": { "@type": "Person", "name": "Bart Pullen" },
+    "areaServed": "Nederland",
+    "serviceType": "Webdesign, React development, technische SEO en performance optimalisatie",
+    "url": "https://www.bartpullen.nl/web",
+    "description": "Moderne, snelle websites voor MKB en lokale organisaties met mobile-first UX, schone React code, performance en technische SEO."
+  };
 
   return (
     <>
@@ -66,20 +77,10 @@ export const Web = memo(() => {
         title="Webdesign & React Websites"
         description="Moderne, snelle websites voor MKB en lokale organisaties. Bart Pullen bouwt React websites met heldere structuur, mobile-first UX, performance en technische SEO."
         canonical="/web"
+        schema={serviceSchema}
       />
       <header className="hero-header">
-        <div className="video-background">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{ opacity: 1 }}
-          >
-            <source src="/assets/webdesign.mp4" type="video/mp4" />
-          </video>
-          <div className="video-overlay"></div>
-        </div>
+        <DeferredHeroVideo src="/assets/webdesign.mp4" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Bart Pullen — Portfolio
