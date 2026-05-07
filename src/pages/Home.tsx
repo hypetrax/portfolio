@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { DeferredHeroVideo } from '../components/DeferredHeroVideo';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
 import { viewportOnce, delayed } from '../lib/motion';
@@ -35,10 +34,19 @@ export const Home = memo(() => {
         schema={personSchema}
       />
       <header className="hero-header">
-        <DeferredHeroVideo
-          src="/assets/hero-video.mp4"
-          poster="/assets/hero-poster.png"
-        />
+        <div className="video-background">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/assets/hero-poster.png"
+            style={{ opacity: 1 }}
+          >
+            <source src="/assets/hero-video.mp4" type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
+        </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Bart Pullen — Portfolio
@@ -101,10 +109,6 @@ export const Home = memo(() => {
                   src="/assets/expertise/security.webp"
                   alt="Cybersecurity en data encryptie concept"
                   className="expertise-image"
-                  width="1200"
-                  height="750"
-                  loading="lazy"
-                  decoding="async"
                 />
               </motion.div>
             </article>
@@ -155,10 +159,6 @@ export const Home = memo(() => {
                   src="/assets/expertise/web.webp"
                   alt="Modern web development en clean code"
                   className="expertise-image"
-                  width="1200"
-                  height="750"
-                  loading="lazy"
-                  decoding="async"
                 />
               </motion.div>
             </article>
@@ -208,10 +208,6 @@ export const Home = memo(() => {
                   src="/assets/expertise/labs.webp"
                   alt="Technical analysis trading charts"
                   className="expertise-image"
-                  width="1200"
-                  height="750"
-                  loading="lazy"
-                  decoding="async"
                 />
               </motion.div>
             </article>
