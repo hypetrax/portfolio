@@ -16,7 +16,7 @@ export const Home = memo(() => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Bart Pullen",
-    "url": "https://bartpullen.nl",
+    "url": "https://www.bartpullen.nl/",
     "jobTitle": "Webdesigner & Information Security Officer",
     "sameAs": [
       "https://www.linkedin.com/in/bartpullen/",
@@ -28,8 +28,8 @@ export const Home = memo(() => {
   return (
     <>
       <SEO
-        title="Bart Pullen | Security Officer, Designer, Data analyst"
-        description="Senior Information Security Officer en Webdesigner. Expert in ISO 27001, Cyber Resilience Act en data-gedreven web development."
+        title="Bart Pullen | Security Officer, Webdesigner & Data Analist"
+        description="Portfolio van Bart Pullen: Senior Information Security Officer, webdesigner en data analist met werk rond ISO 27001, Cyber Resilience Act, React websites en trading research."
         canonical="/"
         schema={personSchema}
       />

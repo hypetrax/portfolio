@@ -63,8 +63,8 @@ export const Web = memo(() => {
   return (
     <>
       <SEO
-        title="Bart Pullen | Security Officer, Designer, Data analyst"
-        description="Moderne, snelle websites zonder overbodige ballast. Expert in React, Vite en performance optimalisatie voor MKB."
+        title="Webdesign & React Websites"
+        description="Moderne, snelle websites voor MKB en lokale organisaties. Bart Pullen bouwt React websites met heldere structuur, mobile-first UX, performance en technische SEO."
         canonical="/web"
       />
       <header className="hero-header">

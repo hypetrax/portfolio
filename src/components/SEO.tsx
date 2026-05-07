@@ -7,32 +7,37 @@ interface SEOProps {
   type?: string;
   name?: string;
   schema?: object;
+  image?: string;
 }
 
-export const SEO = ({ title, description, canonical, type = 'website', name = 'Bart Pullen', schema }: SEOProps) => {
-  // Only append | name if the title doesn't already start with the name
+export const SEO = ({ title, description, canonical, type = 'website', name = 'Bart Pullen', schema, image = '/portfolio.png' }: SEOProps) => {
   const fullTitle = title.startsWith(name) ? title : `${title} | ${name}`;
-  const siteUrl = 'https://bartpullen.nl'; // Aanpassen indien nodig
-  
+  const siteUrl = 'https://www.bartpullen.nl';
+  const pageUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+  const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
   return (
     <Helmet>
-      {/* Standard metadata tags */}
       <title>{fullTitle}</title>
       <meta name='description' content={description} />
-      {canonical && <link rel="canonical" href={`${siteUrl}${canonical}`} />}
+      <meta name="author" content={name} />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={pageUrl} />
 
-      {/* OpenGraph tags */}
       <meta property="og:type" content={type} />
+      <meta property="og:locale" content="nl_NL" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={name} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:alt" content={`${name} portfolio`} />
 
-      {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
 
-      {/* Schema.org JSON-LD */}
       {schema && (
         <script type="application/ld+json">
           {JSON.stringify(schema)}
