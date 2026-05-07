@@ -179,6 +179,11 @@ h3 {
   object-fit: cover;
 }
 
+.hero-poster-hidden {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
 .video-overlay {
   position: absolute;
   top: 0;
