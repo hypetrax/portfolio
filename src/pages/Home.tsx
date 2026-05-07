@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
+import { DeferredHeroVideo } from '../components/DeferredHeroVideo';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
 import { viewportOnce, delayed } from '../lib/motion';
@@ -34,19 +35,10 @@ export const Home = memo(() => {
         schema={personSchema}
       />
       <header className="hero-header">
-        <div className="video-background">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/assets/hero-poster.png"
-            style={{ opacity: 1 }}
-          >
-            <source src="/assets/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div className="video-overlay"></div>
-        </div>
+        <DeferredHeroVideo
+          src="/assets/hero-video.mp4"
+          poster="/assets/hero-poster.png"
+        />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Bart Pullen — Portfolio
@@ -192,7 +184,7 @@ export const Home = memo(() => {
                     style={{ display: 'inline-block' }}
                   >
                     <Link to="/labs" className="btn-primary" aria-label="Bekijk trading studies">
-                      Bekijk de labs
+                      Bekijk the labs
                     </Link>
                   </motion.div>
                 </div>
