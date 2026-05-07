@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { DeferredHeroVideo } from '../components/DeferredHeroVideo';
 import { LiveSlider } from '../components/LiveSlider';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
@@ -13,27 +12,26 @@ export const SecurityPage = memo(() => {
   const hi = reduced ? {} : { opacity: 0, y: 24 };
   const vp = { opacity: 1, y: 0 };
   const t  = (delay = 0) => reduced ? { duration: 0 } : delayed(delay);
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Security Officer en compliance ondersteuning",
-    "provider": { "@type": "Person", "name": "Bart Pullen" },
-    "areaServed": "Nederland",
-    "serviceType": "ISO 27001 implementatie, ISMS inrichting, Cyber Resilience Act analyse en security governance",
-    "url": "https://www.bartpullen.nl/security",
-    "description": "Werkbare security governance voor organisaties die ISO 27001, Cyber Resilience Act en risicomanagement pragmatisch willen borgen."
-  };
 
   return (
     <>
       <SEO
-        title="Security Officer & Compliance"
-        description="Senior Information Security Officer met focus op ISO 27001:2022, ISMS inrichting, Cyber Resilience Act compliance en werkbare security governance."
+        title="Information Security & Compliance (ISO 27001 / CRA)"
+        description="Senior Security Officer diensten: ISO 27001:2022 implementatie en Cyber Resilience Act compliance voor digitale producten."
         canonical="/security"
-        schema={serviceSchema}
       />
       <header className="hero-header">
-        <DeferredHeroVideo src="/assets/security.mp4" />
+        <div className="video-background">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/assets/security.mp4" type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
+        </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Security & Compliance
@@ -123,28 +121,6 @@ export const SecurityPage = memo(() => {
             </div>
           </div>
         </motion.section>
-
-        <section className="expertise-section">
-          <div className="container">
-            <div className="case-study-grid">
-              <div>
-                <h2>Wanneer security <span style={{ color: 'var(--accent)' }}>praktisch</span> moet worden</h2>
-                <p className="project-intro">
-                  De waarde zit niet in extra beleid, maar in keuzes die teams kunnen uitvoeren. Ik verbind normteksten,
-                  productverplichtingen en dagelijkse operatie tot een security-aanpak die meetbaar blijft.
-                </p>
-              </div>
-              <div className="results-block">
-                <h3>Typische vraagstukken</h3>
-                <ul>
-                  <li>ISO 27001 implementatie vertalen naar eigenaarschap, risicoacceptatie en bewijsvoering.</li>
-                  <li>Cyber Resilience Act impact bepalen voor digitale producten, softwareketens en leveranciers.</li>
-                  <li>Security awareness, incidentproces en kwetsbaarheidsbeheer laten aansluiten op bestaande teams.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ISO 27001 */}
         <motion.section

@@ -52,16 +52,6 @@ const pdcaData = {
 export const ISO27001 = memo(() => {
   const [activePhase, setActivePhase] = useState<keyof typeof pdcaData>('plan');
   const [maturityState, setMaturityState] = useState<'start' | 'end'>('end');
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "ISO 27001 implementatie en ISMS management",
-    "provider": { "@type": "Person", "name": "Bart Pullen" },
-    "areaServed": "Nederland",
-    "serviceType": "ISO 27001:2022 implementatie, ISMS inrichting, risicoanalyse, auditvoorbereiding en continue verbetering",
-    "url": "https://www.bartpullen.nl/security/iso27001",
-    "description": "Pragmatische ISO 27001 implementatie van nulmeting en risicoanalyse tot ISMS borging, awareness, interne audits en certificeringsvoorbereiding."
-  };
 
   const commonOptions = {
     responsive: true,
@@ -128,7 +118,6 @@ export const ISO27001 = memo(() => {
         title="ISO 27001:2022 Implementatie & ISMS Management" 
         description="Pragmatische implementatie van ISO 27001:2022. Van nulmeting en risicoanalyse tot certificering en continue verbetering van uw informatiebeveiliging."
         canonical="/security/iso27001"
-        schema={serviceSchema}
       />
       <header className="hero-header">
         <div className="container">
@@ -169,29 +158,6 @@ export const ISO27001 = memo(() => {
                    <div style={{ fontSize: '64px', marginBottom: '16px' }}>🚀</div>
                    <p style={{ fontWeight: 600, color: 'var(--text-main)' }}>Van Controle naar Strategie</p>
                  </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="expertise-section">
-          <div className="container">
-            <div className="case-study-grid">
-              <div>
-                <h2>ISO 27001 implementatie zonder <span style={{ color: 'var(--accent)' }}>papieren werkelijkheid</span></h2>
-                <p className="project-intro">
-                  Een ISMS werkt pas wanneer risico-eigenaren, management reviews, interne audits en verbeteracties
-                  aansluiten op de manier waarop de organisatie al stuurt. De implementatie begint daarom bij scope,
-                  context en risico's, niet bij documenttemplates.
-                </p>
-              </div>
-              <div className="results-block">
-                <h3>Onderdelen van de aanpak</h3>
-                <ul>
-                  <li>Nulmeting tegen ISO 27001:2022 en vertaling naar een haalbare roadmap.</li>
-                  <li>Risicoanalyse, Verklaring van Toepasselijkheid en bewijsvoering per control.</li>
-                  <li>Awareness, leveranciersbeoordeling, incidentproces en interne auditcyclus inrichten.</li>
-                </ul>
               </div>
             </div>
           </div>

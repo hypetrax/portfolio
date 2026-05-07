@@ -1,57 +1,8 @@
 import { useState, useEffect, memo } from 'react';
 import Plotly from 'plotly.js-dist-min';
-import type { Config, Dash, Data, Layout } from 'plotly.js';
 import { SEO } from '../../components/SEO';
 
-type Candle = {
-    x: string;
-    o: number;
-    h: number;
-    l: number;
-    c: number;
-};
-
-type PlotShape = {
-    type: 'line' | 'rect';
-    x0: string;
-    x1: string;
-    y0: number;
-    y1: number;
-    fillcolor?: string;
-    line?: {
-        color?: string;
-        width?: number;
-        dash?: Dash;
-    };
-};
-
-type PlotAnnotation = {
-    x: string;
-    y: number;
-    text: string;
-    showarrow: boolean;
-    arrowhead?: number;
-    arrowcolor?: string;
-    font?: {
-        color?: string;
-    };
-};
-
-type SimulationStep = {
-    idx: number;
-    title: string;
-    desc: string;
-    chk: number;
-    shapes: PlotShape[];
-    annotations: PlotAnnotation[];
-};
-
-type SimulationDefinition = {
-    candles: Candle[];
-    steps: SimulationStep[];
-};
-
-const simData: Record<'bullish' | 'bearish', SimulationDefinition> = {
+const simData: any = {
     bullish: {
         candles: [
             {x: '09:00', o: 105.0, h: 106.5, l: 102.0, c: 102.5},
@@ -205,19 +156,19 @@ export const TurtleSoup = memo(() => {
         const visibleCandles = dataDef.candles.slice(0, stepDef.idx);
         
         const trace = {
-            x: visibleCandles.map((c) => c.x),
-            open: visibleCandles.map((c) => c.o),
-            high: visibleCandles.map((c) => c.h),
-            low: visibleCandles.map((c) => c.l),
-            close: visibleCandles.map((c) => c.c),
+            x: visibleCandles.map((c: any) => c.x),
+            open: visibleCandles.map((c: any) => c.o),
+            high: visibleCandles.map((c: any) => c.h),
+            low: visibleCandles.map((c: any) => c.l),
+            close: visibleCandles.map((c: any) => c.c),
             type: 'candlestick',
             xaxis: 'x',
             yaxis: 'y',
             increasing: {line: {color: '#10B981'}},
             decreasing: {line: {color: '#EF4444'}}
-        } satisfies Partial<Data>;
+        };
 
-        const layout = {
+        const layout: any = {
             margin: { l: 40, r: 20, t: 20, b: 30 },
             xaxis: { 
                 rangeslider: { visible: false },
@@ -236,16 +187,16 @@ export const TurtleSoup = memo(() => {
             plot_bgcolor: '#0f172a',
             paper_bgcolor: '#0f172a',
             shapes: stepDef.shapes || [],
-            annotations: stepDef.annotations.map((ann) => ({
+            annotations: (stepDef.annotations || []).map((ann: any) => ({
                 ...ann,
                 font: { ...ann.font, color: ann.font?.color || '#cbd5e1' }
             })),
             dragmode: 'pan'
-        } satisfies Partial<Layout>;
+        };
 
-        const config = { responsive: true, displayModeBar: false } satisfies Partial<Config>;
+        const config = { responsive: true, displayModeBar: false };
 
-        Plotly.react('plotly-chart', [trace] as Data[], layout, config);
+        Plotly.react('plotly-chart', [trace] as any, layout, config);
     }, [currentType, currentStepIndex]);
 
     const dataDef = simData[currentType];
@@ -279,15 +230,6 @@ export const TurtleSoup = memo(() => {
             "name": "Bart Pullen"
         }
     };
-    const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "ICT Turtle Soup Strategy Simulator",
-        "author": { "@type": "Person", "name": "Bart Pullen" },
-        "url": "https://www.bartpullen.nl/labs/turtlesoup",
-        "description": "Interactieve uitleg van liquidity sweeps, stop hunts, market structure shifts en Turtle Soup setups.",
-        "about": ["ICT concepts", "Turtle Soup", "Liquidity sweeps", "Market structure"]
-    };
 
     return (
       <div style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', minHeight: '100vh', fontFamily: 'var(--font-sans)' }}>
@@ -295,7 +237,7 @@ export const TurtleSoup = memo(() => {
           title="ICT Turtle Soup Strategy Simulator — Liquidity Sweeps" 
           description="Interactieve simulator voor de Turtle Soup strategie. Leer hoe je liquidity raids, stop hunts en market structure shifts herkent in de grafieken."
           canonical="/labs/turtlesoup"
-          schema={[soupSchema, articleSchema]}
+          schema={soupSchema}
         />
         <style dangerouslySetInnerHTML={{ __html: `                .chart-container { position: relative; width: 100%; max-width: 100%; margin-left: auto; margin-right: auto; height: 450px; max-height: 500px; background: var(--surface); border-radius: 0.5rem; border: 1px solid var(--border); overflow: hidden; }
                 @media (min-width: 1024px) { .chart-container { height: 550px; } }

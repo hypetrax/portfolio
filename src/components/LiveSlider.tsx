@@ -58,7 +58,6 @@ export const LiveSlider = memo(function LiveSlider({ before, after }: { before?:
         <iframe
           src={after}
           title="Nieuwe website"
-          loading="lazy"
           style={{ transform: `scale(${scale})` }}
         />
         {before && <div className="label after">Nieuw (Live)</div>}
@@ -72,7 +71,6 @@ export const LiveSlider = memo(function LiveSlider({ before, after }: { before?:
           <iframe
             src={before}
             title="Oude website"
-            loading="lazy"
             style={{ transform: `scale(${scale})` }}
           />
           <div className="label before">Oud (Archief)</div>

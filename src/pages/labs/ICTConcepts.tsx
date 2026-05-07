@@ -123,8 +123,6 @@ export const ICTConcepts = memo(() => {
     "@type": "Article",
     "headline": "ICT Trading Strategy & Smart Money Concepts Masterclass",
     "description": "Diepgaande gids over de Inner Circle Trader (ICT) methodologie. Leer over Liquidity Pools, Order Blocks, Fair Value Gaps en institutional orderflow.",
-    "url": "https://www.bartpullen.nl/labs/ict",
-    "about": ["ICT trading", "Smart Money Concepts", "Order blocks", "Fair Value Gap"],
     "author": {
       "@type": "Person",
       "name": "Bart Pullen"
@@ -135,7 +133,7 @@ export const ICTConcepts = memo(() => {
       "name": "Bart Pullen Portfolio",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.bartpullen.nl/portfolio.png"
+        "url": "https://bartpullen.nl/portfolio.png"
       }
     }
   };

@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { DeferredHeroVideo } from '../components/DeferredHeroVideo';
 import { SEO } from '../components/SEO';
 import { LinkedInIcon } from '../components/Icons';
 import { viewportOnce, delayed } from '../lib/motion';
@@ -17,7 +16,7 @@ export const Home = memo(() => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Bart Pullen",
-    "url": "https://www.bartpullen.nl/",
+    "url": "https://bartpullen.nl",
     "jobTitle": "Webdesigner & Information Security Officer",
     "sameAs": [
       "https://www.linkedin.com/in/bartpullen/",
@@ -29,16 +28,24 @@ export const Home = memo(() => {
   return (
     <>
       <SEO
-        title="Bart Pullen | Security Officer, Webdesigner & Data Analist"
-        description="Portfolio van Bart Pullen: Senior Information Security Officer, webdesigner en data analist met werk rond ISO 27001, Cyber Resilience Act, React websites en trading research."
+        title="Bart Pullen — Security, Web & Data Specialist"
+        description="Senior Information Security Officer en Webdesigner. Expert in ISO 27001, Cyber Resilience Act en data-gedreven web development."
         canonical="/"
         schema={personSchema}
       />
       <header className="hero-header">
-        <DeferredHeroVideo
-          src="/assets/hero-video.mp4"
-          poster="/assets/hero-poster.png"
-        />
+        <div className="video-background">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/assets/hero-poster.png"
+          >
+            <source src="/assets/hero-video.mp4" type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
+        </div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
             Bart Pullen — Portfolio
@@ -184,7 +191,7 @@ export const Home = memo(() => {
                     style={{ display: 'inline-block' }}
                   >
                     <Link to="/labs" className="btn-primary" aria-label="Bekijk trading studies">
-                      Bekijk the labs
+                      Bekijk de labs
                     </Link>
                   </motion.div>
                 </div>
