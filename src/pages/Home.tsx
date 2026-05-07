@@ -36,10 +36,8 @@ export const Home = memo(() => {
       />
       <header className="hero-header">
         <DeferredHeroVideo
-          src="/assets/hero-video-720.mp4"
-          mobileSrc="/assets/hero-video-480.mp4"
+          src="/assets/hero-video.mp4"
           poster="/assets/hero-poster.png"
-          posterWebp="/assets/hero-poster.webp"
         />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.p className="overline" initial={hi} animate={vp} transition={t(0.1)} style={{ color: '#1a202c' }}>
