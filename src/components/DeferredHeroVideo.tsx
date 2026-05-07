@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, useRef } from 'react';
 
 interface DeferredHeroVideoProps {
   src: string;
@@ -15,6 +15,7 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
 }: DeferredHeroVideoProps) {
   const [videoReady, setVideoReady] = useState(false);
   const [allowVideo, setAllowVideo] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -22,7 +23,14 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
       connection?: { saveData?: boolean };
     }).connection;
 
-    setAllowVideo(!(mediaQuery.matches || connection?.saveData));
+    const shouldAllow = !(mediaQuery.matches || connection?.saveData);
+    setAllowVideo(shouldAllow);
+
+    if (shouldAllow && videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.warn("Autoplay blocked or failed:", err);
+      });
+    }
   }, []);
 
   return (
@@ -35,12 +43,12 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
       )}
       {allowVideo && (
         <video
-          autoPlay
+          ref={videoRef}
           loop
           muted
           playsInline
           preload="auto"
-          onLoadedData={() => setVideoReady(true)}
+          onCanPlay={() => setVideoReady(true)}
         >
           {mobileSrc && <source src={mobileSrc} type="video/mp4" media="(max-width: 720px)" />}
           <source src={src} type="video/mp4" />
