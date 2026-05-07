@@ -19,26 +19,45 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const connection = (navigator as Navigator & {
-      connection?: { saveData?: boolean };
-    }).connection;
+    const handlePreferenceChange = () => {
+      const connection = (navigator as Navigator & {
+        connection?: { saveData?: boolean };
+      }).connection;
+      setAllowVideo(!(mediaQuery.matches || connection?.saveData));
+    };
 
-    const shouldAllow = !(mediaQuery.matches || connection?.saveData);
-    setAllowVideo(shouldAllow);
+    mediaQuery.addEventListener('change', handlePreferenceChange);
+    handlePreferenceChange();
 
-    if (shouldAllow && videoRef.current) {
+    return () => mediaQuery.removeEventListener('change', handlePreferenceChange);
+  }, []);
+
+  useEffect(() => {
+    if (allowVideo && videoRef.current) {
       videoRef.current.play().catch(err => {
-        console.warn("Autoplay blocked or failed:", err);
+        // Ignore NotAllowedError as it's common browser behavior
+        if (err.name !== 'NotAllowedError') {
+          console.warn("Autoplay blocked or failed:", err);
+        }
       });
     }
-  }, []);
+  }, [allowVideo]);
 
   return (
     <div className="video-background" aria-hidden="true">
       {poster && (
         <picture className={videoReady ? 'hero-poster-hidden' : ''}>
           {posterWebp && <source srcSet={posterWebp} type="image/webp" />}
-          <img src={poster} alt="" className="hero-poster" width="1920" height="1080" decoding="async" />
+          <img 
+            src={poster} 
+            alt="" 
+            className="hero-poster" 
+            width="1920" 
+            height="1080" 
+            decoding="async"
+            // @ts-expect-error - fetchpriority is not yet in @types/react but supported by browsers
+            fetchpriority="high"
+          />
         </picture>
       )}
       {allowVideo && (
@@ -48,6 +67,8 @@ export const DeferredHeroVideo = memo(function DeferredHeroVideo({
           muted
           playsInline
           preload="auto"
+          width="1920"
+          height="1080"
           onCanPlay={() => setVideoReady(true)}
         >
           {mobileSrc && <source src={mobileSrc} type="video/mp4" media="(max-width: 720px)" />}
