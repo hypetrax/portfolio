@@ -1,9 +1,12 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const distDir = path.resolve('dist');
+const serverEntry = path.resolve('dist-ssr/entry-server.js');
 const siteUrl = 'https://bartpullen.nl';
 const socialImage = `${siteUrl}/portfolio.png`;
+const { render } = await import(pathToFileURL(serverEntry).href);
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -153,7 +156,16 @@ function seoHead(route) {
 
 function withSeo(html, route) {
   const stripped = removeExistingSeo(html);
-  return stripped.replace('  </head>', `${seoHead(route)}\n  </head>`);
+  const htmlWithSeo = stripped.replace('  </head>', `${seoHead(route)}\n  </head>`);
+  return htmlWithSeo.replace('<div id="root"></div>', `<div id="root">${renderBody(route.path)}</div>`);
+}
+
+function renderBody(pathName) {
+  return render(pathName)
+    .replace(/\s*<title>.*?<\/title>/gis, '')
+    .replace(/\s*<meta\s+[^>]*>/gi, '')
+    .replace(/\s*<link\s+[^>]*>/gi, '')
+    .replace(/\s*<script\s+type=["']application\/ld\+json["'][^>]*>.*?<\/script>/gis, '');
 }
 
 async function writeRoute(html, route) {
@@ -170,4 +182,3 @@ for (const route of routes) {
 }
 
 await writeFile(path.join(distDir, '404.html'), withSeo(baseHtml, notFoundRoute), 'utf8');
-

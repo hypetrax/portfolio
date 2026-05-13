@@ -77,7 +77,7 @@ export const Home = memo(() => {
                 transition={reduced ? { duration: 0 } : { duration: 0.35, ease: 'easeOut' }}
               >
                 <header>
-                  <h3>01 — Security & Compliance</h3>
+                  <p className="section-kicker">01 — Security & Compliance</p>
                   <h2>Security <span style={{ color: 'var(--accent)' }}>Officer</span>.</h2>
                 </header>
                 <p className="project-intro">
@@ -92,7 +92,7 @@ export const Home = memo(() => {
                     transition={{ duration: 0.15 }}
                     style={{ display: 'inline-block' }}
                   >
-                    <Link to="/security" className="btn-primary" aria-label="Bekijk security expertise">
+                    <Link to="/security" className="btn-primary">
                       Bekijk expertise
                     </Link>
                   </motion.div>
@@ -128,7 +128,7 @@ export const Home = memo(() => {
                 transition={reduced ? { duration: 0 } : { duration: 0.35, ease: 'easeOut' }}
               >
                 <header>
-                  <h3>02 — Design & Development</h3>
+                  <p className="section-kicker">02 — Design & Development</p>
                   <h2>Websites & <span style={{ color: 'var(--accent)' }}>Code</span>.</h2>
                 </header>
                 <p className="project-intro">
@@ -142,7 +142,7 @@ export const Home = memo(() => {
                     transition={{ duration: 0.15 }}
                     style={{ display: 'inline-block' }}
                   >
-                    <Link to="/web" className="btn-primary" aria-label="Bekijk webdesign portfolio">
+                    <Link to="/web" className="btn-primary">
                       Bekijk mijn werk
                     </Link>
                   </motion.div>
@@ -177,7 +177,7 @@ export const Home = memo(() => {
                 transition={reduced ? { duration: 0 } : { duration: 0.35, ease: 'easeOut' }}
               >
                 <header>
-                  <h3>03 — Labs & Research</h3>
+                  <p className="section-kicker">03 — Labs & Research</p>
                   <h2>Labs & <span style={{ color: 'var(--accent)' }}>Onderzoek</span>.</h2>
                 </header>
                 <p className="project-intro">
@@ -191,7 +191,7 @@ export const Home = memo(() => {
                     transition={{ duration: 0.15 }}
                     style={{ display: 'inline-block' }}
                   >
-                    <Link to="/labs" className="btn-primary" aria-label="Bekijk trading studies">
+                    <Link to="/labs" className="btn-primary">
                       Bekijk de labs
                     </Link>
                   </motion.div>

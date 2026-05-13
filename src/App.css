@@ -8,9 +8,9 @@
   --surface: #ffffff; /* White surface */
   --surface-hover: #f1f0eb; /* Slightly darker cream */
   --text-main: #2d3748; /* Deep slate ink */
-  --text-muted: #718096; /* Softer slate */
-  --accent: #059669; /* Natural Forest Green */
-  --accent-glow: rgba(5, 150, 105, 0.08);
+  --text-muted: #4a5568; /* Softer slate */
+  --accent: #047857; /* Natural Forest Green */
+  --accent-glow: rgba(4, 120, 87, 0.08);
   --border: #e2e0d8; /* Warm border */
   --success: #10b981;
   
@@ -65,6 +65,16 @@ h2 {
 }
 
 h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.section-kicker {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -393,7 +403,7 @@ h3 {
 .btn-primary:hover {
   background: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 20px rgba(4, 120, 87, 0.2);
 }
 
 .btn-secondary:hover {
@@ -407,7 +417,7 @@ h3 {
   color: white;
   padding: 18px 48px;
   font-size: 16px;
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 20px rgba(4, 120, 87, 0.2);
 }
 
 .btn-large:hover {

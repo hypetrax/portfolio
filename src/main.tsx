@@ -4,8 +4,11 @@ import './index.css'
 import './App.css'
 import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!
+const app = (
   <HelmetProvider>
     <App />
-  </HelmetProvider>,
+  </HelmetProvider>
 )
+
+createRoot(root).render(app)
