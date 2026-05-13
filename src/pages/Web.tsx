@@ -26,7 +26,7 @@ const projects: Project[] = [
     results: ["Informatie is veel sneller te vinden", "Modern mobiel menu", "Eigentijdse uitstraling"],
     oldUrl: "/archives/badmintonhardenberg/index.html",
     sliderBeforeUrl: "/archives/badmintonhardenberg/index.html",
-    newUrl: "https://badminton.bartpullen.nl",
+    newUrl: "https://badmintonhardenberg.nl",
     tags: ["UX Design", "Modernisering", "Mobile First"]
   },
   {
