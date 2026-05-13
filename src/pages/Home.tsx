@@ -16,7 +16,7 @@ export const Home = memo(() => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Bart Pullen",
-    "url": "https://bartpullen.nl",
+    "url": "https://www.bartpullen.nl",
     "jobTitle": "Webdesigner & Information Security Officer",
     "sameAs": [
       "https://www.linkedin.com/in/bartpullen/",

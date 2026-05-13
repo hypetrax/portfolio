@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 
 const distDir = path.resolve('dist');
 const serverEntry = path.resolve('dist-ssr/entry-server.js');
-const siteUrl = 'https://bartpullen.nl';
+const siteUrl = 'https://www.bartpullen.nl';
 const socialImage = `${siteUrl}/portfolio.png`;
 const { render } = await import(pathToFileURL(serverEntry).href);
 

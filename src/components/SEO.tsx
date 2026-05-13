@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO = ({ title, description, canonical, type = 'website', name = 'Bart Pullen', schema, image = '/portfolio.png', noindex = false }: SEOProps) => {
   // Only append | name if the title doesn't already start with the name
   const fullTitle = title.startsWith(name) ? title : `${title} | ${name}`;
-  const siteUrl = 'https://bartpullen.nl'; // Aanpassen indien nodig
+  const siteUrl = 'https://www.bartpullen.nl';
   const absoluteUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
   

@@ -133,7 +133,7 @@ export const ICTConcepts = memo(() => {
       "name": "Bart Pullen Portfolio",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bartpullen.nl/portfolio.png"
+        "url": "https://www.bartpullen.nl/portfolio.png"
       }
     }
   };

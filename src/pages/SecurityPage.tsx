@@ -16,7 +16,7 @@ export const SecurityPage = memo(() => {
   return (
     <>
       <SEO
-        title="Bart Pullen | Security Officer, Designer, Data analyst"
+        title="Security Officer & Compliance"
         description="Senior Security Officer diensten: ISO 27001:2022 implementatie en Cyber Resilience Act compliance voor digitale producten."
         canonical="/security"
       />

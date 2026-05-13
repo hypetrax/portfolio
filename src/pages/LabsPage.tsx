@@ -64,7 +64,7 @@ export const LabsPage = memo(() => {
   return (
     <>
       <SEO
-        title="Bart Pullen | Security Officer, Designer, Data analyst"
+        title="Labs & Quantitative Research"
         description="Exploratie van systematische trading strategieën, SPX optie backtests en institutionele orderflow analyse (ICT). Data-gedreven financiële inzichten."
         canonical="/labs"
       />

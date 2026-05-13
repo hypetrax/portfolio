@@ -63,7 +63,7 @@ export const Web = memo(() => {
   return (
     <>
       <SEO
-        title="Bart Pullen | Security Officer, Designer, Data analyst"
+        title="Websites die simpelweg werken"
         description="Moderne, snelle websites zonder overbodige ballast. Expert in React, Vite en performance optimalisatie voor MKB."
         canonical="/web"
       />
