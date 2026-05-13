@@ -1,7 +1,8 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, useCallback, useRef } from 'react';
 import { SEO } from '../../components/SEO';
 import {
   Chart as ChartJS,
+  type ScriptableContext,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -57,6 +58,7 @@ ChartJS.defaults.plugins.tooltip.cornerRadius = 8;
 
 export const SPX = memo(() => {
     const [activeTab, setActiveTab] = useState<'ivr' | 'rsi'>('ivr');
+    const hasRunInitialSimulation = useRef(false);
     const [simParams, setSimParams] = useState({
         dte: '45',
         pt: '50',
@@ -70,7 +72,7 @@ export const SPX = memo(() => {
         status: 'Run Simulation \u25B6'
     });
 
-    const runSimulation = () => {
+    const runSimulation = useCallback(() => {
         setSimResults(prev => ({ ...prev, isSimulating: true, status: 'Simulating... \u23F3' }));
 
         setTimeout(() => {
@@ -107,11 +109,16 @@ export const SPX = memo(() => {
                 setSimResults(prev => ({ ...prev, status: 'Run Simulation ▶' }));
             }, 2000);
         }, 600);
-    };
+    }, [simParams.dte, simParams.ivr, simParams.pt]);
 
     useEffect(() => {
+        if (hasRunInitialSimulation.current) {
+            return;
+        }
+
+        hasRunInitialSimulation.current = true;
         runSimulation();
-    }, []);
+    }, [runSimulation]);
 
     const dteChartData = {
         labels: reportData.dteAnalysis.labels,
@@ -165,7 +172,7 @@ export const SPX = memo(() => {
         datasets: [{
             label: 'Expected Value ($ per trade)',
             data: reportData.ivr.expectedValue,
-            backgroundColor: (context: any) => {
+            backgroundColor: (context: ScriptableContext<'bar'>) => {
                 const index = context.dataIndex;
                 return index >= 3 ? '#10b981' : '#475569';
             },

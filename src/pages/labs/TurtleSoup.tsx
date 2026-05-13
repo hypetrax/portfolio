@@ -1,8 +1,33 @@
 import { useState, useEffect, memo } from 'react';
 import Plotly from 'plotly.js-dist-min';
+import type { Annotations, Config, Data, Layout, Shape } from 'plotly.js';
 import { SEO } from '../../components/SEO';
 
-const simData: any = {
+type SimulationType = 'bullish' | 'bearish';
+
+type Candle = {
+    x: string;
+    o: number;
+    h: number;
+    l: number;
+    c: number;
+};
+
+type StepDefinition = {
+    idx: number;
+    title: string;
+    desc: string;
+    chk: number;
+    shapes: Partial<Shape>[];
+    annotations: Partial<Annotations>[];
+};
+
+type SimulationDefinition = {
+    candles: Candle[];
+    steps: StepDefinition[];
+};
+
+const simData: Record<SimulationType, SimulationDefinition> = {
     bullish: {
         candles: [
             {x: '09:00', o: 105.0, h: 106.5, l: 102.0, c: 102.5},
@@ -138,7 +163,7 @@ const simData: any = {
 };
 
 export const TurtleSoup = memo(() => {
-    const [currentType, setCurrentType] = useState<'bullish' | 'bearish'>('bullish');
+    const [currentType, setCurrentType] = useState<SimulationType>('bullish');
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const [openDetails, setOpenDetails] = useState<Record<string, boolean>>({});
 
@@ -156,11 +181,11 @@ export const TurtleSoup = memo(() => {
         const visibleCandles = dataDef.candles.slice(0, stepDef.idx);
         
         const trace = {
-            x: visibleCandles.map((c: any) => c.x),
-            open: visibleCandles.map((c: any) => c.o),
-            high: visibleCandles.map((c: any) => c.h),
-            low: visibleCandles.map((c: any) => c.l),
-            close: visibleCandles.map((c: any) => c.c),
+            x: visibleCandles.map((c) => c.x),
+            open: visibleCandles.map((c) => c.o),
+            high: visibleCandles.map((c) => c.h),
+            low: visibleCandles.map((c) => c.l),
+            close: visibleCandles.map((c) => c.c),
             type: 'candlestick',
             xaxis: 'x',
             yaxis: 'y',
@@ -168,7 +193,7 @@ export const TurtleSoup = memo(() => {
             decreasing: {line: {color: '#EF4444'}}
         };
 
-        const layout: any = {
+        const layout: Partial<Layout> = {
             margin: { l: 40, r: 20, t: 20, b: 30 },
             xaxis: { 
                 rangeslider: { visible: false },
@@ -187,16 +212,16 @@ export const TurtleSoup = memo(() => {
             plot_bgcolor: '#0f172a',
             paper_bgcolor: '#0f172a',
             shapes: stepDef.shapes || [],
-            annotations: (stepDef.annotations || []).map((ann: any) => ({
+            annotations: (stepDef.annotations || []).map((ann) => ({
                 ...ann,
                 font: { ...ann.font, color: ann.font?.color || '#cbd5e1' }
             })),
             dragmode: 'pan'
         };
 
-        const config = { responsive: true, displayModeBar: false };
+        const config: Partial<Config> = { responsive: true, displayModeBar: false };
 
-        Plotly.react('plotly-chart', [trace] as any, layout, config);
+        Plotly.react('plotly-chart', [trace as Data], layout, config);
     }, [currentType, currentStepIndex]);
 
     const dataDef = simData[currentType];
