@@ -1,24 +1,20 @@
 {
-  "rewrites": [
-    {
-      "source": "/cra",
-      "destination": "/CRA.html"
-    },
-    {
-      "source": "/CRA",
-      "destination": "/CRA.html"
-    },
-    {
-      "source": "/iso27001",
-      "destination": "/iso27001.html"
-    },
-    {
-      "source": "/ISO27001",
-      "destination": "/iso27001.html"
-    },
-    {
-      "source": "/((?!api/|archives/|assets/|.*\\..*).*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "src": "/cra", "dest": "/CRA.html" },
+    { "src": "/CRA", "dest": "/CRA.html" },
+    { "src": "/iso27001", "dest": "/iso27001.html" },
+    { "src": "/ISO27001", "dest": "/iso27001.html" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/web/?", "dest": "/web/index.html" },
+    { "src": "/security/?", "dest": "/security/index.html" },
+    { "src": "/security/cra/?", "dest": "/security/cra/index.html" },
+    { "src": "/security/iso27001/?", "dest": "/security/iso27001/index.html" },
+    { "src": "/labs/?", "dest": "/labs/index.html" },
+    { "src": "/labs/spx/?", "dest": "/labs/spx/index.html" },
+    { "src": "/labs/squeeze/?", "dest": "/labs/squeeze/index.html" },
+    { "src": "/labs/turtlesoup/?", "dest": "/labs/turtlesoup/index.html" },
+    { "src": "/labs/ict/?", "dest": "/labs/ict/index.html" },
+    { "handle": "filesystem" },
+    { "src": "/.*", "status": 404, "dest": "/404.html" }
   ]
 }

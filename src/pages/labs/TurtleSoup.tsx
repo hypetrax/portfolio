@@ -1,5 +1,4 @@
 import { useState, useEffect, memo } from 'react';
-import Plotly from 'plotly.js-dist-min';
 import type { Annotations, Config, Data, Layout, Shape } from 'plotly.js';
 import { SEO } from '../../components/SEO';
 
@@ -221,7 +220,19 @@ export const TurtleSoup = memo(() => {
 
         const config: Partial<Config> = { responsive: true, displayModeBar: false };
 
-        Plotly.react('plotly-chart', [trace as Data], layout, config);
+        let isCancelled = false;
+
+        void import('plotly.js-dist-min').then(({ default: Plotly }) => {
+            if (isCancelled) {
+                return;
+            }
+
+            Plotly.react('plotly-chart', [trace as Data], layout, config);
+        });
+
+        return () => {
+            isCancelled = true;
+        };
     }, [currentType, currentStepIndex]);
 
     const dataDef = simData[currentType];
