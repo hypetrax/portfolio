@@ -116,15 +116,15 @@ const projects: Project[] = [
     story: [
       {
         label: "Startpunt",
-        text: "De bestaande website was traag, werkte matig op mobiel en was lastig te onderhouden. Voor bezoekers stond vooral de route naar occasions en contact niet strak genoeg."
+        text: "De bestaande website was traag, werkte matig op mobiel en was lastig te onderhouden. De inhoud draaide vooral om garagewerkzaamheden: onderhoud, reparatie, APK, camperonderhoud en aircoservice."
       },
       {
         label: "Aanpak",
-        text: "Ik heb de site teruggebracht naar de kern: aanbod, vertrouwen, contact en snelheid. De technische keuze viel op een nieuwe React-opbouw met minder ballast en een duidelijkere componentstructuur."
+        text: "Ik heb de site teruggebracht naar de kern: diensten, vertrouwen, contact en snelheid. De technische keuze viel op een nieuwe React-opbouw met minder ballast en een duidelijkere componentstructuur."
       },
       {
         label: "Realisatie",
-        text: "Tijdens de bouw lag de focus op snelle rendering, responsive layout en een overzichtelijke occasion-presentatie. Oude technische afhankelijkheden zijn vervangen door een lichtere frontend."
+        text: "Tijdens de bouw lag de focus op snelle rendering, responsive layout en een heldere presentatie van de werkplaatsdiensten. Oude technische afhankelijkheden zijn vervangen door een lichtere frontend."
       },
       {
         label: "Resultaat",
