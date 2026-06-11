@@ -8,9 +8,23 @@ import { viewportOnce, delayed } from '../lib/motion';
 interface Project {
   title: string;
   description: string;
-  challenge: string;
-  solution: string;
+  story: {
+    label: string;
+    text: string;
+  }[];
   results: string[];
+  techTransformation: {
+    before: {
+      title: string;
+      text: string;
+      tags: string[];
+    };
+    after: {
+      title: string;
+      text: string;
+      tags: string[];
+    };
+  };
   oldUrl?: string;
   sliderBeforeUrl?: string;
   newUrl: string;
@@ -21,9 +35,37 @@ const projects: Project[] = [
   {
     title: "Badminton Hardenberg",
     description: "Een frisse site voor de lokale badmintonclub.",
-    challenge: "De oude site was onoverzichtelijk en het was voor nieuwe leden lastig om de juiste informatie te vinden.",
-    solution: "Ik heb de structuur versimpeld en een sportief ontwerp gemaakt dat duidelijk laat zien waar de club voor staat.",
+    story: [
+      {
+        label: "Startpunt",
+        text: "De oude website had veel losse informatie, maar weinig richting. Ik ben begonnen met de vraag wat een nieuw lid, ouder of bestaande speler direct moet kunnen vinden."
+      },
+      {
+        label: "Aanpak",
+        text: "Daarna heb ik de informatiearchitectuur opnieuw opgezet: routes voor lid worden, speeltijden, contact, downloads en clubinformatie. De technische basis is opgebouwd rond herbruikbare secties, centrale SEO-data en een mobiel menu."
+      },
+      {
+        label: "Realisatie",
+        text: "In de uitvoering heb ik het ontwerp sportiever gemaakt met meer visuele energie, maar de site tegelijk eenvoudiger gehouden. Performance, responsive gedrag en vindbaarheid zijn tijdens het bouwen meegenomen in plaats van achteraf toegevoegd."
+      },
+      {
+        label: "Resultaat",
+        text: "De nieuwe website voelt moderner, werkt beter op mobiel en brengt bezoekers sneller bij de informatie die voor de club belangrijk is."
+      }
+    ],
     results: ["Informatie is veel sneller te vinden", "Modern mobiel menu", "Eigentijdse uitstraling"],
+    techTransformation: {
+      before: {
+        title: "Wix CMS-site",
+        text: "De oude site draaide op Wix/Thunderbolt met Wix-rendering, Parastorage- en wixstatic-assets en beperkte controle over de technische structuur.",
+        tags: ["Wix CMS", "Thunderbolt", "Parastorage"]
+      },
+      after: {
+        title: "React/Vite-site op Vercel",
+        text: "De nieuwe site is opgebouwd als snelle React/Vite frontend met statische SEO-meta, JSON-LD voor de vereniging, analytics en responsive componenten.",
+        tags: ["React", "Vite", "Vercel", "JSON-LD", "Analytics"]
+      }
+    },
     oldUrl: "/archives/badmintonhardenberg/index.html",
     sliderBeforeUrl: "/archives/badmintonhardenberg/index.html",
     newUrl: "https://badmintonhardenberg.nl",
@@ -32,9 +74,37 @@ const projects: Project[] = [
   {
     title: "Landhuis — Echt Duurzaam",
     description: "Een professionele website voor een specialist in duurzame installatietechniek.",
-    challenge: "Dit installatiebedrijf werkte zonder website, waardoor ze online onzichtbaar waren voor mensen die zochten naar warmtepompen.",
-    solution: "Ik heb een website gebouwd die hun expertise in warmtepompen en airconditioning duidelijk presenteert aan de regio.",
+    story: [
+      {
+        label: "Startpunt",
+        text: "Landhuis had nog geen eigen website. De online basis bestond vooral uit Google-bedrijfsinformatie en reviews: genoeg vertrouwen, maar geen plek om diensten en expertise goed uit te leggen."
+      },
+      {
+        label: "Aanpak",
+        text: "Ik heb die basis vertaald naar een lokale service-structuur: warmtepompen, airconditioning, regio, vakmanschap en contact. De content is opgezet voor duidelijke scanbaarheid en lokale SEO."
+      },
+      {
+        label: "Realisatie",
+        text: "De website is gebouwd als een rustige, professionele presentatie met duidelijke dienstblokken, sterke call-to-actions en een technische opzet die snel laadt en makkelijk uitbreidbaar blijft."
+      },
+      {
+        label: "Resultaat",
+        text: "Van alleen zichtbaar zijn in Google is Landhuis naar een eigen website gegaan die vertrouwen vasthoudt, diensten uitlegt en lokaal beter gevonden kan worden."
+      }
+    ],
     results: ["Goede lokale vindbaarheid", "Professionele uitstraling die vertrouwen wekt", "Duidelijke presentatie van diensten"],
+    techTransformation: {
+      before: {
+        title: "Alleen Google-profiel",
+        text: "Er was geen eigen website. De online aanwezigheid bestond uit Google-resultaten, Maps-informatie en enkele reviews als vertrouwen-signaal.",
+        tags: ["Google Maps", "Reviews", "Geen website"]
+      },
+      after: {
+        title: "Servicegerichte React-site",
+        text: "De nieuwe website draait op Vercel met een Vite-bundle, eigen metadata, lokale dienstenstructuur en content voor warmtepompen, airco en elektra.",
+        tags: ["React", "Vite", "Vercel", "Local SEO", "Metadata"]
+      }
+    },
     oldUrl: "https://www.google.com/search?q=Landhuis+Installatietechniek",
     sliderBeforeUrl: "/archives/landhuis-google/index.html",
     newUrl: "https://landhuis.bartpullen.nl/",
@@ -43,9 +113,37 @@ const projects: Project[] = [
   {
     title: "Fluitman Auto's",
     description: "Een nieuwe, snelle website voor een lokaal autobedrijf.",
-    challenge: "De oude website was traag, werkte niet goed op telefoons en was lastig aan te passen.",
-    solution: "Ik heb de site vanaf de grond opgebouwd met React. De focus lag op snelheid en een helder overzicht van de occasions.",
+    story: [
+      {
+        label: "Startpunt",
+        text: "De bestaande website was traag, werkte matig op mobiel en was lastig te onderhouden. Voor bezoekers stond vooral de route naar occasions en contact niet strak genoeg."
+      },
+      {
+        label: "Aanpak",
+        text: "Ik heb de site teruggebracht naar de kern: aanbod, vertrouwen, contact en snelheid. De technische keuze viel op een nieuwe React-opbouw met minder ballast en een duidelijkere componentstructuur."
+      },
+      {
+        label: "Realisatie",
+        text: "Tijdens de bouw lag de focus op snelle rendering, responsive layout en een overzichtelijke occasion-presentatie. Oude technische afhankelijkheden zijn vervangen door een lichtere frontend."
+      },
+      {
+        label: "Resultaat",
+        text: "De nieuwe website is sneller, duidelijker op mobiel en beter voorbereid op vindbaarheid, met een 100/100 Lighthouse Performance-score als meetbaar resultaat."
+      }
+    ],
     results: ["100/100 Lighthouse Performance score", "Werkt perfect op mobiel", "Betere vindbaarheid in Google"],
+    techTransformation: {
+      before: {
+        title: "WordPress + Avada",
+        text: "De oude site gebruikte WordPress met Avada/Fusion Builder, Yoast SEO, MonsterInsights, jQuery en veel theme- en plugin-scripts.",
+        tags: ["WordPress", "Avada", "Fusion Builder", "Yoast", "jQuery"]
+      },
+      after: {
+        title: "Lichte React-frontend",
+        text: "De nieuwe site is teruggebracht naar een snellere React/Vite frontend op Vercel, met analytics behouden en minder runtime-ballast in de interface.",
+        tags: ["React", "Vite", "Vercel", "Analytics", "Performance"]
+      }
+    },
     oldUrl: "/archives/fluitmanautos/index.html",
     sliderBeforeUrl: "/archives/fluitmanautos/index.html",
     newUrl: "https://age.bartpullen.nl",
@@ -130,19 +228,17 @@ export const Web = memo(() => {
                   </h2>
                   <p className="project-intro">{project.description}</p>
 
-                  <div className="case-details">
-                    <div className="detail-block">
-                      <h3>De Uitdaging</h3>
-                      <p>{project.challenge}</p>
-                    </div>
-                    <div className="detail-block">
-                      <h3>De Oplossing</h3>
-                      <p>{project.solution}</p>
-                    </div>
-                  </div>
-
-                  <div className="results-block">
-                    <h3>Resultaat</h3>
+                  <div className="case-story">
+                    <h3>Van startpunt naar realisatie</h3>
+                    <ol>
+                      {project.story.map((step) => (
+                        <li key={step.label}>
+                          <strong>{step.label}</strong>
+                          <span>{step.text}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    <h3>Concreet opgeleverd</h3>
                     <ul>
                       {project.results.map((result) => (
                         <li key={result}>{result}</li>
@@ -180,8 +276,33 @@ export const Web = memo(() => {
                   </div>
                 </div>
 
-                <div className="case-study-visual">
+                <div className="case-study-visual web-case-visual">
                   <LiveSlider before={project.sliderBeforeUrl} after={project.newUrl} />
+                  <div className="tech-transform">
+                    <h3>Technische transformatie</h3>
+                    <div className="tech-transform-grid">
+                      <div>
+                        <span className="tech-transform-label">Voorheen</span>
+                        <strong>{project.techTransformation.before.title}</strong>
+                        <p>{project.techTransformation.before.text}</p>
+                        <div className="tech-tags">
+                          {project.techTransformation.before.tags.map((tag) => (
+                            <span key={tag}>{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="tech-transform-label">Nu</span>
+                        <strong>{project.techTransformation.after.title}</strong>
+                        <p>{project.techTransformation.after.text}</p>
+                        <div className="tech-tags">
+                          {project.techTransformation.after.tags.map((tag) => (
+                            <span key={tag}>{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
