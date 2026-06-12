@@ -29,6 +29,20 @@ interface Project {
   sliderBeforeUrl?: string;
   newUrl: string;
   tags: string[];
+  pageSpeed?: {
+    label: string;
+    reportDate: string;
+    sourceUrl: string;
+    scores: {
+      label: string;
+      value: string;
+      tone?: 'primary' | 'muted';
+    }[];
+    metrics: {
+      label: string;
+      value: string;
+    }[];
+  };
 }
 
 const projects: Project[] = [
@@ -147,8 +161,28 @@ const projects: Project[] = [
     oldUrl: "/archives/fluitmanautos/index.html",
     sliderBeforeUrl: "/archives/fluitmanautos/index.html",
     newUrl: "https://fluitmanautos.nl",
-    tags: ["Full Rebuild", "React", "Performance"]
+    tags: ["Full Rebuild", "React", "Performance"],
+    pageSpeed: {
+      label: "Google PageSpeed Insights",
+      reportDate: "12 juni 2026, 10:04:53",
+      sourceUrl: "https://pagespeed.web.dev/analysis/https-fluitmanautos-nl/97qyz9nkec?form_factor=desktop",
+      scores: [
+        { label: "Performance", value: "100/100", tone: "primary" },
+        { label: "Form factor", value: "Desktop" },
+        { label: "Velddata", value: "Geen CrUX-data" }
+      ],
+      metrics: [
+        { label: "Focus", value: "Snelle rendering" },
+        { label: "Basis", value: "Lichte React/Vite frontend" },
+        { label: "Meetpunt", value: "Labdata uit Lighthouse" }
+      ]
+    }
   }
+];
+
+const featuredProjects = [
+  ...projects.filter((project) => project.title === "Fluitman Auto's"),
+  ...projects.filter((project) => project.title !== "Fluitman Auto's")
 ];
 
 export const Web = memo(() => {
@@ -193,7 +227,7 @@ export const Web = memo(() => {
       </header>
 
       <main>
-        {projects.map((project, index) => (
+        {featuredProjects.map((project, index) => (
           <motion.section
             key={project.title}
             className="case-study"
@@ -303,6 +337,43 @@ export const Web = memo(() => {
                       </div>
                     </div>
                   </div>
+                  {project.pageSpeed && (
+                    <div className="pagespeed-card">
+                      <div className="pagespeed-card-header">
+                        <div>
+                          <span className="tech-transform-label">{project.pageSpeed.label}</span>
+                          <strong>Desktop performance audit</strong>
+                        </div>
+                        <a
+                          href={project.pageSpeed.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Bekijk rapport
+                        </a>
+                      </div>
+                      <div className="pagespeed-score-grid">
+                        {project.pageSpeed.scores.map((score) => (
+                          <div
+                            key={score.label}
+                            className={score.tone === 'primary' ? 'pagespeed-score is-primary' : 'pagespeed-score'}
+                          >
+                            <span>{score.label}</span>
+                            <strong>{score.value}</strong>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="pagespeed-metrics">
+                        {project.pageSpeed.metrics.map((metric) => (
+                          <div key={metric.label}>
+                            <span>{metric.label}</span>
+                            <strong>{metric.value}</strong>
+                          </div>
+                        ))}
+                      </div>
+                      <p>Rapport gegenereerd op {project.pageSpeed.reportDate}. De PageSpeed-pagina meldt dat er voor deze URL geen voldoende Chrome UX Report-velddata beschikbaar is.</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
