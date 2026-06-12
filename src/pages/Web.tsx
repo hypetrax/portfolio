@@ -146,7 +146,7 @@ const projects: Project[] = [
     },
     oldUrl: "/archives/fluitmanautos/index.html",
     sliderBeforeUrl: "/archives/fluitmanautos/index.html",
-    newUrl: "https://age.bartpullen.nl",
+    newUrl: "https://fluitmanautos.nl",
     tags: ["Full Rebuild", "React", "Performance"]
   }
 ];
