@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { Web } from './pages/Web';
+import { Contact } from './pages/Contact';
 import { LabsPage } from './pages/LabsPage';
 import { SPX } from './pages/labs/SPX';
 import { SqueezeSpreads } from './pages/labs/SqueezeSpreads';
@@ -20,6 +21,7 @@ export function StaticAppRoutes() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="web" element={<Web />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="security">
             <Route index element={<SecurityPage />} />
             <Route path="cra" element={<CRA />} />

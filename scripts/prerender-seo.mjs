@@ -61,6 +61,22 @@ const routes = [
     description: 'Moderne, snelle websites zonder overbodige ballast. Expert in React, Vite en performance optimalisatie voor MKB.',
   },
   {
+    path: '/contact',
+    title: 'Contact | Bart Pullen',
+    description: 'Neem contact op met Bart Pullen over security, websites, data-analyse of portfolio-projecten.',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: 'Contact | Bart Pullen',
+      url: `${siteUrl}/contact`,
+      about: {
+        '@type': 'Person',
+        name: 'Bart Pullen',
+        url: siteUrl,
+      },
+    },
+  },
+  {
     path: '/security',
     title: 'Security Officer & Compliance | Bart Pullen',
     description: 'Senior Security Officer diensten: ISO 27001:2022 implementatie en Cyber Resilience Act compliance voor digitale producten.',

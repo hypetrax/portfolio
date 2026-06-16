@@ -5,6 +5,7 @@ const NAV_LINKS = [
   { to: '/security', label: 'Security' },
   { to: '/web',      label: 'Web' },
   { to: '/labs',     label: 'Labs' },
+  { to: '/contact',  label: 'Contact' },
 ];
 
 export const Navbar = () => {

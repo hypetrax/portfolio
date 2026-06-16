@@ -26,6 +26,8 @@ export const Footer = () => {
               <span className="divider">|</span>
               <Link to="/labs" className="labs-link">Labs & Research</Link>
               <span className="divider">|</span>
+              <Link to="/contact" className="labs-link">Contact</Link>
+              <span className="divider">|</span>
               <a href="https://www.linkedin.com/in/bartpullen/" target="_blank" rel="noopener noreferrer" className="labs-link">LinkedIn</a>
             </nav>
           </div>

@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 
 const Web = lazy(() => import('./pages/Web').then((module) => ({ default: module.Web })));
+const Contact = lazy(() => import('./pages/Contact').then((module) => ({ default: module.Contact })));
 const LabsPage = lazy(() => import('./pages/LabsPage').then((module) => ({ default: module.LabsPage })));
 const SPX = lazy(() => import('./pages/labs/SPX').then((module) => ({ default: module.SPX })));
 const SqueezeSpreads = lazy(() => import('./pages/labs/SqueezeSpreads').then((module) => ({ default: module.SqueezeSpreads })));
@@ -21,6 +22,7 @@ export function AppRoutes() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="web" element={<Web />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="security">
             <Route index element={<SecurityPage />} />
             <Route path="cra" element={<CRA />} />
