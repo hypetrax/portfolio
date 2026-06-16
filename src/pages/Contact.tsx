@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SEO } from '../components/SEO';
@@ -7,6 +7,7 @@ import { delayed, viewportOnce } from '../lib/motion';
 export const Contact = memo(() => {
   const reduced = useReducedMotion();
   const [state, handleSubmit] = useForm('xqewqajg');
+  const [subject, setSubject] = useState('');
 
   const hi = reduced ? {} : { opacity: 0, y: 24 };
   const vp = { opacity: 1, y: 0 };
@@ -86,7 +87,11 @@ export const Contact = memo(() => {
               </div>
             ) : (
               <form className="contact-form" aria-label="Contactformulier" onSubmit={handleSubmit}>
-                <input type="hidden" name="_subject" value="Nieuw bericht via bartpullen.nl/contact" />
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value={subject.trim() ? `Nieuw contactformulier: ${subject}` : 'Nieuw bericht via bartpullen.nl/contact'}
+                />
 
                 <div className="form-row">
                   <label htmlFor="name">Naam</label>
@@ -102,8 +107,15 @@ export const Contact = memo(() => {
 
                 <div className="form-row">
                   <label htmlFor="subject">Onderwerp</label>
-                  <input id="subject" name="subject" type="text" placeholder="Waar gaat het over?" />
-                  <ValidationError className="form-error" field="subject" errors={state.errors} />
+                  <input
+                    id="subject"
+                    name="onderwerp"
+                    type="text"
+                    placeholder="Waar gaat het over?"
+                    value={subject}
+                    onChange={(event) => setSubject(event.target.value)}
+                  />
+                  <ValidationError className="form-error" field="onderwerp" errors={state.errors} />
                 </div>
 
                 <div className="form-row">
