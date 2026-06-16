@@ -1,10 +1,12 @@
 import { memo } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SEO } from '../components/SEO';
 import { delayed, viewportOnce } from '../lib/motion';
 
 export const Contact = memo(() => {
   const reduced = useReducedMotion();
+  const [state, handleSubmit] = useForm('xqewqajg');
 
   const hi = reduced ? {} : { opacity: 0, y: 24 };
   const vp = { opacity: 1, y: 0 };
@@ -74,31 +76,49 @@ export const Contact = memo(() => {
               </dl>
             </section>
 
-            <form className="contact-form" aria-label="Contactformulier">
-              <div className="form-row">
-                <label htmlFor="name">Naam</label>
-                <input id="name" name="name" type="text" autoComplete="name" placeholder="Je naam" />
+            {state.succeeded ? (
+              <div className="contact-form contact-success" role="status" aria-live="polite">
+                <p className="section-kicker">Bericht ontvangen</p>
+                <h2>Dank je wel.</h2>
+                <p>
+                  Je bericht is verzonden. Ik kom erop terug zodra ik de context goed heb kunnen lezen.
+                </p>
               </div>
+            ) : (
+              <form className="contact-form" aria-label="Contactformulier" onSubmit={handleSubmit}>
+                <input type="hidden" name="_subject" value="Nieuw bericht via bartpullen.nl/contact" />
 
-              <div className="form-row">
-                <label htmlFor="email">E-mail</label>
-                <input id="email" name="email" type="email" autoComplete="email" placeholder="jij@example.nl" />
-              </div>
+                <div className="form-row">
+                  <label htmlFor="name">Naam</label>
+                  <input id="name" name="name" type="text" autoComplete="name" placeholder="Je naam" required />
+                  <ValidationError className="form-error" field="name" errors={state.errors} />
+                </div>
 
-              <div className="form-row">
-                <label htmlFor="subject">Onderwerp</label>
-                <input id="subject" name="subject" type="text" placeholder="Waar gaat het over?" />
-              </div>
+                <div className="form-row">
+                  <label htmlFor="email">E-mail</label>
+                  <input id="email" name="email" type="email" autoComplete="email" placeholder="jij@example.nl" required />
+                  <ValidationError className="form-error" field="email" errors={state.errors} />
+                </div>
 
-              <div className="form-row">
-                <label htmlFor="message">Bericht</label>
-                <textarea id="message" name="message" rows={7} placeholder="Schrijf je bericht..." />
-              </div>
+                <div className="form-row">
+                  <label htmlFor="subject">Onderwerp</label>
+                  <input id="subject" name="subject" type="text" placeholder="Waar gaat het over?" />
+                  <ValidationError className="form-error" field="subject" errors={state.errors} />
+                </div>
 
-              <button className="btn-primary contact-submit" type="button">
-                Versturen
-              </button>
-            </form>
+                <div className="form-row">
+                  <label htmlFor="message">Bericht</label>
+                  <textarea id="message" name="message" rows={7} placeholder="Schrijf je bericht..." required />
+                  <ValidationError className="form-error" field="message" errors={state.errors} />
+                </div>
+
+                <ValidationError className="form-error" errors={state.errors} />
+
+                <button className="btn-primary contact-submit" type="submit" disabled={state.submitting}>
+                  {state.submitting ? 'Versturen...' : 'Versturen'}
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
       </main>
