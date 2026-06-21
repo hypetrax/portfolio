@@ -4,20 +4,20 @@
 
 Site: https://www.bartpullen.nl
 Language: nl-NL
-Primary profile: https://www.linkedin.com/in/bartpullen/
+Primary profile: [Bart Pullen on LinkedIn](https://www.linkedin.com/in/bartpullen/)
 
 ## Key Pages
 
-- https://www.bartpullen.nl/ - Overview of Bart Pullen's work across security, web development, and data analysis.
-- https://www.bartpullen.nl/security - Security Officer and compliance work, including ISO 27001 and Cyber Resilience Act themes.
-- https://www.bartpullen.nl/security/iso27001 - Practical ISO 27001:2022 implementation approach for ISMS, risk management, governance, and continuous improvement.
-- https://www.bartpullen.nl/security/cra - Cyber Resilience Act impact analysis for digital products, including SBOM, vulnerability handling, reporting, and compliance planning.
-- https://www.bartpullen.nl/web - Web design and development work focused on fast, clean, maintainable sites.
-- https://www.bartpullen.nl/labs - Research area for trading studies, models, and interactive data experiments.
-- https://www.bartpullen.nl/labs/spx - SPX options backtest study covering DTE optimization, win rates, and trade management.
-- https://www.bartpullen.nl/labs/squeeze - Systematic swing trading framework based on TTM Squeeze, EMA stacks, and option credit spreads.
-- https://www.bartpullen.nl/labs/turtlesoup - Interactive ICT Turtle Soup strategy simulator for liquidity sweeps and market structure shifts.
-- https://www.bartpullen.nl/labs/ict - Guide to ICT trading concepts, liquidity pools, order blocks, fair value gaps, and institutional orderflow.
+- [Home](https://www.bartpullen.nl/): Overview of Bart Pullen's work across security, web development, and data analysis.
+- [Security](https://www.bartpullen.nl/security): Security Officer and compliance work, including ISO 27001 and Cyber Resilience Act themes.
+- [ISO 27001](https://www.bartpullen.nl/security/iso27001): Practical ISO 27001:2022 implementation approach for ISMS, risk management, governance, and continuous improvement.
+- [Cyber Resilience Act](https://www.bartpullen.nl/security/cra): Cyber Resilience Act impact analysis for digital products, including SBOM, vulnerability handling, reporting, and compliance planning.
+- [Web](https://www.bartpullen.nl/web): Web design and development work focused on fast, clean, maintainable sites.
+- [Labs](https://www.bartpullen.nl/labs): Research area for trading studies, models, and interactive data experiments.
+- [SPX Options Backtest](https://www.bartpullen.nl/labs/spx): SPX options backtest study covering DTE optimization, win rates, and trade management.
+- [Squeeze Spreads](https://www.bartpullen.nl/labs/squeeze): Systematic swing trading framework based on TTM Squeeze, EMA stacks, and option credit spreads.
+- [Turtle Soup Simulator](https://www.bartpullen.nl/labs/turtlesoup): Interactive ICT Turtle Soup strategy simulator for liquidity sweeps and market structure shifts.
+- [ICT Concepts](https://www.bartpullen.nl/labs/ict): Guide to ICT trading concepts, liquidity pools, order blocks, fair value gaps, and institutional orderflow.
 
 ## Suggested Citation
 
